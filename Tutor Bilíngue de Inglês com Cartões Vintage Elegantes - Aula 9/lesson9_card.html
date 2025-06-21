@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão de Inglês - Aula 9: Horas e Tempo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --wine: #722F37;
+            --cream: #F5F1E8;
+            --navy: #2C3E50;
+            --gold: #D4AF37;
+            --dark-wine: #5A252A;
+            --light-gold: #F4E4BC;
+            --rose: #E8B4B8;
+            --sage: #9CAF88;
+            --lavender: #B8A9C9;
+            --coral: #F4A261;
+            --teal: #2A9D8F;
+            --mint: #A8E6CF;
+            --peach: #FFB3BA;
+        }
+        
+        .font-baskerville { font-family: 'Libre Baskerville', serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        
+        .vintage-card {
+            background: linear-gradient(135deg, var(--cream) 0%, #F8F5F0 100%);
+            border: 3px solid var(--wine);
+            box-shadow: 
+                0 8px 32px rgba(114, 47, 55, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+        
+        .text-wine { color: var(--wine); }
+        .text-navy { color: var(--navy); }
+        .text-gold { color: var(--gold); }
+        .bg-wine { background-color: var(--wine); }
+        .bg-navy { background-color: var(--navy); }
+        .bg-gold { background-color: var(--gold); }
+        .bg-light-gold { background-color: var(--light-gold); }
+        .bg-mint { background-color: var(--mint); }
+        .bg-peach { background-color: var(--peach); }
+        
+        .vintage-button {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-wine) 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .vintage-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(114, 47, 55, 0.3);
+        }
+        
+        .pronunciation {
+            background: linear-gradient(135deg, var(--light-gold) 0%, var(--cream) 100%);
+            border-left: 4px solid var(--gold);
+        }
+        
+        .dialogue-box {
+            background: rgba(44, 62, 80, 0.05);
+            border-left: 4px solid var(--navy);
+        }
+        
+        .clock-container {
+            background: linear-gradient(135deg, var(--mint) 0%, #B8F2E6 100%);
+            border: 3px solid var(--teal);
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            position: relative;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .clock-face {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: white;
+            position: relative;
+            border: 2px solid var(--navy);
+        }
+        
+        .clock-number {
+            position: absolute;
+            font-weight: bold;
+            color: var(--navy);
+            font-size: 14px;
+        }
+        
+        .clock-hand {
+            position: absolute;
+            background: var(--wine);
+            transform-origin: bottom center;
+            border-radius: 2px;
+        }
+        
+        .hour-hand {
+            width: 6px;
+            height: 50px;
+            top: 39px;
+            left: 87px;
+            background: var(--wine);
+            position: absolute;
+            transform-origin: bottom center;
+            border-radius: 2px;
+        }
+        
+        .minute-hand {
+            width: 4px;
+            height: 70px;
+            top: 15px;
+            left: 88px;
+            background: var(--navy);
+            position: absolute;
+            transform-origin: bottom center;
+            border-radius: 2px;
+        }        
+        
+        .clock-center {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--wine);
+            border-radius: 50%;
+            top: 85px;
+            left: 85px;
+        }
+        
+        .time-card {
+            background: linear-gradient(135deg, var(--peach) 0%, #FFD1DC 100%);
+            color: var(--navy);
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 0.3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            min-height: 100px;
+            border: 2px solid rgba(255, 179, 186, 0.3);
+            position: relative;
+        }
+        
+        .time-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 179, 186, 0.5);
+            border-color: var(--navy);
+        }
+        
+        .expression-card {
+            background: linear-gradient(135deg, var(--mint) 0%, #C8F7C5 100%);
+            color: var(--navy);
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 0.3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            min-height: 100px;
+            border: 2px solid rgba(168, 230, 207, 0.3);
+        }
+        
+        .expression-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(168, 230, 207, 0.5);
+            border-color: var(--teal);
+        }
+        
+        .time-word {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        
+        .time-translation {
+            font-style: italic;
+            opacity: 0.9;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        .time-examples {
+            background: rgba(42, 157, 143, 0.1);
+            border: 2px solid var(--teal);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .example-time {
+            background: var(--teal);
+            color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 25px;
+            margin: 0.5rem;
+            display: inline-block;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .example-time:hover {
+            background: var(--navy);
+            transform: translateY(-2px);
+        }
+        
+        .digital-clock {
+            background: var(--navy);
+            color: var(--gold);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 1rem auto;
+            border: 3px solid var(--gold);
+            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
+        }
+        
+        .ornament {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 0 auto;
+        }
+        
+        .hidden-answer {
+            display: none;
+        }
+        
+        .show-answer {
+            display: block;
+        }
+
+        /* Estilos para os modais */
+        .form-radio {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 1.2em;
+            height: 1.2em;
+            border: 2px solid var(--wine);
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .form-radio:checked {
+            background-color: var(--wine);
+        }
+
+        .form-radio:checked::after {
+            content: '';
+            position: absolute;
+            width: 0.6em;
+            height: 0.6em;
+            background-color: white;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Animações para os modais */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        #quizModal, #resultModal {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        #quizModal > div, #resultModal > div {
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @media (max-width: 768px) {
+            .vintage-card {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            .time-card, .expression-card {
+                min-height: 80px;
+            }
+            
+            .time-word {
+                font-size: 1rem;
+            }
+            
+            .clock-container {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .clock-face {
+                width: 130px;
+                height: 130px;
+            }
+            
+            .digital-clock {
+                font-size: 1.5rem;
+                padding: 0.8rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen py-8">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <!-- Cartão Principal -->
+        <div class="vintage-card rounded-lg p-8 mb-8">
+            <!-- Cabeçalho -->
+            <header class="text-center mb-8">
+                <div class="ornament mb-4"></div>
+                <h1 class="font-playfair text-4xl font-bold text-wine mb-2">
+                    English Learning Card
+                </h1>
+                <h2 class="font-baskerville text-2xl text-navy mb-4">
+                    Aula 9: Horas e Tempo
+                </h2>
+                <div class="ornament"></div>
+            </header>
+
+            <!-- Frase do Dia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    ✨ Frase do Dia
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <p class="font-baskerville text-lg text-navy text-center italic">
+                        "What time is it?"
+                    </p>
+                    <p class="font-baskerville text-base text-gray-600 text-center mt-2">
+                        "Que horas são?"
+                    </p>
+                </div>
+            </section>
+
+            <!-- Relógio Visual -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🕐 Relógio Analógico
+                </h3>
+                <div class="flex flex-col items-center">
+                    <div class="clock-container mb-4">
+                        <div class="clock-face">
+                            <!-- Números do relógio -->
+                            <div class="clock-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(0deg) translateY(-80px) rotate(0deg);">12</div>
+                            <div class="clock-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(30deg) translateY(-80px) rotate(-30deg);">1</div>
+                            <div class="clock-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(60deg) translateY(-80px) rotate(-60deg);">2</div>
+                            <div class="clock-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(90deg) translateY(-80px) rotate(-90deg);">3</div>
+                            <div class="clock-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(120deg) translateY(-80px) rotate(-120deg);">4</div>
+                            <div class="clock-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(150deg) translateY(-80px) rotate(-150deg);">5</div>
+                            <div class="clock-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(180deg) translateY(-80px) rotate(-180deg);">6</div>
+                            <div class="clock-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(210deg) translateY(-80px) rotate(-210deg);">7</div>
+                            <div class="clock-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(240deg) translateY(-80px) rotate(-240deg);">8</div>
+                            <div class="clock-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(270deg) translateY(-80px) rotate(-270deg);">9</div>
+                            <div class="clock-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(300deg) translateY(-80px) rotate(-300deg);">10</div>
+                            <div class="clock-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(330deg) translateY(-80px) rotate(-330deg);">11</div>
+
+                            
+                            <!-- Ponteiros -->
+                            <div class="hour-hand" style="transform: rotate(105deg);"></div>
+                            <div class="minute-hand" style="transform: rotate(180deg);"></div>
+                            <div class="clock-center"></div>
+                        </div>
+                    </div>
+                    <div class="digital-clock">
+                        3:30 PM
+                    </div>
+                    <p class="font-baskerville text-navy text-center mt-2">
+                        Half past three in the afternoon
+                    </p>
+                </div>
+            </section>
+
+            <!-- Exemplos de Horas -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    ⏰ Exemplos de Horas
+                </h3>
+                <div class="time-examples">
+                    <div class="text-center mb-4">
+                        <h4 class="font-baskerville text-lg font-bold text-navy mb-2">Formas de Dizer as Horas</h4>
+                    </div>
+                    <div class="flex flex-wrap justify-center">
+                        <button onclick="speak3('Two o\'clock')">
+                            <div class="example-time">2:00 - Two o'clock</div>
+                        </button>
+                        <button onclick="speak3('Quarter past two')">
+                            <div class="example-time">2:15 - Quarter past two</div>
+                        </button>
+                        <button onclick="speak3('Half past two')">
+                            <div class="example-time">2:30 - Half past two</div>
+                        </button>
+                        <button onclick="speak3('Quarter to three')">
+                            <div class="example-time">2:45 - Quarter to three</div>
+                        </button>
+                        <button onclick="speak3('Ten past two')">
+                            <div class="example-time">2:10 - Ten past two</div>
+                        </button>
+                        <button onclick="speak3('Ten to three')">
+                            <div class="example-time">2:50 - Ten to three</div>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vocabulário de Horas -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 flex items-center">
+                    🕒 Vocabulário de Horas
+                </h3>
+                <div class="mb-4">
+                    <label for="speechRate" class="font-baskerville text-navy">Velocidade da Pronúncia:</label>
+                    <select id="speechRate" class="border border-gray-300 rounded px-2 py-1 ml-2">
+                        <option value="0.3">Bem devagar</option>
+                        <option value="0.5" selected>Devagar</option>
+                        <option value="1">Normal</option>
+                        <option value="1.2">Rápido</option>
+                        <option value="1.5">Muito rápido</option>
+                    </select>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+                    <div class="time-card">
+                        <div class="time-word">O'clock</div>
+                        <div class="time-translation">Em ponto</div>
+                        <button onclick="speak('O clock')" class="vintage-button text-white px-2 py-1 mt-2 rounded text-sm">
+                            🔊 Ouvir
+                        </button>
+                    </div>
+                    
+                    <div class="time-card">
+                        <div class="time-word">Half past</div>
+                        <div class="time-translation">Meia hora depois</div>
+                        <button onclick="speak('Half past')" class="vintage-button text-white px-2 py-1 mt-2 rounded text-sm">
+                            🔊 Ouvir
+                        </button>
+                    </div>
+                    
+                    <div class="time-card">
+                        <div class="time-word">Quarter past</div>
+                        <div class="time-translation">Quinze para</div>
+                        <button onclick="speak('Quarter past')" class="vintage-button text-white px-2 py-1 mt-2 rounded text-sm">
+                            🔊 Ouvir
+                        </button>
+                    </div>
+                    
+                    <div class="time-card">
+                        <div class="time-word">Quarter to</div>
+                        <div class="time-translation">Quinze para</div>
+                        <button onclick="speak('Quarter to')" class="vintage-button text-white px-2 py-1 mt-2 rounded text-sm">
+                            🔊 Ouvir
+                        </button>
+                    </div>
+                    
+                    <div class="time-card">
+                        <div class="time-word">A.M.</div>
+                        <div class="time-translation">Antes do meio-dia</div>
+                        <button onclick="speak('A.M.')" class="vintage-button text-white px-2 py-1 mt-2 rounded text-sm">
+                            🔊 Ouvir
+                        </button>
+                    </div>
+                    
+                    <div class="time-card">
+                        <div class="time-word">P.M.</div>
+                        <div class="time-translation">Depois do meio-dia</div>
+                        <button onclick="speak('P.M.')" class="vintage-button text-white px-2 py-1 mt-2 rounded text-sm">
+                            🔊 Ouvir
+                        </button>
+                    </div>
+                    
+                    <div class="time-card">
+                        <div class="time-word">Noon</div>
+                        <div class="time-translation">Meio-dia</div>
+                        <button onclick="speak('Noon')" class="vintage-button text-white px-2 py-1 mt-2 rounded text-sm">
+                            🔊 Ouvir
+                        </button>
+                    </div>
+                    
+                    <div class="time-card">
+                        <div class="time-word">Midnight</div>
+                        <div class="time-translation">Meia-noite</div>
+                        <button onclick="speak('Midnight')" class="vintage-button text-white px-2 py-1 mt-2 rounded text-sm">
+                            🔊 Ouvir
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Expressões de Tempo -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 flex items-center">
+                    ⏳ Expressões de Tempo
+                </h3>
+                
+                <div class="mb-4">
+                    <label for="speechRate" class="font-baskerville text-navy">Velocidade da Pronúncia:</label>
+                    <select id="speechRate" class="border border-gray-300 rounded px-2 py-1 ml-2">
+                        <option value="0.3">Bem devagar</option>
+                        <option value="0.5" selected>Devagar</option>
+                        <option value="1">Normal</option>
+                        <option value="1.2">Rápido</option>
+                        <option value="1.5">Muito rápido</option>
+                    </select>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-3">
+                    <div class="expression-card">
+                        <div class="time-word">Now</div>
+                        <div class="time-translation">Agora</div>
+                        <button onclick="speak2('Now')" class="vintage-button text-white px-2 py-1 mt-2 rounded text-sm">
+                            🔊 Ouvir
+                        </button>
+                    </div>
+                    
+                    <div class="expression-card">
+                        <div class="time-word">Later</div>
+                        <div class="time-translation">Mais tarde</div>
+                        <button onclick="speak2('Later')" class="vintage-button text-white px-2 py-1 mt-2 rounded text-sm">
+                            🔊 Ouvir
+                        </button>
+                    </div>
+                    
+                    <div class="expression-card">
+                        <div class="time-word">Soon</div>
+                        <div class="time-translation">Em breve</div>
+                        <button onclick="speak2('Soon')" class="vintage-button text-white px-2 py-1 mt-2 rounded text-sm">
+                            🔊 Ouvir
+                        </button>
+                    </div>
+                    
+                    <div class="expression-card">
+                        <div class="time-word">Early</div>
+                        <div class="time-translation">Cedo</div>
+                        <button onclick="speak2('Early')" class="vintage-button text-white px-2 py-1 mt-2 rounded text-sm">
+                            🔊 Ouvir
+                        </button>
+                    </div>
+                    
+                    <div class="expression-card">
+                        <div class="time-word">Late</div>
+                        <div class="time-translation">Tarde</div>
+                        <button onclick="speak2('Late')" class="vintage-button text-white px-2 py-1 mt-2 rounded text-sm">
+                            🔊 Ouvir
+                        </button>
+                    </div>
+                    
+                    <div class="expression-card">
+                        <div class="time-word">Morning</div>
+                        <div class="time-translation">Manhã</div>
+                        <button onclick="speak2('Morning')" class="vintage-button text-white px-2 py-1 mt-2 rounded text-sm">
+                            🔊 Ouvir
+                        </button>
+                    </div>
+                    
+                    <div class="expression-card">
+                        <div class="time-word">Afternoon</div>
+                        <div class="time-translation">Tarde</div>
+                        <button onclick="speak2('Afternoon')" class="vintage-button text-white px-2 py-1 mt-2 rounded text-sm">
+                            🔊 Ouvir
+                        </button>
+                    </div>
+                    
+                    <div class="expression-card">
+                        <div class="time-word">Evening</div>
+                        <div class="time-translation">Noite</div>
+                        <button onclick="speak2('Evening')" class="vintage-button text-white px-2 py-1 mt-2 rounded text-sm">
+                            🔊 Ouvir
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Diálogo -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    💬 Diálogo Simples
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Person A:</strong> Excuse me, what time is it?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Com licença, que horas são?)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Person B:</strong> It's half past three in the afternoon.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (São três e meia da tarde.)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Person A:</strong> Oh, thank you! I have a meeting at quarter to four.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Ah, obrigado! Tenho uma reunião às quinze para as quatro.)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Person B:</strong> You still have some time. Is your meeting long?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Você ainda tem um tempo. Sua reunião é longa?)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Person A:</strong> No, it's a short meeting, about half an hour. I hope to finish by five o'clock.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Não, é uma reunião curta, cerca de meia hora. Espero terminar às cinco horas.)
+                        </p>
+                    </div>
+                    <div>
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Person B:</strong> Good luck! See you later.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Boa sorte! Até mais tarde.)
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Texto para Tradução -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    📝 Texto para Tradução
+                </h3>
+                <div class="bg-light-gold p-6 rounded-lg">
+                    <p class="font-baskerville text-navy text-lg mb-4">
+                        "My daily routine starts early. I wake up at six o'clock in the morning. At seven, I have breakfast. I go to work at eight thirty. I usually have lunch at noon. In the afternoon, I work until five o'clock. In the evening, I go to the gym. I usually go to bed at ten thirty at night. On weekends, I like to sleep in until nine o'clock."
+                    </p>
+                    <button onclick="toggleTranslation()" class="vintage-button text-white px-4 py-2 rounded font-baskerville">
+                        Ver Tradução
+                    </button>
+                    <div id="translation" class="hidden-answer mt-4 p-4 bg-white rounded border-l-4 border-wine">
+                        <p class="font-baskerville text-navy">
+                            "Minha rotina diária começa cedo. Eu acordo às seis horas da manhã. Às sete, tomo café da manhã. Vou trabalhar às oito e meia. Geralmente almoço ao meio-dia. À tarde, trabalho até as cinco horas. À noite, vou à academia. Geralmente vou dormir às dez e meia da noite. Nos fins de semana, gosto de dormir até as nove horas."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Perguntas para Prática -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    ❓ Perguntas para Prática
+                </h3>
+                <div class="space-y-4">
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            1. How do you say 4:15 in English using "quarter past"?
+                        </p>
+                        <button onclick="toggleAnswer(1)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer1" class="hidden-answer mt-2 text-wine font-bold">
+                            Quarter past four
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            2. Traduza: "Eu acordo às sete da manhã."
+                        </p>
+                        <button onclick="toggleAnswer(2)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer2" class="hidden-answer mt-2 text-wine font-bold">
+                            I wake up at seven o'clock in the morning.
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            3. What time is "quarter to one"?
+                        </p>
+                        <button onclick="toggleAnswer(3)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer3" class="hidden-answer mt-2 text-wine font-bold">
+                            12:45 (Doze e quarenta e cinco)
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            4. How do you say 6:45 in English using "quarter to"?
+                        </p>
+                        <button onclick="toggleAnswer(4)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer4" class="hidden-answer mt-2 text-wine font-bold">
+                            Quarter to seven
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Botão para Iniciar Prova -->
+            <section class="mb-8 text-center">
+                <button onclick="openQuizModal()" class="vintage-button text-white px-6 py-3 rounded-lg text-lg font-bold">
+                    🎯 Iniciar Prova
+                </button>
+            </section>
+
+            <!-- Pronúncia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    🔊 Dicas de Pronúncia
+                </h3>
+                <div class="space-y-4">
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Hour</strong> /aʊər/ - O 'h' é mudo, soa como 'our'.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Quarter</strong> /kwɔːrtər/ - O 'qu' tem som de 'kw'.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Past</strong> /pæst/ - O 'a' tem som de 'a' de 'cat'.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>To</strong> /tuː/ - O 'o' tem som de 'u' longo.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rodapé com Dicas -->
+            <footer class="text-center pt-6 border-t-2 border-wine">
+                <div class="ornament mb-4"></div>
+                <h4 class="font-playfair text-lg font-bold text-wine mb-2">
+                    💡 Dica de Memorização
+                </h4>
+                <p class="font-baskerville text-navy">
+                    Use um relógio analógico e pratique dizer as horas em inglês, movendo os ponteiros. Crie uma rotina diária fictícia e escreva os horários de cada atividade em inglês. Use alarmes no seu celular com as horas em inglês para se acostumar.
+                </p>
+                <div class="ornament mt-4"></div>
+            </footer>
+        </div>
+
+        <!-- Nota de Uso -->
+        <div class="bg-navy text-white p-6 rounded-lg">
+            <h4 class="font-playfair text-lg font-bold mb-2">📋 Como Usar Este Cartão</h4>
+            <ul class="font-baskerville space-y-1">
+                <li>• Clique nos botões "Ver Resposta" para revelar as respostas das perguntas</li>
+                <li>• Clique em "Ver Tradução" para mostrar a tradução do texto</li>
+                <li>• Passe o mouse sobre os cartões de tempo para ver os efeitos visuais</li>
+                <li>• Use o relógio analógico como referência visual</li>
+                <li>• Pratique os exemplos de horas em voz alta</li>
+                <li>• Observe a diferença entre A.M. e P.M.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal da Prova -->
+    <div id="quizModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-white rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="font-playfair text-2xl font-bold text-wine">
+                    📝 Prova de Conhecimento
+                </h3>
+                <button onclick="closeQuizModal()" class="text-gray-500 hover:text-wine">
+                    ✕
+                </button>
+            </div>
+
+            <form id="quizForm" class="space-y-6">
+                <!-- Questão 1 -->
+                <div class="bg-white p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        1. Como se diz "2:45" em inglês?
+                    </p>
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q1" value="a" class="form-radio text-wine">
+                            <span>Quarter past two</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q1" value="b" class="form-radio text-wine">
+                            <span>Half past two</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q1" value="c" class="form-radio text-wine">
+                            <span>Quarter to three</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q1" value="d" class="form-radio text-wine">
+                            <span>Ten to three</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 2 -->
+                <div class="bg-white p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        2. Qual é a tradução correta de "I wake up at half past seven in the morning"?
+                    </p>
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q2" value="a" class="form-radio text-wine">
+                            <span>Eu acordo às sete e quinze da manhã</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q2" value="b" class="form-radio text-wine">
+                            <span>Eu acordo às sete e meia da manhã</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q2" value="c" class="form-radio text-wine">
+                            <span>Eu acordo às oito menos quinze da manhã</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q2" value="d" class="form-radio text-wine">
+                            <span>Eu acordo às sete horas da manhã</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 3 -->
+                <div class="bg-white p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        3. Qual expressão usamos para dizer "15 para" em inglês?
+                    </p>
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q3" value="a" class="form-radio text-wine">
+                            <span>Quarter past</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q3" value="b" class="form-radio text-wine">
+                            <span>Half past</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q3" value="c" class="form-radio text-wine">
+                            <span>Quarter to</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q3" value="d" class="form-radio text-wine">
+                            <span>Ten to</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 4 -->
+                <div class="bg-white p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        4. Se são 4:20, como dizemos isso em inglês?
+                    </p>
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q4" value="a" class="form-radio text-wine">
+                            <span>Twenty past four</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q4" value="b" class="form-radio text-wine">
+                            <span>Twenty to four</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q4" value="c" class="form-radio text-wine">
+                            <span>Quarter past four</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q4" value="d" class="form-radio text-wine">
+                            <span>Half past four</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="flex justify-center">
+                    <button type="button" onclick="submitQuiz()" class="vintage-button text-white px-6 py-3 rounded-lg text-lg font-bold">
+                        ✅ Finalizar Prova
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Resultados -->
+    <div id="resultModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-white rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div class="text-center mb-6">
+                <h3 class="font-playfair text-2xl font-bold text-wine">
+                    🎉 Resultado da Prova
+                </h3>
+                <p id="scoreText" class="font-baskerville text-xl mt-2"></p>
+            </div>
+
+            <div id="quizResults" class="space-y-4"></div>
+
+            <div class="flex justify-center mt-6">
+                <button onclick="closeResultModal()" class="vintage-button text-white px-6 py-3 rounded-lg text-lg font-bold">
+                    Voltar para a Aula
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(questionNumber) {
+            const answer = document.getElementById('answer' + questionNumber);
+            answer.classList.toggle('hidden-answer');
+            answer.classList.toggle('show-answer');
+        }
+        
+        function toggleTranslation() {
+            const translation = document.getElementById('translation');
+            translation.classList.toggle('hidden-answer');
+            translation.classList.toggle('show-answer');
+        }
+
+        function speak(text) {
+            const rateSelect = document.getElementById('speechRate');
+            const selectedRate = parseFloat(rateSelect.value);
+    
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            utterance.rate = selectedRate;
+    
+            speechSynthesis.speak(utterance);
+        }
+
+        function speak2(text) {
+            const rateSelect = document.getElementById('speechRate');
+            const selectedRate = parseFloat(rateSelect.value);
+    
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            utterance.rate = selectedRate;
+    
+            speechSynthesis.speak(utterance);
+        }
+
+        function speak3(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US'; // idioma
+            utterance.rate = 0.6; // Velocidade (1 = normal, 0.8 = mais lento, 1.5 = mais rápido)
+            speechSynthesis.speak(utterance);
+        }
+
+        // Variáveis para o quiz
+        const correctAnswers = {
+            q1: 'c',
+            q2: 'b',
+            q3: 'c',
+            q4: 'a'
+        };
+
+        const explanations = {
+            q1: {
+                correct: 'Correto! "2:45" se diz "Quarter to three" (quinze para as três).',
+                incorrect: 'Para 2:45 usamos "Quarter to three". "Quarter past two" é 2:15, "Half past two" é 2:30, e "Ten to three" seria 2:50.'
+            },
+            q2: {
+                correct: 'Correto! "Half past seven" significa "sete e meia".',
+                incorrect: '"Half past seven" significa "sete e meia". "Seven o\'clock" seria apenas "sete horas", e "quarter past seven" seria "sete e quinze".'
+            },
+            q3: {
+                correct: 'Correto! "Quarter to" significa "quinze para".',
+                incorrect: 'Para "15 para" usamos "Quarter to". "Quarter past" é para "quinze depois" e "Half past" para "meia hora depois".'
+            },
+            q4: {
+                correct: 'Correto! 4:20 se diz "Twenty past four" (vinte depois das quatro).',
+                incorrect: '4:20 é "Twenty past four". "Twenty to four" seria 3:40, "Quarter past four" é 4:15, e "Half past four" é 4:30.'
+            }
+        };
+
+        // Funções para controlar os modais
+        function openQuizModal() {
+            document.getElementById('quizModal').classList.remove('hidden');
+            document.getElementById('quizForm').reset();
+        }
+
+        function closeQuizModal() {
+            document.getElementById('quizModal').classList.add('hidden');
+        }
+
+        function closeResultModal() {
+            document.getElementById('resultModal').classList.add('hidden');
+            closeQuizModal();
+        }
+
+        // Função para corrigir o quiz
+        function submitQuiz() {
+            const form = document.getElementById('quizForm');
+            const formData = new FormData(form);
+            let score = 0;
+            const results = [];
+
+            // Verificar respostas
+            for (let i = 1; i <= 4; i++) {
+                const question = `q${i}`;
+                const userAnswer = formData.get(question);
+                const isCorrect = userAnswer === correctAnswers[question];
+
+                if (isCorrect) {
+                    score++;
+                }
+
+                results.push({
+                    question: question,
+                    userAnswer: userAnswer,
+                    isCorrect: isCorrect,
+                    explanation: isCorrect ? explanations[question].correct : explanations[question].incorrect
+                });
+            }
+
+            // Mostrar resultados
+            showResults(score, results);
+        }
+
+        // Função para mostrar os resultados
+        function showResults(score, results) {
+            const scoreText = document.getElementById('scoreText');
+            const resultsContainer = document.getElementById('quizResults');
+            
+            // Atualizar texto do score
+            scoreText.innerHTML = `Você acertou <span class="text-wine font-bold">${score} de 4</span> questões!`;
+            
+            // Limpar resultados anteriores
+            resultsContainer.innerHTML = '';
+            
+            // Adicionar cada resultado
+            results.forEach((result, index) => {
+                const resultDiv = document.createElement('div');
+                resultDiv.className = `p-4 rounded-lg ${result.isCorrect ? 'bg-green-100' : 'bg-red-100'}`;
+                
+                resultDiv.innerHTML = `
+                    <p class="font-baskerville font-bold ${result.isCorrect ? 'text-green-800' : 'text-red-800'}">
+                        Questão ${index + 1}: ${result.isCorrect ? '✅ Acertou!' : '❌ Errou'}
+                    </p>
+                    <p class="font-baskerville mt-2">${result.explanation}</p>
+                `;
+                
+                resultsContainer.appendChild(resultDiv);
+            });
+            
+            // Mostrar modal de resultados
+            document.getElementById('quizModal').classList.add('hidden');
+            document.getElementById('resultModal').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
+

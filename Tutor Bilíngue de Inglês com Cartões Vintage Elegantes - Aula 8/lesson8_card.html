@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão de Inglês - Aula 8: Dias da Semana e Meses do Ano</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --wine: #722F37;
+            --cream: #F5F1E8;
+            --navy: #2C3E50;
+            --gold: #D4AF37;
+            --dark-wine: #5A252A;
+            --light-gold: #F4E4BC;
+            --rose: #E8B4B8;
+            --sage: #9CAF88;
+            --lavender: #B8A9C9;
+            --coral: #F4A261;
+            --teal: #2A9D8F;
+        }
+        
+        .font-baskerville { font-family: 'Libre Baskerville', serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        
+        .vintage-card {
+            background: linear-gradient(135deg, var(--cream) 0%, #F8F5F0 100%);
+            border: 3px solid var(--wine);
+            box-shadow: 
+                0 8px 32px rgba(114, 47, 55, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+        
+        .text-wine { color: var(--wine); }
+        .text-navy { color: var(--navy); }
+        .text-gold { color: var(--gold); }
+        .bg-wine { background-color: var(--wine); }
+        .bg-navy { background-color: var(--navy); }
+        .bg-gold { background-color: var(--gold); }
+        .bg-light-gold { background-color: var(--light-gold); }
+        .bg-rose { background-color: var(--rose); }
+        .bg-sage { background-color: var(--sage); }
+        .bg-lavender { background-color: var(--lavender); }
+        .bg-coral { background-color: var(--coral); }
+        .bg-teal { background-color: var(--teal); }
+        
+        .vintage-button {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-wine) 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .vintage-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(114, 47, 55, 0.3);
+        }
+        
+        .pronunciation {
+            background: linear-gradient(135deg, var(--light-gold) 0%, var(--cream) 100%);
+            border-left: 4px solid var(--gold);
+        }
+        
+        .dialogue-box {
+            background: rgba(44, 62, 80, 0.05);
+            border-left: 4px solid var(--navy);
+        }
+        
+        .day-card {
+            background: linear-gradient(135deg, var(--lavender) 0%, #C8B9D9 100%);
+            color: var(--navy);
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 0.3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            min-height: 100px;
+            border: 2px solid rgba(184, 169, 201, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .day-card:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 8px 25px rgba(184, 169, 201, 0.5);
+            border-color: var(--navy);
+        }
+        
+        .month-card {
+            background: linear-gradient(135deg, var(--coral) 0%, #F6B373 100%);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 0.3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            min-height: 100px;
+            border: 2px solid rgba(244, 162, 97, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .month-card:hover {
+            transform: scale(1.05) rotate(-1deg);
+            box-shadow: 0 8px 25px rgba(244, 162, 97, 0.5);
+            border-color: white;
+        }
+        
+        .time-word {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        
+        .time-translation {
+            font-style: italic;
+            opacity: 0.9;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        .calendar-grid {
+            background: rgba(42, 157, 143, 0.1);
+            border: 2px solid var(--teal);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .week-row {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .week-day {
+            background: var(--teal);
+            color: white;
+            padding: 0.8rem 0.5rem;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .week-day:hover {
+            background: var(--navy);
+            transform: translateY(-2px);
+        }
+        
+        .months-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .month-mini {
+            background: var(--coral);
+            color: white;
+            padding: 0.6rem;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .month-mini:hover {
+            background: var(--wine);
+            transform: scale(1.05);
+        }
+        
+        .ornament {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 0 auto;
+        }
+        
+        .hidden-answer {
+            display: none;
+        }
+        
+        .show-answer {
+            display: block;
+        }
+        
+        .season-indicator {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .spring { background: #90EE90; }
+        .summer { background: #FFD700; }
+        .autumn { background: #FF8C00; }
+        .winter { background: #87CEEB; }
+        
+        @media (max-width: 768px) {
+            .vintage-card {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            .day-card, .month-card {
+                min-height: 80px;
+            }
+            
+            .time-word {
+                font-size: 1rem;
+            }
+            
+            .week-row {
+                grid-template-columns: repeat(7, 1fr);
+                gap: 0.3rem;
+            }
+            
+            .months-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen py-8">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <!-- Cartão Principal -->
+        <div class="vintage-card rounded-lg p-8 mb-8">
+            <!-- Cabeçalho -->
+            <header class="text-center mb-8">
+                <div class="ornament mb-4"></div>
+                <h1 class="font-playfair text-4xl font-bold text-wine mb-2">
+                    English Learning Card
+                </h1>
+                <h2 class="font-baskerville text-2xl text-navy mb-4">
+                    Aula 8: Dias da Semana e Meses do Ano
+                </h2>
+                <div class="ornament"></div>
+            </header>
+
+            <!-- Frase do Dia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    ✨ Frase do Dia
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <p class="font-baskerville text-lg text-navy text-center italic">
+                        "What day is today?"
+                    </p>
+                    <p class="font-baskerville text-base text-gray-600 text-center mt-2">
+                        "Que dia é hoje?"
+                    </p>
+                </div>
+            </section>
+
+            <!-- Calendário Visual -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    📅 Calendário Semanal
+                </h3>
+                <div class="calendar-grid">
+                    <div class="week-row">
+                        <div class="week-day">MON<br><span class="text-xs">Monday</span></div>
+                        <div class="week-day">TUE<br><span class="text-xs">Tuesday</span></div>
+                        <div class="week-day">WED<br><span class="text-xs">Wednesday</span></div>
+                        <div class="week-day">THU<br><span class="text-xs">Thursday</span></div>
+                        <div class="week-day">FRI<br><span class="text-xs">Friday</span></div>
+                        <div class="week-day">SAT<br><span class="text-xs">Saturday</span></div>
+                        <div class="week-day">SUN<br><span class="text-xs">Sunday</span></div>
+                    </div>
+                    
+                    <div class="months-grid">
+                        <div class="month-mini">JAN</div>
+                        <div class="month-mini">FEB</div>
+                        <div class="month-mini">MAR</div>
+                        <div class="month-mini">APR</div>
+                        <div class="month-mini">MAY</div>
+                        <div class="month-mini">JUN</div>
+                        <div class="month-mini">JUL</div>
+                        <div class="month-mini">AUG</div>
+                        <div class="month-mini">SEP</div>
+                        <div class="month-mini">OCT</div>
+                        <div class="month-mini">NOV</div>
+                        <div class="month-mini">DEC</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dias da Semana -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 flex items-center">
+                    📆 Dias da Semana
+                </h3>
+                
+                <div class="grid md:grid-cols-4 lg:grid-cols-7 gap-3">
+                    <div class="day-card">
+                        <div class="time-word">Monday</div>
+                        <div class="time-translation">Segunda-feira</div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="time-word">Tuesday</div>
+                        <div class="time-translation">Terça-feira</div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="time-word">Wednesday</div>
+                        <div class="time-translation">Quarta-feira</div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="time-word">Thursday</div>
+                        <div class="time-translation">Quinta-feira</div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="time-word">Friday</div>
+                        <div class="time-translation">Sexta-feira</div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="time-word">Saturday</div>
+                        <div class="time-translation">Sábado</div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="time-word">Sunday</div>
+                        <div class="time-translation">Domingo</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Meses do Ano -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 flex items-center">
+                    🗓️ Meses do Ano
+                </h3>
+                
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
+                    <div class="month-card">
+                        <div class="season-indicator winter">❄️</div>
+                        <div class="time-word">January</div>
+                        <div class="time-translation">Janeiro</div>
+                    </div>
+                    
+                    <div class="month-card">
+                        <div class="season-indicator winter">❄️</div>
+                        <div class="time-word">February</div>
+                        <div class="time-translation">Fevereiro</div>
+                    </div>
+                    
+                    <div class="month-card">
+                        <div class="season-indicator spring">🌸</div>
+                        <div class="time-word">March</div>
+                        <div class="time-translation">Março</div>
+                    </div>
+                    
+                    <div class="month-card">
+                        <div class="season-indicator spring">🌸</div>
+                        <div class="time-word">April</div>
+                        <div class="time-translation">Abril</div>
+                    </div>
+                    
+                    <div class="month-card">
+                        <div class="season-indicator spring">🌸</div>
+                        <div class="time-word">May</div>
+                        <div class="time-translation">Maio</div>
+                    </div>
+                    
+                    <div class="month-card">
+                        <div class="season-indicator summer">☀️</div>
+                        <div class="time-word">June</div>
+                        <div class="time-translation">Junho</div>
+                    </div>
+                    
+                    <div class="month-card">
+                        <div class="season-indicator summer">☀️</div>
+                        <div class="time-word">July</div>
+                        <div class="time-translation">Julho</div>
+                    </div>
+                    
+                    <div class="month-card">
+                        <div class="season-indicator summer">☀️</div>
+                        <div class="time-word">August</div>
+                        <div class="time-translation">Agosto</div>
+                    </div>
+                    
+                    <div class="month-card">
+                        <div class="season-indicator autumn">🍂</div>
+                        <div class="time-word">September</div>
+                        <div class="time-translation">Setembro</div>
+                    </div>
+                    
+                    <div class="month-card">
+                        <div class="season-indicator autumn">🍂</div>
+                        <div class="time-word">October</div>
+                        <div class="time-translation">Outubro</div>
+                    </div>
+                    
+                    <div class="month-card">
+                        <div class="season-indicator autumn">🍂</div>
+                        <div class="time-word">November</div>
+                        <div class="time-translation">Novembro</div>
+                    </div>
+                    
+                    <div class="month-card">
+                        <div class="season-indicator winter">❄️</div>
+                        <div class="time-word">December</div>
+                        <div class="time-translation">Dezembro</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Diálogo -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    💬 Diálogo Simples
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Person A:</strong> Hi! What day is today?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Oi! Que dia é hoje?)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Person B:</strong> Today is Friday. And tomorrow is Saturday!
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Hoje é sexta-feira. E amanhã é sábado!)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Person A:</strong> Great! Do you have plans for the weekend?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Ótimo! Você tem planos para o fim de semana?)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Person B:</strong> Yes, I do. On Saturday, I will visit my family. And on Sunday, I will relax at home.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Sim, tenho. No sábado, vou visitar minha família. E no domingo, vou relaxar em casa.)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Person A:</strong> Sounds good! My birthday is next month, in August.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Parece bom! Meu aniversário é no próximo mês, em agosto.)
+                        </p>
+                    </div>
+                    <div>
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Person B:</strong> Oh, happy early birthday! My birthday is in December.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Ah, parabéns antecipado! Meu aniversário é em dezembro.)
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Texto para Tradução -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    📝 Texto para Tradução
+                </h3>
+                <div class="bg-light-gold p-6 rounded-lg">
+                    <p class="font-baskerville text-navy text-lg mb-4">
+                        "My favorite day of the week is Friday because it's the start of the weekend. I usually go out with friends on Friday night. On Saturday, I like to sleep in and then go to the park. Sunday is for relaxing and preparing for the new week. My favorite month is July because it's summer and I can go to the beach. My least favorite month is January because it's very cold."
+                    </p>
+                    <button onclick="toggleTranslation()" class="vintage-button text-white px-4 py-2 rounded font-baskerville">
+                        Ver Tradução
+                    </button>
+                    <div id="translation" class="hidden-answer mt-4 p-4 bg-white rounded border-l-4 border-wine">
+                        <p class="font-baskerville text-navy">
+                            "Meu dia favorito da semana é sexta-feira porque é o início do fim de semana. Eu geralmente saio com amigos na sexta à noite. No sábado, gosto de dormir até tarde e depois ir ao parque. Domingo é para relaxar e se preparar para a nova semana. Meu mês favorito é julho porque é verão e posso ir à praia. Meu mês menos favorito é janeiro porque faz muito frio."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Perguntas para Prática -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    ❓ Perguntas para Prática
+                </h3>
+                <div class="space-y-4">
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            1. What day comes after Tuesday?
+                        </p>
+                        <button onclick="toggleAnswer(1)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer1" class="hidden-answer mt-2 text-wine font-bold">
+                            Wednesday (Quarta-feira)
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            2. Traduza: "Meu aniversário é em março."
+                        </p>
+                        <button onclick="toggleAnswer(2)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer2" class="hidden-answer mt-2 text-wine font-bold">
+                            My birthday is in March.
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            3. What month is the first month of the year?
+                        </p>
+                        <button onclick="toggleAnswer(3)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer3" class="hidden-answer mt-2 text-wine font-bold">
+                            January (Janeiro)
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            4. Name three months that start with the letter 'J'.
+                        </p>
+                        <button onclick="toggleAnswer(4)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer4" class="hidden-answer mt-2 text-wine font-bold">
+                            January, June, July
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pronúncia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    🔊 Dicas de Pronúncia
+                </h3>
+                <div class="space-y-4">
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Wednesday</strong> /wɛnzdeɪ/ - Note que o 'd' não é pronunciado.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>February</strong> /fɛbruɛri/ ou /fɛbjʊɛri/ - O 'r' inicial pode ser um pouco enrolado.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>August</strong> /ɔːɡəst/ - O 'au' tem som de 'ó' aberto.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rodapé com Dicas -->
+            <footer class="text-center pt-6 border-t-2 border-wine">
+                <div class="ornament mb-4"></div>
+                <h4 class="font-playfair text-lg font-bold text-wine mb-2">
+                    💡 Dica de Memorização
+                </h4>
+                <p class="font-baskerville text-navy">
+                    Crie um calendário pessoal em inglês. Escreva os dias da semana e os meses do ano em inglês e use-o para planejar suas atividades diárias e mensais. Associe cada dia da semana a uma atividade específica que você faz (ex: Monday - work, Saturday - fun).
+                </p>
+                <div class="ornament mt-4"></div>
+            </footer>
+        </div>
+
+        <!-- Nota de Uso -->
+        <div class="bg-navy text-white p-6 rounded-lg">
+            <h4 class="font-playfair text-lg font-bold mb-2">📋 Como Usar Este Cartão</h4>
+            <ul class="font-baskerville space-y-1">
+                <li>• Clique nos botões "Ver Resposta" para revelar as respostas das perguntas</li>
+                <li>• Clique em "Ver Tradução" para mostrar a tradução do texto</li>
+                <li>• Passe o mouse sobre os cartões de dias e meses para ver os efeitos visuais</li>
+                <li>• Use o calendário visual como referência rápida</li>
+                <li>• Note os indicadores de estação do ano nos cartões dos meses</li>
+                <li>• Pratique dizendo os dias da semana e meses em sequência</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(questionNumber) {
+            const answer = document.getElementById('answer' + questionNumber);
+            answer.classList.toggle('hidden-answer');
+            answer.classList.toggle('show-answer');
+        }
+        
+        function toggleTranslation() {
+            const translation = document.getElementById('translation');
+            translation.classList.toggle('hidden-answer');
+            translation.classList.toggle('show-answer');
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão de Inglês - Aula 4: Objetos Comuns e Artigos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --wine: #722F37;
+            --cream: #F5F1E8;
+            --navy: #2C3E50;
+            --gold: #D4AF37;
+            --dark-wine: #5A252A;
+            --light-gold: #F4E4BC;
+        }
+        
+        .font-baskerville { font-family: 'Libre Baskerville', serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        
+        .vintage-card {
+            background: linear-gradient(135deg, var(--cream) 0%, #F8F5F0 100%);
+            border: 3px solid var(--wine);
+            box-shadow: 
+                0 8px 32px rgba(114, 47, 55, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+        
+        .ornament-border {
+            border-image: linear-gradient(45deg, var(--gold), var(--wine), var(--gold)) 1;
+            border-width: 2px;
+            border-style: solid;
+        }
+        
+        .text-wine { color: var(--wine); }
+        .text-navy { color: var(--navy); }
+        .text-gold { color: var(--gold); }
+        .bg-wine { background-color: var(--wine); }
+        .bg-navy { background-color: var(--navy); }
+        .bg-gold { background-color: var(--gold); }
+        .bg-light-gold { background-color: var(--light-gold); }
+        
+        .vintage-button {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-wine) 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .vintage-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(114, 47, 55, 0.3);
+        }
+        
+        .pronunciation {
+            background: linear-gradient(135deg, var(--light-gold) 0%, var(--cream) 100%);
+            border-left: 4px solid var(--gold);
+        }
+        
+        .dialogue-box {
+            background: rgba(44, 62, 80, 0.05);
+            border-left: 4px solid var(--navy);
+        }
+        
+        .vocabulary-item {
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(114, 47, 55, 0.1);
+        }
+        
+        .vocabulary-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .article-box {
+            background: linear-gradient(135deg, var(--wine) 0%, var(--dark-wine) 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .object-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--light-gold);
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-size: 1.5rem;
+        }
+        
+        .grammar-rule {
+            background: rgba(44, 62, 80, 0.05);
+            border: 2px solid var(--navy);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .rule-title {
+            color: var(--wine);
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .ornament {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 0 auto;
+        }
+        
+        .hidden-answer {
+            display: none;
+        }
+        
+        .show-answer {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .vintage-card {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen py-8">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <!-- Cartão Principal -->
+        <div class="vintage-card rounded-lg p-8 mb-8">
+            <!-- Cabeçalho -->
+            <header class="text-center mb-8">
+                <div class="ornament mb-4"></div>
+                <h1 class="font-playfair text-4xl font-bold text-wine mb-2">
+                    English Learning Card
+                </h1>
+                <h2 class="font-baskerville text-2xl text-navy mb-4">
+                    Aula 4: Objetos Comuns e Artigos (a, an, the)
+                </h2>
+                <div class="ornament"></div>
+            </header>
+
+            <!-- Frase do Dia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    ✨ Frase do Dia
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <p class="font-baskerville text-lg text-navy text-center italic">
+                        "This is a book."
+                    </p>
+                    <p class="font-baskerville text-base text-gray-600 text-center mt-2">
+                        "Este é um livro."
+                    </p>
+                </div>
+            </section>
+
+            <!-- Regras dos Artigos -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 flex items-center">
+                    📚 Regras dos Artigos
+                </h3>
+                
+                <div class="grammar-rule">
+                    <div class="rule-title">Artigo Indefinido "A"</div>
+                    <p class="font-baskerville text-navy mb-2">
+                        <span class="article-box">A</span> 
+                        Usado antes de palavras que começam com som de consoante.
+                    </p>
+                    <p class="font-baskerville text-sm text-gray-600">
+                        Exemplos: a book, a car, a university (som de 'yu')
+                    </p>
+                </div>
+
+                <div class="grammar-rule">
+                    <div class="rule-title">Artigo Indefinido "AN"</div>
+                    <p class="font-baskerville text-navy mb-2">
+                        <span class="article-box">AN</span> 
+                        Usado antes de palavras que começam com som de vogal.
+                    </p>
+                    <p class="font-baskerville text-sm text-gray-600">
+                        Exemplos: an apple, an hour (som de 'au'), an umbrella
+                    </p>
+                </div>
+
+                <div class="grammar-rule">
+                    <div class="rule-title">Artigo Definido "THE"</div>
+                    <p class="font-baskerville text-navy mb-2">
+                        <span class="article-box">THE</span> 
+                        Usado para se referir a algo específico ou já mencionado.
+                    </p>
+                    <p class="font-baskerville text-sm text-gray-600">
+                        Exemplos: the book (o livro específico), the door (a porta específica)
+                    </p>
+                </div>
+            </section>
+
+            <!-- Vocabulário Essencial -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 flex items-center">
+                    🏠 Objetos Comuns
+                </h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="vocabulary-item p-3 rounded flex items-center">
+                        <span class="object-icon">📖</span>
+                        <div>
+                            <span class="font-baskerville font-bold text-navy">Book</span>
+                            <span class="text-gray-600 ml-2">→ Livro</span>
+                        </div>
+                    </div>
+                    <div class="vocabulary-item p-3 rounded flex items-center">
+                        <span class="object-icon">🖊️</span>
+                        <div>
+                            <span class="font-baskerville font-bold text-navy">Pen</span>
+                            <span class="text-gray-600 ml-2">→ Caneta</span>
+                        </div>
+                    </div>
+                    <div class="vocabulary-item p-3 rounded flex items-center">
+                        <span class="object-icon">✏️</span>
+                        <div>
+                            <span class="font-baskerville font-bold text-navy">Pencil</span>
+                            <span class="text-gray-600 ml-2">→ Lápis</span>
+                        </div>
+                    </div>
+                    <div class="vocabulary-item p-3 rounded flex items-center">
+                        <span class="object-icon">🪑</span>
+                        <div>
+                            <span class="font-baskerville font-bold text-navy">Chair</span>
+                            <span class="text-gray-600 ml-2">→ Cadeira</span>
+                        </div>
+                    </div>
+                    <div class="vocabulary-item p-3 rounded flex items-center">
+                        <span class="object-icon">🚪</span>
+                        <div>
+                            <span class="font-baskerville font-bold text-navy">Door</span>
+                            <span class="text-gray-600 ml-2">→ Porta</span>
+                        </div>
+                    </div>
+                    <div class="vocabulary-item p-3 rounded flex items-center">
+                        <span class="object-icon">🔑</span>
+                        <div>
+                            <span class="font-baskerville font-bold text-navy">Key</span>
+                            <span class="text-gray-600 ml-2">→ Chave</span>
+                        </div>
+                    </div>
+                    <div class="vocabulary-item p-3 rounded flex items-center">
+                        <span class="object-icon">📱</span>
+                        <div>
+                            <span class="font-baskerville font-bold text-navy">Phone</span>
+                            <span class="text-gray-600 ml-2">→ Telefone</span>
+                        </div>
+                    </div>
+                    <div class="vocabulary-item p-3 rounded flex items-center">
+                        <span class="object-icon">💻</span>
+                        <div>
+                            <span class="font-baskerville font-bold text-navy">Computer</span>
+                            <span class="text-gray-600 ml-2">→ Computador</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Diálogo -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    💬 Diálogo Simples
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Student:</strong> Excuse me, teacher. Is this a pencil?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Com licença, professor(a). Isto é um lápis?)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Teacher:</strong> No, it's a pen. Do you have a pencil?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Não, é uma caneta. Você tem um lápis?)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Student:</strong> Yes, I have a pencil in my bag.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Sim, eu tenho um lápis na minha bolsa.)
+                        </p>
+                    </div>
+                    <div>
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Teacher:</strong> Great! And where is the book?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Ótimo! E onde está o livro?)
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Texto para Tradução -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    📝 Texto para Tradução
+                </h3>
+                <div class="bg-light-gold p-6 rounded-lg">
+                    <p class="font-baskerville text-navy text-lg mb-4">
+                        "I have a new phone and a small notebook. There is a chair near the window. The door is open. I need an eraser for my pencil."
+                    </p>
+                    <button onclick="toggleTranslation()" class="vintage-button text-white px-4 py-2 rounded font-baskerville">
+                        Ver Tradução
+                    </button>
+                    <div id="translation" class="hidden-answer mt-4 p-4 bg-white rounded border-l-4 border-wine">
+                        <p class="font-baskerville text-navy">
+                            "Eu tenho um telefone novo e um caderno pequeno. Há uma cadeira perto da janela. A porta está aberta. Eu preciso de uma borracha para o meu lápis."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Perguntas para Prática -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    ❓ Perguntas para Prática
+                </h3>
+                <div class="space-y-4">
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            1. Quando usamos "a" e "an"?
+                        </p>
+                        <button onclick="toggleAnswer(1)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer1" class="hidden-answer mt-2 text-wine font-bold">
+                            "A" antes de sons de consoante, "an" antes de sons de vogal
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            2. Traduza: "Eu tenho uma chave."
+                        </p>
+                        <button onclick="toggleAnswer(2)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer2" class="hidden-answer mt-2 text-wine font-bold">
+                            I have a key.
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            3. Complete: "This is ___ orange."
+                        </p>
+                        <button onclick="toggleAnswer(3)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer3" class="hidden-answer mt-2 text-wine font-bold">
+                            an (porque "orange" começa com som de vogal)
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pronúncia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    🔊 Dicas de Pronúncia
+                </h3>
+                <div class="space-y-4">
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>A</strong> /ə/ - Som de schwa, bem suave, como o 'a' em 'about'.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>An</strong> /æn/ - Som de 'a' de 'cat' + 'n'.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>The</strong> /ðə/ ou /ðiː/ - Som de 'th' sonoro + schwa (antes de consoante) ou 'ee' longo (antes de vogal).
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rodapé com Dicas -->
+            <footer class="text-center pt-6 border-t-2 border-wine">
+                <div class="ornament mb-4"></div>
+                <h4 class="font-playfair text-lg font-bold text-wine mb-2">
+                    💡 Dica de Memorização
+                </h4>
+                <p class="font-baskerville text-navy">
+                    Pratique usando os artigos com objetos ao seu redor. Diga "a book", "an apple", "the chair" várias vezes. Lembre-se que "an" é usado antes de sons de vogal, não necessariamente vogais escritas.
+                </p>
+                <div class="ornament mt-4"></div>
+            </footer>
+        </div>
+
+        <!-- Nota de Uso -->
+        <div class="bg-navy text-white p-6 rounded-lg">
+            <h4 class="font-playfair text-lg font-bold mb-2">📋 Como Usar Este Cartão</h4>
+            <ul class="font-baskerville space-y-1">
+                <li>• Clique nos botões "Ver Resposta" para revelar as respostas das perguntas</li>
+                <li>• Clique em "Ver Tradução" para mostrar a tradução do texto</li>
+                <li>• Pratique a pronúncia usando as dicas fonéticas fornecidas</li>
+                <li>• Revise as regras dos artigos e pratique com objetos ao seu redor</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(questionNumber) {
+            const answer = document.getElementById('answer' + questionNumber);
+            answer.classList.toggle('hidden-answer');
+            answer.classList.toggle('show-answer');
+        }
+        
+        function toggleTranslation() {
+            const translation = document.getElementById('translation');
+            translation.classList.toggle('hidden-answer');
+            translation.classList.toggle('show-answer');
+        }
+    </script>
+</body>
+</html>
+
