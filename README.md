@@ -38,7 +38,7 @@ Um curso completo com material didático organizado em 20 aulas progressivas. Id
 | 5️⃣ | **Verbo "To Be"** | Afirmativo/negativo/interrogativo | [Acessar](/aulas/aula5.md) |
 | 6️⃣ | **Pronomes** | Pessoais/possessivos | [Acessar](/aulas/aula6.md) |
 | 7️⃣ | **Família** | Parentesco, relacionamentos | [Acessar](/aulas/aula7.md) |
-| 8️⃣ | **Tempo** | Dias/meses/estações | 45min | [Acessar](/aulas/aula8.md) |
+| 8️⃣ | **Tempo** | Dias/meses/estações | [Acessar](/aulas/aula8.md) |
 | 9️⃣ | **Comidas** | Alimentos, bebidas, restaurante | [Acessar](/aulas/aula9.md) |
 | 🔟 | **Rotina** | Horários, hábitos diários | [Acessar](/aulas/aula10.md) |
 
