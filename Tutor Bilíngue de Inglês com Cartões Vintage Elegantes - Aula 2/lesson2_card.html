@@ -105,14 +105,77 @@
         .show-answer {
             display: block;
         }
+
+        /* Estilos para os modais */
+        .form-radio {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 1.2em;
+            height: 1.2em;
+            border: 2px solid var(--wine);
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .form-radio:checked {
+            background-color: var(--wine);
+        }
+
+        .form-radio:checked::after {
+            content: '';
+            position: absolute;
+            width: 0.6em;
+            height: 0.6em;
+            background-color: white;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .form-radio:focus {
+            box-shadow: 0 0 0 2px var(--gold);
+        }
+
+        /* Animações para os modais */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        #quizModal, #resultModal {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        #quizModal > div, #resultModal > div {
+            animation: slideIn 0.3s ease-out;
+        }
+
+        /* Impedir scroll quando modal está aberto */
+        body.modal-open {
+            overflow: hidden;
+        }
         
-        @media (max-width: 768px) {
-            .vintage-card {
-                margin: 1rem;
-                padding: 1.5rem;
-            }
+        @media (max-width: 640px) {
             .number-grid {
-                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            
+            #quizModal, #resultModal {
+                padding: 1rem;
+            }
+            
+            .vintage-card {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -153,34 +216,96 @@
                 <h3 class="font-playfair text-xl font-bold text-wine mb-4 flex items-center">
                     🔤 Alfabeto em Inglês
                 </h3>
+                <div class="mb-4">
+                    <label for="alphabetSpeed" class="font-baskerville text-navy">Velocidade da Pronúncia:</label>
+                    <select id="alphabetSpeed" class="border border-gray-300 rounded px-2 py-1 ml-2">
+                        <option value="0.3">Bem devagar</option>
+                        <option value="0.5" selected>Devagar</option>
+                        <option value="1">Normal</option>
+                        <option value="1.2">Rápido</option>
+                        <option value="1.5">Muito rápido</option>
+                    </select>
+                </div>
                 <div class="bg-light-gold p-6 rounded-lg">
                     <div class="grid grid-cols-6 md:grid-cols-13 gap-2 text-center">
-                        <div class="number-item"><span class="font-baskerville font-bold text-navy">A</span><br><span class="text-xs text-gray-600">/eɪ/</span></div>
-                        <div class="number-item"><span class="font-baskerville font-bold text-navy">B</span><br><span class="text-xs text-gray-600">/biː/</span></div>
-                        <div class="number-item"><span class="font-baskerville font-bold text-navy">C</span><br><span class="text-xs text-gray-600">/siː/</span></div>
-                        <div class="number-item"><span class="font-baskerville font-bold text-navy">D</span><br><span class="text-xs text-gray-600">/diː/</span></div>
-                        <div class="number-item"><span class="font-baskerville font-bold text-navy">E</span><br><span class="text-xs text-gray-600">/iː/</span></div>
-                        <div class="number-item"><span class="font-baskerville font-bold text-navy">F</span><br><span class="text-xs text-gray-600">/ɛf/</span></div>
-                        <div class="number-item"><span class="font-baskerville font-bold text-navy">G</span><br><span class="text-xs text-gray-600">/dʒiː/</span></div>
-                        <div class="number-item"><span class="font-baskerville font-bold text-navy">H</span><br><span class="text-xs text-gray-600">/eɪtʃ/</span></div>
-                        <div class="number-item"><span class="font-baskerville font-bold text-navy">I</span><br><span class="text-xs text-gray-600">/aɪ/</span></div>
-                        <div class="number-item"><span class="font-baskerville font-bold text-navy">J</span><br><span class="text-xs text-gray-600">/dʒeɪ/</span></div>
-                        <div class="number-item"><span class="font-baskerville font-bold text-navy">K</span><br><span class="text-xs text-gray-600">/keɪ/</span></div>
-                        <div class="number-item"><span class="font-baskerville font-bold text-navy">L</span><br><span class="text-xs text-gray-600">/ɛl/</span></div>
-                        <div class="number-item"><span class="font-baskerville font-bold text-navy">M</span><br><span class="text-xs text-gray-600">/ɛm/</span></div>
-                        <div class="number-item"><span class="font-baskerville font-bold text-navy">N</span><br><span class="text-xs text-gray-600">/ɛn/</span></div>
-                        <div class="number-item"><span class="font-baskerville font-bold text-navy">O</span><br><span class="text-xs text-gray-600">/oʊ/</span></div>
-                        <div class="number-item"><span class="font-baskerville font-bold text-navy">P</span><br><span class="text-xs text-gray-600">/piː/</span></div>
-                        <div class="number-item"><span class="font-baskerville font-bold text-navy">Q</span><br><span class="text-xs text-gray-600">/kjuː/</span></div>
-                        <div class="number-item"><span class="font-baskerville font-bold text-navy">R</span><br><span class="text-xs text-gray-600">/ɑːr/</span></div>
-                        <div class="number-item"><span class="font-baskerville font-bold text-navy">S</span><br><span class="text-xs text-gray-600">/ɛs/</span></div>
-                        <div class="number-item"><span class="font-baskerville font-bold text-navy">T</span><br><span class="text-xs text-gray-600">/tiː/</span></div>
-                        <div class="number-item"><span class="font-baskerville font-bold text-navy">U</span><br><span class="text-xs text-gray-600">/juː/</span></div>
-                        <div class="number-item"><span class="font-baskerville font-bold text-navy">V</span><br><span class="text-xs text-gray-600">/viː/</span></div>
-                        <div class="number-item"><span class="font-baskerville font-bold text-navy">W</span><br><span class="text-xs text-gray-600">/ˈdʌbəl juː/</span></div>
-                        <div class="number-item"><span class="font-baskerville font-bold text-navy">X</span><br><span class="text-xs text-gray-600">/ɛks/</span></div>
-                        <div class="number-item"><span class="font-baskerville font-bold text-navy">Y</span><br><span class="text-xs text-gray-600">/waɪ/</span></div>
-                        <div class="number-item"><span class="font-baskerville font-bold text-navy">Z</span><br><span class="text-xs text-gray-600">/ziː/</span></div>
+                        <button onclick="speakText('A', true)">
+                            <div class="number-item"><span class="font-baskerville font-bold text-navy">A</span><br><span class="text-xs text-gray-600">/eɪ/</span></div>
+                        </button>
+                        <button onclick="speakText('B', true)">
+                            <div class="number-item"><span class="font-baskerville font-bold text-navy">B</span><br><span class="text-xs text-gray-600">/biː/</span></div>
+                        </button>
+                        <button onclick="speakText('C', true)">
+                            <div class="number-item"><span class="font-baskerville font-bold text-navy">C</span><br><span class="text-xs text-gray-600">/siː/</span></div>
+                        </button>
+                        <button onclick="speakText('D', true)">
+                            <div class="number-item"><span class="font-baskerville font-bold text-navy">D</span><br><span class="text-xs text-gray-600">/diː/</span></div>
+                        </button>
+                        <button onclick="speakText('E', true)">
+                            <div class="number-item"><span class="font-baskerville font-bold text-navy">E</span><br><span class="text-xs text-gray-600">/iː/</span></div>
+                        </button>
+                        <button onclick="speakText('F', true)">
+                            <div class="number-item"><span class="font-baskerville font-bold text-navy">F</span><br><span class="text-xs text-gray-600">/ɛf/</span></div>
+                        </button>
+                        <button onclick="speakText('G', true)">
+                            <div class="number-item"><span class="font-baskerville font-bold text-navy">G</span><br><span class="text-xs text-gray-600">/dʒiː/</span></div>
+                        </button>
+                        <button onclick="speakText('H', true)">
+                            <div class="number-item"><span class="font-baskerville font-bold text-navy">H</span><br><span class="text-xs text-gray-600">/eɪtʃ/</span></div>
+                        </button>
+                        <button onclick="speakText('I', true)">
+                            <div class="number-item"><span class="font-baskerville font-bold text-navy">I</span><br><span class="text-xs text-gray-600">/aɪ/</span></div>
+                        </button>
+                        <button onclick="speakText('J', true)">
+                            <div class="number-item"><span class="font-baskerville font-bold text-navy">J</span><br><span class="text-xs text-gray-600">/dʒeɪ/</span></div>
+                        </button>
+                        <button onclick="speakText('K', true)">
+                            <div class="number-item"><span class="font-baskerville font-bold text-navy">K</span><br><span class="text-xs text-gray-600">/keɪ/</span></div>
+                        </button>
+                        <button onclick="speakText('L', true)">
+                            <div class="number-item"><span class="font-baskerville font-bold text-navy">L</span><br><span class="text-xs text-gray-600">/ɛl/</span></div>
+                        </button>
+                        <button onclick="speakText('M', true)">
+                            <div class="number-item"><span class="font-baskerville font-bold text-navy">M</span><br><span class="text-xs text-gray-600">/ɛm/</span></div>
+                        </button>
+                        <button onclick="speakText('N', true)">
+                            <div class="number-item"><span class="font-baskerville font-bold text-navy">N</span><br><span class="text-xs text-gray-600">/ɛn/</span></div>
+                        </button>
+                        <button onclick="speakText('O', true)">
+                            <div class="number-item"><span class="font-baskerville font-bold text-navy">O</span><br><span class="text-xs text-gray-600">/oʊ/</span></div>
+                        </button>
+                        <button onclick="speakText('P', true)">
+                            <div class="number-item"><span class="font-baskerville font-bold text-navy">P</span><br><span class="text-xs text-gray-600">/piː/</span></div>
+                        </button>
+                        <button onclick="speakText('Q', true)">
+                            <div class="number-item"><span class="font-baskerville font-bold text-navy">Q</span><br><span class="text-xs text-gray-600">/kjuː/</span></div>
+                        </button>
+                        <button onclick="speakText('R', true)">
+                            <div class="number-item"><span class="font-baskerville font-bold text-navy">R</span><br><span class="text-xs text-gray-600">/ɑːr/</span></div>
+                        </button>
+                        <button onclick="speakText('S', true)">
+                            <div class="number-item"><span class="font-baskerville font-bold text-navy">S</span><br><span class="text-xs text-gray-600">/ɛs/</span></div>
+                        </button>
+                        <button onclick="speakText('T', true)">
+                            <div class="number-item"><span class="font-baskerville font-bold text-navy">T</span><br><span class="text-xs text-gray-600">/tiː/</span></div>
+                        </button>
+                        <button onclick="speakText('U', true)">
+                            <div class="number-item"><span class="font-baskerville font-bold text-navy">U</span><br><span class="text-xs text-gray-600">/juː/</span></div>
+                        </button>
+                        <button onclick="speakText('V', true)">
+                            <div class="number-item"><span class="font-baskerville font-bold text-navy">V</span><br><span class="text-xs text-gray-600">/viː/</span></div>
+                        </button>
+                        <button onclick="speakText('W', true)">
+                            <div class="number-item"><span class="font-baskerville font-bold text-navy">W</span><br><span class="text-xs text-gray-600">/ˈdʌbəl juː/</span></div>
+                        </button>
+                        <button onclick="speakText('X', true)">
+                            <div class="number-item"><span class="font-baskerville font-bold text-navy">X</span><br><span class="text-xs text-gray-600">/ɛks/</span></div>
+                        </button>
+                        <button onclick="speakText('Y', true)">
+                            <div class="number-item"><span class="font-baskerville font-bold text-navy">Y</span><br><span class="text-xs text-gray-600">/waɪ/</span></div>
+                        </button>
+                        <button onclick="speakText('Z', true)">
+                            <div class="number-item"><span class="font-baskerville font-bold text-navy">Z</span><br><span class="text-xs text-gray-600">/ziː/</span></div>
+                        </button>
                     </div>
                 </div>
             </section>
@@ -190,47 +315,77 @@
                 <h3 class="font-playfair text-xl font-bold text-wine mb-4">
                     🔢 Números Essenciais
                 </h3>
+                <div class="mb-4">
+                    <label for="numbersSpeed" class="font-baskerville text-navy">Velocidade da Pronúncia:</label>
+                    <select id="numbersSpeed" class="border border-gray-300 rounded px-2 py-1 ml-2">
+                        <option value="0.3">Bem devagar</option>
+                        <option value="0.5" selected>Devagar</option>
+                        <option value="1">Normal</option>
+                        <option value="1.2">Rápido</option>
+                        <option value="1.5">Muito rápido</option>
+                    </select>
+                </div>
                 <div class="number-grid">
-                    <div class="number-item">
-                        <span class="font-baskerville font-bold text-navy">0</span>
-                        <span class="text-gray-600 block text-sm">Zero</span>
-                    </div>
-                    <div class="number-item">
-                        <span class="font-baskerville font-bold text-navy">1</span>
-                        <span class="text-gray-600 block text-sm">One</span>
-                    </div>
-                    <div class="number-item">
-                        <span class="font-baskerville font-bold text-navy">2</span>
-                        <span class="text-gray-600 block text-sm">Two</span>
-                    </div>
-                    <div class="number-item">
-                        <span class="font-baskerville font-bold text-navy">3</span>
-                        <span class="text-gray-600 block text-sm">Three</span>
-                    </div>
-                    <div class="number-item">
-                        <span class="font-baskerville font-bold text-navy">4</span>
-                        <span class="text-gray-600 block text-sm">Four</span>
-                    </div>
-                    <div class="number-item">
-                        <span class="font-baskerville font-bold text-navy">5</span>
-                        <span class="text-gray-600 block text-sm">Five</span>
-                    </div>
-                    <div class="number-item">
-                        <span class="font-baskerville font-bold text-navy">10</span>
-                        <span class="text-gray-600 block text-sm">Ten</span>
-                    </div>
-                    <div class="number-item">
-                        <span class="font-baskerville font-bold text-navy">20</span>
-                        <span class="text-gray-600 block text-sm">Twenty</span>
-                    </div>
-                    <div class="number-item">
-                        <span class="font-baskerville font-bold text-navy">50</span>
-                        <span class="text-gray-600 block text-sm">Fifty</span>
-                    </div>
-                    <div class="number-item">
-                        <span class="font-baskerville font-bold text-navy">100</span>
-                        <span class="text-gray-600 block text-sm">One hundred</span>
-                    </div>
+                    <button onclick="speakText('Zero')">
+                        <div class="number-item">
+                            <span class="font-baskerville font-bold text-navy">0</span>
+                            <span class="text-gray-600 block text-sm">Zero</span>
+                        </div>
+                    </button>
+                    <button onclick="speakText('One')">
+                        <div class="number-item">
+                            <span class="font-baskerville font-bold text-navy">1</span>
+                            <span class="text-gray-600 block text-sm">One</span>
+                        </div>
+                    </button>
+                    <button onclick="speakText('Two')">
+                        <div class="number-item">
+                            <span class="font-baskerville font-bold text-navy">2</span>
+                            <span class="text-gray-600 block text-sm">Two</span>
+                        </div>
+                    </button>
+                    <button onclick="speakText('Three')">
+                        <div class="number-item">
+                            <span class="font-baskerville font-bold text-navy">3</span>
+                            <span class="text-gray-600 block text-sm">Three</span>
+                        </div>
+                    </button>
+                    <button onclick="speakText('Four')">
+                        <div class="number-item">
+                            <span class="font-baskerville font-bold text-navy">4</span>
+                            <span class="text-gray-600 block text-sm">Four</span>
+                        </div>
+                    </button>
+                    <button onclick="speakText('Five')">
+                        <div class="number-item">
+                            <span class="font-baskerville font-bold text-navy">5</span>
+                            <span class="text-gray-600 block text-sm">Five</span>
+                        </div>
+                    </button>
+                    <button onclick="speakText('Ten')">
+                        <div class="number-item">
+                            <span class="font-baskerville font-bold text-navy">10</span>
+                            <span class="text-gray-600 block text-sm">Ten</span>
+                        </div>
+                    </button>
+                    <button onclick="speakText('Twenty')">
+                        <div class="number-item">
+                            <span class="font-baskerville font-bold text-navy">20</span>
+                            <span class="text-gray-600 block text-sm">Twenty</span>
+                        </div>
+                    </button>
+                    <button onclick="speakText('Fifty')">
+                        <div class="number-item">
+                            <span class="font-baskerville font-bold text-navy">50</span>
+                            <span class="text-gray-600 block text-sm">Fifty</span>
+                        </div>
+                    </button>
+                    <button onclick="speakText('One hundred')">
+                        <div class="number-item">
+                            <span class="font-baskerville font-bold text-navy">100</span>
+                            <span class="text-gray-600 block text-sm">One hundred</span>
+                        </div>
+                    </button>
                 </div>
             </section>
 
@@ -331,6 +486,13 @@
                 </div>
             </section>
 
+            <!-- Botão para Iniciar Prova -->
+            <section class="mb-8 text-center">
+                <button onclick="openQuizModal()" class="vintage-button text-white px-6 py-3 rounded-lg text-lg font-bold">
+                    🎯 Iniciar Prova
+                </button>
+            </section>
+
             <!-- Pronúncia -->
             <section class="mb-8">
                 <h3 class="font-playfair text-xl font-bold text-wine mb-4">
@@ -375,7 +537,250 @@
         </div>
     </div>
 
+    <!-- Modal da Prova -->
+    <div id="quizModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden">
+        <div class="vintage-card rounded-lg p-8 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="font-playfair text-2xl font-bold text-wine">
+                    📝 Prova de Conhecimento (8 questões)
+                </h3>
+                <button onclick="closeQuizModal()" class="text-gray-500 hover:text-wine text-2xl">
+                    ✕
+                </button>
+            </div>
+
+            <form id="quizForm" class="space-y-6">
+                <!-- Questão 1 -->
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        1. Qual é a pronúncia correta da letra "H" em inglês?
+                    </p>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q1" value="a" class="form-radio text-wine">
+                            <span class="font-baskerville">/eɪtʃ/</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q1" value="b" class="form-radio text-wine">
+                            <span class="font-baskerville">/heɪtʃ/</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q1" value="c" class="form-radio text-wine">
+                            <span class="font-baskerville">/aɪtʃ/</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q1" value="d" class="form-radio text-wine">
+                            <span class="font-baskerville">/hɑː/</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 2 -->
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        2. Como se escreve "13" em inglês?
+                    </p>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q2" value="a" class="form-radio text-wine">
+                            <span class="font-baskerville">Therteen</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q2" value="b" class="form-radio text-wine">
+                            <span class="font-baskerville">Thirteen</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q2" value="c" class="form-radio text-wine">
+                            <span class="font-baskerville">Tirteen</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q2" value="d" class="form-radio text-wine">
+                            <span class="font-baskerville">Threeteen</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 3 -->
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        3. Qual é a tradução correta de "My phone number is five five five, nine eight seven six"?
+                    </p>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q3" value="a" class="form-radio text-wine">
+                            <span class="font-baskerville">Meu número de telefone é 555-9876</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q3" value="b" class="form-radio text-wine">
+                            <span class="font-baskerville">Meu número de telefone é 555-8967</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q3" value="c" class="form-radio text-wine">
+                            <span class="font-baskerville">Meu número de telefone é 555-7896</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q3" value="d" class="form-radio text-wine">
+                            <span class="font-baskerville">Meu número de telefone é 555-6789</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 4 -->
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        4. Qual letra vem depois de "K" no alfabeto inglês?
+                    </p>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q4" value="a" class="form-radio text-wine">
+                            <span class="font-baskerville">I</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q4" value="b" class="form-radio text-wine">
+                            <span class="font-baskerville">J</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q4" value="c" class="form-radio text-wine">
+                            <span class="font-baskerville">L</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q4" value="d" class="form-radio text-wine">
+                            <span class="font-baskerville">M</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 5 -->
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        5. Como se diz "100" em inglês?
+                    </p>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q5" value="a" class="form-radio text-wine">
+                            <span class="font-baskerville">One hundred</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q5" value="b" class="form-radio text-wine">
+                            <span class="font-baskerville">A hundred</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q5" value="c" class="form-radio text-wine">
+                            <span class="font-baskerville">One thousand</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q5" value="d" class="form-radio text-wine">
+                            <span class="font-baskerville">Ten ten</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 6 -->
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        6. Qual é a pronúncia correta do número "5"?
+                    </p>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q6" value="a" class="form-radio text-wine">
+                            <span class="font-baskerville">/faɪv/</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q6" value="b" class="form-radio text-wine">
+                            <span class="font-baskerville">/fɪv/</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q6" value="c" class="form-radio text-wine">
+                            <span class="font-baskerville">/faɪf/</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q6" value="d" class="form-radio text-wine">
+                            <span class="font-baskerville">/fɪf/</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 7 -->
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        7. Qual frase está correta para dizer "Eu tenho 20 anos"?
+                    </p>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q7" value="a" class="form-radio text-wine">
+                            <span class="font-baskerville">I have twenty years</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q7" value="b" class="form-radio text-wine">
+                            <span class="font-baskerville">I am twenty years old</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q7" value="c" class="form-radio text-wine">
+                            <span class="font-baskerville">I am twenty old</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q7" value="d" class="form-radio text-wine">
+                            <span class="font-baskerville">I have twenty old</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 8 -->
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        8. Como se soletra a palavra "book"?
+                    </p>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q8" value="a" class="form-radio text-wine">
+                            <span class="font-baskerville">B-O-O-K</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q8" value="b" class="form-radio text-wine">
+                            <span class="font-baskerville">B-O-C-K</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q8" value="c" class="form-radio text-wine">
+                            <span class="font-baskerville">B-O-K-O</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q8" value="d" class="form-radio text-wine">
+                            <span class="font-baskerville">B-O-O-C</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="flex justify-center mt-8">
+                    <button type="button" onclick="checkQuiz()" class="vintage-button text-white px-6 py-3 rounded-lg text-lg font-bold">
+                        ✅ Finalizar Prova
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Resultados -->
+    <div id="resultModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden">
+        <div class="vintage-card rounded-lg p-8 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div class="text-center mb-6">
+                <h3 class="font-playfair text-2xl font-bold text-wine">
+                    🎉 Resultado da Prova (8 questões)
+                </h3>
+                <p id="scoreText" class="font-baskerville text-xl mt-2"></p>
+            </div>
+
+            <div id="quizResults" class="space-y-4"></div>
+
+            <div class="flex justify-center mt-8">
+                <button onclick="closeResultModal()" class="vintage-button text-white px-6 py-3 rounded-lg text-lg font-bold">
+                    Voltar para a Aula
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Funções para mostrar/esconder respostas
         function toggleAnswer(questionNumber) {
             const answer = document.getElementById('answer' + questionNumber);
             answer.classList.toggle('hidden-answer');
@@ -387,7 +792,130 @@
             translation.classList.toggle('hidden-answer');
             translation.classList.toggle('show-answer');
         }
+
+        // Função unificada para pronúncia
+        function speakText(text, isLetter = false) {
+            const rateSelect = document.getElementById(isLetter ? 'alphabetSpeed' : 'numbersSpeed');
+            const selectedRate = parseFloat(rateSelect.value);
+            
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            utterance.rate = selectedRate;
+            
+            speechSynthesis.speak(utterance);
+        }
+
+        // Configuração do Quiz
+        const quizConfig = {
+            totalQuestions: 8,
+            correctAnswers: {
+                q1: 'a',
+                q2: 'b',
+                q3: 'a',
+                q4: 'c',
+                q5: 'a',
+                q6: 'a',
+                q7: 'b',
+                q8: 'a'
+            },
+            explanations: {
+                q1: {
+                    correct: 'Correto! A letra "H" é pronunciada /eɪtʃ/ em inglês.',
+                    incorrect: 'A pronúncia correta é /eɪtʃ/. O "H" em inglês não tem som de "h" nessa pronúncia.'
+                },
+                q2: {
+                    correct: 'Correto! "13" se escreve "Thirteen" em inglês.',
+                    incorrect: 'A forma correta é "Thirteen". Cuidado com a grafia - começa com "Thir" e não "Ther".'
+                },
+                q3: {
+                    correct: 'Correto! "five five five, nine eight seven six" é 555-9876.',
+                    incorrect: 'A sequência correta é 555-9876. Lembre-se que em inglês dizemos os números individualmente.'
+                },
+                q4: {
+                    correct: 'Correto! Depois do "K" vem o "L" no alfabeto inglês.',
+                    incorrect: 'A sequência correta é: K, L, M. O "L" vem imediatamente após o "K".'
+                },
+                q5: {
+                    correct: 'Correto! "100" se diz "One hundred" em inglês formal.',
+                    incorrect: 'A forma mais correta é "One hundred", embora "a hundred" também seja aceitável em contextos informais.'
+                },
+                q6: {
+                    correct: 'Correto! O número "5" é pronunciado /faɪv/.',
+                    incorrect: 'A pronúncia correta é /faɪv/. O "v" no final deve ser pronunciado claramente.'
+                },
+                q7: {
+                    correct: 'Correto! A forma padrão é "I am twenty years old".',
+                    incorrect: 'Em inglês, usamos "I am [idade] years old". O verbo "to be" é obrigatório.'
+                },
+                q8: {
+                    correct: 'Correto! "book" se soletra B-O-O-K.',
+                    incorrect: 'A soletração correta é B-O-O-K. Cuidado com a ordem das letras.'
+                }
+            }
+        };
+
+        // Funções para controlar os modais
+        function openQuizModal() {
+            document.getElementById('quizModal').classList.remove('hidden');
+            document.getElementById('quizForm').reset();
+            document.body.classList.add('modal-open');
+        }
+
+        function closeQuizModal() {
+            document.getElementById('quizModal').classList.add('hidden');
+            document.body.classList.remove('modal-open');
+        }
+
+        function closeResultModal() {
+            document.getElementById('resultModal').classList.add('hidden');
+            document.body.classList.remove('modal-open');
+        }
+
+        // Função para verificar respostas
+        function checkQuiz() {
+            let score = 0;
+            const results = [];
+            const form = document.getElementById('quizForm');
+            
+            for (let i = 1; i <= quizConfig.totalQuestions; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = form.querySelector(`input[name="${questionName}"]:checked`)?.value;
+                const isCorrect = selectedOption === quizConfig.correctAnswers[questionName];
+                
+                if (isCorrect) score++;
+                
+                results.push({
+                    question: i,
+                    isCorrect,
+                    explanation: isCorrect 
+                        ? quizConfig.explanations[questionName].correct
+                        : quizConfig.explanations[questionName].incorrect
+                });
+            }
+            
+            showResults(score, results);
+        }
+
+        // Função para mostrar resultados
+        function showResults(score, results) {
+            const scoreElement = document.getElementById('scoreText');
+            const resultsContainer = document.getElementById('quizResults');
+            
+            scoreElement.innerHTML = `Você acertou <span class="text-wine font-bold">${score}/${quizConfig.totalQuestions}</span> questões!`;
+            
+            resultsContainer.innerHTML = results.map(result => `
+                <div class="p-4 rounded-lg ${result.isCorrect ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'} mb-3">
+                    <p class="font-baskerville font-bold ${result.isCorrect ? 'text-green-800' : 'text-red-800'}">
+                        Questão ${result.question}: ${result.isCorrect ? '✅ Acertou!' : '❌ Errou'}
+                    </p>
+                    <p class="font-baskerville mt-2 text-navy">${result.explanation}</p>
+                </div>
+            `).join('');
+            
+            // Mostrar modal de resultados
+            document.getElementById('quizModal').classList.add('hidden');
+            document.getElementById('resultModal').classList.remove('hidden');
+        }
     </script>
 </body>
 </html>
-

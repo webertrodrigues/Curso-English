@@ -390,7 +390,7 @@
                     </p>
                 </div>
             </section>
-
+ 
             <!-- Exemplos de Horas -->
             <section class="mb-8">
                 <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
@@ -899,6 +899,106 @@
                     </div>
                 </div>
 
+                <!-- Questão 5 -->
+                <div class="bg-white p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        5. Como se diz "meia-noite" em inglês?
+                    </p>
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q5" value="a" class="form-radio text-wine">
+                            <span>Noon</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q5" value="b" class="form-radio text-wine">
+                            <span>Midnight</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q5" value="c" class="form-radio text-wine">
+                            <span>Evening</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q5" value="d" class="form-radio text-wine">
+                            <span>Dusk</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 6 -->
+                <div class="bg-white p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        6. Qual é a forma correta de dizer "5:50"?
+                    </p>
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q6" value="a" class="form-radio text-wine">
+                            <span>Ten to five</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q6" value="b" class="form-radio text-wine">
+                            <span>Ten past five</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q6" value="c" class="form-radio text-wine">
+                            <span>Ten to six</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q6" value="d" class="form-radio text-wine">
+                            <span>Ten past six</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 7 -->
+                <div class="bg-white p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        7. Qual frase está correta para "São 9:15 da manhã"?
+                    </p>
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q7" value="a" class="form-radio text-wine">
+                            <span>It's quarter past nine in the morning</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q7" value="b" class="form-radio text-wine">
+                            <span>It's quarter to nine in the morning</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q7" value="c" class="form-radio text-wine">
+                            <span>It's half past nine in the morning</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q7" value="d" class="form-radio text-wine">
+                            <span>It's nine fifteen in the night</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 8 -->
+                <div class="bg-white p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        8. Qual é a diferença entre "a.m." e "p.m."?
+                    </p>
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q8" value="a" class="form-radio text-wine">
+                            <span>a.m. é antes do meio-dia, p.m. é depois</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q8" value="b" class="form-radio text-wine">
+                            <span>a.m. é manhã, p.m. é tarde/noite</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q8" value="c" class="form-radio text-wine">
+                            <span>a.m. é depois do meio-dia, p.m. é antes</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="q8" value="d" class="form-radio text-wine">
+                            <span>Não há diferença, são a mesma coisa</span>
+                        </label>
+                    </div>
+                </div>
+
                 <div class="flex justify-center">
                     <button type="button" onclick="submitQuiz()" class="vintage-button text-white px-6 py-3 rounded-lg text-lg font-bold">
                         ✅ Finalizar Prova
@@ -975,7 +1075,11 @@
             q1: 'c',
             q2: 'b',
             q3: 'c',
-            q4: 'a'
+            q4: 'a',
+            q5: 'b',
+            q6: 'c',
+            q7: 'a',
+            q8: 'a'
         };
 
         const explanations = {
@@ -994,6 +1098,22 @@
             q4: {
                 correct: 'Correto! 4:20 se diz "Twenty past four" (vinte depois das quatro).',
                 incorrect: '4:20 é "Twenty past four". "Twenty to four" seria 3:40, "Quarter past four" é 4:15, e "Half past four" é 4:30.'
+            },
+            q5: {
+                correct: 'Correto! "Midnight" significa meia-noite, enquanto "noon" significa meio-dia.',
+                incorrect: '"Noon" significa meio-dia. A palavra correta para meia-noite é "midnight". "Evening" é noite e "dusk" é crepúsculo.'
+            },
+            q6: {
+                correct: 'Correto! 5:50 se diz "Ten to six" (dez para as seis).',
+                incorrect: 'Para 5:50 usamos "Ten to six" porque faltam 10 minutos para as 6. "Ten to five" seria 4:50, e "Ten past five" seria 5:10.'
+            },
+            q7: {
+                correct: 'Correto! "Quarter past nine in the morning" é a forma correta para 9:15 da manhã.',
+                incorrect: '"Quarter to nine" seria 8:45, "half past nine" seria 9:30, e "nine fifteen in the night" estaria errado porque seria "in the morning".'
+            },
+            q8: {
+                correct: 'Correto! a.m. (ante meridiem) é antes do meio-dia e p.m. (post meridiem) é depois do meio-dia.',
+                incorrect: 'a.m. significa antes do meio-dia (manhã) e p.m. significa depois do meio-dia (tarde/noite). Eles não são a mesma coisa e não estão invertidos.'
             }
         };
 
@@ -1012,15 +1132,14 @@
             closeQuizModal();
         }
 
-        // Função para corrigir o quiz
         function submitQuiz() {
             const form = document.getElementById('quizForm');
             const formData = new FormData(form);
             let score = 0;
             const results = [];
 
-            // Verificar respostas
-            for (let i = 1; i <= 4; i++) {
+            // Verificar respostas (agora 8 questões)
+            for (let i = 1; i <= 8; i++) {
                 const question = `q${i}`;
                 const userAnswer = formData.get(question);
                 const isCorrect = userAnswer === correctAnswers[question];
@@ -1041,13 +1160,12 @@
             showResults(score, results);
         }
 
-        // Função para mostrar os resultados
         function showResults(score, results) {
             const scoreText = document.getElementById('scoreText');
             const resultsContainer = document.getElementById('quizResults');
             
             // Atualizar texto do score
-            scoreText.innerHTML = `Você acertou <span class="text-wine font-bold">${score} de 4</span> questões!`;
+            scoreText.innerHTML = `Você acertou <span class="text-wine font-bold">${score} de 8</span> questões!`;
             
             // Limpar resultados anteriores
             resultsContainer.innerHTML = '';
