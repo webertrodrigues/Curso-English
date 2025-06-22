@@ -1,17 +1,17 @@
-# 🌍 Curso de Inglês - 20 Aulas | Básico ao Intermediário
+# 🌍 Curso Completo de Inglês - 20 Aulas | Básico ao Intermediário
 
-![Progresso](https://img.shields.io/badge/Progresso-5%25-brightgreen) 
+![Status](https://img.shields.io/badge/Status-Concluído-success)
 ![Licença](https://img.shields.io/badge/Licença-MIT-blue)
-![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow)
+![Aulas](https://img.shields.io/badge/Aulas-20/20-brightgreen)
+![Versão](https://img.shields.io/badge/Versão-2.0.0-orange)
 
 Um curso completo com material didático organizado em 20 aulas progressivas. Ideal para quem quer aprender inglês de forma estruturada!
 
 ## 📚 Índice
 - [Níveis do Curso](#-níveis-do-curso)
-- [Aulas Disponíveis](#-aulas-disponíveis)
+- [Aulas Básicas](#-nível-básico-a1-a2)
+- [Aulas Intermediárias](#-nível-intermediário-b1-b2)
 - [Como Estudar](#-como-estudar)
-- [Roadmap](#-roadmap-de-desenvolvimento)
-- [Contribuição](#-contribuição)
 - [Licença](#-licença)
 
 ---
@@ -27,22 +27,37 @@ Um curso completo com material didático organizado em 20 aulas progressivas. Id
 
 ## 📂 Aulas Disponíveis
 
-### 🟢 Nível Básico (A1-A2)
+## 🟢 Nível Básico (A1-A2) - Concluído
 
-| #   | Tópico | Status | Link |
-|-----|--------|--------|------|
-| 1️⃣  | **Saudações e Apresentações** | ✅ Completo | [Acessar](/aula1-saudacoes.md) |
-| 2️⃣  | Alfabeto e Números (0-100) | 🟡 Em breve | [Pré-visualizar](#) |
-| 3️⃣  | Cores e Formas | 🟡 Em breve | [Pré-visualizar](#) |
-| 4️⃣  | Objetos Comuns e Artigos (a, an, the) | 🟡 Em breve | [Pré-visualizar](#) |
-| 5️⃣  | Verbo "To Be" (Presente Simples) | 🟡 Em breve | [Pré-visualizar](#) |
+| #  | Tópico | Conteúdo | Link |
+|----|--------|----------|------|
+| 1️⃣ | **Saudações** | Cumprimentos, despedidas | [Acessar](/aulas/aula1.md) |
+| 2️⃣ | **Alfabeto/Números** | 0-100, soletração | [Acessar](/aulas/aula2.md) |
+| 3️⃣ | **Cores/Formas** | Vocabulário visual | [Acessar](/aulas/aula3.md) |
+| 4️⃣ | **Objetos/Artigos** | a/an/the, itens cotidianos | [Acessar](/aulas/aula4.md) |
+| 5️⃣ | **Verbo "To Be"** | Afirmativo/negativo/interrogativo | [Acessar](/aulas/aula5.md) |
+| 6️⃣ | **Pronomes** | Pessoais/possessivos | [Acessar](/aulas/aula6.md) |
+| 7️⃣ | **Família** | Parentesco, relacionamentos | [Acessar](/aulas/aula7.md) |
+| 8️⃣ | **Tempo** | Dias/meses/estações | 45min | [Acessar](/aulas/aula8.md) |
+| 9️⃣ | **Comidas** | Alimentos, bebidas, restaurante | [Acessar](/aulas/aula9.md) |
+| 🔟 | **Rotina** | Horários, hábitos diários | [Acessar](/aulas/aula10.md) |
 
-### 🟡 Nível Intermediário (B1-B2)
+---
 
-| #   | Tópico | Status | Link |
-|-----|--------|--------|------|
-| 11️⃣ | Presente Simples e Contínuo | 🔜 Em desenvolvimento | [Contribuir](#) |
-| 12️⃣ | Passado Simples | ⌛ Planejado | - |
+## 🟡 Nível Intermediário (B1-B2) - Concluído
+
+| #  | Tópico | Conteúdo | Link |
+|----|--------|----------|------|
+| 1️⃣1️⃣ | **Presentes** | Simples vs Contínuo | [Acessar](/aulas/aula11.md) |
+| 1️⃣2️⃣ | **Passado** | Verbos regulares/irregulares | [Acessar](/aulas/aula12.md) |
+| 1️⃣3️⃣ | **Futuro** | Will vs Going to | [Acessar](/aulas/aula13.md) |
+| 1️⃣4️⃣ | **Preposições** | Tempo/lugar | [Acessar](/aulas/aula14.md) |
+| 1️⃣5️⃣ | **Advérbios** | Frequência/modo | [Acessar](/aulas/aula15.md) |
+| 1️⃣6️⃣ | **Comparativos** | Superlativos também | [Acessar](/aulas/aula16.md) |
+| 1️⃣7️⃣ | **Modais** | Can, should, must etc | [Acessar](/aulas/aula17.md) |
+| 1️⃣8️⃣ | **Condicionais** | Zero e primeira | [Acessar](/aulas/aula18.md) |
+| 1️⃣9️⃣ | **Voz Passiva** | Presente/passado | [Acessar](/aulas/aula19.md) |
+| 2️⃣0️⃣ | **Phrasal Verbs** | 50+ mais comuns | [Acessar](/aulas/aula20.md) |
 
 ---
 
