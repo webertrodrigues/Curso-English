@@ -31,16 +31,16 @@ Um curso completo com material didático organizado em 20 aulas progressivas. Id
 
 | #  | Tópico | Conteúdo | Link |
 |----|--------|----------|------|
-| 1️⃣ | **Saudações** | Cumprimentos, despedidas | [Acessar](/aulas/aula1.md) |
-| 2️⃣ | **Alfabeto/Números** | 0-100, soletração | [Acessar](/aulas/aula2.md) |
-| 3️⃣ | **Cores/Formas** | Vocabulário visual | [Acessar](/aulas/aula3.md) |
-| 4️⃣ | **Objetos/Artigos** | a/an/the, itens cotidianos | [Acessar](/aulas/aula4.md) |
-| 5️⃣ | **Verbo "To Be"** | Afirmativo/negativo/interrogativo | [Acessar](/aulas/aula5.md) |
-| 6️⃣ | **Pronomes** | Pessoais/possessivos | [Acessar](/aulas/aula6.md) |
-| 7️⃣ | **Família** | Parentesco, relacionamentos | [Acessar](/aulas/aula7.md) |
-| 8️⃣ | **Tempo** | Dias/meses/estações | [Acessar](/aulas/aula8.md) |
-| 9️⃣ | **Comidas** | Alimentos, bebidas, restaurante | [Acessar](/aulas/aula9.md) |
-| 🔟 | **Rotina** | Horários, hábitos diários | [Acessar](/aulas/aula10.md) |
+| 1️⃣ | **Saudações** | Cumprimentos, despedidas | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%201/english_lesson_card.html) |
+| 2️⃣ | **Alfabeto/Números** | 0-100, soletração | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%202/lesson2_card.html) |
+| 3️⃣ | **Cores/Formas** | Vocabulário visual | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%203/lesson3_card.html) |
+| 4️⃣ | **Objetos/Artigos** | a/an/the, itens cotidianos | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%204/lesson4_card.html) |
+| 5️⃣ | **Verbo "To Be"** | Afirmativo/negativo/interrogativo | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%205/lesson5_card.html) |
+| 6️⃣ | **Pronomes** | Pessoais/possessivos | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%206/lesson6_card.html) |
+| 7️⃣ | **Família** | Parentesco, relacionamentos | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%207/lesson7_card.html) |
+| 8️⃣ | **Tempo** | Dias/meses/estações | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%208/lesson8_card.html) |
+| 9️⃣ | **Comidas** | Alimentos, bebidas, restaurante | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%209/lesson9_card.html) |
+| 🔟 | **Rotina** | Horários, hábitos diários | [Acessar](#) |
 
 ---
 
@@ -48,16 +48,16 @@ Um curso completo com material didático organizado em 20 aulas progressivas. Id
 
 | #  | Tópico | Conteúdo | Link |
 |----|--------|----------|------|
-| 1️⃣1️⃣ | **Presentes** | Simples vs Contínuo | [Acessar](/aulas/aula11.md) |
-| 1️⃣2️⃣ | **Passado** | Verbos regulares/irregulares | [Acessar](/aulas/aula12.md) |
-| 1️⃣3️⃣ | **Futuro** | Will vs Going to | [Acessar](/aulas/aula13.md) |
-| 1️⃣4️⃣ | **Preposições** | Tempo/lugar | [Acessar](/aulas/aula14.md) |
-| 1️⃣5️⃣ | **Advérbios** | Frequência/modo | [Acessar](/aulas/aula15.md) |
-| 1️⃣6️⃣ | **Comparativos** | Superlativos também | [Acessar](/aulas/aula16.md) |
-| 1️⃣7️⃣ | **Modais** | Can, should, must etc | [Acessar](/aulas/aula17.md) |
-| 1️⃣8️⃣ | **Condicionais** | Zero e primeira | [Acessar](/aulas/aula18.md) |
-| 1️⃣9️⃣ | **Voz Passiva** | Presente/passado | [Acessar](/aulas/aula19.md) |
-| 2️⃣0️⃣ | **Phrasal Verbs** | 50+ mais comuns | [Acessar](/aulas/aula20.md) |
+| 1️⃣1️⃣ | **Presentes** | Simples vs Contínuo | [Acessar](#) |
+| 1️⃣2️⃣ | **Passado** | Verbos regulares/irregulares | [Acessar](#) |
+| 1️⃣3️⃣ | **Futuro** | Will vs Going to | [Acessar](#) |
+| 1️⃣4️⃣ | **Preposições** | Tempo/lugar | [Acessar](#) |
+| 1️⃣5️⃣ | **Advérbios** | Frequência/modo | [Acessar](#) |
+| 1️⃣6️⃣ | **Comparativos** | Superlativos também | [Acessar](#) |
+| 1️⃣7️⃣ | **Modais** | Can, should, must etc | [Acessar](#) |
+| 1️⃣8️⃣ | **Condicionais** | Zero e primeira | [Acessar](#) |
+| 1️⃣9️⃣ | **Voz Passiva** | Presente/passado | [Acessar](#) |
+| 2️⃣0️⃣ | **Phrasal Verbs** | 50+ mais comuns | [Acessar](#) |
 
 ---
 
