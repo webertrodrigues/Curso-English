@@ -12,7 +12,7 @@ Um curso completo com material didático organizado em 20 aulas progressivas. Id
 - [Aulas Básicas](#-nível-básico-a1-a2)
 - [Aulas Intermediárias](#-nível-intermediário-b1-b2)
 - [Como Estudar](#-como-estudar)
-- [Licença](#-licença)
+- [Licença](LICENSE)
 
 ---
 
@@ -27,7 +27,7 @@ Um curso completo com material didático organizado em 20 aulas progressivas. Id
 
 ## 📂 Aulas Disponíveis
 
-## 🟢 Nível Básico (A1-A2) - Concluído
+## 🟢 Nível Básico (A1-A2)
 
 | #  | Tópico | Conteúdo | Link |
 |----|--------|----------|------|
@@ -44,7 +44,7 @@ Um curso completo com material didático organizado em 20 aulas progressivas. Id
 
 ---
 
-## 🟡 Nível Intermediário (B1-B2) - Concluído
+## 🟡 Nível Intermediário (B1-B2)
 
 | #  | Tópico | Conteúdo | Link |
 |----|--------|----------|------|
