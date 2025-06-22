@@ -385,6 +385,13 @@
                 </div>
             </section>
 
+            <!-- Botão para Iniciar Prova -->
+            <section class="mb-8 text-center">
+                <button onclick="startTest()" class="vintage-button text-white px-6 py-3 rounded-lg font-baskerville text-lg">
+                    🎯 Iniciar Prova
+                </button>
+            </section>
+
             <!-- Pronúncia -->
             <section class="mb-8">
                 <h3 class="font-playfair text-xl font-bold text-wine mb-4">
@@ -429,6 +436,46 @@
         </div>
     </div>
 
+    <!-- Modal da Prova -->
+    <div id="testModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 hidden z-50">
+        <div class="vintage-card rounded-lg p-8 w-full max-w-3xl max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="font-playfair text-2xl font-bold text-wine">📝 Prova de Conhecimento</h3>
+                <button onclick="closeTest()" class="text-wine hover:text-dark-wine text-2xl">&times;</button>
+            </div>
+            
+            <div id="testQuestions" class="space-y-6">
+                <!-- Questões serão inseridas aqui pelo JavaScript -->
+            </div>
+            
+            <div class="mt-8 text-center">
+                <button onclick="submitTest()" class="vintage-button text-white px-6 py-3 rounded-lg font-baskerville text-lg">
+                    ✅ Finalizar Prova
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Resultados -->
+    <div id="resultsModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 hidden z-50">
+        <div class="vintage-card rounded-lg p-8 w-full max-w-3xl max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="font-playfair text-2xl font-bold text-wine">📊 Resultado da Prova</h3>
+                <button onclick="closeResults()" class="text-wine hover:text-dark-wine text-2xl">&times;</button>
+            </div>
+            
+            <div id="testResults">
+                <!-- Resultados serão inseridos aqui pelo JavaScript -->
+            </div>
+            
+            <div class="mt-8 text-center">
+                <button onclick="closeResults()" class="vintage-button text-white px-6 py-3 rounded-lg font-baskerville text-lg">
+                    🏠 Voltar ao Início
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
         function toggleAnswer(questionNumber) {
             const answer = document.getElementById('answer' + questionNumber);
@@ -446,6 +493,215 @@
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.lang = 'en-US'; // idioma
             utterance.rate = 0.5; // Velocidade (1 = normal, 0.8 = mais lento, 1.5 = mais rápido)
+            speechSynthesis.speak(utterance);
+        }
+
+        // Variáveis globais
+        let testAnswers = {};
+        const testQuestions = [
+            {
+                question: "1. Como se diz 'verde' em inglês?",
+                options: [
+                    { text: "a) Blue", correct: false, feedback: "'Blue' é azul, não verde" },
+                    { text: "b) Green", correct: true, feedback: "Correto! 'Green' significa verde em inglês" },
+                    { text: "c) Red", correct: false, feedback: "'Red' é vermelho, não verde" },
+                    { text: "d) Yellow", correct: false, feedback: "'Yellow' é amarelo, não verde" }
+                ]
+            },
+            {
+                question: "2. Qual forma tem três lados?",
+                options: [
+                    { text: "a) Square", correct: false, feedback: "Um quadrado tem quatro lados" },
+                    { text: "b) Circle", correct: false, feedback: "Um círculo não tem lados" },
+                    { text: "c) Triangle", correct: true, feedback: "Correto! 'Triangle' significa triângulo" },
+                    { text: "d) Rectangle", correct: false, feedback: "Um retângulo tem quatro lados" }
+                ]
+            },
+            {
+                question: "3. Qual é a cor do sol?",
+                options: [
+                    { text: "a) Blue", correct: false, feedback: "O céu é azul, não o sol" },
+                    { text: "b) White", correct: false, feedback: "O sol parece branco às vezes, mas é amarelo" },
+                    { text: "c) Yellow", correct: true, feedback: "Correto! O sol é amarelo ('Yellow')" },
+                    { text: "d) Black", correct: false, feedback: "O sol não é preto" }
+                ]
+            },
+            {
+                question: "4. Como se diz 'estrela' em inglês?",
+                options: [
+                    { text: "a) Heart", correct: false, feedback: "'Heart' é coração, não estrela" },
+                    { text: "b) Star", correct: true, feedback: "Correto! 'Star' significa estrela" },
+                    { text: "c) Circle", correct: false, feedback: "'Circle' é círculo, não estrela" },
+                    { text: "d) Square", correct: false, feedback: "'Square' é quadrado, não estrela" }
+                ]
+            },
+            {
+                question: "5. Qual forma é usada para rodas?",
+                options: [
+                    { text: "a) Triangle", correct: false, feedback: "Rodas não são triangulares" },
+                    { text: "b) Rectangle", correct: false, feedback: "Rodas não são retangulares" },
+                    { text: "c) Circle", correct: true, feedback: "Correto! Rodas são círculos ('Circle')" },
+                    { text: "d) Star", correct: false, feedback: "Rodas não têm forma de estrela" }
+                ]
+            },
+            {
+                question: "6. Qual é a tradução de 'My notebook is black'?",
+                options: [
+                    { text: "a) Minha caneta é preta", correct: false, feedback: "'Notebook' não é caneta ('pen')" },
+                    { text: "b) Meu caderno é preto", correct: true, feedback: "Correto! 'Notebook' significa caderno" },
+                    { text: "c) Minha mesa é preta", correct: false, feedback: "'Notebook' não é mesa ('table')" },
+                    { text: "d) Meu livro é preto", correct: false, feedback: "'Notebook' é caderno, não livro ('book')" }
+                ]
+            },
+            {
+                question: "7. Qual forma tem quatro lados iguais?",
+                options: [
+                    { text: "a) Rectangle", correct: false, feedback: "Retângulos têm lados opostos iguais" },
+                    { text: "b) Triangle", correct: false, feedback: "Triângulos têm três lados" },
+                    { text: "c) Square", correct: true, feedback: "Correto! Quadrados têm quatro lados iguais" },
+                    { text: "d) Heart", correct: false, feedback: "Corações não são formas geométricas com lados" }
+                ]
+            },
+            {
+                question: "8. Qual é a cor do céu durante o dia?",
+                options: [
+                    { text: "a) Green", correct: false, feedback: "O céu não é verde durante o dia" },
+                    { text: "b) Black", correct: false, feedback: "O céu é preto à noite, não de dia" },
+                    { text: "c) Blue", correct: true, feedback: "Correto! O céu diurno é azul ('Blue')" },
+                    { text: "d) Red", correct: false, feedback: "O céu fica avermelhado no pôr do sol, mas não o dia todo" }
+                ]
+            }
+        ];
+
+        // Função para iniciar a prova
+        function startTest() {
+            testAnswers = {};
+            const testContainer = document.getElementById('testQuestions');
+            testContainer.innerHTML = '';
+            
+            testQuestions.forEach((question, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'bg-white p-4 rounded-lg border-l-4 border-navy';
+                
+                const questionText = document.createElement('p');
+                questionText.className = 'font-baskerville text-navy mb-3 font-bold';
+                questionText.textContent = question.question;
+                questionDiv.appendChild(questionText);
+                
+                const optionsDiv = document.createElement('div');
+                optionsDiv.className = 'space-y-2';
+                
+                question.options.forEach((option, optionIndex) => {
+                    const label = document.createElement('label');
+                    label.className = 'flex items-center';
+                    
+                    const input = document.createElement('input');
+                    input.type = 'radio';
+                    input.name = 'q' + (index + 1);
+                    input.value = optionIndex;
+                    input.className = 'mr-2';
+                    input.onclick = function() { testAnswers[index + 1] = optionIndex; };
+                    
+                    const span = document.createElement('span');
+                    span.className = 'font-baskerville';
+                    span.textContent = option.text;
+                    
+                    label.appendChild(input);
+                    label.appendChild(span);
+                    optionsDiv.appendChild(label);
+                });
+                
+                questionDiv.appendChild(optionsDiv);
+                testContainer.appendChild(questionDiv);
+            });
+            
+            document.getElementById('testModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Impede rolagem da página principal
+        }
+
+        // Função para fechar a prova
+        function closeTest() {
+            document.getElementById('testModal').classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Restaura rolagem
+        }
+
+        // Função para fechar os resultados
+        function closeResults() {
+            document.getElementById('resultsModal').classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Restaura rolagem
+        }
+
+        // Função para submeter a prova
+        function submitTest() {
+            let score = 0;
+            let resultsHTML = '<div class="space-y-4">';
+            
+            testQuestions.forEach((question, index) => {
+                const questionNumber = index + 1;
+                const userAnswer = testAnswers[questionNumber];
+                const isCorrect = userAnswer !== undefined && question.options[userAnswer].correct;
+                
+                if (isCorrect) {
+                    score++;
+                    resultsHTML += `<div class="p-4 bg-green-50 rounded-lg border-l-4 border-green-500">`;
+                    resultsHTML += `<p class="font-baskerville font-bold text-green-700">Questão ${questionNumber}: ✅ Correta</p>`;
+                    resultsHTML += `<p class="font-baskerville text-navy mt-2">${question.options[userAnswer].feedback}</p>`;
+                } else {
+                    resultsHTML += `<div class="p-4 bg-red-50 rounded-lg border-l-4 border-red-500">`;
+                    resultsHTML += `<p class="font-baskerville font-bold text-wine">Questão ${questionNumber}: ❌ Incorreta</p>`;
+                    
+                    if (userAnswer !== undefined) {
+                        resultsHTML += `<p class="font-baskerville text-navy mt-2">${question.options[userAnswer].feedback}</p>`;
+                    } else {
+                        resultsHTML += `<p class="font-baskerville text-navy mt-2">Você não respondeu esta questão.</p>`;
+                    }
+                    
+                    // Mostrar a resposta correta
+                    const correctOption = question.options.find(opt => opt.correct);
+                    resultsHTML += `<p class="font-baskerville text-navy mt-2"><strong>Resposta correta:</strong> ${correctOption.text.replace(/^[a-z]\)\s/, '')}</p>`;
+                }
+                
+                resultsHTML += `</div>`;
+            });
+            
+            resultsHTML += `<div class="mt-6 p-4 bg-light-gold rounded-lg text-center">`;
+            resultsHTML += `<p class="font-playfair text-2xl font-bold text-wine">Pontuação Final: ${score} de ${testQuestions.length}</p>`;
+            resultsHTML += `<p class="font-baskerville text-navy mt-2 text-lg">${getScoreMessage(score, testQuestions.length)}</p>`;
+            resultsHTML += `</div></div>`;
+            
+            // Fecha o modal da prova e abre o de resultados
+            closeTest();
+            document.getElementById('testResults').innerHTML = resultsHTML;
+            document.getElementById('resultsModal').classList.remove('hidden');
+        }
+
+        // Função para mensagem de pontuação
+        function getScoreMessage(score, total) {
+            const percentage = (score / total) * 100;
+            
+            if (percentage >= 90) return '🏆 Excelente! Você domina cores e formas em inglês!';
+            if (percentage >= 70) return '👍 Muito bom! Você conhece bem cores e formas em inglês!';
+            if (percentage >= 50) return '👌 Bom trabalho! Revise um pouco mais para melhorar!';
+            return '✏️ Continue praticando! Revise as cores e formas para melhorar!';
+        }
+
+        // Funções existentes (mantenha as que já estão no seu código)
+        function toggleAnswer(questionNumber) {
+            const answer = document.getElementById('answer' + questionNumber);
+            answer.classList.toggle('hidden-answer');
+            answer.classList.toggle('show-answer');
+        }
+        
+        function toggleTranslation() {
+            const translation = document.getElementById('translation');
+            translation.classList.toggle('hidden-answer');
+            translation.classList.toggle('show-answer');
+        }
+
+        function speak3(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.5;
             speechSynthesis.speak(utterance);
         }
     </script>
