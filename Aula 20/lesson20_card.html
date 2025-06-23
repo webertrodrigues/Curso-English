@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão de Inglês - Aula 20: Tecnologia e Internet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --wine: #722F37;
+            --cream: #F5F1E8;
+            --navy: #2C3E50;
+            --gold: #D4AF37;
+            --dark-wine: #5A252A;
+            --light-gold: #F4E4BC;
+            --rose: #E8B4B8;
+            --sage: #9CAF88;
+            --lavender: #B8A9C9;
+            --coral: #F4A261;
+            --teal: #2A9D8F;
+            --mint: #A8E6CF;
+            --peach: #FFB3BA;
+            --blue: #4169E1;
+            --red: #DC143C;
+            --yellow: #FFD700;
+            --purple: #8A2BE2;
+            --cyan: #00CED1;
+            --green: #228B22;
+            --orange: #FF8C00;
+            --lime: #32CD32;
+            --pink: #FF69B4;
+            --tech-blue: #0066CC;
+            --tech-silver: #C0C0C0;
+            --tech-green: #00FF7F;
+            --tech-purple: #9370DB;
+            --tech-orange: #FF6347;
+            --tech-cyan: #00FFFF;
+        }
+        
+        .font-baskerville { font-family: 'Libre Baskerville', serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        
+        .vintage-card {
+            background: linear-gradient(135deg, var(--cream) 0%, #F8F5F0 100%);
+            border: 3px solid var(--wine);
+            box-shadow: 
+                0 8px 32px rgba(114, 47, 55, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+        
+        .text-wine { color: var(--wine); }
+        .text-navy { color: var(--navy); }
+        .text-gold { color: var(--gold); }
+        .bg-wine { background-color: var(--wine); }
+        .bg-navy { background-color: var(--navy); }
+        .bg-gold { background-color: var(--gold); }
+        .bg-light-gold { background-color: var(--light-gold); }
+        .bg-mint { background-color: var(--mint); }
+        .bg-peach { background-color: var(--peach); }
+        
+        .vintage-button {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-wine) 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .vintage-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(114, 47, 55, 0.3);
+        }
+        
+        .pronunciation {
+            background: linear-gradient(135deg, var(--light-gold) 0%, var(--cream) 100%);
+            border-left: 4px solid var(--gold);
+        }
+        
+        .dialogue-box {
+            background: rgba(44, 62, 80, 0.05);
+            border-left: 4px solid var(--navy);
+        }
+        
+        .hardware-device {
+            background: linear-gradient(135deg, var(--tech-blue) 0%, #0080FF 100%);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 0.3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            min-height: 120px;
+            border: 2px solid rgba(0, 102, 204, 0.3);
+            position: relative;
+            text-align: center;
+        }
+        
+        .hardware-device:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.5);
+            border-color: white;
+        }
+        
+        .software-item {
+            background: linear-gradient(135deg, var(--tech-green) 0%, #32CD32 100%);
+            color: #2F4F4F;
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 0.3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            min-height: 120px;
+            border: 2px solid rgba(0, 255, 127, 0.3);
+            position: relative;
+            text-align: center;
+        }
+        
+        .software-item:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 8px 25px rgba(0, 255, 127, 0.5);
+            border-color: white;
+        }
+        
+        .tech-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .item-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        
+        .item-translation {
+            font-style: italic;
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        
+        .tech-center {
+            background: linear-gradient(135deg, var(--wine) 0%, var(--dark-wine) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tech-center::before {
+            content: '💻';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 3rem;
+            opacity: 0.3;
+        }
+        
+        .digital-hub {
+            background: linear-gradient(135deg, var(--tech-purple) 0%, #9370DB 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .digital-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .digital-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .digital-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .innovation-lab {
+            background: linear-gradient(135deg, var(--tech-cyan) 0%, #00FFFF 100%);
+            color: #2F4F4F;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .innovation-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .innovation-item {
+            background: rgba(47, 79, 79, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid rgba(47, 79, 79, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .innovation-item:hover {
+            background: rgba(47, 79, 79, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .ornament {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 0 auto;
+        }
+        
+        .hidden-answer {
+            display: none;
+        }
+        
+        .show-answer {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .vintage-card {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            .hardware-device, .software-item {
+                min-height: 100px;
+            }
+            
+            .item-name {
+                font-size: 1rem;
+            }
+            
+            .tech-emoji {
+                font-size: 2rem;
+            }
+            
+            .digital-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .innovation-grid {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen py-8">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <!-- Cartão Principal -->
+        <div class="vintage-card rounded-lg p-8 mb-8">
+            <!-- Cabeçalho -->
+            <header class="text-center mb-8">
+                <div class="ornament mb-4"></div>
+                <h1 class="font-playfair text-4xl font-bold text-wine mb-2">
+                    English Learning Card
+                </h1>
+                <h2 class="font-baskerville text-2xl text-navy mb-4">
+                    Aula 20: Tecnologia e Internet
+                </h2>
+                <div class="ornament"></div>
+            </header>
+
+            <!-- Frase do Dia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    ✨ Frase do Dia
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <p class="font-baskerville text-lg text-navy text-center italic">
+                        "The internet has revolutionized how we communicate and access information."
+                    </p>
+                    <p class="font-baskerville text-base text-gray-600 text-center mt-2">
+                        "A internet revolucionou como nos comunicamos e acessamos informações."
+                    </p>
+                </div>
+            </section>
+
+            <!-- Tech Center -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    💻 Tech Center
+                </h3>
+                <div class="tech-center">
+                    <div class="text-center mb-4">
+                        <h4 class="font-playfair text-2xl font-bold mb-2">Technology & Innovation Hub</h4>
+                        <p class="font-baskerville text-lg opacity-90">Seu centro de tecnologia e inovação</p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-4 text-center">
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <span class="text-3xl block mb-2">🔧</span>
+                            <p class="font-baskerville">Hardware</p>
+                            <p class="text-sm opacity-80">Dispositivos</p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <span class="text-3xl block mb-2">💾</span>
+                            <p class="font-baskerville">Software</p>
+                            <p class="text-sm opacity-80">Programas</p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <span class="text-3xl block mb-2">🌐</span>
+                            <p class="font-baskerville">Internet</p>
+                            <p class="text-sm opacity-80">Rede Mundial</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Digital Hub -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🌐 Digital Hub
+                </h3>
+                <div class="digital-hub">
+                    <h4 class="font-playfair text-xl font-bold mb-4">Digital Ecosystem</h4>
+                    <div class="digital-grid">
+                        <div class="digital-item">
+                            <span class="text-2xl block mb-2">📱</span>
+                            <p class="font-bold">Mobile</p>
+                            <p class="text-sm opacity-80">Móvel</p>
+                        </div>
+                        <div class="digital-item">
+                            <span class="text-2xl block mb-2">☁️</span>
+                            <p class="font-bold">Cloud</p>
+                            <p class="text-sm opacity-80">Nuvem</p>
+                        </div>
+                        <div class="digital-item">
+                            <span class="text-2xl block mb-2">🔒</span>
+                            <p class="font-bold">Security</p>
+                            <p class="text-sm opacity-80">Segurança</p>
+                        </div>
+                        <div class="digital-item">
+                            <span class="text-2xl block mb-2">🤖</span>
+                            <p class="font-bold">AI</p>
+                            <p class="text-sm opacity-80">IA</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Innovation Lab -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🚀 Innovation Lab
+                </h3>
+                <div class="innovation-lab">
+                    <h4 class="font-playfair text-xl font-bold mb-4">Future Technologies</h4>
+                    <div class="innovation-grid">
+                        <div class="innovation-item">
+                            <span class="text-2xl block mb-2">🥽</span>
+                            <p class="font-bold">VR/AR</p>
+                            <p class="text-sm opacity-80">Realidade Virtual</p>
+                        </div>
+                        <div class="innovation-item">
+                            <span class="text-2xl block mb-2">🔗</span>
+                            <p class="font-bold">Blockchain</p>
+                            <p class="text-sm opacity-80">Cadeia de Blocos</p>
+                        </div>
+                        <div class="innovation-item">
+                            <span class="text-2xl block mb-2">🌍</span>
+                            <p class="font-bold">IoT</p>
+                            <p class="text-sm opacity-80">Internet das Coisas</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dispositivos e Hardware -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🔧 Dispositivos e Hardware
+                </h3>
+                
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
+                    <div class="hardware-device">
+                        <span class="tech-emoji">💻</span>
+                        <div class="item-name">Computer</div>
+                        <div class="item-translation">Computador</div>
+                    </div>
+                    
+                    <div class="hardware-device">
+                        <span class="tech-emoji">💻</span>
+                        <div class="item-name">Laptop</div>
+                        <div class="item-translation">Notebook</div>
+                    </div>
+                    
+                    <div class="hardware-device">
+                        <span class="tech-emoji">📱</span>
+                        <div class="item-name">Smartphone</div>
+                        <div class="item-translation">Celular inteligente</div>
+                    </div>
+                    
+                    <div class="hardware-device">
+                        <span class="tech-emoji">📱</span>
+                        <div class="item-name">Tablet</div>
+                        <div class="item-translation">Tablet</div>
+                    </div>
+                    
+                    <div class="hardware-device">
+                        <span class="tech-emoji">⌨️</span>
+                        <div class="item-name">Keyboard</div>
+                        <div class="item-translation">Teclado</div>
+                    </div>
+                    
+                    <div class="hardware-device">
+                        <span class="tech-emoji">🖱️</span>
+                        <div class="item-name">Mouse</div>
+                        <div class="item-translation">Mouse</div>
+                    </div>
+                    
+                    <div class="hardware-device">
+                        <span class="tech-emoji">🖥️</span>
+                        <div class="item-name">Screen</div>
+                        <div class="item-translation">Tela</div>
+                    </div>
+                    
+                    <div class="hardware-device">
+                        <span class="tech-emoji">🖨️</span>
+                        <div class="item-name">Printer</div>
+                        <div class="item-translation">Impressora</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Internet e Software -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    💾 Internet e Software
+                </h3>
+                
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
+                    <div class="software-item">
+                        <span class="tech-emoji">🌐</span>
+                        <div class="item-name">Internet</div>
+                        <div class="item-translation">Internet</div>
+                    </div>
+                    
+                    <div class="software-item">
+                        <span class="tech-emoji">🌍</span>
+                        <div class="item-name">Website</div>
+                        <div class="item-translation">Site</div>
+                    </div>
+                    
+                    <div class="software-item">
+                        <span class="tech-emoji">🔍</span>
+                        <div class="item-name">Browser</div>
+                        <div class="item-translation">Navegador</div>
+                    </div>
+                    
+                    <div class="software-item">
+                        <span class="tech-emoji">📧</span>
+                        <div class="item-name">Email</div>
+                        <div class="item-translation">E-mail</div>
+                    </div>
+                    
+                    <div class="software-item">
+                        <span class="tech-emoji">📱</span>
+                        <div class="item-name">App</div>
+                        <div class="item-translation">Aplicativo</div>
+                    </div>
+                    
+                    <div class="software-item">
+                        <span class="tech-emoji">📲</span>
+                        <div class="item-name">Social Media</div>
+                        <div class="item-translation">Mídias sociais</div>
+                    </div>
+                    
+                    <div class="software-item">
+                        <span class="tech-emoji">⬇️</span>
+                        <div class="item-name">Download</div>
+                        <div class="item-translation">Baixar</div>
+                    </div>
+                    
+                    <div class="software-item">
+                        <span class="tech-emoji">⬆️</span>
+                        <div class="item-name">Upload</div>
+                        <div class="item-translation">Enviar</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Diálogo -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    💬 Conversa sobre Tecnologia
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend A:</strong> Hey, have you seen the new smartphone model?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Ei, você viu o novo modelo de smartphone?)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend B:</strong> Not yet! Is it good? I need a new one, my old laptop is so slow.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Ainda não! É bom? Preciso de um novo, meu notebook antigo está muito lento.)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend A:</strong> It's amazing! The screen is huge, and the camera is incredible.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (É incrível! A tela é enorme, e a câmera é incrível.)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend B:</strong> I mostly use my computer for work, but I spend a lot of time on social media too.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Eu uso principalmente meu computador para trabalho, mas também passo muito tempo nas mídias sociais.)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend A:</strong> Do you use cloud storage for your files?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Você usa armazenamento em nuvem para seus arquivos?)
+                        </p>
+                    </div>
+                    <div>
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend B:</strong> Yes, I do. It's so convenient to access my documents from any device.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Sim, uso. É muito conveniente acessar meus documentos de qualquer dispositivo.)
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Texto para Tradução -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    📝 Texto para Tradução
+                </h3>
+                <div class="bg-light-gold p-6 rounded-lg">
+                    <p class="font-baskerville text-navy text-lg mb-4">
+                        "Technology and the internet have become indispensable parts of our daily lives. From communicating with friends and family across the globe to accessing vast amounts of information, digital tools have transformed how we live, work, and learn."
+                    </p>
+                    <button onclick="toggleTranslation()" class="vintage-button text-white px-4 py-2 rounded font-baskerville">
+                        Ver Tradução
+                    </button>
+                    <div id="translation" class="hidden-answer mt-4 p-4 bg-white rounded border-l-4 border-wine">
+                        <p class="font-baskerville text-navy">
+                            "A tecnologia e a internet se tornaram partes indispensáveis de nossas vidas diárias. Desde comunicar-se com amigos e família ao redor do globo até acessar vastas quantidades de informação, as ferramentas digitais transformaram como vivemos, trabalhamos e aprendemos."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Perguntas para Prática -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    ❓ Perguntas para Prática
+                </h3>
+                <div class="space-y-4">
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            1. What is your favorite device and why?
+                        </p>
+                        <button onclick="toggleAnswer(1)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer1" class="hidden-answer mt-2 text-wine font-bold">
+                            My favorite device is my smartphone because it's portable and versatile (Resposta pessoal)
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            2. How often do you use social media?
+                        </p>
+                        <button onclick="toggleAnswer(2)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer2" class="hidden-answer mt-2 text-wine font-bold">
+                            I use social media daily / several times a day / occasionally (Resposta pessoal)
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            3. Traduza: "Eu preciso baixar um novo aplicativo no meu celular."
+                        </p>
+                        <button onclick="toggleAnswer(3)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer3" class="hidden-answer mt-2 text-wine font-bold">
+                            I need to download a new app on my smartphone.
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            4. What is a browser used for?
+                        </p>
+                        <button onclick="toggleAnswer(4)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer4" class="hidden-answer mt-2 text-wine font-bold">
+                            A browser is used to access websites and navigate the internet.
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            5. Can you imagine a day without the internet? Why or why not?
+                        </p>
+                        <button onclick="toggleAnswer(5)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer5" class="hidden-answer mt-2 text-wine font-bold">
+                            No, it would be very difficult because I rely on it for work, communication, and entertainment (Resposta pessoal)
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pronúncia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    🔊 Dicas de Pronúncia
+                </h3>
+                <div class="space-y-4">
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Internet</strong> /ˈɪntərˌnɛt/ - O "t" final é muitas vezes um "t" suave ou quase mudo no inglês americano.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Smartphone</strong> /ˈsmɑːrtˌfoʊn/ - O "a" tem som de "ar" e o "o" é um ditongo.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Download</strong> /ˈdaʊnˌloʊd/ - Preste atenção ao "ow" como em "cow" e ao "oa" como em "boat".
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Technology</strong> /tɛkˈnɑːlədʒi/ - O "ch" tem som de "k", e o "gy" tem som de "ji".
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rodapé com Dicas -->
+            <footer class="text-center pt-6 border-t-2 border-wine">
+                <div class="ornament mb-4"></div>
+                <h4 class="font-playfair text-lg font-bold text-wine mb-2">
+                    💡 Dica de Memorização
+                </h4>
+                <p class="font-baskerville text-navy">
+                    Crie um "glossário tecnológico" pessoal. Sempre que encontrar uma nova palavra relacionada a tecnologia, adicione-a ao seu glossário com a tradução e um exemplo de frase. Tente descrever sua rotina digital em inglês, usando o vocabulário aprendido. Assista a vídeos e tutoriais sobre tecnologia em inglês para se familiarizar com o uso das palavras em contexto. Participe de fóruns ou grupos online em inglês sobre seus interesses tecnológicos. Desafie-se a usar apenas o inglês ao navegar em sites ou aplicativos por um período.
+                </p>
+                <div class="ornament mt-4"></div>
+                <div class="mt-6 p-4 bg-gold text-wine rounded-lg">
+                    <h5 class="font-playfair text-lg font-bold mb-2">🎉 Parabéns!</h5>
+                    <p class="font-baskerville">
+                        Você completou todas as 20 aulas do curso de inglês! Continue praticando e expandindo seu vocabulário. O aprendizado é uma jornada contínua!
+                    </p>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Nota de Uso -->
+        <div class="bg-navy text-white p-6 rounded-lg">
+            <h4 class="font-playfair text-lg font-bold mb-2">📋 Como Usar Este Cartão</h4>
+            <ul class="font-baskerville space-y-1">
+                <li>• Clique nos botões "Ver Resposta" para revelar as respostas das perguntas</li>
+                <li>• Clique em "Ver Tradução" para mostrar a tradução do texto</li>
+                <li>• Passe o mouse sobre os cartões de dispositivos e software para ver os efeitos visuais</li>
+                <li>• Use o Tech Center, Digital Hub e Innovation Lab para contextualizar o aprendizado</li>
+                <li>• Pratique o diálogo sobre tecnologia em voz alta</li>
+                <li>• Aplique o vocabulário tecnológico em suas atividades digitais diárias</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(questionNumber) {
+            const answer = document.getElementById('answer' + questionNumber);
+            answer.classList.toggle('hidden-answer');
+            answer.classList.toggle('show-answer');
+        }
+        
+        function toggleTranslation() {
+            const translation = document.getElementById('translation');
+            translation.classList.toggle('hidden-answer');
+            translation.classList.toggle('show-answer');
+        }
+    </script>
+</body>
+</html>
+

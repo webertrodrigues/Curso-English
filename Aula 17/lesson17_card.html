@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão de Inglês - Aula 17: Animais e Pets</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --wine: #722F37;
+            --cream: #F5F1E8;
+            --navy: #2C3E50;
+            --gold: #D4AF37;
+            --dark-wine: #5A252A;
+            --light-gold: #F4E4BC;
+            --rose: #E8B4B8;
+            --sage: #9CAF88;
+            --lavender: #B8A9C9;
+            --coral: #F4A261;
+            --teal: #2A9D8F;
+            --mint: #A8E6CF;
+            --peach: #FFB3BA;
+            --blue: #4169E1;
+            --red: #DC143C;
+            --yellow: #FFD700;
+            --purple: #8A2BE2;
+            --cyan: #00CED1;
+            --green: #228B22;
+            --orange: #FF8C00;
+            --lime: #32CD32;
+            --pink: #FF69B4;
+            --forest-green: #228B22;
+            --safari-brown: #8B4513;
+            --farm-green: #6B8E23;
+        }
+        
+        .font-baskerville { font-family: 'Libre Baskerville', serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        
+        .vintage-card {
+            background: linear-gradient(135deg, var(--cream) 0%, #F8F5F0 100%);
+            border: 3px solid var(--wine);
+            box-shadow: 
+                0 8px 32px rgba(114, 47, 55, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+        
+        .text-wine { color: var(--wine); }
+        .text-navy { color: var(--navy); }
+        .text-gold { color: var(--gold); }
+        .bg-wine { background-color: var(--wine); }
+        .bg-navy { background-color: var(--navy); }
+        .bg-gold { background-color: var(--gold); }
+        .bg-light-gold { background-color: var(--light-gold); }
+        .bg-mint { background-color: var(--mint); }
+        .bg-peach { background-color: var(--peach); }
+        
+        .vintage-button {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-wine) 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .vintage-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(114, 47, 55, 0.3);
+        }
+        
+        .pronunciation {
+            background: linear-gradient(135deg, var(--light-gold) 0%, var(--cream) 100%);
+            border-left: 4px solid var(--gold);
+        }
+        
+        .dialogue-box {
+            background: rgba(44, 62, 80, 0.05);
+            border-left: 4px solid var(--navy);
+        }
+        
+        .pet-card {
+            background: linear-gradient(135deg, var(--pink) 0%, #FF1493 100%);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 0.3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            min-height: 120px;
+            border: 2px solid rgba(255, 105, 180, 0.3);
+            position: relative;
+            text-align: center;
+        }
+        
+        .pet-card:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.5);
+            border-color: white;
+        }
+        
+        .wild-card {
+            background: linear-gradient(135deg, var(--safari-brown) 0%, #A0522D 100%);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 0.3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            min-height: 120px;
+            border: 2px solid rgba(139, 69, 19, 0.3);
+            position: relative;
+            text-align: center;
+        }
+        
+        .wild-card:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.5);
+            border-color: white;
+        }
+        
+        .farm-card {
+            background: linear-gradient(135deg, var(--farm-green) 0%, #9ACD32 100%);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 0.3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            min-height: 120px;
+            border: 2px solid rgba(107, 142, 35, 0.3);
+            position: relative;
+            text-align: center;
+        }
+        
+        .farm-card:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 8px 25px rgba(107, 142, 35, 0.5);
+            border-color: white;
+        }
+        
+        .animal-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .item-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        
+        .item-translation {
+            font-style: italic;
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        
+        .pet-shop {
+            background: linear-gradient(135deg, var(--wine) 0%, var(--dark-wine) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pet-shop::before {
+            content: '🐾';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 3rem;
+            opacity: 0.3;
+        }
+        
+        .safari-zone {
+            background: linear-gradient(135deg, var(--safari-brown) 0%, #8B4513 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .safari-layout {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .safari-habitat {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .safari-habitat:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .farm-yard {
+            background: linear-gradient(135deg, var(--farm-green) 0%, #6B8E23 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .farm-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .farm-area {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .farm-area:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .ornament {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 0 auto;
+        }
+        
+        .hidden-answer {
+            display: none;
+        }
+        
+        .show-answer {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .vintage-card {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            .pet-card, .wild-card, .farm-card {
+                min-height: 100px;
+            }
+            
+            .item-name {
+                font-size: 1rem;
+            }
+            
+            .animal-emoji {
+                font-size: 2rem;
+            }
+            
+            .safari-layout, .farm-grid {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen py-8">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <!-- Cartão Principal -->
+        <div class="vintage-card rounded-lg p-8 mb-8">
+            <!-- Cabeçalho -->
+            <header class="text-center mb-8">
+                <div class="ornament mb-4"></div>
+                <h1 class="font-playfair text-4xl font-bold text-wine mb-2">
+                    English Learning Card
+                </h1>
+                <h2 class="font-baskerville text-2xl text-navy mb-4">
+                    Aula 17: Animais e Pets
+                </h2>
+                <div class="ornament"></div>
+            </header>
+
+            <!-- Frase do Dia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    ✨ Frase do Dia
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <p class="font-baskerville text-lg text-navy text-center italic">
+                        "Do you have any pets?"
+                    </p>
+                    <p class="font-baskerville text-base text-gray-600 text-center mt-2">
+                        "Você tem algum animal de estimação?"
+                    </p>
+                </div>
+            </section>
+
+            <!-- Pet Shop -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🐾 Pet Shop
+                </h3>
+                <div class="pet-shop">
+                    <div class="text-center mb-4">
+                        <h4 class="font-playfair text-2xl font-bold mb-2">Pet Paradise</h4>
+                        <p class="font-baskerville text-lg opacity-90">Sua loja de animais de estimação favorita</p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-4 text-center">
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <span class="text-3xl block mb-2">🏠</span>
+                            <p class="font-baskerville">Pet Care</p>
+                            <p class="text-sm opacity-80">Cuidados com Pets</p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <span class="text-3xl block mb-2">🥘</span>
+                            <p class="font-baskerville">Pet Food</p>
+                            <p class="text-sm opacity-80">Comida para Pets</p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <span class="text-3xl block mb-2">🎾</span>
+                            <p class="font-baskerville">Pet Toys</p>
+                            <p class="text-sm opacity-80">Brinquedos para Pets</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Safari Zone -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🦁 Safari Zone
+                </h3>
+                <div class="safari-zone">
+                    <h4 class="font-playfair text-xl font-bold mb-4">Wildlife Safari</h4>
+                    <div class="safari-layout">
+                        <div class="safari-habitat">
+                            <span class="text-2xl block mb-2">🌍</span>
+                            <p class="font-bold">African Savanna</p>
+                            <p class="text-sm opacity-80">Lions, Elephants, Zebras</p>
+                        </div>
+                        <div class="safari-habitat">
+                            <span class="text-2xl block mb-2">🌲</span>
+                            <p class="font-bold">Forest</p>
+                            <p class="text-sm opacity-80">Bears, Wolves, Monkeys</p>
+                        </div>
+                        <div class="safari-habitat">
+                            <span class="text-2xl block mb-2">🏔️</span>
+                            <p class="font-bold">Mountains</p>
+                            <p class="text-sm opacity-80">Tigers, Snow Leopards</p>
+                        </div>
+                        <div class="safari-habitat">
+                            <span class="text-2xl block mb-2">🌿</span>
+                            <p class="font-bold">Jungle</p>
+                            <p class="text-sm opacity-80">Giraffes, Parrots</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Farm Yard -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🚜 Farm Yard
+                </h3>
+                <div class="farm-yard">
+                    <h4 class="font-playfair text-xl font-bold mb-4">Happy Farm</h4>
+                    <div class="farm-grid">
+                        <div class="farm-area">
+                            <span class="text-2xl block mb-2">🏡</span>
+                            <p class="font-bold">Barn</p>
+                            <p class="text-sm opacity-80">Estábulo</p>
+                        </div>
+                        <div class="farm-area">
+                            <span class="text-2xl block mb-2">🌾</span>
+                            <p class="font-bold">Field</p>
+                            <p class="text-sm opacity-80">Campo</p>
+                        </div>
+                        <div class="farm-area">
+                            <span class="text-2xl block mb-2">🏞️</span>
+                            <p class="font-bold">Pasture</p>
+                            <p class="text-sm opacity-80">Pasto</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Animais Domésticos -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🏠 Animais Domésticos
+                </h3>
+                
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
+                    <div class="pet-card">
+                        <span class="animal-emoji">🐕</span>
+                        <div class="item-name">Dog</div>
+                        <div class="item-translation">Cachorro</div>
+                    </div>
+                    
+                    <div class="pet-card">
+                        <span class="animal-emoji">🐱</span>
+                        <div class="item-name">Cat</div>
+                        <div class="item-translation">Gato</div>
+                    </div>
+                    
+                    <div class="pet-card">
+                        <span class="animal-emoji">🐦</span>
+                        <div class="item-name">Bird</div>
+                        <div class="item-translation">Pássaro</div>
+                    </div>
+                    
+                    <div class="pet-card">
+                        <span class="animal-emoji">🐠</span>
+                        <div class="item-name">Fish</div>
+                        <div class="item-translation">Peixe</div>
+                    </div>
+                    
+                    <div class="pet-card">
+                        <span class="animal-emoji">🐹</span>
+                        <div class="item-name">Hamster</div>
+                        <div class="item-translation">Hamster</div>
+                    </div>
+                    
+                    <div class="pet-card">
+                        <span class="animal-emoji">🐰</span>
+                        <div class="item-name">Rabbit</div>
+                        <div class="item-translation">Coelho</div>
+                    </div>
+                    
+                    <div class="pet-card">
+                        <span class="animal-emoji">🐢</span>
+                        <div class="item-name">Turtle</div>
+                        <div class="item-translation">Tartaruga</div>
+                    </div>
+                    
+                    <div class="pet-card">
+                        <span class="animal-emoji">🐹</span>
+                        <div class="item-name">Guinea Pig</div>
+                        <div class="item-translation">Porquinho-da-índia</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Animais Selvagens -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🌍 Animais Selvagens
+                </h3>
+                
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
+                    <div class="wild-card">
+                        <span class="animal-emoji">🦁</span>
+                        <div class="item-name">Lion</div>
+                        <div class="item-translation">Leão</div>
+                    </div>
+                    
+                    <div class="wild-card">
+                        <span class="animal-emoji">🐘</span>
+                        <div class="item-name">Elephant</div>
+                        <div class="item-translation">Elefante</div>
+                    </div>
+                    
+                    <div class="wild-card">
+                        <span class="animal-emoji">🐒</span>
+                        <div class="item-name">Monkey</div>
+                        <div class="item-translation">Macaco</div>
+                    </div>
+                    
+                    <div class="wild-card">
+                        <span class="animal-emoji">🦒</span>
+                        <div class="item-name">Giraffe</div>
+                        <div class="item-translation">Girafa</div>
+                    </div>
+                    
+                    <div class="wild-card">
+                        <span class="animal-emoji">🦓</span>
+                        <div class="item-name">Zebra</div>
+                        <div class="item-translation">Zebra</div>
+                    </div>
+                    
+                    <div class="wild-card">
+                        <span class="animal-emoji">🐅</span>
+                        <div class="item-name">Tiger</div>
+                        <div class="item-translation">Tigre</div>
+                    </div>
+                    
+                    <div class="wild-card">
+                        <span class="animal-emoji">🐻</span>
+                        <div class="item-name">Bear</div>
+                        <div class="item-translation">Urso</div>
+                    </div>
+                    
+                    <div class="wild-card">
+                        <span class="animal-emoji">🐺</span>
+                        <div class="item-name">Wolf</div>
+                        <div class="item-translation">Lobo</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Animais de Fazenda -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🚜 Animais de Fazenda
+                </h3>
+                
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
+                    <div class="farm-card">
+                        <span class="animal-emoji">🐄</span>
+                        <div class="item-name">Cow</div>
+                        <div class="item-translation">Vaca</div>
+                    </div>
+                    
+                    <div class="farm-card">
+                        <span class="animal-emoji">🐷</span>
+                        <div class="item-name">Pig</div>
+                        <div class="item-translation">Porco</div>
+                    </div>
+                    
+                    <div class="farm-card">
+                        <span class="animal-emoji">🐔</span>
+                        <div class="item-name">Chicken</div>
+                        <div class="item-translation">Galinha</div>
+                    </div>
+                    
+                    <div class="farm-card">
+                        <span class="animal-emoji">🐴</span>
+                        <div class="item-name">Horse</div>
+                        <div class="item-translation">Cavalo</div>
+                    </div>
+                    
+                    <div class="farm-card">
+                        <span class="animal-emoji">🐑</span>
+                        <div class="item-name">Sheep</div>
+                        <div class="item-translation">Ovelha</div>
+                    </div>
+                    
+                    <div class="farm-card">
+                        <span class="animal-emoji">🐐</span>
+                        <div class="item-name">Goat</div>
+                        <div class="item-translation">Cabra</div>
+                    </div>
+                    
+                    <div class="farm-card">
+                        <span class="animal-emoji">🦆</span>
+                        <div class="item-name">Duck</div>
+                        <div class="item-translation">Pato</div>
+                    </div>
+                    
+                    <div class="farm-card">
+                        <span class="animal-emoji">🫏</span>
+                        <div class="item-name">Donkey</div>
+                        <div class="item-translation">Burro</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Diálogo -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    💬 Sobre Animais de Estimação
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend A:</strong> Hey, Sarah! I saw your new puppy on Instagram. He's so cute!
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Ei, Sarah! Vi seu novo filhote no Instagram. Ele é tão fofo!)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend B:</strong> Oh, thank you! His name is Buddy. He's a golden retriever.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Ah, obrigada! O nome dele é Buddy. Ele é um golden retriever.)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend A:</strong> Golden retrievers are lovely dogs. How old is he?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Golden retrievers são cães adoráveis. Quantos anos ele tem?)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend B:</strong> He's just three months old. He's very playful and energetic.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Ele tem apenas três meses. É muito brincalhão e energético.)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend A:</strong> Do you have any other pets?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Você tem outros animais de estimação?)
+                        </p>
+                    </div>
+                    <div>
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend B:</strong> Yes, I also have a cat named Luna. She's a bit shy, but very affectionate.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Sim, também tenho uma gata chamada Luna. Ela é um pouco tímida, mas muito carinhosa.)
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Texto para Tradução -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    📝 Texto para Tradução
+                </h3>
+                <div class="bg-light-gold p-6 rounded-lg">
+                    <p class="font-baskerville text-navy text-lg mb-4">
+                        "Animals play a significant role in our lives, whether as beloved pets or as part of the natural world. Dogs and cats are the most common companions, offering loyalty and comfort. Wild animals, like lions and elephants, fascinate us with their power and beauty in their natural habitats. Farm animals, such as cows and chickens, are essential for food production."
+                    </p>
+                    <button onclick="toggleTranslation()" class="vintage-button text-white px-4 py-2 rounded font-baskerville">
+                        Ver Tradução
+                    </button>
+                    <div id="translation" class="hidden-answer mt-4 p-4 bg-white rounded border-l-4 border-wine">
+                        <p class="font-baskerville text-navy">
+                            "Os animais desempenham um papel significativo em nossas vidas, seja como animais de estimação queridos ou como parte do mundo natural. Cães e gatos são os companheiros mais comuns, oferecendo lealdade e conforto. Animais selvagens, como leões e elefantes, nos fascinam com seu poder e beleza em seus habitats naturais. Animais de fazenda, como vacas e galinhas, são essenciais para a produção de alimentos."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Perguntas para Prática -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    ❓ Perguntas para Prática
+                </h3>
+                <div class="space-y-4">
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            1. What is your favorite animal and why?
+                        </p>
+                        <button onclick="toggleAnswer(1)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer1" class="hidden-answer mt-2 text-wine font-bold">
+                            My favorite animal is a dog because they are loyal and friendly (Resposta pessoal)
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            2. Do you have any pets? If so, what kind?
+                        </p>
+                        <button onclick="toggleAnswer(2)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer2" class="hidden-answer mt-2 text-wine font-bold">
+                            Yes, I have a cat / No, I don't have any pets (Resposta pessoal)
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            3. How do you say "leão" in English?
+                        </p>
+                        <button onclick="toggleAnswer(3)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer3" class="hidden-answer mt-2 text-wine font-bold">
+                            Lion
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            4. Traduza: "Eu tenho um gato e um cachorro."
+                        </p>
+                        <button onclick="toggleAnswer(4)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer4" class="hidden-answer mt-2 text-wine font-bold">
+                            I have a cat and a dog.
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            5. What are some common farm animals?
+                        </p>
+                        <button onclick="toggleAnswer(5)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer5" class="hidden-answer mt-2 text-wine font-bold">
+                            Cows, pigs, chickens, horses, sheep, goats
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pronúncia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    🔊 Dicas de Pronúncia
+                </h3>
+                <div class="space-y-4">
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Dog</strong> /dɒɡ/ - O som do 'o' é curto, como em 'hot'.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Cat</strong> /kæt/ - O som do 'a' é aberto, como em 'apple'.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Sheep</strong> /ʃiːp/ - O 'ee' tem som de 'i' longo, como em 'tree'.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Elephant</strong> /ˈɛlɪfənt/ - Enfatize a primeira sílaba 'EL'.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rodapé com Dicas -->
+            <footer class="text-center pt-6 border-t-2 border-wine">
+                <div class="ornament mb-4"></div>
+                <h4 class="font-playfair text-lg font-bold text-wine mb-2">
+                    💡 Dica de Memorização
+                </h4>
+                <p class="font-baskerville text-navy">
+                    Crie flashcards com imagens de animais e seus nomes em inglês. Visite um zoológico ou fazenda e tente identificar os animais em inglês. Assista a documentários sobre a natureza em inglês com legendas. Cante músicas infantis sobre animais em inglês. Descreva seus animais de estimação ou animais favoritos usando o vocabulário aprendido.
+                </p>
+                <div class="ornament mt-4"></div>
+            </footer>
+        </div>
+
+        <!-- Nota de Uso -->
+        <div class="bg-navy text-white p-6 rounded-lg">
+            <h4 class="font-playfair text-lg font-bold mb-2">📋 Como Usar Este Cartão</h4>
+            <ul class="font-baskerville space-y-1">
+                <li>• Clique nos botões "Ver Resposta" para revelar as respostas das perguntas</li>
+                <li>• Clique em "Ver Tradução" para mostrar a tradução do texto</li>
+                <li>• Passe o mouse sobre os cartões de animais para ver os efeitos visuais</li>
+                <li>• Use o Pet Shop, Safari Zone e Farm Yard para contextualizar os animais</li>
+                <li>• Pratique o diálogo sobre pets em voz alta</li>
+                <li>• Descreva animais que você conhece usando o vocabulário aprendido</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(questionNumber) {
+            const answer = document.getElementById('answer' + questionNumber);
+            answer.classList.toggle('hidden-answer');
+            answer.classList.toggle('show-answer');
+        }
+        
+        function toggleTranslation() {
+            const translation = document.getElementById('translation');
+            translation.classList.toggle('hidden-answer');
+            translation.classList.toggle('show-answer');
+        }
+    </script>
+</body>
+</html>
+
