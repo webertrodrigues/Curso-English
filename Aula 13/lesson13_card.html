@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão de Inglês - Aula 13: Transporte e Veículos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --wine: #722F37;
+            --cream: #F5F1E8;
+            --navy: #2C3E50;
+            --gold: #D4AF37;
+            --dark-wine: #5A252A;
+            --light-gold: #F4E4BC;
+            --rose: #E8B4B8;
+            --sage: #9CAF88;
+            --lavender: #B8A9C9;
+            --coral: #F4A261;
+            --teal: #2A9D8F;
+            --mint: #A8E6CF;
+            --peach: #FFB3BA;
+            --blue: #4169E1;
+            --red: #DC143C;
+            --yellow: #FFD700;
+            --purple: #8A2BE2;
+            --cyan: #00CED1;
+        }
+        
+        .font-baskerville { font-family: 'Libre Baskerville', serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        
+        .vintage-card {
+            background: linear-gradient(135deg, var(--cream) 0%, #F8F5F0 100%);
+            border: 3px solid var(--wine);
+            box-shadow: 
+                0 8px 32px rgba(114, 47, 55, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+        
+        .text-wine { color: var(--wine); }
+        .text-navy { color: var(--navy); }
+        .text-gold { color: var(--gold); }
+        .bg-wine { background-color: var(--wine); }
+        .bg-navy { background-color: var(--navy); }
+        .bg-gold { background-color: var(--gold); }
+        .bg-light-gold { background-color: var(--light-gold); }
+        .bg-mint { background-color: var(--mint); }
+        .bg-peach { background-color: var(--peach); }
+        
+        .vintage-button {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-wine) 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .vintage-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(114, 47, 55, 0.3);
+        }
+        
+        .pronunciation {
+            background: linear-gradient(135deg, var(--light-gold) 0%, var(--cream) 100%);
+            border-left: 4px solid var(--gold);
+        }
+        
+        .dialogue-box {
+            background: rgba(44, 62, 80, 0.05);
+            border-left: 4px solid var(--navy);
+        }
+        
+        .transport-card {
+            background: linear-gradient(135deg, var(--blue) 0%, #6495ED 100%);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 0.3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            min-height: 120px;
+            border: 2px solid rgba(65, 105, 225, 0.3);
+            position: relative;
+            text-align: center;
+        }
+        
+        .transport-card:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 8px 25px rgba(65, 105, 225, 0.5);
+            border-color: white;
+        }
+        
+        .action-card {
+            background: linear-gradient(135deg, var(--red) 0%, #FF6347 100%);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 0.3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            min-height: 120px;
+            border: 2px solid rgba(220, 20, 60, 0.3);
+            position: relative;
+            text-align: center;
+        }
+        
+        .action-card:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 8px 25px rgba(220, 20, 60, 0.5);
+            border-color: white;
+        }
+        
+        .category-section {
+            background: linear-gradient(135deg, var(--purple) 0%, #DA70D6 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            border: 3px solid rgba(138, 43, 226, 0.3);
+        }
+        
+        .category-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.4);
+            border-color: white;
+        }
+        
+        .transport-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .item-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        
+        .item-translation {
+            font-style: italic;
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        
+        .transport-showcase {
+            background: linear-gradient(135deg, var(--wine) 0%, var(--dark-wine) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .transport-showcase::before {
+            content: '🚗';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 3rem;
+            opacity: 0.3;
+        }
+        
+        .journey-planner {
+            background: linear-gradient(135deg, var(--cyan) 0%, #40E0D0 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .route-layout {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .route-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .route-box:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .ornament {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 0 auto;
+        }
+        
+        .hidden-answer {
+            display: none;
+        }
+        
+        .show-answer {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .vintage-card {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            .transport-card, .action-card {
+                min-height: 100px;
+            }
+            
+            .item-name {
+                font-size: 1rem;
+            }
+            
+            .transport-emoji {
+                font-size: 2rem;
+            }
+            
+            .route-layout {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen py-8">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <!-- Cartão Principal -->
+        <div class="vintage-card rounded-lg p-8 mb-8">
+            <!-- Cabeçalho -->
+            <header class="text-center mb-8">
+                <div class="ornament mb-4"></div>
+                <h1 class="font-playfair text-4xl font-bold text-wine mb-2">
+                    English Learning Card
+                </h1>
+                <h2 class="font-baskerville text-2xl text-navy mb-4">
+                    Aula 13: Transporte e Veículos
+                </h2>
+                <div class="ornament"></div>
+            </header>
+
+            <!-- Frase do Dia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    ✨ Frase do Dia
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <p class="font-baskerville text-lg text-navy text-center italic">
+                        "How do you get to work?"
+                    </p>
+                    <p class="font-baskerville text-base text-gray-600 text-center mt-2">
+                        "Como você vai para o trabalho?"
+                    </p>
+                </div>
+            </section>
+
+            <!-- Transport Showcase -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🚗 Central de Transportes
+                </h3>
+                <div class="transport-showcase">
+                    <div class="text-center mb-4">
+                        <h4 class="font-playfair text-2xl font-bold mb-2">Travel & Transport Hub</h4>
+                        <p class="font-baskerville text-lg opacity-90">Sua experiência de mobilidade em inglês</p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-4 text-center">
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <span class="text-3xl block mb-2">🚗</span>
+                            <p class="font-baskerville">Land Transport</p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <span class="text-3xl block mb-2">✈️</span>
+                            <p class="font-baskerville">Air Transport</p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <span class="text-3xl block mb-2">🚢</span>
+                            <p class="font-baskerville">Water Transport</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Planejador de Viagem -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🗺️ Planejador de Viagem
+                </h3>
+                <div class="journey-planner">
+                    <h4 class="font-playfair text-xl font-bold mb-4">Journey Planner</h4>
+                    <div class="route-layout">
+                        <div class="route-box">
+                            <span class="text-2xl block mb-2">🏠</span>
+                            <p class="font-bold">Home</p>
+                            <p class="text-sm opacity-80">Casa</p>
+                        </div>
+                        <div class="route-box">
+                            <span class="text-2xl block mb-2">🚌</span>
+                            <p class="font-bold">Bus Stop</p>
+                            <p class="text-sm opacity-80">Ponto de Ônibus</p>
+                        </div>
+                        <div class="route-box">
+                            <span class="text-2xl block mb-2">🏢</span>
+                            <p class="font-bold">Office</p>
+                            <p class="text-sm opacity-80">Escritório</p>
+                        </div>
+                        <div class="route-box">
+                            <span class="text-2xl block mb-2">🚇</span>
+                            <p class="font-bold">Subway</p>
+                            <p class="text-sm opacity-80">Metrô</p>
+                        </div>
+                        <div class="route-box">
+                            <span class="text-2xl block mb-2">✈️</span>
+                            <p class="font-bold">Airport</p>
+                            <p class="text-sm opacity-80">Aeroporto</p>
+                        </div>
+                        <div class="route-box">
+                            <span class="text-2xl block mb-2">🚲</span>
+                            <p class="font-bold">Bike Lane</p>
+                            <p class="text-sm opacity-80">Ciclovia</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Categorias de Transporte -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🚗 Categorias de Transporte
+                </h3>
+                
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="category-section">
+                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">🚗 Transporte Terrestre</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Car</span>
+                                <span class="opacity-80">Carro</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Bus</span>
+                                <span class="opacity-80">Ônibus</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Train</span>
+                                <span class="opacity-80">Trem</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Bicycle</span>
+                                <span class="opacity-80">Bicicleta</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-section">
+                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">✈️ Transporte Aéreo</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Airplane</span>
+                                <span class="opacity-80">Avião</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Helicopter</span>
+                                <span class="opacity-80">Helicóptero</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Jet</span>
+                                <span class="opacity-80">Jato</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Drone</span>
+                                <span class="opacity-80">Drone</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-section">
+                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">🚢 Transporte Aquático</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Boat</span>
+                                <span class="opacity-80">Barco</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Ship</span>
+                                <span class="opacity-80">Navio</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Ferry</span>
+                                <span class="opacity-80">Balsa</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Yacht</span>
+                                <span class="opacity-80">Iate</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-section">
+                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">🚇 Transporte Público</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Subway</span>
+                                <span class="opacity-80">Metrô</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Taxi</span>
+                                <span class="opacity-80">Táxi</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Tram</span>
+                                <span class="opacity-80">Bonde</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Uber</span>
+                                <span class="opacity-80">Uber</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Meios de Transporte -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🚗 Meios de Transporte
+                </h3>
+                
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
+                    <div class="transport-card">
+                        <span class="transport-emoji">🚗</span>
+                        <div class="item-name">Car</div>
+                        <div class="item-translation">Carro</div>
+                    </div>
+                    
+                    <div class="transport-card">
+                        <span class="transport-emoji">🚌</span>
+                        <div class="item-name">Bus</div>
+                        <div class="item-translation">Ônibus</div>
+                    </div>
+                    
+                    <div class="transport-card">
+                        <span class="transport-emoji">🚇</span>
+                        <div class="item-name">Subway</div>
+                        <div class="item-translation">Metrô</div>
+                    </div>
+                    
+                    <div class="transport-card">
+                        <span class="transport-emoji">🚲</span>
+                        <div class="item-name">Bicycle</div>
+                        <div class="item-translation">Bicicleta</div>
+                    </div>
+                    
+                    <div class="transport-card">
+                        <span class="transport-emoji">✈️</span>
+                        <div class="item-name">Airplane</div>
+                        <div class="item-translation">Avião</div>
+                    </div>
+                    
+                    <div class="transport-card">
+                        <span class="transport-emoji">🚢</span>
+                        <div class="item-name">Ship</div>
+                        <div class="item-translation">Navio</div>
+                    </div>
+                    
+                    <div class="transport-card">
+                        <span class="transport-emoji">🚕</span>
+                        <div class="item-name">Taxi</div>
+                        <div class="item-translation">Táxi</div>
+                    </div>
+                    
+                    <div class="transport-card">
+                        <span class="transport-emoji">🏍️</span>
+                        <div class="item-name">Motorcycle</div>
+                        <div class="item-translation">Moto</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Verbos de Movimento -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🏃 Verbos de Movimento
+                </h3>
+                
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
+                    <div class="action-card">
+                        <span class="transport-emoji">🚗</span>
+                        <div class="item-name">Drive</div>
+                        <div class="item-translation">Dirigir</div>
+                    </div>
+                    
+                    <div class="action-card">
+                        <span class="transport-emoji">🚲</span>
+                        <div class="item-name">Ride</div>
+                        <div class="item-translation">Andar</div>
+                    </div>
+                    
+                    <div class="action-card">
+                        <span class="transport-emoji">✈️</span>
+                        <div class="item-name">Fly</div>
+                        <div class="item-translation">Voar</div>
+                    </div>
+                    
+                    <div class="action-card">
+                        <span class="transport-emoji">🚶</span>
+                        <div class="item-name">Walk</div>
+                        <div class="item-translation">Caminhar</div>
+                    </div>
+                    
+                    <div class="action-card">
+                        <span class="transport-emoji">🚌</span>
+                        <div class="item-name">Take</div>
+                        <div class="item-translation">Pegar</div>
+                    </div>
+                    
+                    <div class="action-card">
+                        <span class="transport-emoji">⛵</span>
+                        <div class="item-name">Sail</div>
+                        <div class="item-translation">Navegar</div>
+                    </div>
+                    
+                    <div class="action-card">
+                        <span class="transport-emoji">🏃</span>
+                        <div class="item-name">Run</div>
+                        <div class="item-translation">Correr</div>
+                    </div>
+                    
+                    <div class="action-card">
+                        <span class="transport-emoji">🚇</span>
+                        <div class="item-name">Travel</div>
+                        <div class="item-translation">Viajar</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Diálogo -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    💬 Planejando uma Viagem
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend A:</strong> How are you planning to get to the airport?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Como você está planejando chegar ao aeroporto?)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend B:</strong> I think I'll take a taxi. It's faster than the bus.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Acho que vou pegar um táxi. É mais rápido que o ônibus.)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend A:</strong> That's a good idea. What time is your flight?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Essa é uma boa ideia. Que horas é seu voo?)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend B:</strong> My flight is at 7 AM, so I need to leave home by 4:30 AM.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Meu voo é às 7h, então preciso sair de casa às 4h30.)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend A:</strong> Wow, that's early! Are you flying directly to London?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Nossa, que cedo! Você vai voar direto para Londres?)
+                        </p>
+                    </div>
+                    <div>
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend B:</strong> Yes, I am. It's a long flight, about 10 hours.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Sim, vou. É um voo longo, cerca de 10 horas.)
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Texto para Tradução -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    📝 Texto para Tradução
+                </h3>
+                <div class="bg-light-gold p-6 rounded-lg">
+                    <p class="font-baskerville text-navy text-lg mb-4">
+                        "My daily commute is usually by bus, but sometimes I ride my bike when the weather is nice. My friend prefers to drive his car, but he often gets stuck in traffic jams during rush hour. For long distances, I always choose to fly by airplane. It's the fastest way to travel. Last summer, I took a train trip across Europe, and it was an amazing experience."
+                    </p>
+                    <button onclick="toggleTranslation()" class="vintage-button text-white px-4 py-2 rounded font-baskerville">
+                        Ver Tradução
+                    </button>
+                    <div id="translation" class="hidden-answer mt-4 p-4 bg-white rounded border-l-4 border-wine">
+                        <p class="font-baskerville text-navy">
+                            "Meu trajeto diário é geralmente de ônibus, mas às vezes ando de bicicleta quando o tempo está bom. Meu amigo prefere dirigir seu carro, mas ele frequentemente fica preso em engarrafamentos durante a hora do rush. Para longas distâncias, sempre escolho voar de avião. É a maneira mais rápida de viajar. No verão passado, fiz uma viagem de trem pela Europa, e foi uma experiência incrível."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Perguntas para Prática -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    ❓ Perguntas para Prática
+                </h3>
+                <div class="space-y-4">
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            1. What is your favorite way to travel?
+                        </p>
+                        <button onclick="toggleAnswer(1)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer1" class="hidden-answer mt-2 text-wine font-bold">
+                            By car / By plane / By train (Depende da preferência pessoal)
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            2. How do you say "bicicleta" in English?
+                        </p>
+                        <button onclick="toggleAnswer(2)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer2" class="hidden-answer mt-2 text-wine font-bold">
+                            Bicycle or Bike
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            3. What do you take to go to work if you don't drive?
+                        </p>
+                        <button onclick="toggleAnswer(3)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer3" class="hidden-answer mt-2 text-wine font-bold">
+                            Bus, subway, train, taxi, or bike
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            4. Traduza: "Eu vou de carro para o trabalho todos os dias."
+                        </p>
+                        <button onclick="toggleAnswer(4)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer4" class="hidden-answer mt-2 text-wine font-bold">
+                            I go to work by car every day.
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            5. What do you call a large vehicle used to transport goods?
+                        </p>
+                        <button onclick="toggleAnswer(5)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer5" class="hidden-answer mt-2 text-wine font-bold">
+                            Truck (Caminhão)
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pronúncia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    🔊 Dicas de Pronúncia
+                </h3>
+                <div class="space-y-4">
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Vehicle</strong> /ˈviːɪkəl/ - Note que o 'h' é mudo.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Bicycle</strong> /ˈbaɪsɪkl/ - O 'c' tem som de 's'.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Subway</strong> /ˈsʌbweɪ/ - Enfatize a primeira sílaba.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Motorcycle</strong> /ˈmoʊtərsaɪkl/ - Três sílabas principais.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rodapé com Dicas -->
+            <footer class="text-center pt-6 border-t-2 border-wine">
+                <div class="ornament mb-4"></div>
+                <h4 class="font-playfair text-lg font-bold text-wine mb-2">
+                    💡 Dica de Memorização
+                </h4>
+                <p class="font-baskerville text-navy">
+                    Pense nos meios de transporte que você usa ou vê no seu dia a dia e tente nomeá-los em inglês. Crie frases simples sobre como você se desloca para diferentes lugares. Assista a vídeos ou documentários sobre viagens e transporte em inglês para contextualizar o vocabulário. Use aplicativos de mapas em inglês para se familiarizar com as direções.
+                </p>
+                <div class="ornament mt-4"></div>
+            </footer>
+        </div>
+
+        <!-- Nota de Uso -->
+        <div class="bg-navy text-white p-6 rounded-lg">
+            <h4 class="font-playfair text-lg font-bold mb-2">📋 Como Usar Este Cartão</h4>
+            <ul class="font-baskerville space-y-1">
+                <li>• Clique nos botões "Ver Resposta" para revelar as respostas das perguntas</li>
+                <li>• Clique em "Ver Tradução" para mostrar a tradução do texto</li>
+                <li>• Passe o mouse sobre os cartões de transporte para ver os efeitos visuais</li>
+                <li>• Use o planejador de viagem para visualizar diferentes rotas</li>
+                <li>• Pratique o diálogo sobre planejamento de viagem em voz alta</li>
+                <li>• Descreva seu trajeto diário usando o vocabulário aprendido</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(questionNumber) {
+            const answer = document.getElementById('answer' + questionNumber);
+            answer.classList.toggle('hidden-answer');
+            answer.classList.toggle('show-answer');
+        }
+        
+        function toggleTranslation() {
+            const translation = document.getElementById('translation');
+            translation.classList.toggle('hidden-answer');
+            translation.classList.toggle('show-answer');
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão de Inglês - Aula 14: Profissões e Trabalho</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --wine: #722F37;
+            --cream: #F5F1E8;
+            --navy: #2C3E50;
+            --gold: #D4AF37;
+            --dark-wine: #5A252A;
+            --light-gold: #F4E4BC;
+            --rose: #E8B4B8;
+            --sage: #9CAF88;
+            --lavender: #B8A9C9;
+            --coral: #F4A261;
+            --teal: #2A9D8F;
+            --mint: #A8E6CF;
+            --peach: #FFB3BA;
+            --blue: #4169E1;
+            --red: #DC143C;
+            --yellow: #FFD700;
+            --purple: #8A2BE2;
+            --cyan: #00CED1;
+            --green: #228B22;
+            --orange: #FF8C00;
+        }
+        
+        .font-baskerville { font-family: 'Libre Baskerville', serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        
+        .vintage-card {
+            background: linear-gradient(135deg, var(--cream) 0%, #F8F5F0 100%);
+            border: 3px solid var(--wine);
+            box-shadow: 
+                0 8px 32px rgba(114, 47, 55, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+        
+        .text-wine { color: var(--wine); }
+        .text-navy { color: var(--navy); }
+        .text-gold { color: var(--gold); }
+        .bg-wine { background-color: var(--wine); }
+        .bg-navy { background-color: var(--navy); }
+        .bg-gold { background-color: var(--gold); }
+        .bg-light-gold { background-color: var(--light-gold); }
+        .bg-mint { background-color: var(--mint); }
+        .bg-peach { background-color: var(--peach); }
+        
+        .vintage-button {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-wine) 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .vintage-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(114, 47, 55, 0.3);
+        }
+        
+        .pronunciation {
+            background: linear-gradient(135deg, var(--light-gold) 0%, var(--cream) 100%);
+            border-left: 4px solid var(--gold);
+        }
+        
+        .dialogue-box {
+            background: rgba(44, 62, 80, 0.05);
+            border-left: 4px solid var(--navy);
+        }
+        
+        .profession-card {
+            background: linear-gradient(135deg, var(--green) 0%, #32CD32 100%);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 0.3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            min-height: 120px;
+            border: 2px solid rgba(34, 139, 34, 0.3);
+            position: relative;
+            text-align: center;
+        }
+        
+        .profession-card:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 8px 25px rgba(34, 139, 34, 0.5);
+            border-color: white;
+        }
+        
+        .workplace-card {
+            background: linear-gradient(135deg, var(--orange) 0%, #FF6347 100%);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 0.3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            min-height: 120px;
+            border: 2px solid rgba(255, 140, 0, 0.3);
+            position: relative;
+            text-align: center;
+        }
+        
+        .workplace-card:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 8px 25px rgba(255, 140, 0, 0.5);
+            border-color: white;
+        }
+        
+        .category-section {
+            background: linear-gradient(135deg, var(--purple) 0%, #DA70D6 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            border: 3px solid rgba(138, 43, 226, 0.3);
+        }
+        
+        .category-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.4);
+            border-color: white;
+        }
+        
+        .profession-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .item-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        
+        .item-translation {
+            font-style: italic;
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        
+        .career-showcase {
+            background: linear-gradient(135deg, var(--wine) 0%, var(--dark-wine) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .career-showcase::before {
+            content: '👩‍💼';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 3rem;
+            opacity: 0.3;
+        }
+        
+        .office-building {
+            background: linear-gradient(135deg, var(--cyan) 0%, #40E0D0 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .department-layout {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .department-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .department-box:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .ornament {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 0 auto;
+        }
+        
+        .hidden-answer {
+            display: none;
+        }
+        
+        .show-answer {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .vintage-card {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            .profession-card, .workplace-card {
+                min-height: 100px;
+            }
+            
+            .item-name {
+                font-size: 1rem;
+            }
+            
+            .profession-emoji {
+                font-size: 2rem;
+            }
+            
+            .department-layout {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen py-8">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <!-- Cartão Principal -->
+        <div class="vintage-card rounded-lg p-8 mb-8">
+            <!-- Cabeçalho -->
+            <header class="text-center mb-8">
+                <div class="ornament mb-4"></div>
+                <h1 class="font-playfair text-4xl font-bold text-wine mb-2">
+                    English Learning Card
+                </h1>
+                <h2 class="font-baskerville text-2xl text-navy mb-4">
+                    Aula 14: Profissões e Trabalho
+                </h2>
+                <div class="ornament"></div>
+            </header>
+
+            <!-- Frase do Dia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    ✨ Frase do Dia
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <p class="font-baskerville text-lg text-navy text-center italic">
+                        "What do you do for a living?"
+                    </p>
+                    <p class="font-baskerville text-base text-gray-600 text-center mt-2">
+                        "O que você faz da vida?"
+                    </p>
+                </div>
+            </section>
+
+            <!-- Career Showcase -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    👩‍💼 Centro de Carreiras
+                </h3>
+                <div class="career-showcase">
+                    <div class="text-center mb-4">
+                        <h4 class="font-playfair text-2xl font-bold mb-2">Career & Professional Hub</h4>
+                        <p class="font-baskerville text-lg opacity-90">Sua jornada profissional em inglês</p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-4 text-center">
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <span class="text-3xl block mb-2">🏥</span>
+                            <p class="font-baskerville">Healthcare</p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <span class="text-3xl block mb-2">💻</span>
+                            <p class="font-baskerville">Technology</p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <span class="text-3xl block mb-2">🎨</span>
+                            <p class="font-baskerville">Creative Arts</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Edifício de Escritórios -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🏢 Edifício de Escritórios
+                </h3>
+                <div class="office-building">
+                    <h4 class="font-playfair text-xl font-bold mb-4">Professional Building</h4>
+                    <div class="department-layout">
+                        <div class="department-box">
+                            <span class="text-2xl block mb-2">👨‍⚕️</span>
+                            <p class="font-bold">Medical Center</p>
+                            <p class="text-sm opacity-80">Centro Médico</p>
+                        </div>
+                        <div class="department-box">
+                            <span class="text-2xl block mb-2">🏫</span>
+                            <p class="font-bold">Education</p>
+                            <p class="text-sm opacity-80">Educação</p>
+                        </div>
+                        <div class="department-box">
+                            <span class="text-2xl block mb-2">💼</span>
+                            <p class="font-bold">Business</p>
+                            <p class="text-sm opacity-80">Negócios</p>
+                        </div>
+                        <div class="department-box">
+                            <span class="text-2xl block mb-2">⚖️</span>
+                            <p class="font-bold">Legal</p>
+                            <p class="text-sm opacity-80">Jurídico</p>
+                        </div>
+                        <div class="department-box">
+                            <span class="text-2xl block mb-2">🔧</span>
+                            <p class="font-bold">Engineering</p>
+                            <p class="text-sm opacity-80">Engenharia</p>
+                        </div>
+                        <div class="department-box">
+                            <span class="text-2xl block mb-2">🎭</span>
+                            <p class="font-bold">Arts</p>
+                            <p class="text-sm opacity-80">Artes</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Categorias de Profissões -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    👩‍💼 Categorias Profissionais
+                </h3>
+                
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="category-section">
+                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">🏥 Área da Saúde</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Doctor</span>
+                                <span class="opacity-80">Médico(a)</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Nurse</span>
+                                <span class="opacity-80">Enfermeiro(a)</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Dentist</span>
+                                <span class="opacity-80">Dentista</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Pharmacist</span>
+                                <span class="opacity-80">Farmacêutico(a)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-section">
+                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">💻 Tecnologia</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Programmer</span>
+                                <span class="opacity-80">Programador(a)</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Engineer</span>
+                                <span class="opacity-80">Engenheiro(a)</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Designer</span>
+                                <span class="opacity-80">Designer</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Analyst</span>
+                                <span class="opacity-80">Analista</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-section">
+                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">🏫 Educação</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Teacher</span>
+                                <span class="opacity-80">Professor(a)</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Principal</span>
+                                <span class="opacity-80">Diretor(a)</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Student</span>
+                                <span class="opacity-80">Estudante</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Librarian</span>
+                                <span class="opacity-80">Bibliotecário(a)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-section">
+                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">🎨 Artes e Criatividade</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Artist</span>
+                                <span class="opacity-80">Artista</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Writer</span>
+                                <span class="opacity-80">Escritor(a)</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Chef</span>
+                                <span class="opacity-80">Chef</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Musician</span>
+                                <span class="opacity-80">Músico(a)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profissões -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    👩‍💼 Profissões Comuns
+                </h3>
+                
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
+                    <div class="profession-card">
+                        <span class="profession-emoji">👨‍⚕️</span>
+                        <div class="item-name">Doctor</div>
+                        <div class="item-translation">Médico(a)</div>
+                    </div>
+                    
+                    <div class="profession-card">
+                        <span class="profession-emoji">👩‍🏫</span>
+                        <div class="item-name">Teacher</div>
+                        <div class="item-translation">Professor(a)</div>
+                    </div>
+                    
+                    <div class="profession-card">
+                        <span class="profession-emoji">👨‍💻</span>
+                        <div class="item-name">Programmer</div>
+                        <div class="item-translation">Programador(a)</div>
+                    </div>
+                    
+                    <div class="profession-card">
+                        <span class="profession-emoji">👩‍⚖️</span>
+                        <div class="item-name">Lawyer</div>
+                        <div class="item-translation">Advogado(a)</div>
+                    </div>
+                    
+                    <div class="profession-card">
+                        <span class="profession-emoji">👨‍🍳</span>
+                        <div class="item-name">Chef</div>
+                        <div class="item-translation">Chef</div>
+                    </div>
+                    
+                    <div class="profession-card">
+                        <span class="profession-emoji">👩‍⚕️</span>
+                        <div class="item-name">Nurse</div>
+                        <div class="item-translation">Enfermeiro(a)</div>
+                    </div>
+                    
+                    <div class="profession-card">
+                        <span class="profession-emoji">👨‍🔧</span>
+                        <div class="item-name">Engineer</div>
+                        <div class="item-translation">Engenheiro(a)</div>
+                    </div>
+                    
+                    <div class="profession-card">
+                        <span class="profession-emoji">👩‍🎨</span>
+                        <div class="item-name">Artist</div>
+                        <div class="item-translation">Artista</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Locais de Trabalho -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🏢 Locais de Trabalho
+                </h3>
+                
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
+                    <div class="workplace-card">
+                        <span class="profession-emoji">🏥</span>
+                        <div class="item-name">Hospital</div>
+                        <div class="item-translation">Hospital</div>
+                    </div>
+                    
+                    <div class="workplace-card">
+                        <span class="profession-emoji">🏫</span>
+                        <div class="item-name">School</div>
+                        <div class="item-translation">Escola</div>
+                    </div>
+                    
+                    <div class="workplace-card">
+                        <span class="profession-emoji">🏢</span>
+                        <div class="item-name">Office</div>
+                        <div class="item-translation">Escritório</div>
+                    </div>
+                    
+                    <div class="workplace-card">
+                        <span class="profession-emoji">🍽️</span>
+                        <div class="item-name">Restaurant</div>
+                        <div class="item-translation">Restaurante</div>
+                    </div>
+                    
+                    <div class="workplace-card">
+                        <span class="profession-emoji">🏭</span>
+                        <div class="item-name">Factory</div>
+                        <div class="item-translation">Fábrica</div>
+                    </div>
+                    
+                    <div class="workplace-card">
+                        <span class="profession-emoji">🏪</span>
+                        <div class="item-name">Store</div>
+                        <div class="item-translation">Loja</div>
+                    </div>
+                    
+                    <div class="workplace-card">
+                        <span class="profession-emoji">🚧</span>
+                        <div class="item-name">Construction</div>
+                        <div class="item-translation">Construção</div>
+                    </div>
+                    
+                    <div class="workplace-card">
+                        <span class="profession-emoji">🏛️</span>
+                        <div class="item-name">Bank</div>
+                        <div class="item-translation">Banco</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Diálogo -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    💬 Sobre Carreiras
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend A:</strong> Hi, Sarah! How are you?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Oi, Sarah! Como você está?)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend B:</strong> I'm great, Alex! And you? What do you do for a living now?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Estou ótima, Alex! E você? O que você faz da vida agora?)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend A:</strong> I'm a software engineer at a tech company. It's challenging but very rewarding.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Sou engenheiro de software em uma empresa de tecnologia. É desafiador, mas muito gratificante.)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend B:</strong> That sounds interesting! I'm a nurse at the city hospital. I love helping people.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Isso parece interessante! Sou enfermeira no hospital da cidade. Adoro ajudar pessoas.)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend A:</strong> That's wonderful! Do you work long hours?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Isso é maravilhoso! Você trabalha muitas horas?)
+                        </p>
+                    </div>
+                    <div>
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend B:</strong> Sometimes, especially during emergencies. But it's worth it.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Às vezes, especialmente durante emergências. Mas vale a pena.)
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Texto para Tradução -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    📝 Texto para Tradução
+                </h3>
+                <div class="bg-light-gold p-6 rounded-lg">
+                    <p class="font-baskerville text-navy text-lg mb-4">
+                        "My father is a doctor, and he works at a big hospital downtown. My mother is a teacher, and she teaches English at a high school. My brother is a student, and he wants to become an architect. He loves to design buildings. I am a programmer, and I work from home. I enjoy solving problems and creating new applications."
+                    </p>
+                    <button onclick="toggleTranslation()" class="vintage-button text-white px-4 py-2 rounded font-baskerville">
+                        Ver Tradução
+                    </button>
+                    <div id="translation" class="hidden-answer mt-4 p-4 bg-white rounded border-l-4 border-wine">
+                        <p class="font-baskerville text-navy">
+                            "Meu pai é médico e trabalha em um grande hospital no centro da cidade. Minha mãe é professora e ensina inglês em uma escola secundária. Meu irmão é estudante e quer se tornar arquiteto. Ele adora projetar edifícios. Eu sou programador e trabalho de casa. Gosto de resolver problemas e criar novos aplicativos."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Perguntas para Prática -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    ❓ Perguntas para Prática
+                </h3>
+                <div class="space-y-4">
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            1. What is your dream job?
+                        </p>
+                        <button onclick="toggleAnswer(1)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer1" class="hidden-answer mt-2 text-wine font-bold">
+                            Teacher / Doctor / Engineer / Artist (Depende da preferência pessoal)
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            2. How do you say "engenheiro" in English?
+                        </p>
+                        <button onclick="toggleAnswer(2)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer2" class="hidden-answer mt-2 text-wine font-bold">
+                            Engineer
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            3. Where does a doctor usually work?
+                        </p>
+                        <button onclick="toggleAnswer(3)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer3" class="hidden-answer mt-2 text-wine font-bold">
+                            At a hospital or clinic
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            4. Traduza: "Minha mãe é professora e ela ensina inglês."
+                        </p>
+                        <button onclick="toggleAnswer(4)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer4" class="hidden-answer mt-2 text-wine font-bold">
+                            My mother is a teacher and she teaches English.
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            5. What profession involves designing buildings?
+                        </p>
+                        <button onclick="toggleAnswer(5)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer5" class="hidden-answer mt-2 text-wine font-bold">
+                            Architect (Arquiteto)
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pronúncia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    🔊 Dicas de Pronúncia
+                </h3>
+                <div class="space-y-4">
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Engineer</strong> /ˌɛndʒɪˈnɪər/ - Note o som do 'g' como 'j' e a ênfase na última sílaba.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Nurse</strong> /nɜːrs/ - O som do 'ur' é similar ao 'er' em 'her'.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Lawyer</strong> /ˈlɔɪər/ - O 'aw' tem som de 'ó' e o 'yer' é suave.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Architect</strong> /ˈɑːrkɪtekt/ - Enfatize a primeira sílaba 'AR'.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rodapé com Dicas -->
+            <footer class="text-center pt-6 border-t-2 border-wine">
+                <div class="ornament mb-4"></div>
+                <h4 class="font-playfair text-lg font-bold text-wine mb-2">
+                    💡 Dica de Memorização
+                </h4>
+                <p class="font-baskerville text-navy">
+                    Pense nas profissões das pessoas que você conhece (familiares, amigos, vizinhos) e tente nomeá-las em inglês. Crie cartões de memória com a profissão de um lado e a descrição do trabalho do outro. Assista a séries ou filmes que retratam diferentes profissões e tente identificar o vocabulário. Pratique descrever o que você faz ou o que gostaria de fazer em inglês.
+                </p>
+                <div class="ornament mt-4"></div>
+            </footer>
+        </div>
+
+        <!-- Nota de Uso -->
+        <div class="bg-navy text-white p-6 rounded-lg">
+            <h4 class="font-playfair text-lg font-bold mb-2">📋 Como Usar Este Cartão</h4>
+            <ul class="font-baskerville space-y-1">
+                <li>• Clique nos botões "Ver Resposta" para revelar as respostas das perguntas</li>
+                <li>• Clique em "Ver Tradução" para mostrar a tradução do texto</li>
+                <li>• Passe o mouse sobre os cartões de profissões para ver os efeitos visuais</li>
+                <li>• Use o edifício de escritórios para visualizar diferentes áreas profissionais</li>
+                <li>• Pratique o diálogo sobre carreiras em voz alta</li>
+                <li>• Descreva sua profissão ou profissão dos sonhos usando o vocabulário aprendido</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(questionNumber) {
+            const answer = document.getElementById('answer' + questionNumber);
+            answer.classList.toggle('hidden-answer');
+            answer.classList.toggle('show-answer');
+        }
+        
+        function toggleTranslation() {
+            const translation = document.getElementById('translation');
+            translation.classList.toggle('hidden-answer');
+            translation.classList.toggle('show-answer');
+        }
+    </script>
+</body>
+</html>
+
