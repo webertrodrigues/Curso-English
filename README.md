@@ -1,8 +1,8 @@
 # 🌍 Curso Completo de Inglês - 20 Aulas | Básico ao Intermediário
 
-![Status](https://img.shields.io/badge/Status-Concluído-success)
+![Status](https://img.shields.io/badge/Status-Em_Desenvolvimento-yellow)
 ![Licença](https://img.shields.io/badge/Licença-MIT-blue)
-![Aulas](https://img.shields.io/badge/Aulas-20/20-brightgreen)
+![Aulas](https://img.shields.io/badge/Aulas-6%2F20-orange)
 ![Versão](https://img.shields.io/badge/Versão-2.0.0-orange)
 
 Um curso completo com material didático organizado em 20 aulas progressivas. Ideal para quem quer aprender inglês de forma estruturada!
