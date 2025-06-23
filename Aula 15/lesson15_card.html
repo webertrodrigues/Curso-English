@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão de Inglês - Aula 15: Esportes e Atividades Físicas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --wine: #722F37;
+            --cream: #F5F1E8;
+            --navy: #2C3E50;
+            --gold: #D4AF37;
+            --dark-wine: #5A252A;
+            --light-gold: #F4E4BC;
+            --rose: #E8B4B8;
+            --sage: #9CAF88;
+            --lavender: #B8A9C9;
+            --coral: #F4A261;
+            --teal: #2A9D8F;
+            --mint: #A8E6CF;
+            --peach: #FFB3BA;
+            --blue: #4169E1;
+            --red: #DC143C;
+            --yellow: #FFD700;
+            --purple: #8A2BE2;
+            --cyan: #00CED1;
+            --green: #228B22;
+            --orange: #FF8C00;
+            --lime: #32CD32;
+            --pink: #FF69B4;
+        }
+        
+        .font-baskerville { font-family: 'Libre Baskerville', serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        
+        .vintage-card {
+            background: linear-gradient(135deg, var(--cream) 0%, #F8F5F0 100%);
+            border: 3px solid var(--wine);
+            box-shadow: 
+                0 8px 32px rgba(114, 47, 55, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+        
+        .text-wine { color: var(--wine); }
+        .text-navy { color: var(--navy); }
+        .text-gold { color: var(--gold); }
+        .bg-wine { background-color: var(--wine); }
+        .bg-navy { background-color: var(--navy); }
+        .bg-gold { background-color: var(--gold); }
+        .bg-light-gold { background-color: var(--light-gold); }
+        .bg-mint { background-color: var(--mint); }
+        .bg-peach { background-color: var(--peach); }
+        
+        .vintage-button {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-wine) 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .vintage-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(114, 47, 55, 0.3);
+        }
+        
+        .pronunciation {
+            background: linear-gradient(135deg, var(--light-gold) 0%, var(--cream) 100%);
+            border-left: 4px solid var(--gold);
+        }
+        
+        .dialogue-box {
+            background: rgba(44, 62, 80, 0.05);
+            border-left: 4px solid var(--navy);
+        }
+        
+        .sport-card {
+            background: linear-gradient(135deg, var(--blue) 0%, #1E90FF 100%);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 0.3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            min-height: 120px;
+            border: 2px solid rgba(65, 105, 225, 0.3);
+            position: relative;
+            text-align: center;
+        }
+        
+        .sport-card:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 8px 25px rgba(65, 105, 225, 0.5);
+            border-color: white;
+        }
+        
+        .activity-card {
+            background: linear-gradient(135deg, var(--lime) 0%, #00FF7F 100%);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 0.3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            min-height: 120px;
+            border: 2px solid rgba(50, 205, 50, 0.3);
+            position: relative;
+            text-align: center;
+        }
+        
+        .activity-card:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 8px 25px rgba(50, 205, 50, 0.5);
+            border-color: white;
+        }
+        
+        .category-section {
+            background: linear-gradient(135deg, var(--pink) 0%, #FF1493 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            border: 3px solid rgba(255, 105, 180, 0.3);
+        }
+        
+        .category-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
+            border-color: white;
+        }
+        
+        .sport-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .item-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        
+        .item-translation {
+            font-style: italic;
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        
+        .sports-arena {
+            background: linear-gradient(135deg, var(--wine) 0%, var(--dark-wine) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sports-arena::before {
+            content: '🏟️';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 3rem;
+            opacity: 0.3;
+        }
+        
+        .fitness-center {
+            background: linear-gradient(135deg, var(--cyan) 0%, #40E0D0 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .equipment-layout {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .equipment-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .equipment-box:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .ornament {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 0 auto;
+        }
+        
+        .hidden-answer {
+            display: none;
+        }
+        
+        .show-answer {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .vintage-card {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            .sport-card, .activity-card {
+                min-height: 100px;
+            }
+            
+            .item-name {
+                font-size: 1rem;
+            }
+            
+            .sport-emoji {
+                font-size: 2rem;
+            }
+            
+            .equipment-layout {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen py-8">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <!-- Cartão Principal -->
+        <div class="vintage-card rounded-lg p-8 mb-8">
+            <!-- Cabeçalho -->
+            <header class="text-center mb-8">
+                <div class="ornament mb-4"></div>
+                <h1 class="font-playfair text-4xl font-bold text-wine mb-2">
+                    English Learning Card
+                </h1>
+                <h2 class="font-baskerville text-2xl text-navy mb-4">
+                    Aula 15: Esportes e Atividades Físicas
+                </h2>
+                <div class="ornament"></div>
+            </header>
+
+            <!-- Frase do Dia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    ✨ Frase do Dia
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <p class="font-baskerville text-lg text-navy text-center italic">
+                        "Let's get active!"
+                    </p>
+                    <p class="font-baskerville text-base text-gray-600 text-center mt-2">
+                        "Vamos nos exercitar!"
+                    </p>
+                </div>
+            </section>
+
+            <!-- Sports Arena -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🏟️ Arena Esportiva
+                </h3>
+                <div class="sports-arena">
+                    <div class="text-center mb-4">
+                        <h4 class="font-playfair text-2xl font-bold mb-2">Sports & Fitness Arena</h4>
+                        <p class="font-baskerville text-lg opacity-90">Sua jornada fitness em inglês</p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-4 text-center">
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <span class="text-3xl block mb-2">⚽</span>
+                            <p class="font-baskerville">Team Sports</p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <span class="text-3xl block mb-2">🏃‍♂️</span>
+                            <p class="font-baskerville">Individual Sports</p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <span class="text-3xl block mb-2">🧘‍♀️</span>
+                            <p class="font-baskerville">Wellness Activities</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Centro de Fitness -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🏋️‍♂️ Centro de Fitness
+                </h3>
+                <div class="fitness-center">
+                    <h4 class="font-playfair text-xl font-bold mb-4">Fitness Center</h4>
+                    <div class="equipment-layout">
+                        <div class="equipment-box">
+                            <span class="text-2xl block mb-2">🏋️‍♂️</span>
+                            <p class="font-bold">Weight Room</p>
+                            <p class="text-sm opacity-80">Sala de Musculação</p>
+                        </div>
+                        <div class="equipment-box">
+                            <span class="text-2xl block mb-2">🏊‍♀️</span>
+                            <p class="font-bold">Swimming Pool</p>
+                            <p class="text-sm opacity-80">Piscina</p>
+                        </div>
+                        <div class="equipment-box">
+                            <span class="text-2xl block mb-2">🏃‍♂️</span>
+                            <p class="font-bold">Running Track</p>
+                            <p class="text-sm opacity-80">Pista de Corrida</p>
+                        </div>
+                        <div class="equipment-box">
+                            <span class="text-2xl block mb-2">🧘‍♀️</span>
+                            <p class="font-bold">Yoga Studio</p>
+                            <p class="text-sm opacity-80">Estúdio de Yoga</p>
+                        </div>
+                        <div class="equipment-box">
+                            <span class="text-2xl block mb-2">🏀</span>
+                            <p class="font-bold">Basketball Court</p>
+                            <p class="text-sm opacity-80">Quadra de Basquete</p>
+                        </div>
+                        <div class="equipment-box">
+                            <span class="text-2xl block mb-2">🎾</span>
+                            <p class="font-bold">Tennis Court</p>
+                            <p class="text-sm opacity-80">Quadra de Tênis</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Categorias de Esportes -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🏆 Categorias Esportivas
+                </h3>
+                
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="category-section">
+                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">⚽ Esportes de Equipe</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Soccer / Football</span>
+                                <span class="opacity-80">Futebol</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Basketball</span>
+                                <span class="opacity-80">Basquete</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Volleyball</span>
+                                <span class="opacity-80">Vôlei</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Baseball</span>
+                                <span class="opacity-80">Beisebol</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-section">
+                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">🏃‍♂️ Esportes Individuais</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Running</span>
+                                <span class="opacity-80">Corrida</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Swimming</span>
+                                <span class="opacity-80">Natação</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Tennis</span>
+                                <span class="opacity-80">Tênis</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Golf</span>
+                                <span class="opacity-80">Golfe</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-section">
+                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">🥊 Esportes de Combate</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Boxing</span>
+                                <span class="opacity-80">Boxe</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Martial Arts</span>
+                                <span class="opacity-80">Artes Marciais</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Wrestling</span>
+                                <span class="opacity-80">Luta Livre</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Judo</span>
+                                <span class="opacity-80">Judô</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-section">
+                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">🧘‍♀️ Atividades de Bem-estar</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Yoga</span>
+                                <span class="opacity-80">Yoga</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Pilates</span>
+                                <span class="opacity-80">Pilates</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Meditation</span>
+                                <span class="opacity-80">Meditação</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Stretching</span>
+                                <span class="opacity-80">Alongamento</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Esportes Populares -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    ⚽ Esportes Populares
+                </h3>
+                
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
+                    <div class="sport-card">
+                        <span class="sport-emoji">⚽</span>
+                        <div class="item-name">Soccer</div>
+                        <div class="item-translation">Futebol</div>
+                    </div>
+                    
+                    <div class="sport-card">
+                        <span class="sport-emoji">🏀</span>
+                        <div class="item-name">Basketball</div>
+                        <div class="item-translation">Basquete</div>
+                    </div>
+                    
+                    <div class="sport-card">
+                        <span class="sport-emoji">🏐</span>
+                        <div class="item-name">Volleyball</div>
+                        <div class="item-translation">Vôlei</div>
+                    </div>
+                    
+                    <div class="sport-card">
+                        <span class="sport-emoji">🎾</span>
+                        <div class="item-name">Tennis</div>
+                        <div class="item-translation">Tênis</div>
+                    </div>
+                    
+                    <div class="sport-card">
+                        <span class="sport-emoji">🏊‍♀️</span>
+                        <div class="item-name">Swimming</div>
+                        <div class="item-translation">Natação</div>
+                    </div>
+                    
+                    <div class="sport-card">
+                        <span class="sport-emoji">🏃‍♂️</span>
+                        <div class="item-name">Running</div>
+                        <div class="item-translation">Corrida</div>
+                    </div>
+                    
+                    <div class="sport-card">
+                        <span class="sport-emoji">🚴‍♂️</span>
+                        <div class="item-name">Cycling</div>
+                        <div class="item-translation">Ciclismo</div>
+                    </div>
+                    
+                    <div class="sport-card">
+                        <span class="sport-emoji">🤸‍♀️</span>
+                        <div class="item-name">Gymnastics</div>
+                        <div class="item-translation">Ginástica</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Atividades Físicas -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🏋️‍♂️ Atividades Físicas
+                </h3>
+                
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
+                    <div class="activity-card">
+                        <span class="sport-emoji">🧘‍♀️</span>
+                        <div class="item-name">Yoga</div>
+                        <div class="item-translation">Yoga</div>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <span class="sport-emoji">🏋️‍♂️</span>
+                        <div class="item-name">Weight Lifting</div>
+                        <div class="item-translation">Musculação</div>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <span class="sport-emoji">🥊</span>
+                        <div class="item-name">Boxing</div>
+                        <div class="item-translation">Boxe</div>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <span class="sport-emoji">🥋</span>
+                        <div class="item-name">Martial Arts</div>
+                        <div class="item-translation">Artes Marciais</div>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <span class="sport-emoji">⛷️</span>
+                        <div class="item-name">Skiing</div>
+                        <div class="item-translation">Esqui</div>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <span class="sport-emoji">🏄‍♂️</span>
+                        <div class="item-name">Surfing</div>
+                        <div class="item-translation">Surf</div>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <span class="sport-emoji">🛹</span>
+                        <div class="item-name">Skateboarding</div>
+                        <div class="item-translation">Skate</div>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <span class="sport-emoji">⛳</span>
+                        <div class="item-name">Golf</div>
+                        <div class="item-translation">Golfe</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Diálogo -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    💬 Sobre Hobbies e Esportes
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend A:</strong> Hey, what do you usually do to stay active?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Ei, o que você geralmente faz para se manter ativo?)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend B:</strong> I love to run! I go running in the park every morning. What about you?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Eu adoro correr! Vou correr no parque toda manhã. E você?)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend A:</strong> I enjoy playing basketball with my friends on weekends. It's a great way to exercise and have fun.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Gosto de jogar basquete com meus amigos nos fins de semana. É uma ótima forma de se exercitar e se divertir.)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend B:</strong> That sounds cool! Do you also go to the gym?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Isso parece legal! Você também vai à academia?)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend A:</strong> Sometimes, I go to lift weights. But my main activity is basketball.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Às vezes, vou levantar pesos. Mas minha atividade principal é o basquete.)
+                        </p>
+                    </div>
+                    <div>
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend B:</strong> Have you ever tried yoga? I do it twice a week. It helps me relax.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Você já tentou yoga? Eu faço duas vezes por semana. Me ajuda a relaxar.)
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Texto para Tradução -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    📝 Texto para Tradução
+                </h3>
+                <div class="bg-light-gold p-6 rounded-lg">
+                    <p class="font-baskerville text-navy text-lg mb-4">
+                        "My favorite sport is swimming. I go to the swimming pool three times a week. My brother prefers soccer, and he plays with his team every Saturday. My sister loves to do yoga in the morning. She says it helps her start the day feeling calm and energized. My father enjoys cycling, and he often goes on long bike rides on Sundays."
+                    </p>
+                    <button onclick="toggleTranslation()" class="vintage-button text-white px-4 py-2 rounded font-baskerville">
+                        Ver Tradução
+                    </button>
+                    <div id="translation" class="hidden-answer mt-4 p-4 bg-white rounded border-l-4 border-wine">
+                        <p class="font-baskerville text-navy">
+                            "Meu esporte favorito é natação. Vou à piscina três vezes por semana. Meu irmão prefere futebol, e ele joga com seu time todo sábado. Minha irmã adora fazer yoga de manhã. Ela diz que isso a ajuda a começar o dia se sentindo calma e energizada. Meu pai gosta de ciclismo, e ele frequentemente faz longas pedaladas aos domingos."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Perguntas para Prática -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    ❓ Perguntas para Prática
+                </h3>
+                <div class="space-y-4">
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            1. What is your favorite sport or physical activity?
+                        </p>
+                        <button onclick="toggleAnswer(1)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer1" class="hidden-answer mt-2 text-wine font-bold">
+                            Swimming / Soccer / Basketball / Running (Depende da preferência pessoal)
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            2. How do you say "academia" in English?
+                        </p>
+                        <button onclick="toggleAnswer(2)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer2" class="hidden-answer mt-2 text-wine font-bold">
+                            Gym
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            3. What equipment do you need to play tennis?
+                        </p>
+                        <button onclick="toggleAnswer(3)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer3" class="hidden-answer mt-2 text-wine font-bold">
+                            A racket and a ball
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            4. Traduza: "Eu gosto de correr no parque."
+                        </p>
+                        <button onclick="toggleAnswer(4)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer4" class="hidden-answer mt-2 text-wine font-bold">
+                            I like to run in the park.
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            5. What activity involves lifting weights?
+                        </p>
+                        <button onclick="toggleAnswer(5)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer5" class="hidden-answer mt-2 text-wine font-bold">
+                            Weight lifting / Bodybuilding / Strength training
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pronúncia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    🔊 Dicas de Pronúncia
+                </h3>
+                <div class="space-y-4">
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Soccer</strong> /ˈsɒkər/ - O som do 'o' é curto, como em 'hot'.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Swimming</strong> /ˈswɪmɪŋ/ - Note o som do 'i' curto, como em 'sit'.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Gymnastics</strong> /dʒɪmˈnæstɪks/ - O 'g' tem som de 'j' e a ênfase está na segunda sílaba.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Exercise</strong> /ˈeksərsaɪz/ - Enfatize a primeira sílaba 'EX'.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rodapé com Dicas -->
+            <footer class="text-center pt-6 border-t-2 border-wine">
+                <div class="ornament mb-4"></div>
+                <h4 class="font-playfair text-lg font-bold text-wine mb-2">
+                    💡 Dica de Memorização
+                </h4>
+                <p class="font-baskerville text-navy">
+                    Pense nos esportes e atividades que você pratica ou que gosta de assistir. Tente descrevê-los em inglês. Associe cada esporte ao seu equipamento principal (ex: 'soccer' - 'ball', 'tennis' - 'racket'). Crie uma rotina diária de exercícios em inglês, nomeando cada atividade. Assista a eventos esportivos em inglês e tente identificar os termos usados pelos comentaristas.
+                </p>
+                <div class="ornament mt-4"></div>
+            </footer>
+        </div>
+
+        <!-- Nota de Uso -->
+        <div class="bg-navy text-white p-6 rounded-lg">
+            <h4 class="font-playfair text-lg font-bold mb-2">📋 Como Usar Este Cartão</h4>
+            <ul class="font-baskerville space-y-1">
+                <li>• Clique nos botões "Ver Resposta" para revelar as respostas das perguntas</li>
+                <li>• Clique em "Ver Tradução" para mostrar a tradução do texto</li>
+                <li>• Passe o mouse sobre os cartões de esportes para ver os efeitos visuais</li>
+                <li>• Use o centro de fitness para visualizar diferentes atividades físicas</li>
+                <li>• Pratique o diálogo sobre esportes em voz alta</li>
+                <li>• Descreva seus esportes favoritos usando o vocabulário aprendido</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(questionNumber) {
+            const answer = document.getElementById('answer' + questionNumber);
+            answer.classList.toggle('hidden-answer');
+            answer.classList.toggle('show-answer');
+        }
+        
+        function toggleTranslation() {
+            const translation = document.getElementById('translation');
+            translation.classList.toggle('hidden-answer');
+            translation.classList.toggle('show-answer');
+        }
+    </script>
+</body>
+</html>
+
