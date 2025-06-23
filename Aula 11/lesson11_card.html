@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão de Inglês - Aula 11: Roupas e Acessórios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --wine: #722F37;
+            --cream: #F5F1E8;
+            --navy: #2C3E50;
+            --gold: #D4AF37;
+            --dark-wine: #5A252A;
+            --light-gold: #F4E4BC;
+            --rose: #E8B4B8;
+            --sage: #9CAF88;
+            --lavender: #B8A9C9;
+            --coral: #F4A261;
+            --teal: #2A9D8F;
+            --mint: #A8E6CF;
+            --peach: #FFB3BA;
+            --purple: #8E44AD;
+            --pink: #E91E63;
+            --blue: #3498DB;
+        }
+        
+        .font-baskerville { font-family: 'Libre Baskerville', serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        
+        .vintage-card {
+            background: linear-gradient(135deg, var(--cream) 0%, #F8F5F0 100%);
+            border: 3px solid var(--wine);
+            box-shadow: 
+                0 8px 32px rgba(114, 47, 55, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+        
+        .text-wine { color: var(--wine); }
+        .text-navy { color: var(--navy); }
+        .text-gold { color: var(--gold); }
+        .bg-wine { background-color: var(--wine); }
+        .bg-navy { background-color: var(--navy); }
+        .bg-gold { background-color: var(--gold); }
+        .bg-light-gold { background-color: var(--light-gold); }
+        .bg-mint { background-color: var(--mint); }
+        .bg-peach { background-color: var(--peach); }
+        
+        .vintage-button {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-wine) 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .vintage-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(114, 47, 55, 0.3);
+        }
+        
+        .pronunciation {
+            background: linear-gradient(135deg, var(--light-gold) 0%, var(--cream) 100%);
+            border-left: 4px solid var(--gold);
+        }
+        
+        .dialogue-box {
+            background: rgba(44, 62, 80, 0.05);
+            border-left: 4px solid var(--navy);
+        }
+        
+        .clothing-card {
+            background: linear-gradient(135deg, var(--purple) 0%, #A569BD 100%);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 0.3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            min-height: 120px;
+            border: 2px solid rgba(142, 68, 173, 0.3);
+            position: relative;
+            text-align: center;
+        }
+        
+        .clothing-card:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 8px 25px rgba(142, 68, 173, 0.5);
+            border-color: white;
+        }
+        
+        .accessory-card {
+            background: linear-gradient(135deg, var(--pink) 0%, #F06292 100%);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 0.3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            min-height: 120px;
+            border: 2px solid rgba(233, 30, 99, 0.3);
+            position: relative;
+            text-align: center;
+        }
+        
+        .accessory-card:hover {
+            transform: scale(1.05) rotate(-1deg);
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.5);
+            border-color: white;
+        }
+        
+        .category-section {
+            background: linear-gradient(135deg, var(--blue) 0%, #5DADE2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            border: 3px solid rgba(52, 152, 219, 0.3);
+        }
+        
+        .category-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.4);
+            border-color: white;
+        }
+        
+        .fashion-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .item-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        
+        .item-translation {
+            font-style: italic;
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        
+        .fashion-store {
+            background: linear-gradient(135deg, var(--wine) 0%, var(--dark-wine) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .fashion-store::before {
+            content: '👗';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 3rem;
+            opacity: 0.3;
+        }
+        
+        .wardrobe-section {
+            background: rgba(142, 68, 173, 0.1);
+            border: 2px solid var(--purple);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .outfit-display {
+            background: linear-gradient(135deg, var(--sage) 0%, #A8CC8C 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .mannequin {
+            width: 150px;
+            height: 200px;
+            background: linear-gradient(135deg, #E8E8E8 0%, #D0D0D0 100%);
+            border-radius: 75px 75px 20px 20px;
+            margin: 0 auto 1rem;
+            position: relative;
+            border: 3px solid white;
+        }
+        
+        .mannequin::before {
+            content: '👤';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            opacity: 0.3;
+        }
+        
+        .ornament {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 0 auto;
+        }
+        
+        .hidden-answer {
+            display: none;
+        }
+        
+        .show-answer {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .vintage-card {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            .clothing-card, .accessory-card {
+                min-height: 100px;
+            }
+            
+            .item-name {
+                font-size: 1rem;
+            }
+            
+            .fashion-emoji {
+                font-size: 2rem;
+            }
+            
+            .mannequin {
+                width: 120px;
+                height: 160px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen py-8">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <!-- Cartão Principal -->
+        <div class="vintage-card rounded-lg p-8 mb-8">
+            <!-- Cabeçalho -->
+            <header class="text-center mb-8">
+                <div class="ornament mb-4"></div>
+                <h1 class="font-playfair text-4xl font-bold text-wine mb-2">
+                    English Learning Card
+                </h1>
+                <h2 class="font-baskerville text-2xl text-navy mb-4">
+                    Aula 11: Roupas e Acessórios
+                </h2>
+                <div class="ornament"></div>
+            </header>
+
+            <!-- Frase do Dia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    ✨ Frase do Dia
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <p class="font-baskerville text-lg text-navy text-center italic">
+                        "What are you wearing today?"
+                    </p>
+                    <p class="font-baskerville text-base text-gray-600 text-center mt-2">
+                        "O que você está vestindo hoje?"
+                    </p>
+                </div>
+            </section>
+
+            <!-- Loja de Moda -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    👗 Boutique Vintage
+                </h3>
+                <div class="fashion-store">
+                    <div class="text-center mb-4">
+                        <h4 class="font-playfair text-2xl font-bold mb-2">Fashion & Style</h4>
+                        <p class="font-baskerville text-lg opacity-90">Sua experiência de moda em inglês</p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-4 text-center">
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <span class="text-3xl block mb-2">👕</span>
+                            <p class="font-baskerville">Casual Wear</p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <span class="text-3xl block mb-2">👔</span>
+                            <p class="font-baskerville">Formal Attire</p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <span class="text-3xl block mb-2">💍</span>
+                            <p class="font-baskerville">Accessories</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Manequim com Outfit -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🎨 Outfit do Dia
+                </h3>
+                <div class="outfit-display">
+                    <div class="mannequin"></div>
+                    <div class="grid md:grid-cols-2 gap-4 text-sm">
+                        <div>
+                            <h5 class="font-bold mb-2">Today's Outfit:</h5>
+                            <p>• Blue jeans</p>
+                            <p>• White t-shirt</p>
+                            <p>• Black sneakers</p>
+                            <p>• Silver watch</p>
+                        </div>
+                        <div>
+                            <h5 class="font-bold mb-2">Roupa de Hoje:</h5>
+                            <p>• Calça jeans azul</p>
+                            <p>• Camiseta branca</p>
+                            <p>• Tênis preto</p>
+                            <p>• Relógio prateado</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Categorias de Roupas -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    👕 Categorias de Roupas
+                </h3>
+                
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="category-section">
+                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">👔 Roupas Superiores</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>T-shirt</span>
+                                <span class="opacity-80">Camiseta</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Shirt</span>
+                                <span class="opacity-80">Camisa</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Sweater</span>
+                                <span class="opacity-80">Suéter</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Jacket</span>
+                                <span class="opacity-80">Jaqueta</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-section">
+                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">👖 Roupas Inferiores</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Pants</span>
+                                <span class="opacity-80">Calças</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Jeans</span>
+                                <span class="opacity-80">Calça jeans</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Shorts</span>
+                                <span class="opacity-80">Shorts</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Skirt</span>
+                                <span class="opacity-80">Saia</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-section">
+                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">👠 Calçados</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Shoes</span>
+                                <span class="opacity-80">Sapatos</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Sneakers</span>
+                                <span class="opacity-80">Tênis</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Boots</span>
+                                <span class="opacity-80">Botas</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Socks</span>
+                                <span class="opacity-80">Meias</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-section">
+                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">🧥 Roupas Externas</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Coat</span>
+                                <span class="opacity-80">Casaco</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Dress</span>
+                                <span class="opacity-80">Vestido</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Hat</span>
+                                <span class="opacity-80">Chapéu</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Cap</span>
+                                <span class="opacity-80">Boné</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Roupas Populares -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    👕 Roupas Populares
+                </h3>
+                
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
+                    <div class="clothing-card">
+                        <span class="fashion-emoji">👕</span>
+                        <div class="item-name">T-shirt</div>
+                        <div class="item-translation">Camiseta</div>
+                    </div>
+                    
+                    <div class="clothing-card">
+                        <span class="fashion-emoji">👖</span>
+                        <div class="item-name">Jeans</div>
+                        <div class="item-translation">Calça jeans</div>
+                    </div>
+                    
+                    <div class="clothing-card">
+                        <span class="fashion-emoji">👗</span>
+                        <div class="item-name">Dress</div>
+                        <div class="item-translation">Vestido</div>
+                    </div>
+                    
+                    <div class="clothing-card">
+                        <span class="fashion-emoji">👔</span>
+                        <div class="item-name">Shirt</div>
+                        <div class="item-translation">Camisa</div>
+                    </div>
+                    
+                    <div class="clothing-card">
+                        <span class="fashion-emoji">🧥</span>
+                        <div class="item-name">Jacket</div>
+                        <div class="item-translation">Jaqueta</div>
+                    </div>
+                    
+                    <div class="clothing-card">
+                        <span class="fashion-emoji">👟</span>
+                        <div class="item-name">Sneakers</div>
+                        <div class="item-translation">Tênis</div>
+                    </div>
+                    
+                    <div class="clothing-card">
+                        <span class="fashion-emoji">🩳</span>
+                        <div class="item-name">Shorts</div>
+                        <div class="item-translation">Shorts</div>
+                    </div>
+                    
+                    <div class="clothing-card">
+                        <span class="fashion-emoji">🧦</span>
+                        <div class="item-name">Socks</div>
+                        <div class="item-translation">Meias</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Acessórios -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    💍 Acessórios
+                </h3>
+                
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
+                    <div class="accessory-card">
+                        <span class="fashion-emoji">⌚</span>
+                        <div class="item-name">Watch</div>
+                        <div class="item-translation">Relógio</div>
+                    </div>
+                    
+                    <div class="accessory-card">
+                        <span class="fashion-emoji">📿</span>
+                        <div class="item-name">Necklace</div>
+                        <div class="item-translation">Colar</div>
+                    </div>
+                    
+                    <div class="accessory-card">
+                        <span class="fashion-emoji">💍</span>
+                        <div class="item-name">Ring</div>
+                        <div class="item-translation">Anel</div>
+                    </div>
+                    
+                    <div class="accessory-card">
+                        <span class="fashion-emoji">👂</span>
+                        <div class="item-name">Earrings</div>
+                        <div class="item-translation">Brincos</div>
+                    </div>
+                    
+                    <div class="accessory-card">
+                        <span class="fashion-emoji">🕶️</span>
+                        <div class="item-name">Sunglasses</div>
+                        <div class="item-translation">Óculos de sol</div>
+                    </div>
+                    
+                    <div class="accessory-card">
+                        <span class="fashion-emoji">👜</span>
+                        <div class="item-name">Bag</div>
+                        <div class="item-translation">Bolsa</div>
+                    </div>
+                    
+                    <div class="accessory-card">
+                        <span class="fashion-emoji">🎒</span>
+                        <div class="item-name">Backpack</div>
+                        <div class="item-translation">Mochila</div>
+                    </div>
+                    
+                    <div class="accessory-card">
+                        <span class="fashion-emoji">🧤</span>
+                        <div class="item-name">Gloves</div>
+                        <div class="item-translation">Luvas</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Diálogo -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    💬 Diálogo na Loja
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Salesperson:</strong> Hello! Can I help you?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Olá! Posso ajudá-lo?)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Customer:</strong> Yes, please. I'm looking for a new dress.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Sim, por favor. Estou procurando um vestido novo.)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Salesperson:</strong> What color and size are you looking for?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Que cor e tamanho você está procurando?)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Customer:</strong> I'd like a red dress, size medium.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Eu gostaria de um vestido vermelho, tamanho médio.)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Salesperson:</strong> We have this beautiful red dress. Would you like to try it on?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Temos este lindo vestido vermelho. Gostaria de experimentar?)
+                        </p>
+                    </div>
+                    <div>
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Customer:</strong> Yes, thank you! And do you have any matching necklaces?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Sim, obrigada! E vocês têm algum colar que combine?)
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Texto para Tradução -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    📝 Texto para Tradução
+                </h3>
+                <div class="bg-light-gold p-6 rounded-lg">
+                    <p class="font-baskerville text-navy text-lg mb-4">
+                        "My favorite outfit is a blue pair of jeans, a white t-shirt, and comfortable sneakers. When it's cold, I wear a warm sweater and a long coat. I always carry a backpack with my books and my wallet. On sunny days, I never forget my sunglasses. For special occasions, I like to wear a nice dress and a beautiful necklace."
+                    </p>
+                    <button onclick="toggleTranslation()" class="vintage-button text-white px-4 py-2 rounded font-baskerville">
+                        Ver Tradução
+                    </button>
+                    <div id="translation" class="hidden-answer mt-4 p-4 bg-white rounded border-l-4 border-wine">
+                        <p class="font-baskerville text-navy">
+                            "Minha roupa favorita é uma calça jeans azul, uma camiseta branca e tênis confortáveis. Quando está frio, uso um suéter quente e um casaco longo. Sempre carrego uma mochila com meus livros e minha carteira. Em dias ensolarados, nunca esqueço meus óculos de sol. Para ocasiões especiais, gosto de usar um vestido bonito e um colar lindo."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Perguntas para Prática -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    ❓ Perguntas para Prática
+                </h3>
+                <div class="space-y-4">
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            1. What do you wear on your feet when you go running?
+                        </p>
+                        <button onclick="toggleAnswer(1)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer1" class="hidden-answer mt-2 text-wine font-bold">
+                            Sneakers (Tênis)
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            2. How do you say "jaqueta" in English?
+                        </p>
+                        <button onclick="toggleAnswer(2)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer2" class="hidden-answer mt-2 text-wine font-bold">
+                            Jacket
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            3. What accessory do you wear on your finger?
+                        </p>
+                        <button onclick="toggleAnswer(3)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer3" class="hidden-answer mt-2 text-wine font-bold">
+                            Ring (Anel)
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            4. Traduza: "Ela está usando um vestido azul e brincos."
+                        </p>
+                        <button onclick="toggleAnswer(4)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer4" class="hidden-answer mt-2 text-wine font-bold">
+                            She is wearing a blue dress and earrings.
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            5. What do you wear on your head to protect from the sun?
+                        </p>
+                        <button onclick="toggleAnswer(5)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer5" class="hidden-answer mt-2 text-wine font-bold">
+                            Hat or Cap (Chapéu ou Boné)
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pronúncia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    🔊 Dicas de Pronúncia
+                </h3>
+                <div class="space-y-4">
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Clothes</strong> /kloʊðz/ - O 'th' tem som de 'dh' suave.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Wear</strong> /wɛər/ - Soa como 'uér'.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Jewelry</strong> /ˈdʒuːəlri/ - Note que a pronúncia pode variar.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Accessories</strong> /əkˈsɛsəriz/ - Acento na segunda sílaba.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rodapé com Dicas -->
+            <footer class="text-center pt-6 border-t-2 border-wine">
+                <div class="ornament mb-4"></div>
+                <h4 class="font-playfair text-lg font-bold text-wine mb-2">
+                    💡 Dica de Memorização
+                </h4>
+                <p class="font-baskerville text-navy">
+                    Descreva as roupas que você e as pessoas ao seu redor estão usando. Crie categorias no seu guarda-roupa mental (roupas de verão, de inverno, acessórios). Assista a vídeos de moda em inglês e tente identificar as peças. Pratique fazendo compras imaginárias em inglês.
+                </p>
+                <div class="ornament mt-4"></div>
+            </footer>
+        </div>
+
+        <!-- Nota de Uso -->
+        <div class="bg-navy text-white p-6 rounded-lg">
+            <h4 class="font-playfair text-lg font-bold mb-2">📋 Como Usar Este Cartão</h4>
+            <ul class="font-baskerville space-y-1">
+                <li>• Clique nos botões "Ver Resposta" para revelar as respostas das perguntas</li>
+                <li>• Clique em "Ver Tradução" para mostrar a tradução do texto</li>
+                <li>• Passe o mouse sobre os cartões de roupas e acessórios para ver os efeitos visuais</li>
+                <li>• Use as categorias para organizar o vocabulário por tipos de roupa</li>
+                <li>• Pratique o diálogo da loja em voz alta</li>
+                <li>• Descreva suas próprias roupas usando o vocabulário aprendido</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(questionNumber) {
+            const answer = document.getElementById('answer' + questionNumber);
+            answer.classList.toggle('hidden-answer');
+            answer.classList.toggle('show-answer');
+        }
+        
+        function toggleTranslation() {
+            const translation = document.getElementById('translation');
+            translation.classList.toggle('hidden-answer');
+            translation.classList.toggle('show-answer');
+        }
+    </script>
+</body>
+</html>
+

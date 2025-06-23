@@ -606,7 +606,7 @@
         <div class="vintage-card rounded-lg p-8 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center mb-6">
                 <h3 class="font-playfair text-2xl font-bold text-wine">
-                    📝 Prova: Artigos e Objetos Comuns (8 questões)
+                    📝 Prova: Artigos e Objetos Comuns
                 </h3>
                 <button onclick="closeQuizModal()" class="text-gray-500 hover:text-wine text-2xl">
                     ✕
@@ -830,7 +830,7 @@
                 <h3 class="font-playfair text-2xl font-bold text-wine">
                     🎉 Resultado da Prova (8 questões)
                 </h3>
-                <p id="scoreText" class="font-baskerville text-xl mt-2"></p>
+                <div id="scoreText" class="font-baskerville text-xl mt-2"></div>
             </div>
 
             <div id="quizResults" class="space-y-4"></div>
@@ -957,7 +957,10 @@
             const scoreElement = document.getElementById('scoreText');
             const resultsContainer = document.getElementById('quizResults');
             
-            scoreElement.innerHTML = `Você acertou <span class="text-wine font-bold">${score}/${quizConfig.totalQuestions}</span> questões!`;
+            scoreElement.innerHTML = `
+                Você acertou <span class="text-wine font-bold">${score}/${quizConfig.totalQuestions}</span> questões!
+                <p class="font-baskerville text-lg mt-2 text-navy">${getScoreMessage(score, quizConfig.totalQuestions)}</p>
+            `;
             
             resultsContainer.innerHTML = results.map(result => `
                 <div class="p-4 rounded-lg ${result.isCorrect ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'} mb-3">
@@ -968,11 +971,19 @@
                 </div>
             `).join('');
             
-            // Correção aqui: usar style.display em vez de classes
-            closeQuizModal(); // Fecha o modal do quiz
-            openResultModal(); // Abre o modal de resultados
+            closeQuizModal();
+            openResultModal();
         }
+        
+        // Função para mensagem de pontuação
+        function getScoreMessage(score, total) {
+            const percentage = (score / total) * 100;
             
+            if (percentage >= 90) return '🏆 Excelente! Você domina cores e formas em inglês!';
+            if (percentage >= 70) return '👍 Muito bom! Você conhece bem cores e formas em inglês!';
+            if (percentage >= 50) return '👌 Bom trabalho! Revise um pouco mais para melhorar!';
+            return '✏️ Continue praticando! Revise as cores e formas para melhorar!';
+        }
     </script>
 </body>
 </html>

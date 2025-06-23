@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão de Inglês - Aula 10: Comidas e Bebidas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --wine: #722F37;
+            --cream: #F5F1E8;
+            --navy: #2C3E50;
+            --gold: #D4AF37;
+            --dark-wine: #5A252A;
+            --light-gold: #F4E4BC;
+            --rose: #E8B4B8;
+            --sage: #9CAF88;
+            --lavender: #B8A9C9;
+            --coral: #F4A261;
+            --teal: #2A9D8F;
+            --mint: #A8E6CF;
+            --peach: #FFB3BA;
+            --orange: #FF8C42;
+            --green: #52B788;
+            --red: #E63946;
+            --yellow: #F77F00;
+        }
+        
+        .font-baskerville { font-family: 'Libre Baskerville', serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        
+        .vintage-card {
+            background: linear-gradient(135deg, var(--cream) 0%, #F8F5F0 100%);
+            border: 3px solid var(--wine);
+            box-shadow: 
+                0 8px 32px rgba(114, 47, 55, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+        
+        .text-wine { color: var(--wine); }
+        .text-navy { color: var(--navy); }
+        .text-gold { color: var(--gold); }
+        .bg-wine { background-color: var(--wine); }
+        .bg-navy { background-color: var(--navy); }
+        .bg-gold { background-color: var(--gold); }
+        .bg-light-gold { background-color: var(--light-gold); }
+        .bg-mint { background-color: var(--mint); }
+        .bg-peach { background-color: var(--peach); }
+        
+        .vintage-button {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-wine) 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .vintage-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(114, 47, 55, 0.3);
+        }
+        
+        .pronunciation {
+            background: linear-gradient(135deg, var(--light-gold) 0%, var(--cream) 100%);
+            border-left: 4px solid var(--gold);
+        }
+        
+        .dialogue-box {
+            background: rgba(44, 62, 80, 0.05);
+            border-left: 4px solid var(--navy);
+        }
+        
+        .food-card {
+            background: linear-gradient(135deg, var(--orange) 0%, #FFB366 100%);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 0.3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            min-height: 120px;
+            border: 2px solid rgba(255, 140, 66, 0.3);
+            position: relative;
+            text-align: center;
+        }
+        
+        .food-card:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 8px 25px rgba(255, 140, 66, 0.5);
+            border-color: white;
+        }
+        
+        .drink-card {
+            background: linear-gradient(135deg, var(--teal) 0%, #4ECDC4 100%);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 0.3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            min-height: 120px;
+            border: 2px solid rgba(42, 157, 143, 0.3);
+            position: relative;
+            text-align: center;
+        }
+        
+        .drink-card:hover {
+            transform: scale(1.05) rotate(-2deg);
+            box-shadow: 0 8px 25px rgba(42, 157, 143, 0.5);
+            border-color: white;
+        }
+        
+        .category-card {
+            background: linear-gradient(135deg, var(--green) 0%, #74C69D 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            border: 3px solid rgba(82, 183, 136, 0.3);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(82, 183, 136, 0.4);
+            border-color: white;
+        }
+        
+        .food-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .food-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        
+        .food-translation {
+            font-style: italic;
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        
+        .menu-section {
+            background: rgba(82, 183, 136, 0.1);
+            border: 2px solid var(--green);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .restaurant-scene {
+            background: linear-gradient(135deg, var(--wine) 0%, var(--dark-wine) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .restaurant-scene::before {
+            content: '🍽️';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 3rem;
+            opacity: 0.3;
+        }
+        
+        .ornament {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 0 auto;
+        }
+        
+        .hidden-answer {
+            display: none;
+        }
+        
+        .show-answer {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .vintage-card {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            .food-card, .drink-card {
+                min-height: 100px;
+            }
+            
+            .food-name {
+                font-size: 1rem;
+            }
+            
+            .food-emoji {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen py-8">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <!-- Cartão Principal -->
+        <div class="vintage-card rounded-lg p-8 mb-8">
+            <!-- Cabeçalho -->
+            <header class="text-center mb-8">
+                <div class="ornament mb-4"></div>
+                <h1 class="font-playfair text-4xl font-bold text-wine mb-2">
+                    English Learning Card
+                </h1>
+                <h2 class="font-baskerville text-2xl text-navy mb-4">
+                    Aula 10: Comidas e Bebidas
+                </h2>
+                <div class="ornament"></div>
+            </header>
+
+            <!-- Frase do Dia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    ✨ Frase do Dia
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <p class="font-baskerville text-lg text-navy text-center italic">
+                        "What would you like to eat?"
+                    </p>
+                    <p class="font-baskerville text-base text-gray-600 text-center mt-2">
+                        "O que você gostaria de comer?"
+                    </p>
+                </div>
+            </section>
+
+            <!-- Cena de Restaurante -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🍽️ Cena de Restaurante
+                </h3>
+                <div class="restaurant-scene">
+                    <div class="text-center mb-4">
+                        <h4 class="font-playfair text-2xl font-bold mb-2">Welcome to Vintage Bistro</h4>
+                        <p class="font-baskerville text-lg opacity-90">Uma experiência gastronômica em inglês</p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-4 text-center">
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <span class="text-3xl block mb-2">🥗</span>
+                            <p class="font-baskerville">Fresh Salads</p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <span class="text-3xl block mb-2">🍖</span>
+                            <p class="font-baskerville">Grilled Meats</p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <span class="text-3xl block mb-2">🍰</span>
+                            <p class="font-baskerville">Desserts</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Categorias de Comida -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🍎 Categorias de Comida
+                </h3>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="category-card">
+                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">🍎 Fruits</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Apple</span>
+                                <span class="opacity-80">Maçã</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Banana</span>
+                                <span class="opacity-80">Banana</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Orange</span>
+                                <span class="opacity-80">Laranja</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Grapes</span>
+                                <span class="opacity-80">Uvas</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card">
+                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">🥕 Vegetables</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Carrot</span>
+                                <span class="opacity-80">Cenoura</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Tomato</span>
+                                <span class="opacity-80">Tomate</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Potato</span>
+                                <span class="opacity-80">Batata</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Lettuce</span>
+                                <span class="opacity-80">Alface</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card">
+                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">🍖 Meats</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Chicken</span>
+                                <span class="opacity-80">Frango</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Beef</span>
+                                <span class="opacity-80">Carne bovina</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Fish</span>
+                                <span class="opacity-80">Peixe</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Pork</span>
+                                <span class="opacity-80">Porco</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card">
+                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">🥛 Dairy</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Milk</span>
+                                <span class="opacity-80">Leite</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Cheese</span>
+                                <span class="opacity-80">Queijo</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Yogurt</span>
+                                <span class="opacity-80">Iogurte</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Butter</span>
+                                <span class="opacity-80">Manteiga</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card">
+                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">🍞 Grains</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Bread</span>
+                                <span class="opacity-80">Pão</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Rice</span>
+                                <span class="opacity-80">Arroz</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Pasta</span>
+                                <span class="opacity-80">Massa</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Comidas Populares -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🍕 Comidas Populares
+                </h3>
+                
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
+                    <div class="food-card">
+                        <span class="food-emoji">🍎</span>
+                        <div class="food-name">Apple</div>
+                        <div class="food-translation">Maçã</div>
+                    </div>
+                    
+                    <div class="food-card">
+                        <span class="food-emoji">🍌</span>
+                        <div class="food-name">Banana</div>
+                        <div class="food-translation">Banana</div>
+                    </div>
+                    
+                    <div class="food-card">
+                        <span class="food-emoji">🍊</span>
+                        <div class="food-name">Orange</div>
+                        <div class="food-translation">Laranja</div>
+                    </div>
+                    
+                    <div class="food-card">
+                        <span class="food-emoji">🥕</span>
+                        <div class="food-name">Carrot</div>
+                        <div class="food-translation">Cenoura</div>
+                    </div>
+                    
+                    <div class="food-card">
+                        <span class="food-emoji">🍅</span>
+                        <div class="food-name">Tomato</div>
+                        <div class="food-translation">Tomate</div>
+                    </div>
+                    
+                    <div class="food-card">
+                        <span class="food-emoji">🍗</span>
+                        <div class="food-name">Chicken</div>
+                        <div class="food-translation">Frango</div>
+                    </div>
+                    
+                    <div class="food-card">
+                        <span class="food-emoji">🐟</span>
+                        <div class="food-name">Fish</div>
+                        <div class="food-translation">Peixe</div>
+                    </div>
+                    
+                    <div class="food-card">
+                        <span class="food-emoji">🍞</span>
+                        <div class="food-name">Bread</div>
+                        <div class="food-translation">Pão</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bebidas -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🥤 Bebidas
+                </h3>
+                
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
+                    <div class="drink-card">
+                        <span class="food-emoji">💧</span>
+                        <div class="food-name">Water</div>
+                        <div class="food-translation">Água</div>
+                    </div>
+                    
+                    <div class="drink-card">
+                        <span class="food-emoji">🧃</span>
+                        <div class="food-name">Juice</div>
+                        <div class="food-translation">Suco</div>
+                    </div>
+                    
+                    <div class="drink-card">
+                        <span class="food-emoji">☕</span>
+                        <div class="food-name">Coffee</div>
+                        <div class="food-translation">Café</div>
+                    </div>
+                    
+                    <div class="drink-card">
+                        <span class="food-emoji">🍵</span>
+                        <div class="food-name">Tea</div>
+                        <div class="food-translation">Chá</div>
+                    </div>
+                    
+                    <div class="drink-card">
+                        <span class="food-emoji">🥛</span>
+                        <div class="food-name">Milk</div>
+                        <div class="food-translation">Leite</div>
+                    </div>
+                    
+                    <div class="drink-card">
+                        <span class="food-emoji">🥤</span>
+                        <div class="food-name">Soda</div>
+                        <div class="food-translation">Refrigerante</div>
+                    </div>
+                    
+                    <div class="drink-card">
+                        <span class="food-emoji">🍷</span>
+                        <div class="food-name">Wine</div>
+                        <div class="food-translation">Vinho</div>
+                    </div>
+                    
+                    <div class="drink-card">
+                        <span class="food-emoji">🍺</span>
+                        <div class="food-name">Beer</div>
+                        <div class="food-translation">Cerveja</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Diálogo -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    💬 Diálogo no Restaurante
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Waiter:</strong> Welcome! What would you like to drink?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Bem-vindo! O que você gostaria de beber?)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Customer:</strong> I would like a glass of water, please.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Eu gostaria de um copo de água, por favor.)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Waiter:</strong> And for food? Are you ready to order?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (E para comer? Você está pronto para pedir?)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Customer:</strong> Yes, I am. I would like the chicken with rice and vegetables.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Sim, estou. Eu gostaria do frango com arroz e vegetais.)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Waiter:</strong> Excellent choice! Anything else?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Excelente escolha! Mais alguma coisa?)
+                        </p>
+                    </div>
+                    <div>
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Customer:</strong> No, thank you. That will be all.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Não, obrigado. Isso será tudo.)
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Texto para Tradução -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    📝 Texto para Tradução
+                </h3>
+                <div class="bg-light-gold p-6 rounded-lg">
+                    <p class="font-baskerville text-navy text-lg mb-4">
+                        "Breakfast is my favorite meal. I usually eat bread with cheese and drink coffee with milk. For lunch, I often have chicken with rice and a salad with lettuce and tomato. In the afternoon, I like to eat a fruit, like an apple or a banana. For dinner, sometimes I eat fish with potatoes. I always drink a lot of water throughout the day."
+                    </p>
+                    <button onclick="toggleTranslation()" class="vintage-button text-white px-4 py-2 rounded font-baskerville">
+                        Ver Tradução
+                    </button>
+                    <div id="translation" class="hidden-answer mt-4 p-4 bg-white rounded border-l-4 border-wine">
+                        <p class="font-baskerville text-navy">
+                            "O café da manhã é minha refeição favorita. Eu geralmente como pão com queijo e bebo café com leite. No almoço, frequentemente como frango com arroz e uma salada com alface e tomate. À tarde, gosto de comer uma fruta, como uma maçã ou uma banana. No jantar, às vezes como peixe com batatas. Sempre bebo muita água durante o dia."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Perguntas para Prática -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    ❓ Perguntas para Prática
+                </h3>
+                <div class="space-y-4">
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            1. What is your favorite fruit?
+                        </p>
+                        <button onclick="toggleAnswer(1)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer1" class="hidden-answer mt-2 text-wine font-bold">
+                            Resposta pessoal (ex: My favorite fruit is apple / banana / orange)
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            2. How do you say "carne bovina" in English?
+                        </p>
+                        <button onclick="toggleAnswer(2)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer2" class="hidden-answer mt-2 text-wine font-bold">
+                            Beef
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            3. What would you order if you wanted a hot drink made from beans?
+                        </p>
+                        <button onclick="toggleAnswer(3)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer3" class="hidden-answer mt-2 text-wine font-bold">
+                            Coffee
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            4. Traduza: "Eu gosto de comer frango com arroz."
+                        </p>
+                        <button onclick="toggleAnswer(4)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer4" class="hidden-answer mt-2 text-wine font-bold">
+                            I like to eat chicken with rice.
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            5. What dairy product is often yellow or white and eaten with bread?
+                        </p>
+                        <button onclick="toggleAnswer(5)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer5" class="hidden-answer mt-2 text-wine font-bold">
+                            Cheese
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pronúncia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    🔊 Dicas de Pronúncia
+                </h3>
+                <div class="space-y-4">
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Vegetables</strong> /ˈvɛdʒtəbəlz/ - Note que o 'e' do meio é quase mudo.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Juice</strong> /dʒuːs/ - O 'j' tem som de 'dj'.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Cheese</strong> /tʃiːz/ - O 'ch' tem som de 'tch'.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Chicken</strong> /ˈtʃɪkɪn/ - O 'ch' tem som de 'tch', o 'i' é curto.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rodapé com Dicas -->
+            <footer class="text-center pt-6 border-t-2 border-wine">
+                <div class="ornament mb-4"></div>
+                <h4 class="font-playfair text-lg font-bold text-wine mb-2">
+                    💡 Dica de Memorização
+                </h4>
+                <p class="font-baskerville text-navy">
+                    Crie um cardápio imaginário em inglês com suas comidas favoritas. Pratique pedindo comida em inglês quando for a restaurantes. Faça uma lista de compras em inglês quando for ao supermercado. Associe cada comida com sua cor ou formato para facilitar a memorização.
+                </p>
+                <div class="ornament mt-4"></div>
+            </footer>
+        </div>
+
+        <!-- Nota de Uso -->
+        <div class="bg-navy text-white p-6 rounded-lg">
+            <h4 class="font-playfair text-lg font-bold mb-2">📋 Como Usar Este Cartão</h4>
+            <ul class="font-baskerville space-y-1">
+                <li>• Clique nos botões "Ver Resposta" para revelar as respostas das perguntas</li>
+                <li>• Clique em "Ver Tradução" para mostrar a tradução do texto</li>
+                <li>• Passe o mouse sobre os cartões de comida e bebida para ver os efeitos visuais</li>
+                <li>• Use as categorias para organizar o vocabulário por grupos</li>
+                <li>• Pratique o diálogo do restaurante em voz alta</li>
+                <li>• Memorize as comidas e bebidas mais comuns primeiro</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(questionNumber) {
+            const answer = document.getElementById('answer' + questionNumber);
+            answer.classList.toggle('hidden-answer');
+            answer.classList.toggle('show-answer');
+        }
+        
+        function toggleTranslation() {
+            const translation = document.getElementById('translation');
+            translation.classList.toggle('hidden-answer');
+            translation.classList.toggle('show-answer');
+        }
+    </script>
+</body>
+</html>
+

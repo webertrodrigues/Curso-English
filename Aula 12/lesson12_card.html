@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão de Inglês - Aula 12: Casa e Móveis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --wine: #722F37;
+            --cream: #F5F1E8;
+            --navy: #2C3E50;
+            --gold: #D4AF37;
+            --dark-wine: #5A252A;
+            --light-gold: #F4E4BC;
+            --rose: #E8B4B8;
+            --sage: #9CAF88;
+            --lavender: #B8A9C9;
+            --coral: #F4A261;
+            --teal: #2A9D8F;
+            --mint: #A8E6CF;
+            --peach: #FFB3BA;
+            --brown: #8B4513;
+            --green: #228B22;
+            --orange: #FF8C00;
+        }
+        
+        .font-baskerville { font-family: 'Libre Baskerville', serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        
+        .vintage-card {
+            background: linear-gradient(135deg, var(--cream) 0%, #F8F5F0 100%);
+            border: 3px solid var(--wine);
+            box-shadow: 
+                0 8px 32px rgba(114, 47, 55, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+        
+        .text-wine { color: var(--wine); }
+        .text-navy { color: var(--navy); }
+        .text-gold { color: var(--gold); }
+        .bg-wine { background-color: var(--wine); }
+        .bg-navy { background-color: var(--navy); }
+        .bg-gold { background-color: var(--gold); }
+        .bg-light-gold { background-color: var(--light-gold); }
+        .bg-mint { background-color: var(--mint); }
+        .bg-peach { background-color: var(--peach); }
+        
+        .vintage-button {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-wine) 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .vintage-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(114, 47, 55, 0.3);
+        }
+        
+        .pronunciation {
+            background: linear-gradient(135deg, var(--light-gold) 0%, var(--cream) 100%);
+            border-left: 4px solid var(--gold);
+        }
+        
+        .dialogue-box {
+            background: rgba(44, 62, 80, 0.05);
+            border-left: 4px solid var(--navy);
+        }
+        
+        .room-card {
+            background: linear-gradient(135deg, var(--brown) 0%, #A0522D 100%);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 0.3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            min-height: 120px;
+            border: 2px solid rgba(139, 69, 19, 0.3);
+            position: relative;
+            text-align: center;
+        }
+        
+        .room-card:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.5);
+            border-color: white;
+        }
+        
+        .furniture-card {
+            background: linear-gradient(135deg, var(--green) 0%, #32CD32 100%);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 0.3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            min-height: 120px;
+            border: 2px solid rgba(34, 139, 34, 0.3);
+            position: relative;
+            text-align: center;
+        }
+        
+        .furniture-card:hover {
+            transform: scale(1.05) rotate(-1deg);
+            box-shadow: 0 8px 25px rgba(34, 139, 34, 0.5);
+            border-color: white;
+        }
+        
+        .category-section {
+            background: linear-gradient(135deg, var(--orange) 0%, #FFB347 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            border: 3px solid rgba(255, 140, 0, 0.3);
+        }
+        
+        .category-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.4);
+            border-color: white;
+        }
+        
+        .home-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .item-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        
+        .item-translation {
+            font-style: italic;
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        
+        .house-showcase {
+            background: linear-gradient(135deg, var(--wine) 0%, var(--dark-wine) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .house-showcase::before {
+            content: '🏠';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 3rem;
+            opacity: 0.3;
+        }
+        
+        .floor-plan {
+            background: linear-gradient(135deg, var(--sage) 0%, #A8CC8C 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .house-layout {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .room-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .room-box:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .ornament {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 0 auto;
+        }
+        
+        .hidden-answer {
+            display: none;
+        }
+        
+        .show-answer {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .vintage-card {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            .room-card, .furniture-card {
+                min-height: 100px;
+            }
+            
+            .item-name {
+                font-size: 1rem;
+            }
+            
+            .home-emoji {
+                font-size: 2rem;
+            }
+            
+            .house-layout {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen py-8">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <!-- Cartão Principal -->
+        <div class="vintage-card rounded-lg p-8 mb-8">
+            <!-- Cabeçalho -->
+            <header class="text-center mb-8">
+                <div class="ornament mb-4"></div>
+                <h1 class="font-playfair text-4xl font-bold text-wine mb-2">
+                    English Learning Card
+                </h1>
+                <h2 class="font-baskerville text-2xl text-navy mb-4">
+                    Aula 12: Casa e Móveis
+                </h2>
+                <div class="ornament"></div>
+            </header>
+
+            <!-- Frase do Dia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    ✨ Frase do Dia
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <p class="font-baskerville text-lg text-navy text-center italic">
+                        "Welcome to my home!"
+                    </p>
+                    <p class="font-baskerville text-base text-gray-600 text-center mt-2">
+                        "Bem-vindo à minha casa!"
+                    </p>
+                </div>
+            </section>
+
+            <!-- Casa Showcase -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🏠 Casa Vintage
+                </h3>
+                <div class="house-showcase">
+                    <div class="text-center mb-4">
+                        <h4 class="font-playfair text-2xl font-bold mb-2">Home Sweet Home</h4>
+                        <p class="font-baskerville text-lg opacity-90">Sua experiência doméstica em inglês</p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-4 text-center">
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <span class="text-3xl block mb-2">🛏️</span>
+                            <p class="font-baskerville">Bedrooms</p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <span class="text-3xl block mb-2">🍽️</span>
+                            <p class="font-baskerville">Kitchen & Dining</p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <span class="text-3xl block mb-2">🛋️</span>
+                            <p class="font-baskerville">Living Areas</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Planta da Casa -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🗺️ Planta da Casa
+                </h3>
+                <div class="floor-plan">
+                    <h4 class="font-playfair text-xl font-bold mb-4">House Layout</h4>
+                    <div class="house-layout">
+                        <div class="room-box">
+                            <span class="text-2xl block mb-2">🛏️</span>
+                            <p class="font-bold">Bedroom</p>
+                            <p class="text-sm opacity-80">Quarto</p>
+                        </div>
+                        <div class="room-box">
+                            <span class="text-2xl block mb-2">🚿</span>
+                            <p class="font-bold">Bathroom</p>
+                            <p class="text-sm opacity-80">Banheiro</p>
+                        </div>
+                        <div class="room-box">
+                            <span class="text-2xl block mb-2">🍳</span>
+                            <p class="font-bold">Kitchen</p>
+                            <p class="text-sm opacity-80">Cozinha</p>
+                        </div>
+                        <div class="room-box">
+                            <span class="text-2xl block mb-2">🛋️</span>
+                            <p class="font-bold">Living Room</p>
+                            <p class="text-sm opacity-80">Sala de Estar</p>
+                        </div>
+                        <div class="room-box">
+                            <span class="text-2xl block mb-2">🍽️</span>
+                            <p class="font-bold">Dining Room</p>
+                            <p class="text-sm opacity-80">Sala de Jantar</p>
+                        </div>
+                        <div class="room-box">
+                            <span class="text-2xl block mb-2">🌿</span>
+                            <p class="font-bold">Garden</p>
+                            <p class="text-sm opacity-80">Jardim</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Categorias de Cômodos -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🏠 Categorias de Cômodos
+                </h3>
+                
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="category-section">
+                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">🛏️ Área Íntima</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Bedroom</span>
+                                <span class="opacity-80">Quarto</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Bathroom</span>
+                                <span class="opacity-80">Banheiro</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Closet</span>
+                                <span class="opacity-80">Closet</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Hallway</span>
+                                <span class="opacity-80">Corredor</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-section">
+                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">🍽️ Área Social</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Living Room</span>
+                                <span class="opacity-80">Sala de Estar</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Dining Room</span>
+                                <span class="opacity-80">Sala de Jantar</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Kitchen</span>
+                                <span class="opacity-80">Cozinha</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Balcony</span>
+                                <span class="opacity-80">Varanda</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-section">
+                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">🚗 Área Externa</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Garden</span>
+                                <span class="opacity-80">Jardim</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Yard</span>
+                                <span class="opacity-80">Quintal</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Garage</span>
+                                <span class="opacity-80">Garagem</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Basement</span>
+                                <span class="opacity-80">Porão</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-section">
+                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">🏠 Estrutura</h4>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Attic</span>
+                                <span class="opacity-80">Sótão</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Roof</span>
+                                <span class="opacity-80">Telhado</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Window</span>
+                                <span class="opacity-80">Janela</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Door</span>
+                                <span class="opacity-80">Porta</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cômodos da Casa -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🏠 Cômodos da Casa
+                </h3>
+                
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
+                    <div class="room-card">
+                        <span class="home-emoji">🛋️</span>
+                        <div class="item-name">Living Room</div>
+                        <div class="item-translation">Sala de Estar</div>
+                    </div>
+                    
+                    <div class="room-card">
+                        <span class="home-emoji">🛏️</span>
+                        <div class="item-name">Bedroom</div>
+                        <div class="item-translation">Quarto</div>
+                    </div>
+                    
+                    <div class="room-card">
+                        <span class="home-emoji">🍳</span>
+                        <div class="item-name">Kitchen</div>
+                        <div class="item-translation">Cozinha</div>
+                    </div>
+                    
+                    <div class="room-card">
+                        <span class="home-emoji">🚿</span>
+                        <div class="item-name">Bathroom</div>
+                        <div class="item-translation">Banheiro</div>
+                    </div>
+                    
+                    <div class="room-card">
+                        <span class="home-emoji">🍽️</span>
+                        <div class="item-name">Dining Room</div>
+                        <div class="item-translation">Sala de Jantar</div>
+                    </div>
+                    
+                    <div class="room-card">
+                        <span class="home-emoji">🌿</span>
+                        <div class="item-name">Garden</div>
+                        <div class="item-translation">Jardim</div>
+                    </div>
+                    
+                    <div class="room-card">
+                        <span class="home-emoji">🚗</span>
+                        <div class="item-name">Garage</div>
+                        <div class="item-translation">Garagem</div>
+                    </div>
+                    
+                    <div class="room-card">
+                        <span class="home-emoji">🏠</span>
+                        <div class="item-name">Balcony</div>
+                        <div class="item-translation">Varanda</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Móveis e Objetos -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🪑 Móveis e Objetos
+                </h3>
+                
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
+                    <div class="furniture-card">
+                        <span class="home-emoji">🛋️</span>
+                        <div class="item-name">Sofa</div>
+                        <div class="item-translation">Sofá</div>
+                    </div>
+                    
+                    <div class="furniture-card">
+                        <span class="home-emoji">🪑</span>
+                        <div class="item-name">Chair</div>
+                        <div class="item-translation">Cadeira</div>
+                    </div>
+                    
+                    <div class="furniture-card">
+                        <span class="home-emoji">🛏️</span>
+                        <div class="item-name">Bed</div>
+                        <div class="item-translation">Cama</div>
+                    </div>
+                    
+                    <div class="furniture-card">
+                        <span class="home-emoji">🪞</span>
+                        <div class="item-name">Mirror</div>
+                        <div class="item-translation">Espelho</div>
+                    </div>
+                    
+                    <div class="furniture-card">
+                        <span class="home-emoji">🚿</span>
+                        <div class="item-name">Shower</div>
+                        <div class="item-translation">Chuveiro</div>
+                    </div>
+                    
+                    <div class="furniture-card">
+                        <span class="home-emoji">🧊</span>
+                        <div class="item-name">Fridge</div>
+                        <div class="item-translation">Geladeira</div>
+                    </div>
+                    
+                    <div class="furniture-card">
+                        <span class="home-emoji">🔥</span>
+                        <div class="item-name">Stove</div>
+                        <div class="item-translation">Fogão</div>
+                    </div>
+                    
+                    <div class="furniture-card">
+                        <span class="home-emoji">💡</span>
+                        <div class="item-name">Lamp</div>
+                        <div class="item-translation">Lâmpada</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Diálogo -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    💬 Tour pela Casa
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend A:</strong> Wow, your house is beautiful!
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Nossa, sua casa é linda!)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend B:</strong> Thank you! Come in, let me show you around.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Obrigado! Entre, deixe-me mostrar a casa.)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend A:</strong> This living room is so cozy. I love the sofa.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Esta sala de estar é tão aconchegante. Adoro o sofá.)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend B:</strong> Yes, it's my favorite place to relax. And this is the kitchen.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Sim, é meu lugar favorito para relaxar. E esta é a cozinha.)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend A:</strong> It looks great! Is that a new refrigerator?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Parece ótima! Essa é uma geladeira nova?)
+                        </p>
+                    </div>
+                    <div>
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Friend B:</strong> Yes, it is! And upstairs, we have the bedrooms.
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Sim, é! E no andar de cima, temos os quartos.)
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Texto para Tradução -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    📝 Texto para Tradução
+                </h3>
+                <div class="bg-light-gold p-6 rounded-lg">
+                    <p class="font-baskerville text-navy text-lg mb-4">
+                        "My apartment has two bedrooms, a living room, a kitchen, and one bathroom. In the living room, there is a big sofa and a television. My bedroom has a comfortable bed and a large wardrobe. The kitchen has a new refrigerator and a stove. I like to keep my home clean and organized. Every morning, I open the curtains to let the sunlight in."
+                    </p>
+                    <button onclick="toggleTranslation()" class="vintage-button text-white px-4 py-2 rounded font-baskerville">
+                        Ver Tradução
+                    </button>
+                    <div id="translation" class="hidden-answer mt-4 p-4 bg-white rounded border-l-4 border-wine">
+                        <p class="font-baskerville text-navy">
+                            "Meu apartamento tem dois quartos, uma sala de estar, uma cozinha e um banheiro. Na sala de estar, há um sofá grande e uma televisão. Meu quarto tem uma cama confortável e um guarda-roupa grande. A cozinha tem uma geladeira nova e um fogão. Gosto de manter minha casa limpa e organizada. Toda manhã, abro as cortinas para deixar a luz do sol entrar."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Perguntas para Prática -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    ❓ Perguntas para Prática
+                </h3>
+                <div class="space-y-4">
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            1. What room do you usually relax in?
+                        </p>
+                        <button onclick="toggleAnswer(1)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer1" class="hidden-answer mt-2 text-wine font-bold">
+                            Living room (Sala de estar)
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            2. How do you say "guarda-roupa" in English?
+                        </p>
+                        <button onclick="toggleAnswer(2)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer2" class="hidden-answer mt-2 text-wine font-bold">
+                            Wardrobe or Closet
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            3. What piece of furniture do you sleep on?
+                        </p>
+                        <button onclick="toggleAnswer(3)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer3" class="hidden-answer mt-2 text-wine font-bold">
+                            Bed (Cama)
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            4. Traduza: "A cozinha tem uma geladeira e um fogão."
+                        </p>
+                        <button onclick="toggleAnswer(4)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer4" class="hidden-answer mt-2 text-wine font-bold">
+                            The kitchen has a refrigerator and a stove.
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            5. What do you use to see your reflection?
+                        </p>
+                        <button onclick="toggleAnswer(5)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer5" class="hidden-answer mt-2 text-wine font-bold">
+                            Mirror (Espelho)
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pronúncia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    🔊 Dicas de Pronúncia
+                </h3>
+                <div class="space-y-4">
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Home</strong> /hoʊm/ - O 'o' é longo, como em 'go'.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>House</strong> /haʊs/ - O 'ou' é como em 'mouse'.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Furniture</strong> /ˈfɜːrnɪtʃər/ - Note que o 'u' é quase mudo.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Kitchen</strong> /ˈkɪtʃɪn/ - O 'ch' tem som de 'tch'.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rodapé com Dicas -->
+            <footer class="text-center pt-6 border-t-2 border-wine">
+                <div class="ornament mb-4"></div>
+                <h4 class="font-playfair text-lg font-bold text-wine mb-2">
+                    💡 Dica de Memorização
+                </h4>
+                <p class="font-baskerville text-navy">
+                    Faça um tour pela sua própria casa, nomeando cada cômodo e objeto em inglês. Use post-its para colar os nomes em inglês nos móveis. Desenhe a planta de uma casa e escreva os nomes dos cômodos. Assista a vídeos de decoração em inglês para ouvir o vocabulário em contexto.
+                </p>
+                <div class="ornament mt-4"></div>
+            </footer>
+        </div>
+
+        <!-- Nota de Uso -->
+        <div class="bg-navy text-white p-6 rounded-lg">
+            <h4 class="font-playfair text-lg font-bold mb-2">📋 Como Usar Este Cartão</h4>
+            <ul class="font-baskerville space-y-1">
+                <li>• Clique nos botões "Ver Resposta" para revelar as respostas das perguntas</li>
+                <li>• Clique em "Ver Tradução" para mostrar a tradução do texto</li>
+                <li>• Passe o mouse sobre os cartões de cômodos e móveis para ver os efeitos visuais</li>
+                <li>• Use a planta da casa para visualizar a organização dos cômodos</li>
+                <li>• Pratique o diálogo do tour pela casa em voz alta</li>
+                <li>• Descreva sua própria casa usando o vocabulário aprendido</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(questionNumber) {
+            const answer = document.getElementById('answer' + questionNumber);
+            answer.classList.toggle('hidden-answer');
+            answer.classList.toggle('show-answer');
+        }
+        
+        function toggleTranslation() {
+            const translation = document.getElementById('translation');
+            translation.classList.toggle('hidden-answer');
+            translation.classList.toggle('show-answer');
+        }
+    </script>
+</body>
+</html>
+

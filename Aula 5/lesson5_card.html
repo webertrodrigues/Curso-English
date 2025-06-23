@@ -27,6 +27,12 @@
                 inset 0 1px 0 rgba(255, 255, 255, 0.8);
         }
         
+        .ornament-border {
+            border-image: linear-gradient(45deg, var(--gold), var(--wine), var(--gold)) 1;
+            border-width: 2px;
+            border-style: solid;
+        }
+        
         .text-wine { color: var(--wine); }
         .text-navy { color: var(--navy); }
         .text-gold { color: var(--gold); }
@@ -136,6 +142,75 @@
             display: block;
         }
         
+        /* Estilos para os modais */
+        .form-radio {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 1.2em;
+            height: 1.2em;
+            border: 2px solid var(--wine);
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .form-radio:checked {
+            background-color: var(--wine);
+        }
+
+        .form-radio:checked::after {
+            content: '';
+            position: absolute;
+            width: 0.6em;
+            height: 0.6em;
+            background-color: white;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .form-radio:focus {
+            box-shadow: 0 0 0 2px var(--gold);
+        }
+
+        /* Animações para os modais */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        #quizModal, #resultModal {
+            animation: fadeIn 0.3s ease-out;
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #quizModal > div, #resultModal > div {
+            animation: slideIn 0.3s ease-out;
+        }
+
+        /* Impedir scroll quando modal está aberto */
+        body.modal-open {
+            overflow: hidden;
+        }
+
         @media (max-width: 768px) {
             .vintage-card {
                 margin: 1rem;
@@ -426,6 +501,13 @@
                 </div>
             </section>
 
+            <!-- Botão para abrir a Prova -->
+            <section class="mb-8 text-center">
+                <button onclick="openQuizModal()" class="vintage-button text-white px-6 py-3 rounded-lg font-baskerville text-lg">
+                    🎯 Iniciar Prova
+                </button>
+            </section>
+
             <!-- Pronúncia -->
             <section class="mb-8">
                 <h3 class="font-playfair text-xl font-bold text-wine mb-4">
@@ -470,9 +552,250 @@
                 <li>• Clique nos botões "Ver Resposta" para revelar as respostas das perguntas</li>
                 <li>• Clique em "Ver Tradução" para mostrar a tradução do texto</li>
                 <li>• Pratique a pronúncia usando as dicas fonéticas fornecidas</li>
-                <li>• Passe o mouse sobre as conjugações para ver os efeitos visuais</li>
-                <li>• Memorize as formas do verbo "to be" praticando com frases pessoais</li>
+                <li>• Clique em "Iniciar Prova" para testar seu conhecimento</li>
             </ul>
+        </div>
+    </div>
+
+    <!-- Modal da Prova -->
+    <div id="quizModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50" style="display: none;">
+        <div class="vintage-card rounded-lg p-8 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="font-playfair text-2xl font-bold text-wine">
+                    📝 Prova: Verbo "To Be"
+                </h3>
+                <button onclick="closeQuizModal()" class="text-gray-500 hover:text-wine text-2xl">
+                    ✕
+                </button>
+            </div>
+
+            <form id="quizForm" class="space-y-6">
+                <!-- Questão 1 -->
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        1. Complete: "She ___ a teacher."
+                    </p>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q1" value="a" class="form-radio text-wine">
+                            <span class="font-baskerville">a) am</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q1" value="b" class="form-radio text-wine">
+                            <span class="font-baskerville">b) is</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q1" value="c" class="form-radio text-wine">
+                            <span class="font-baskerville">c) are</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q1" value="d" class="form-radio text-wine">
+                            <span class="font-baskerville">d) be</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 2 -->
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        2. Qual frase está correta?
+                    </p>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q2" value="a" class="form-radio text-wine">
+                            <span class="font-baskerville">a) We is happy.</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q2" value="b" class="form-radio text-wine">
+                            <span class="font-baskerville">b) You am tired.</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q2" value="c" class="form-radio text-wine">
+                            <span class="font-baskerville">c) They are students.</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q2" value="d" class="form-radio text-wine">
+                            <span class="font-baskerville">d) He are at home.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 3 -->
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        3. Traduza: "Eles estão no parque."
+                    </p>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q3" value="a" class="form-radio text-wine">
+                            <span class="font-baskerville">a) They is at the park.</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q3" value="b" class="form-radio text-wine">
+                            <span class="font-baskerville">b) They are at the park.</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q3" value="c" class="form-radio text-wine">
+                            <span class="font-baskerville">c) They am at the park.</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q3" value="d" class="form-radio text-wine">
+                            <span class="font-baskerville">d) They be at the park.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 4 -->
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        4. Complete: "I ___ from Italy."
+                    </p>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q4" value="a" class="form-radio text-wine">
+                            <span class="font-baskerville">a) am</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q4" value="b" class="form-radio text-wine">
+                            <span class="font-baskerville">b) is</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q4" value="c" class="form-radio text-wine">
+                            <span class="font-baskerville">c) are</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q4" value="d" class="form-radio text-wine">
+                            <span class="font-baskerville">d) be</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 5 -->
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        5. Qual frase usa o verbo "to be" INCORRETAMENTE?
+                    </p>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q5" value="a" class="form-radio text-wine">
+                            <span class="font-baskerville">a) You are my friend.</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q5" value="b" class="form-radio text-wine">
+                            <span class="font-baskerville">b) She is a doctor.</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q5" value="c" class="form-radio text-wine">
+                            <span class="font-baskerville">c) We are students.</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q5" value="d" class="form-radio text-wine">
+                            <span class="font-baskerville">d) He are happy.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 6 -->
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        6. Complete: "My friends ___ at school."
+                    </p>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q6" value="a" class="form-radio text-wine">
+                            <span class="font-baskerville">a) am</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q6" value="b" class="form-radio text-wine">
+                            <span class="font-baskerville">b) is</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q6" value="c" class="form-radio text-wine">
+                            <span class="font-baskerville">c) are</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q6" value="d" class="form-radio text-wine">
+                            <span class="font-baskerville">d) be</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 7 -->
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        7. Traduza: "Você está cansado?"
+                    </p>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q7" value="a" class="form-radio text-wine">
+                            <span class="font-baskerville">a) You is tired?</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q7" value="b" class="form-radio text-wine">
+                            <span class="font-baskerville">b) Are you tired?</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q7" value="c" class="form-radio text-wine">
+                            <span class="font-baskerville">c) You are tired?</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q7" value="d" class="form-radio text-wine">
+                            <span class="font-baskerville">d) Is you tired?</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 8 -->
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        8. Qual NÃO é um uso do verbo "to be"?
+                    </p>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q8" value="a" class="form-radio text-wine">
+                            <span class="font-baskerville">a) Identidade (I am a student)</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q8" value="b" class="form-radio text-wine">
+                            <span class="font-baskerville">b) Localização (They are at home)</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q8" value="c" class="form-radio text-wine">
+                            <span class="font-baskerville">c) Sentimentos (We are happy)</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q8" value="d" class="form-radio text-wine">
+                            <span class="font-baskerville">d) Ações (I am running)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="flex justify-center mt-8">
+                    <button type="button" onclick="checkQuiz()" class="vintage-button text-white px-6 py-3 rounded-lg text-lg font-bold">
+                        ✅ Finalizar Prova
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Resultados -->
+    <div id="resultModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50" style="display: none;">
+        <div class="vintage-card rounded-lg p-8 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div class="text-center mb-6">
+                <h3 class="font-playfair text-2xl font-bold text-wine">
+                    🎉 Resultado da Prova (8 questões)
+                </h3>
+                <div id="scoreText" class="font-baskerville text-xl mt-2"></div>
+            </div>
+
+            <div id="quizResults" class="space-y-4"></div>
+
+            <div class="flex justify-center mt-8">
+                <button onclick="closeResultModal()" class="vintage-button text-white px-6 py-3 rounded-lg text-lg font-bold">
+                    Voltar para a Aula
+                </button>
+            </div>
         </div>
     </div>
 
@@ -488,7 +811,135 @@
             translation.classList.toggle('hidden-answer');
             translation.classList.toggle('show-answer');
         }
+
+        // Configuração do Quiz
+        const quizConfig = {
+            totalQuestions: 8,
+            correctAnswers: {
+                q1: 'b',
+                q2: 'c',
+                q3: 'b',
+                q4: 'a',
+                q5: 'd',
+                q6: 'c',
+                q7: 'b',
+                q8: 'd'
+            },
+            explanations: {
+                q1: {
+                    correct: 'Correto! "She" usa "is" no presente simples',
+                    incorrect: 'Errado! "She" deve usar "is" no presente simples'
+                },
+                q2: {
+                    correct: 'Correto! "They are" é a forma correta para eles/elas',
+                    incorrect: 'Errado! "They are" é a forma correta para eles/elas'
+                },
+                q3: {
+                    correct: 'Correto! "They are at the park" é a tradução correta',
+                    incorrect: 'Errado! A tradução correta é "They are at the park"'
+                },
+                q4: {
+                    correct: 'Correto! "I" sempre usa "am" no presente simples',
+                    incorrect: 'Errado! "I" sempre usa "am" no presente simples'
+                },
+                q5: {
+                    correct: 'Correto! "He" deve usar "is", não "are"',
+                    incorrect: 'Errado! A frase incorreta é "He are happy" - deveria ser "He is happy"'
+                },
+                q6: {
+                    correct: 'Correto! "My friends" (they) usa "are"',
+                    incorrect: 'Errado! "My friends" (they) deve usar "are"'
+                },
+                q7: {
+                    correct: 'Correto! Perguntas no inglês invertem a ordem (are you)',
+                    incorrect: 'Errado! Em perguntas, invertemos a ordem: "Are you tired?"'
+                },
+                q8: {
+                    correct: 'Correto! "To be" não é usado para ações em progresso (usamos "to be" + gerúndio para isso)',
+                    incorrect: 'Errado! "To be" não é usado diretamente para ações (usamos "to be" + gerúndio para ações em progresso)'
+                }
+            }
+        };
+
+        // Funções para controlar os modais
+        function openQuizModal() {
+            document.getElementById('quizModal').style.display = 'flex';
+            document.getElementById('quizForm').reset();
+            document.body.classList.add('modal-open');
+        }
+
+        function closeQuizModal() {
+            document.getElementById('quizModal').style.display = 'none';
+            document.body.classList.remove('modal-open');
+        }
+
+        function openResultModal() {
+            document.getElementById('resultModal').style.display = 'flex';
+            document.body.classList.add('modal-open');
+        }
+
+        function closeResultModal() {
+            document.getElementById('resultModal').style.display = 'none';
+            document.body.classList.remove('modal-open');
+        }
+
+        // Função para verificar respostas
+        function checkQuiz() {
+            let score = 0;
+            const results = [];
+            const form = document.getElementById('quizForm');
+            
+            for (let i = 1; i <= quizConfig.totalQuestions; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = form.querySelector(`input[name="${questionName}"]:checked`)?.value;
+                const isCorrect = selectedOption === quizConfig.correctAnswers[questionName];
+                
+                if (isCorrect) score++;
+                
+                results.push({
+                    question: i,
+                    isCorrect,
+                    explanation: isCorrect 
+                        ? quizConfig.explanations[questionName].correct
+                        : quizConfig.explanations[questionName].incorrect
+                });
+            }
+            
+            showResults(score, results);
+        }    
+
+        // Função para mostrar resultados
+        function showResults(score, results) {
+            const scoreElement = document.getElementById('scoreText');
+            const resultsContainer = document.getElementById('quizResults');
+            
+            scoreElement.innerHTML = `
+                Você acertou <span class="text-wine font-bold">${score}/${quizConfig.totalQuestions}</span> questões!
+                <p class="font-baskerville text-lg mt-2 text-navy">${getScoreMessage(score, quizConfig.totalQuestions)}</p>
+            `;
+            
+            resultsContainer.innerHTML = results.map(result => `
+                <div class="p-4 rounded-lg ${result.isCorrect ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'} mb-3">
+                    <p class="font-baskerville font-bold ${result.isCorrect ? 'text-green-800' : 'text-red-800'}">
+                        Questão ${result.question}: ${result.isCorrect ? '✅ Acertou!' : '❌ Errou'}
+                    </p>
+                    <p class="font-baskerville mt-2 text-navy">${result.explanation}</p>
+                </div>
+            `).join('');
+            
+            closeQuizModal();
+            openResultModal();
+        }
+
+        // Função para mensagem de pontuação
+        function getScoreMessage(score, total) {
+            const percentage = (score / total) * 100;
+            
+            if (percentage >= 90) return '🏆 Excelente! Você domina o verbo "to be"!';
+            if (percentage >= 70) return '👍 Muito bom! Você conhece bem o verbo "to be"!';
+            if (percentage >= 50) return '👌 Bom trabalho! Revise um pouco mais para melhorar!';
+            return '✏️ Continue praticando! Revise o verbo "to be" para melhorar!';
+        }
     </script>
 </body>
 </html>
-
