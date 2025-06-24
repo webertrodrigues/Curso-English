@@ -80,6 +80,25 @@
                 </div>
             </section>
 
+            <!-- Controle de Velocidade -->
+            <section class="mb-6">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-3">
+                    ⚙️ Controle de Velocidade
+                </h3>
+                <div class="bg-light-gold p-4 rounded-lg flex items-center">
+                    <span class="font-baskerville text-navy mr-3">Velocidade:</span>
+                    <select id="speedControl" class="font-baskerville bg-white border border-wine rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-gold">
+                        <option value="0.5">Lenta</option>
+                        <option value="0.9" selected>Normal</option>
+                        <option value="1.2">Rápida</option>
+                        <option value="1.5">Muito Rápida</option>
+                    </select>
+                    <button onclick="testSpeed()" class="ml-3 bg-wine text-white px-3 py-1 rounded font-baskerville text-sm hover:bg-dark-wine transition">
+                        Testar
+                    </button>
+                </div>
+            </section>
+
             <!-- Vocabulário Essencial -->
             <section class="mb-8">
                 <h3 class="font-playfair text-xl font-bold text-wine mb-4 flex items-center">
@@ -88,59 +107,107 @@
                 <div class="grid md:grid-cols-2 gap-4">
                     <div class="vocabulary-item p-3 rounded flex items-center">
                         <span class="object-icon">📖</span>
-                        <div>
+                        <div class="flex-grow">
                             <span class="font-baskerville font-bold text-navy">Book</span>
                             <span class="text-gray-600 ml-2">→ Livro</span>
                         </div>
+                        <button onclick="speakWord('Book')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
                     </div>
                     <div class="vocabulary-item p-3 rounded flex items-center">
                         <span class="object-icon">🖊️</span>
-                        <div>
+                        <div class="flex-grow">
                             <span class="font-baskerville font-bold text-navy">Pen</span>
                             <span class="text-gray-600 ml-2">→ Caneta</span>
                         </div>
+                        <button onclick="speakWord('Pen')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
                     </div>
                     <div class="vocabulary-item p-3 rounded flex items-center">
                         <span class="object-icon">✏️</span>
-                        <div>
+                        <div class="flex-grow">
                             <span class="font-baskerville font-bold text-navy">Pencil</span>
                             <span class="text-gray-600 ml-2">→ Lápis</span>
                         </div>
+                        <button onclick="speakWord('Pencil')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
                     </div>
                     <div class="vocabulary-item p-3 rounded flex items-center">
                         <span class="object-icon">🪑</span>
-                        <div>
+                        <div class="flex-grow">
                             <span class="font-baskerville font-bold text-navy">Chair</span>
                             <span class="text-gray-600 ml-2">→ Cadeira</span>
                         </div>
+                        <button onclick="speakWord('Chair')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
                     </div>
                     <div class="vocabulary-item p-3 rounded flex items-center">
                         <span class="object-icon">🚪</span>
-                        <div>
+                        <div class="flex-grow">
                             <span class="font-baskerville font-bold text-navy">Door</span>
                             <span class="text-gray-600 ml-2">→ Porta</span>
                         </div>
+                        <button onclick="speakWord('Door')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
                     </div>
                     <div class="vocabulary-item p-3 rounded flex items-center">
                         <span class="object-icon">🔑</span>
-                        <div>
+                        <div class="flex-grow">
                             <span class="font-baskerville font-bold text-navy">Key</span>
                             <span class="text-gray-600 ml-2">→ Chave</span>
                         </div>
+                        <button onclick="speakWord('Key')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
                     </div>
                     <div class="vocabulary-item p-3 rounded flex items-center">
                         <span class="object-icon">📱</span>
-                        <div>
+                        <div class="flex-grow">
                             <span class="font-baskerville font-bold text-navy">Phone</span>
                             <span class="text-gray-600 ml-2">→ Telefone</span>
                         </div>
+                        <button onclick="speakWord('Phone')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
                     </div>
                     <div class="vocabulary-item p-3 rounded flex items-center">
                         <span class="object-icon">💻</span>
-                        <div>
+                        <div class="flex-grow">
                             <span class="font-baskerville font-bold text-navy">Computer</span>
                             <span class="text-gray-600 ml-2">→ Computador</span>
                         </div>
+                        <button onclick="speakWord('Computer')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </section>
@@ -151,37 +218,66 @@
                     💬 Diálogo Simples
                 </h3>
                 <div class="dialogue-box p-6 rounded-lg">
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Student:</strong> Excuse me, teacher. Is this a pencil?
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Com licença, professor(a). Isto é um lápis?)
-                        </p>
-                    </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Teacher:</strong> No, it's a pen. Do you have a pencil?
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Não, é uma caneta. Você tem um lápis?)
-                        </p>
-                    </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Student:</strong> Yes, I have a pencil in my bag.
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Sim, eu tenho um lápis na minha bolsa.)
-                        </p>
-                    </div>
-                    <div>
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Teacher:</strong> Great! And where is the book?
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Ótimo! E onde está o livro?)
-                        </p>
+                    <div class="dialogue-player">
+                        <div class="dialogue-controls">
+                            <button class="play-btn" id="playDialogue" title="Reproduzir">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                                </svg>
+                            </button>
+                            <button class="pause-btn hidden" id="pauseDialogue" title="Pausar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
+                                </svg>
+                            </button>
+                            <button class="stop-btn" id="stopDialogue" title="Parar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M5 3.5h6A1.5 1.5 0 0 1 12.5 5v6a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 11V5A1.5 1.5 0 0 1 5 3.5z"/>
+                                </svg>
+                            </button>
+                            <div class="speed-control">
+                                <label for="dialogueSpeed">Velocidade:</label>
+                                <select id="dialogueSpeed" class="font-baskerville bg-white border border-wine rounded px-2 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-gold">
+                                    <option value="0.4">0.4x</option>
+                                    <option value="0.7" selected>0.7x</option>
+                                    <option value="1">1x</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="dialogue-text">
+                            <div class="mb-4" id="line1">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Student:</strong> <span class="dialogue-line">Excuse me, teacher. Is this a pencil?</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Com licença, professor(a). Isto é um lápis?)
+                                </p>
+                            </div>
+                            <div class="mb-4" id="line2">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Teacher:</strong> <span class="dialogue-line">No, it's a pen. Do you have a pencil?</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Não, é uma caneta. Você tem um lápis?)
+                                </p>
+                            </div>
+                            <div class="mb-4" id="line3">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Student:</strong> <span class="dialogue-line">Yes, I have a pencil in my bag.</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Sim, eu tenho um lápis na minha bolsa.)
+                                </p>
+                            </div>
+                            <div id="line4">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Teacher:</strong> <span class="dialogue-line">Great! And where is the book?</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Ótimo! E onde está o livro?)
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>

@@ -138,3 +138,159 @@ function getScoreMessage(score, total) {
     if (percentage >= 50) return '👌 Bom trabalho! Revise um pouco mais para melhorar!';
     return '✏️ Continue praticando! Revise as cores e formas para melhorar!';
 }
+
+// Speech synthesis function
+function speakWord(text) {
+    // Get the selected speed
+    const speed = document.getElementById('speedControl') ? 
+                 parseFloat(document.getElementById('speedControl').value) : 
+                 1.0;
+    
+    // Cancel any ongoing speech
+    window.speechSynthesis.cancel();
+    
+    // Create a new utterance
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = speed;
+    utterance.lang = 'en-US';
+    
+    // Speak the text
+    window.speechSynthesis.speak(utterance);
+}
+
+// =====================================
+// Controle de Fala / Diálogo
+// =====================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    function toggleAnswer(questionNumber) {
+        const answer = document.getElementById('answer' + questionNumber);
+        answer.classList.toggle('hidden-answer');
+        answer.classList.toggle('show-answer');
+    }
+
+    function toggleTranslation() {
+        const translation = document.getElementById('translation');
+        translation.classList.toggle('hidden-answer');
+        translation.classList.toggle('show-answer');
+    }
+
+    const dialogueLines = [
+        "Excuse me, teacher. Is this a pencil?",
+        "No, it's a pen. Do you have a pencil?",
+        "Yes, I have a pencil in my bag.",
+        "Great! And where is the book?"
+    ];
+
+    let currentLine = 0;
+    let isDialoguePlaying = false;
+    const speechSynth = window.speechSynthesis;
+
+    const playBtn = document.getElementById('playDialogue');
+    const pauseBtn = document.getElementById('pauseDialogue');
+    const stopBtn = document.getElementById('stopDialogue');
+    const speedControl = document.getElementById('dialogueSpeed');
+
+    function speakLineAsync(text, rate = 1.0) {
+        return new Promise((resolve, reject) => {
+            const utter = new SpeechSynthesisUtterance(text);
+            utter.rate = rate;
+            utter.lang = 'en-US';
+            utter.onend = () => resolve();
+            utter.onerror = (e) => reject(e);
+            speechSynth.speak(utter);
+        });
+    }
+
+    function highlightCurrentLine() {
+        document.querySelectorAll('.dialogue-line').forEach(line => {
+            line.classList.remove('highlight');
+        });
+
+        const lines = document.querySelectorAll('.dialogue-line');
+        if (lines[currentLine]) {
+            lines[currentLine].classList.add('highlight');
+            const el = document.getElementById(`line${currentLine + 1}`);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+    }
+
+    async function playDialogueFrom(index) {
+        isDialoguePlaying = true;
+        playBtn.classList.add('hidden');
+        pauseBtn.classList.remove('hidden');
+
+        for (let i = index; i < dialogueLines.length; i++) {
+            currentLine = i;
+            highlightCurrentLine();
+
+            if (!isDialoguePlaying) break;
+
+            try {
+                await speakLineAsync(dialogueLines[i], parseFloat(speedControl.value));
+            } catch (e) {
+                console.error('Erro na fala:', e);
+                break;
+            }
+        }
+
+        stopDialogue();
+    }
+
+    function playDialogue() {
+        if (speechSynth.paused) {
+            speechSynth.resume();
+            isDialoguePlaying = true;
+            playBtn.classList.add('hidden');
+            pauseBtn.classList.remove('hidden');
+        } else {
+            stopDialogue();
+            playDialogueFrom(currentLine);
+        }
+    }
+
+    function pauseDialogue() {
+        isDialoguePlaying = false;
+        speechSynth.pause();
+        playBtn.classList.remove('hidden');
+        pauseBtn.classList.add('hidden');
+    }
+
+    function stopDialogue() {
+        isDialoguePlaying = false;
+        speechSynth.cancel();
+        currentLine = 0;
+        playBtn.classList.remove('hidden');
+        pauseBtn.classList.add('hidden');
+
+        document.querySelectorAll('.dialogue-line').forEach(line => {
+            line.classList.remove('highlight');
+        });
+    }
+
+    playBtn.addEventListener('click', playDialogue);
+    pauseBtn.addEventListener('click', pauseDialogue);
+    stopBtn.addEventListener('click', stopDialogue);
+
+    document.querySelectorAll('.dialogue-line').forEach((line, index) => {
+        line.addEventListener('click', () => {
+            stopDialogue();
+            playDialogueFrom(index);
+        });
+    });
+
+    speedControl.addEventListener('change', () => {
+        if (isDialoguePlaying) {
+            stopDialogue();
+            playDialogueFrom(currentLine);
+        }
+    });
+
+    if (!window.speechSynthesis) {
+        console.error('API de síntese de fala não suportada neste navegador');
+        document.querySelector('.dialogue-controls').innerHTML =
+            '<p class="text-red-600">Seu navegador não suporta a reprodução de áudio. Por favor, atualize ou use outro navegador.</p>';
+    }
+});

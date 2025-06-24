@@ -249,6 +249,100 @@ body.modal-open {
     overflow: hidden;
 }
 
+.pronounce-btn {
+    min-width: 28px;
+    min-height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: var(--wine);
+    color: white;
+    border-radius: 50%;
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.pronounce-btn:hover {
+    transform: scale(1.1);
+    background-color: var(--dark-wine);
+}
+
+.pronounce-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* Estilos para o player de diálogo */
+.dialogue-player {
+    position: relative;
+    margin-top: 1rem;
+}
+
+.dialogue-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    background: rgba(212, 175, 55, 0.1);
+    padding: 0.75rem;
+    border-radius: 8px;
+}
+
+.dialogue-text {
+    position: relative;
+    line-height: 1.6;
+}
+
+.highlight {
+    background-color: rgba(212, 175, 55, 0.3);
+    transition: all 0.3s ease;
+    border-radius: 3px;
+    padding: 0 2px;
+}
+
+.play-btn, .pause-btn, .stop-btn {
+    background: var(--wine);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.play-btn:hover, .pause-btn:hover, .stop-btn:hover {
+    background: var(--dark-wine);
+    transform: scale(1.05);
+}
+
+.play-btn svg, .pause-btn svg, .stop-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.speed-control {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.speed-control label {
+    font-family: 'Libre Baskerville', serif;
+    color: var(--navy);
+    font-size: 0.9rem;
+}
+
+.hidden {
+    display: none;
+}
+
 /* Estilos responsivos */
 @media (max-width: 768px) {
     .modal-content {
