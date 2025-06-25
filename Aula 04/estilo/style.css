@@ -296,7 +296,7 @@ body.modal-open {
 }
 
 .highlight {
-    background-color: rgba(212, 175, 55, 0.3);
+    background-color: #F4E4BC;
     transition: all 0.3s ease;
     border-radius: 3px;
     padding: 0 2px;

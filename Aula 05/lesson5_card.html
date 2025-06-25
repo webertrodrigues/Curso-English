@@ -47,61 +47,76 @@
                 </h3>
                 
                 <div class="grid md:grid-cols-1 gap-3">
-                    <div class="verb-conjugation">
-                        <div>
-                            <span class="pronoun">I</span>
-                            <span class="verb-form">am</span>
+
+                    <button onclick="speakText('I am', true)">
+                        <div class="verb-conjugation">
+                            <div>
+                                <span class="pronoun">I</span>
+                                <span class="verb-form">am</span>
+                            </div>
+                            <div class="translation">Eu sou / Eu estou</div>
                         </div>
-                        <div class="translation">Eu sou / Eu estou</div>
-                    </div>
-                    
-                    <div class="verb-conjugation">
-                        <div>
-                            <span class="pronoun">You</span>
-                            <span class="verb-form">are</span>
+                    </button>
+
+                    <button onclick="speakText('You are', true)">
+                        <div class="verb-conjugation">
+                            <div>
+                                <span class="pronoun">You</span>
+                                <span class="verb-form">are</span>
+                            </div>
+                            <div class="translation">Você é / Você está</div>
                         </div>
-                        <div class="translation">Você é / Você está</div>
-                    </div>
-                    
-                    <div class="verb-conjugation">
-                        <div>
-                            <span class="pronoun">He</span>
-                            <span class="verb-form">is</span>
+                    </button>
+
+                    <button onclick="speakText('He is', true)">
+                        <div class="verb-conjugation">
+                            <div>
+                                <span class="pronoun">He</span>
+                                <span class="verb-form">is</span>
+                            </div>
+                            <div class="translation">Ele é / Ele está</div>
                         </div>
-                        <div class="translation">Ele é / Ele está</div>
-                    </div>
-                    
-                    <div class="verb-conjugation">
-                        <div>
-                            <span class="pronoun">She</span>
-                            <span class="verb-form">is</span>
+                    </button>
+
+                    <button onclick="speakText('She is', true)">
+                        <div class="verb-conjugation">
+                            <div>
+                                <span class="pronoun">She</span>
+                                <span class="verb-form">is</span>
+                            </div>
+                            <div class="translation">Ela é / Ela está</div>
                         </div>
-                        <div class="translation">Ela é / Ela está</div>
-                    </div>
-                    
-                    <div class="verb-conjugation">
-                        <div>
-                            <span class="pronoun">It</span>
-                            <span class="verb-form">is</span>
+                    </button>
+
+                    <button onclick="speakText('It is', true)">
+                        <div class="verb-conjugation">
+                            <div>
+                                <span class="pronoun">It</span>
+                                <span class="verb-form">is</span>
+                            </div>
+                            <div class="translation">Ele/Ela é / Ele/Ela está (objetos/animais)</div>
                         </div>
-                        <div class="translation">Ele/Ela é / Ele/Ela está (objetos/animais)</div>
-                    </div>
-                    
-                    <div class="verb-conjugation">
-                        <div>
-                            <span class="pronoun">We</span>
-                            <span class="verb-form">are</span>
+                    </button>
+
+                    <button onclick="speakText('We are', true)">
+                        <div class="verb-conjugation">
+                            <div>
+                                <span class="pronoun">We</span>
+                                <span class="verb-form">are</span>
+                            </div>
+                            <div class="translation">Nós somos / Nós estamos</div>
                         </div>
-                        <div class="translation">Nós somos / Nós estamos</div>
-                    </div>
-                    
-                    <div class="verb-conjugation">
-                        <div>
-                            <span class="pronoun">They</span>
-                            <span class="verb-form">are</span>
+                    </button>
+
+                    <button onclick="speakText('They are', true)">
+                        <div class="verb-conjugation">
+                            <div>
+                                <span class="pronoun">They</span>
+                                <span class="verb-form">are</span>
+                            </div>
+                            <div class="translation">Eles/Elas são / Eles/Elas estão</div>
                         </div>
-                        <div class="translation">Eles/Elas são / Eles/Elas estão</div>
-                    </div>
+                    </button>
                 </div>
             </section>
 
@@ -153,29 +168,83 @@
                     📝 Vocabulário Essencial
                 </h3>
                 <div class="grid md:grid-cols-2 gap-4">
+
                     <div class="vocabulary-item p-3 rounded flex items-center">
-                        <span class="font-baskerville font-bold text-navy">Student</span>
-                        <span class="text-gray-600 ml-2">→ Estudante</span>
+                        <div class="flex-grow">
+                            <span class="font-baskerville font-bold text-navy">Student</span>
+                            <span class="text-gray-600 ml-2">→ Estudante</span>
+                        </div>
+                        <button onclick="speakWord('Student')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
                     </div>
+
                     <div class="vocabulary-item p-3 rounded flex items-center">
-                        <span class="font-baskerville font-bold text-navy">Teacher</span>
-                        <span class="text-gray-600 ml-2">→ Professor(a)</span>
+                        <div class="flex-grow">
+                            <span class="font-baskerville font-bold text-navy">Teacher</span>
+                            <span class="text-gray-600 ml-2">→ Professor</span>
+                        </div>
+                        <button onclick="speakWord('Teacher')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
                     </div>
+
                     <div class="vocabulary-item p-3 rounded flex items-center">
-                        <span class="font-baskerville font-bold text-navy">Happy</span>
-                        <span class="text-gray-600 ml-2">→ Feliz</span>
+                        <div class="flex-grow">
+                            <span class="font-baskerville font-bold text-navy">Happy</span>
+                            <span class="text-gray-600 ml-2">→ Feliz</span>
+                        </div>
+                        <button onclick="speakWord('Happy')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
                     </div>
+
                     <div class="vocabulary-item p-3 rounded flex items-center">
-                        <span class="font-baskerville font-bold text-navy">Sad</span>
-                        <span class="text-gray-600 ml-2">→ Triste</span>
+                        <div class="flex-grow">
+                            <span class="font-baskerville font-bold text-navy">Sad</span>
+                            <span class="text-gray-600 ml-2">→ Triste</span>
+                        </div>
+                        <button onclick="speakWord('Sad')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
                     </div>
+
                     <div class="vocabulary-item p-3 rounded flex items-center">
-                        <span class="font-baskerville font-bold text-navy">Tired</span>
-                        <span class="text-gray-600 ml-2">→ Cansado(a)</span>
+                        <div class="flex-grow">
+                            <span class="font-baskerville font-bold text-navy">Tired</span>
+                            <span class="text-gray-600 ml-2">→ Cansado</span>
+                        </div>
+                        <button onclick="speakWord('Tired')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
                     </div>
+
                     <div class="vocabulary-item p-3 rounded flex items-center">
-                        <span class="font-baskerville font-bold text-navy">At home</span>
-                        <span class="text-gray-600 ml-2">→ Em casa</span>
+                        <div class="flex-grow">
+                            <span class="font-baskerville font-bold text-navy">At home</span>
+                            <span class="text-gray-600 ml-2">→ Em casa</span>
+                        </div>
+                        <button onclick="speakWord('At home')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </section>
@@ -186,37 +255,66 @@
                     💬 Diálogo Simples
                 </h3>
                 <div class="dialogue-box p-6 rounded-lg">
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Person A:</strong> Hello! Are you John?
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Olá! Você é o John?)
-                        </p>
-                    </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Person B:</strong> Yes, I am. And you? Are you new here?
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Sim, eu sou. E você? Você é nova aqui?)
-                        </p>
-                    </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Person A:</strong> I am Maria. Yes, I am new. I am from Brazil.
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Eu sou a Maria. Sim, eu sou nova. Eu sou do Brasil.)
-                        </p>
-                    </div>
-                    <div>
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Person B:</strong> Nice to meet you, Maria! We are happy you are here.
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Prazer em conhecê-la, Maria! Nós estamos felizes que você está aqui.)
-                        </p>
+                    <div class="dialogue-player">
+                        <div class="dialogue-controls">
+                            <button class="play-btn" id="playDialogue" title="Reproduzir">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                                </svg>
+                            </button>
+                            <button class="pause-btn hidden" id="pauseDialogue" title="Pausar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
+                                </svg>
+                            </button>
+                            <button class="stop-btn" id="stopDialogue" title="Parar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M5 3.5h6A1.5 1.5 0 0 1 12.5 5v6a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 11V5A1.5 1.5 0 0 1 5 3.5z"/>
+                                </svg>
+                            </button>
+                            <div class="speed-control">
+                                <label for="dialogueSpeed">Velocidade:</label>
+                                <select id="dialogueSpeed" class="font-baskerville bg-white border border-wine rounded px-2 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-gold">
+                                    <option value="0.4">0.4x</option>
+                                    <option value="0.7" selected>0.7x</option>
+                                    <option value="1">1x</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="dialogue-text">
+                            <div class="mb-4" id="line1">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Person A:</strong> <span class="dialogue-line">Hello! Are you John?</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Olá! Você é o John?)
+                                </p>
+                            </div>
+                            <div class="mb-4" id="line2">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Person B:</strong> <span class="dialogue-line">Yes, I am. And you? Are you new here?</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Sim, eu sou. E você? Você é nova aqui?)
+                                </p>
+                            </div>
+                            <div class="mb-4" id="line3">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Person A:</strong> <span class="dialogue-line">I am Maria. Yes, I am new. I am from Brazil.</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Eu sou a Maria. Sim, eu sou nova. Eu sou do Brasil.)
+                                </p>
+                            </div>
+                            <div id="line4">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Person B:</strong> <span class="dialogue-line">Nice to meet you, Maria! We are happy you are here.</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Prazer em conhecê-la, Maria! Nós estamos felizes que você está aqui.)
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>

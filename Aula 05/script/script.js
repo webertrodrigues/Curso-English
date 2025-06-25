@@ -138,3 +138,170 @@ function getScoreMessage(score, total) {
     if (percentage >= 50) return '👌 Bom trabalho! Revise um pouco mais para melhorar!';
     return '✏️ Continue praticando! Revise o verbo "to be" para melhorar!';
 }
+
+// Função unificada para pronúncia
+function speakText(text, isLetter = false) {
+    if (!('speechSynthesis' in window)) {
+        alert('Seu navegador não suporta síntese de voz. Tente Chrome ou Edge.');
+        return;
+    }
+    
+    const rateSelect = document.getElementById(isLetter ? 'alphabetSpeed' : 'numbersSpeed');
+    const selectedRate = 0.5;
+    
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US';
+    utterance.rate = selectedRate;
+    
+    speechSynthesis.cancel(); // Cancela fala anterior
+    speechSynthesis.speak(utterance);
+}
+
+// Função para falar palavras individuais
+function speakWord(text) {
+    if (!('speechSynthesis' in window)) {
+        alert('Seu navegador não suporta síntese de voz. Tente Chrome ou Edge.');
+        return;
+    }
+    
+    const speedSelect = document.getElementById('speedControl');
+    const selectedRate = speedSelect ? parseFloat(speedSelect.value) : 0.9;
+    
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US';
+    utterance.rate = selectedRate;
+    
+    speechSynthesis.cancel();
+    speechSynthesis.speak(utterance);
+}
+
+// Controles do diálogo (similar ao lesson4)
+document.addEventListener('DOMContentLoaded', () => {
+    const dialogueLines = [
+        "Hello! Are you John?",
+        "Yes, I am. And you? Are you new here?",
+        "I am Maria. Yes, I am new. I am from Brazil.",
+        "Nice to meet you, Maria! We are happy you are here."
+    ];
+
+    let currentLine = 0;
+    let isDialoguePlaying = false;
+    const speechSynth = window.speechSynthesis;
+
+    const playBtn = document.getElementById('playDialogue');
+    const pauseBtn = document.getElementById('pauseDialogue');
+    const stopBtn = document.getElementById('stopDialogue');
+    const speedControl = document.getElementById('dialogueSpeed');
+
+    function speakLineAsync(text, rate = 1.0) {
+        return new Promise((resolve, reject) => {
+            const utter = new SpeechSynthesisUtterance(text);
+            utter.rate = rate;
+            utter.lang = 'en-US';
+            utter.onend = () => resolve();
+            utter.onerror = (e) => reject(e);
+            speechSynth.speak(utter);
+        });
+    }
+
+    function highlightCurrentLine() {
+        document.querySelectorAll('.dialogue-line').forEach(line => {
+            line.classList.remove('highlight');
+        });
+
+        const lines = document.querySelectorAll('.dialogue-line');
+        if (lines[currentLine]) {
+            lines[currentLine].classList.add('highlight');
+            const el = document.getElementById(`line${currentLine + 1}`);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+    }
+
+    async function playDialogueFrom(index) {
+        isDialoguePlaying = true;
+        playBtn.classList.add('hidden');
+        pauseBtn.classList.remove('hidden');
+
+        for (let i = index; i < dialogueLines.length; i++) {
+            currentLine = i;
+            highlightCurrentLine();
+
+            if (!isDialoguePlaying) break;
+
+            try {
+                await speakLineAsync(dialogueLines[i], parseFloat(speedControl.value));
+            } catch (e) {
+                console.error('Erro na fala:', e);
+                break;
+            }
+        }
+
+        stopDialogue();
+    }
+
+    function playDialogue() {
+        if (speechSynth.paused) {
+            speechSynth.resume();
+            isDialoguePlaying = true;
+            playBtn.classList.add('hidden');
+            pauseBtn.classList.remove('hidden');
+        } else {
+            stopDialogue();
+            playDialogueFrom(currentLine);
+        }
+    }
+
+    function pauseDialogue() {
+        isDialoguePlaying = false;
+        speechSynth.pause();
+        playBtn.classList.remove('hidden');
+        pauseBtn.classList.add('hidden');
+    }
+
+    function stopDialogue() {
+        isDialoguePlaying = false;
+        speechSynth.cancel();
+        currentLine = 0;
+        playBtn.classList.remove('hidden');
+        pauseBtn.classList.add('hidden');
+
+        document.querySelectorAll('.dialogue-line').forEach(line => {
+            line.classList.remove('highlight');
+        });
+    }
+
+    if (playBtn && pauseBtn && stopBtn) {
+        playBtn.addEventListener('click', playDialogue);
+        pauseBtn.addEventListener('click', pauseDialogue);
+        stopBtn.addEventListener('click', stopDialogue);
+
+        document.querySelectorAll('.dialogue-line').forEach((line, index) => {
+            line.addEventListener('click', () => {
+                stopDialogue();
+                playDialogueFrom(index);
+            });
+        });
+
+        speedControl.addEventListener('change', () => {
+            if (isDialoguePlaying) {
+                stopDialogue();
+                playDialogueFrom(currentLine);
+            }
+        });
+    }
+
+    if (!window.speechSynthesis) {
+        console.error('API de síntese de fala não suportada neste navegador');
+        if (document.querySelector('.dialogue-controls')) {
+            document.querySelector('.dialogue-controls').innerHTML =
+                '<p class="text-red-600">Seu navegador não suporta a reprodução de áudio. Por favor, atualize ou use outro navegador.</p>';
+        }
+    }
+});
+
+// Função para testar velocidade
+function testSpeed() {
+    speakWord("Hello, this is a speed test");
+}
