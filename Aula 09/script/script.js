@@ -10,51 +10,80 @@ function toggleTranslation() {
     translation.classList.toggle('show-answer');
 }
 
+function speak(text) {
+    const rateSelect = document.getElementById('speechRate');
+    const selectedRate = parseFloat(rateSelect.value);
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US';
+    utterance.rate = selectedRate;
+
+    speechSynthesis.speak(utterance);
+}
+
+function speak2(text) {
+    const rateSelect = document.getElementById('speechRate');
+    const selectedRate = parseFloat(rateSelect.value);
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US';
+    utterance.rate = selectedRate;
+
+    speechSynthesis.speak(utterance);
+}
+
+function speak3(text) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.6;
+    speechSynthesis.speak(utterance);
+}
+
 // Configuração do Quiz
 const quizConfig = {
     totalQuestions: 8,
     correctAnswers: {
-        q1: 'a',
+        q1: 'c',
         q2: 'b',
-        q3: 'b',
-        q4: 'b',
+        q3: 'c',
+        q4: 'a',
         q5: 'b',
-        q6: 'a',
-        q7: 'c',
-        q8: 'b'
+        q6: 'c',
+        q7: 'a',
+        q8: 'a'
     },
     explanations: {
         q1: {
-            correct: 'Correto! "Book" começa com som de consoante (/b/), então usamos "a".',
-            incorrect: 'Errado! "Book" começa com som de consoante (/b/), então usamos "a".'
+            correct: 'Correto! "2:45" se diz "Quarter to three" (quinze para as três).',
+            incorrect: 'Para 2:45 usamos "Quarter to three". "Quarter past two" é 2:15, "Half past two" é 2:30, e "Ten to three" seria 2:50.'
         },
         q2: {
-            correct: 'Correto! "Apple" começa com som de vogal (/æ/), então usamos "an".',
-            incorrect: 'Errado! "Apple" começa com som de vogal (/æ/), então usamos "an".'
+            correct: 'Correto! "Half past seven" significa "sete e meia".',
+            incorrect: '"Half past seven" significa "sete e meia". "Seven o\'clock" seria apenas "sete horas", e "quarter past seven" seria "sete e quinze".'
         },
         q3: {
-            correct: 'Correto! Em inglês, precisamos usar o artigo indefinido "a" antes de "pen".',
-            incorrect: 'Errado! A forma correta é "I have a pen" com o artigo indefinido "a".'
+            correct: 'Correto! "Quarter to" significa "quinze para".',
+            incorrect: 'Para "15 para" usamos "Quarter to". "Quarter past" é para "quinze depois" e "Half past" para "meia hora depois".'
         },
         q4: {
-            correct: 'Correto! Embora "hour" comece com "h", o som é de vogal (/aʊ/), então usamos "an".',
-            incorrect: 'Errado! Embora "hour" comece com "h", o som é de vogal (/aʊ/), então usamos "an".'
+            correct: 'Correto! 4:20 se diz "Twenty past four" (vinte depois das quatro).',
+            incorrect: '4:20 é "Twenty past four". "Twenty to four" seria 3:40, "Quarter past four" é 4:15, e "Half past four" é 4:30.'
         },
         q5: {
-            correct: 'Correto! Quando nos referimos a algo específico (a porta em questão), usamos "the".',
-            incorrect: 'Errado! Quando nos referimos a algo específico (a porta em questão), usamos "the".'
+            correct: 'Correto! "Midnight" significa meia-noite, enquanto "noon" significa meio-dia.',
+            incorrect: '"Noon" significa meio-dia. A palavra correta para meia-noite é "midnight". "Evening" é noite e "dusk" é crepúsculo.'
         },
         q6: {
-            correct: 'Correto! "University" começa com som de consoante (/j/), então usamos "a".',
-            incorrect: 'Errado! "University" começa com som de consoante (/j/), então usamos "a".'
+            correct: 'Correto! 5:50 se diz "Ten to six" (dez para as seis).',
+            incorrect: 'Para 5:50 usamos "Ten to six" porque faltam 10 minutos para as 6. "Ten to five" seria 4:50, e "Ten past five" seria 5:10.'
         },
         q7: {
-            correct: 'Correto! "Eraser" começa com som de vogal (/ɪ/), então usamos "an".',
-            incorrect: 'Errado! "Eraser" começa com som de vogal (/ɪ/), então usamos "an".'
+            correct: 'Correto! "Quarter past nine in the morning" é a forma correta para 9:15 da manhã.',
+            incorrect: '"Quarter to nine" seria 8:45, "half past nine" seria 9:30, e "nine fifteen in the night" estaria errado porque seria "in the morning".'
         },
         q8: {
-            correct: 'Correto! Usamos "a" para a cadeira (não específica) e "the" para a janela (específica).',
-            incorrect: 'Errado! Usamos "a" para a cadeira (não específica) e "the" para a janela (específica).'
+            correct: 'Correto! a.m. (ante meridiem) é antes do meio-dia e p.m. (post meridiem) é depois do meio-dia.',
+            incorrect: 'a.m. significa antes do meio-dia (manhã) e p.m. significa depois do meio-dia (tarde/noite). Eles não são a mesma coisa e não estão invertidos.'
         }
     }
 };
@@ -104,7 +133,7 @@ function checkQuiz() {
     }
     
     showResults(score, results);
-}    
+}
 
 // Função para mostrar resultados
 function showResults(score, results) {
@@ -133,29 +162,10 @@ function showResults(score, results) {
 function getScoreMessage(score, total) {
     const percentage = (score / total) * 100;
     
-    if (percentage >= 90) return '🏆 Excelente! Você domina cores e formas em inglês!';
-    if (percentage >= 70) return '👍 Muito bom! Você conhece bem cores e formas em inglês!';
+    if (percentage >= 90) return '🏆 Excelente! Você domina as horas em inglês!';
+    if (percentage >= 70) return '👍 Muito bom! Você conhece bem as horas em inglês!';
     if (percentage >= 50) return '👌 Bom trabalho! Revise um pouco mais para melhorar!';
-    return '✏️ Continue praticando! Revise as cores e formas para melhorar!';
-}
-
-// Speech synthesis function
-function speakWord(text) {
-    // Get the selected speed
-    const speed = document.getElementById('speedControl') ? 
-                 parseFloat(document.getElementById('speedControl').value) : 
-                 1.0;
-    
-    // Cancel any ongoing speech
-    window.speechSynthesis.cancel();
-    
-    // Create a new utterance
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.rate = speed;
-    utterance.lang = 'en-US';
-    
-    // Speak the text
-    window.speechSynthesis.speak(utterance);
+    return '✏️ Continue praticando! Revise as horas para melhorar!';
 }
 
 // =====================================
@@ -163,12 +173,12 @@ function speakWord(text) {
 // =====================================
 
 document.addEventListener('DOMContentLoaded', () => {
-
     const dialogueLines = [
-        "Excuse me, teacher. Is this a pencil?",
-        "No, it's a pen. Do you have a pencil?",
-        "Yes, I have a pencil in my bag.",
-        "Great! And where is the book?"
+        "Excuse me, what time is it?",
+        "It's half past three in the afternoon.",
+        "Oh, thank you! I have a meeting at quarter to four.",
+        "You still have some time. Is your meeting long?",
+        "No, it's a short meeting, about half an hour. I hope to finish by five o'clock."
     ];
 
     let currentLine = 0;

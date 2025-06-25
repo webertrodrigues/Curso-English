@@ -1,5 +1,3 @@
-@charset "UTF-8";
-
 :root {
     --wine: #722F37;
     --cream: #F5F1E8;
@@ -282,6 +280,99 @@
 
 #quizModal > div, #resultModal > div {
     animation: slideIn 0.3s ease-out;
+}
+
+.modal-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
+
+/* Estilos para o player de diálogo */
+.dialogue-player {
+    position: relative;
+    margin-top: 1rem;
+}
+
+.dialogue-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    background: rgba(212, 175, 55, 0.1);
+    padding: 0.75rem;
+    border-radius: 8px;
+}
+
+.dialogue-text {
+    position: relative;
+    line-height: 1.6;
+}
+
+.highlight {
+    background-color: #F4E4BC;
+    transition: all 0.3s ease;
+    border-radius: 3px;
+    padding: 0 2px;
+}
+
+.play-btn, .pause-btn, .stop-btn {
+    background: var(--wine);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.play-btn:hover, .pause-btn:hover, .stop-btn:hover {
+    background: var(--dark-wine);
+    transform: scale(1.05);
+}
+
+.play-btn svg, .pause-btn svg, .stop-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.speed-control {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.speed-control label {
+    font-family: 'Libre Baskerville', serif;
+    color: var(--navy);
+    font-size: 0.9rem;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Estilos para as linhas de diálogo */
+.dialogue-box p {
+    margin-bottom: 0.5rem;
+}
+
+.dialogue-box .font-baskerville.text-sm {
+    margin-left: 2rem;
+    color: var(--navy);
+    opacity: 0.8;
+}
+
+/* Estilo para o destaque da linha atual */
+.dialogue-line.highlight {
+    background-color: var(--light-gold);
+    padding: 2px 4px;
+    border-radius: 3px;
 }
 
 @media (max-width: 768px) {
