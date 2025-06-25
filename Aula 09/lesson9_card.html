@@ -290,6 +290,99 @@
         #quizModal > div, #resultModal > div {
             animation: slideIn 0.3s ease-out;
         }
+
+        .modal-open {
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+        }
+
+        /* Estilos para o player de diálogo */
+        .dialogue-player {
+            position: relative;
+            margin-top: 1rem;
+        }
+
+        .dialogue-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            background: rgba(212, 175, 55, 0.1);
+            padding: 0.75rem;
+            border-radius: 8px;
+        }
+
+        .dialogue-text {
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            background-color: #F4E4BC;
+            transition: all 0.3s ease;
+            border-radius: 3px;
+            padding: 0 2px;
+        }
+
+        .play-btn, .pause-btn, .stop-btn {
+            background: var(--wine);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .play-btn:hover, .pause-btn:hover, .stop-btn:hover {
+            background: var(--dark-wine);
+            transform: scale(1.05);
+        }
+
+        .play-btn svg, .pause-btn svg, .stop-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .speed-control {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .speed-control label {
+            font-family: 'Libre Baskerville', serif;
+            color: var(--navy);
+            font-size: 0.9rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Estilos para as linhas de diálogo */
+        .dialogue-box p {
+            margin-bottom: 0.5rem;
+        }
+
+        .dialogue-box .font-baskerville.text-sm {
+            margin-left: 2rem;
+            color: var(--navy);
+            opacity: 0.8;
+        }
+
+        /* Estilo para o destaque da linha atual */
+        .dialogue-line.highlight {
+            background-color: var(--light-gold);
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
         
         @media (max-width: 768px) {
             .vintage-card {
@@ -596,53 +689,74 @@
                     💬 Diálogo Simples
                 </h3>
                 <div class="dialogue-box p-6 rounded-lg">
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Person A:</strong> Excuse me, what time is it?
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Com licença, que horas são?)
-                        </p>
-                    </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Person B:</strong> It's half past three in the afternoon.
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (São três e meia da tarde.)
-                        </p>
-                    </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Person A:</strong> Oh, thank you! I have a meeting at quarter to four.
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Ah, obrigado! Tenho uma reunião às quinze para as quatro.)
-                        </p>
-                    </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Person B:</strong> You still have some time. Is your meeting long?
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Você ainda tem um tempo. Sua reunião é longa?)
-                        </p>
-                    </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Person A:</strong> No, it's a short meeting, about half an hour. I hope to finish by five o'clock.
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Não, é uma reunião curta, cerca de meia hora. Espero terminar às cinco horas.)
-                        </p>
-                    </div>
-                    <div>
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Person B:</strong> Good luck! See you later.
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Boa sorte! Até mais tarde.)
-                        </p>
+                    <div class="dialogue-player">
+                        <div class="dialogue-controls">
+                            <button class="play-btn" id="playDialogue" title="Reproduzir">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                                </svg>
+                            </button>
+                            <button class="pause-btn hidden" id="pauseDialogue" title="Pausar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
+                                </svg>
+                            </button>
+                            <button class="stop-btn" id="stopDialogue" title="Parar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M5 3.5h6A1.5 1.5 0 0 1 12.5 5v6a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 11V5A1.5 1.5 0 0 1 5 3.5z"/>
+                                </svg>
+                            </button>
+                            <div class="speed-control">
+                                <label for="dialogueSpeed">Velocidade:</label>
+                                <select id="dialogueSpeed" class="font-baskerville bg-white border border-wine rounded px-2 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-gold">
+                                    <option value="0.4">0.4x</option>
+                                    <option value="0.7" selected>0.7x</option>
+                                    <option value="1">1x</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="dialogue-text">
+                            <div class="mb-4" id="line1">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Person A:</strong> <span class="dialogue-line">Excuse me, what time is it?</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Com licença, que horas são?)
+                                </p>
+                            </div>
+                            <div class="mb-4" id="line2">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Person B:</strong> <span class="dialogue-line">It's half past three in the afternoon.</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (São três e meia da tarde.)
+                                </p>
+                            </div>
+                            <div class="mb-4" id="line3">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Person A:</strong> <span class="dialogue-line">Oh, thank you! I have a meeting at quarter to four.</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Ah, obrigado! Tenho uma reunião às quinze para as quatro.)
+                                </p>
+                            </div>
+                            <div class="mb-4" id="line4">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Person B:</strong> <span class="dialogue-line">You still have some time. Is your meeting long?</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Você ainda tem um tempo. Sua reunião é longa?)
+                                </p>
+                            </div>
+                            <div id="line5">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Person A:</strong> <span class="dialogue-line">No, it's a short meeting, about half an hour. I hope to finish by five o'clock.</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Não, é uma reunião curta, cerca de meia hora. Espero terminar às cinco horas.)
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -787,220 +901,220 @@
     </div>
 
     <!-- Modal da Prova -->
-    <div id="quizModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden">
-        <div class="bg-white rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+    <div id="quizModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50" style="display: none;">
+        <div class="vintage-card rounded-lg p-8 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center mb-6">
                 <h3 class="font-playfair text-2xl font-bold text-wine">
-                    📝 Prova de Conhecimento
+                    📝 Prova: Horas e Tempo
                 </h3>
-                <button onclick="closeQuizModal()" class="text-gray-500 hover:text-wine">
+                <button onclick="closeQuizModal()" class="text-gray-500 hover:text-wine text-2xl">
                     ✕
                 </button>
             </div>
 
             <form id="quizForm" class="space-y-6">
                 <!-- Questão 1 -->
-                <div class="bg-white p-6 rounded-lg border-2 border-wine">
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
                     <p class="font-baskerville text-navy font-bold mb-3">
                         1. Como se diz "2:45" em inglês?
                     </p>
-                    <div class="space-y-2">
-                        <label class="flex items-center space-x-2">
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q1" value="a" class="form-radio text-wine">
-                            <span>Quarter past two</span>
+                            <span class="font-baskerville">a) Quarter past two</span>
                         </label>
-                        <label class="flex items-center space-x-2">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q1" value="b" class="form-radio text-wine">
-                            <span>Half past two</span>
+                            <span class="font-baskerville">b) Half past two</span>
                         </label>
-                        <label class="flex items-center space-x-2">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q1" value="c" class="form-radio text-wine">
-                            <span>Quarter to three</span>
+                            <span class="font-baskerville">c) Quarter to three</span>
                         </label>
-                        <label class="flex items-center space-x-2">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q1" value="d" class="form-radio text-wine">
-                            <span>Ten to three</span>
+                            <span class="font-baskerville">d) Ten to three</span>
                         </label>
                     </div>
                 </div>
 
                 <!-- Questão 2 -->
-                <div class="bg-white p-6 rounded-lg border-2 border-wine">
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
                     <p class="font-baskerville text-navy font-bold mb-3">
                         2. Qual é a tradução correta de "I wake up at half past seven in the morning"?
                     </p>
-                    <div class="space-y-2">
-                        <label class="flex items-center space-x-2">
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q2" value="a" class="form-radio text-wine">
-                            <span>Eu acordo às sete e quinze da manhã</span>
+                            <span class="font-baskerville">a) Eu acordo às sete e quinze da manhã</span>
                         </label>
-                        <label class="flex items-center space-x-2">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q2" value="b" class="form-radio text-wine">
-                            <span>Eu acordo às sete e meia da manhã</span>
+                            <span class="font-baskerville">b) Eu acordo às sete e meia da manhã</span>
                         </label>
-                        <label class="flex items-center space-x-2">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q2" value="c" class="form-radio text-wine">
-                            <span>Eu acordo às oito menos quinze da manhã</span>
+                            <span class="font-baskerville">c) Eu acordo às oito menos quinze da manhã</span>
                         </label>
-                        <label class="flex items-center space-x-2">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q2" value="d" class="form-radio text-wine">
-                            <span>Eu acordo às sete horas da manhã</span>
+                            <span class="font-baskerville">d) Eu acordo às sete horas da manhã</span>
                         </label>
                     </div>
                 </div>
 
                 <!-- Questão 3 -->
-                <div class="bg-white p-6 rounded-lg border-2 border-wine">
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
                     <p class="font-baskerville text-navy font-bold mb-3">
                         3. Qual expressão usamos para dizer "15 para" em inglês?
                     </p>
-                    <div class="space-y-2">
-                        <label class="flex items-center space-x-2">
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q3" value="a" class="form-radio text-wine">
-                            <span>Quarter past</span>
+                            <span class="font-baskerville">a) Quarter past</span>
                         </label>
-                        <label class="flex items-center space-x-2">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q3" value="b" class="form-radio text-wine">
-                            <span>Half past</span>
+                            <span class="font-baskerville">b) Half past</span>
                         </label>
-                        <label class="flex items-center space-x-2">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q3" value="c" class="form-radio text-wine">
-                            <span>Quarter to</span>
+                            <span class="font-baskerville">c) Quarter to</span>
                         </label>
-                        <label class="flex items-center space-x-2">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q3" value="d" class="form-radio text-wine">
-                            <span>Ten to</span>
+                            <span class="font-baskerville">d) Ten to</span>
                         </label>
                     </div>
                 </div>
 
                 <!-- Questão 4 -->
-                <div class="bg-white p-6 rounded-lg border-2 border-wine">
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
                     <p class="font-baskerville text-navy font-bold mb-3">
                         4. Se são 4:20, como dizemos isso em inglês?
                     </p>
-                    <div class="space-y-2">
-                        <label class="flex items-center space-x-2">
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q4" value="a" class="form-radio text-wine">
-                            <span>Twenty past four</span>
+                            <span class="font-baskerville">a) Twenty past four</span>
                         </label>
-                        <label class="flex items-center space-x-2">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q4" value="b" class="form-radio text-wine">
-                            <span>Twenty to four</span>
+                            <span class="font-baskerville">b) Twenty to four</span>
                         </label>
-                        <label class="flex items-center space-x-2">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q4" value="c" class="form-radio text-wine">
-                            <span>Quarter past four</span>
+                            <span class="font-baskerville">c) Quarter past four</span>
                         </label>
-                        <label class="flex items-center space-x-2">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q4" value="d" class="form-radio text-wine">
-                            <span>Half past four</span>
+                            <span class="font-baskerville">d) Half past four</span>
                         </label>
                     </div>
                 </div>
 
                 <!-- Questão 5 -->
-                <div class="bg-white p-6 rounded-lg border-2 border-wine">
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
                     <p class="font-baskerville text-navy font-bold mb-3">
                         5. Como se diz "meia-noite" em inglês?
                     </p>
-                    <div class="space-y-2">
-                        <label class="flex items-center space-x-2">
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q5" value="a" class="form-radio text-wine">
-                            <span>Noon</span>
+                            <span class="font-baskerville">a) Noon</span>
                         </label>
-                        <label class="flex items-center space-x-2">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q5" value="b" class="form-radio text-wine">
-                            <span>Midnight</span>
+                            <span class="font-baskerville">b) Midnight</span>
                         </label>
-                        <label class="flex items-center space-x-2">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q5" value="c" class="form-radio text-wine">
-                            <span>Evening</span>
+                            <span class="font-baskerville">c) Evening</span>
                         </label>
-                        <label class="flex items-center space-x-2">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q5" value="d" class="form-radio text-wine">
-                            <span>Dusk</span>
+                            <span class="font-baskerville">d) Dusk</span>
                         </label>
                     </div>
                 </div>
 
                 <!-- Questão 6 -->
-                <div class="bg-white p-6 rounded-lg border-2 border-wine">
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
                     <p class="font-baskerville text-navy font-bold mb-3">
                         6. Qual é a forma correta de dizer "5:50"?
                     </p>
-                    <div class="space-y-2">
-                        <label class="flex items-center space-x-2">
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q6" value="a" class="form-radio text-wine">
-                            <span>Ten to five</span>
+                            <span class="font-baskerville">a) Ten to five</span>
                         </label>
-                        <label class="flex items-center space-x-2">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q6" value="b" class="form-radio text-wine">
-                            <span>Ten past five</span>
+                            <span class="font-baskerville">b) Ten past five</span>
                         </label>
-                        <label class="flex items-center space-x-2">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q6" value="c" class="form-radio text-wine">
-                            <span>Ten to six</span>
+                            <span class="font-baskerville">c) Ten to six</span>
                         </label>
-                        <label class="flex items-center space-x-2">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q6" value="d" class="form-radio text-wine">
-                            <span>Ten past six</span>
+                            <span class="font-baskerville">d) Ten past six</span>
                         </label>
                     </div>
                 </div>
 
                 <!-- Questão 7 -->
-                <div class="bg-white p-6 rounded-lg border-2 border-wine">
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
                     <p class="font-baskerville text-navy font-bold mb-3">
                         7. Qual frase está correta para "São 9:15 da manhã"?
                     </p>
-                    <div class="space-y-2">
-                        <label class="flex items-center space-x-2">
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q7" value="a" class="form-radio text-wine">
-                            <span>It's quarter past nine in the morning</span>
+                            <span class="font-baskerville">a) It's quarter past nine in the morning</span>
                         </label>
-                        <label class="flex items-center space-x-2">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q7" value="b" class="form-radio text-wine">
-                            <span>It's quarter to nine in the morning</span>
+                            <span class="font-baskerville">b) It's quarter to nine in the morning</span>
                         </label>
-                        <label class="flex items-center space-x-2">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q7" value="c" class="form-radio text-wine">
-                            <span>It's half past nine in the morning</span>
+                            <span class="font-baskerville">c) It's half past nine in the morning</span>
                         </label>
-                        <label class="flex items-center space-x-2">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q7" value="d" class="form-radio text-wine">
-                            <span>It's nine fifteen in the night</span>
+                            <span class="font-baskerville">d) It's nine fifteen in the night</span>
                         </label>
                     </div>
                 </div>
 
                 <!-- Questão 8 -->
-                <div class="bg-white p-6 rounded-lg border-2 border-wine">
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
                     <p class="font-baskerville text-navy font-bold mb-3">
                         8. Qual é a diferença entre "a.m." e "p.m."?
                     </p>
-                    <div class="space-y-2">
-                        <label class="flex items-center space-x-2">
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q8" value="a" class="form-radio text-wine">
-                            <span>a.m. é antes do meio-dia, p.m. é depois</span>
+                            <span class="font-baskerville">a) a.m. é antes do meio-dia, p.m. é depois</span>
                         </label>
-                        <label class="flex items-center space-x-2">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q8" value="b" class="form-radio text-wine">
-                            <span>a.m. é manhã, p.m. é tarde/noite</span>
+                            <span class="font-baskerville">b) a.m. é manhã, p.m. é tarde/noite</span>
                         </label>
-                        <label class="flex items-center space-x-2">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q8" value="c" class="form-radio text-wine">
-                            <span>a.m. é depois do meio-dia, p.m. é antes</span>
+                            <span class="font-baskerville">c) a.m. é depois do meio-dia, p.m. é antes</span>
                         </label>
-                        <label class="flex items-center space-x-2">
+                        <label class="flex items-center space-x-3">
                             <input type="radio" name="q8" value="d" class="form-radio text-wine">
-                            <span>Não há diferença, são a mesma coisa</span>
+                            <span class="font-baskerville">d) Não há diferença, são a mesma coisa</span>
                         </label>
                     </div>
                 </div>
 
-                <div class="flex justify-center">
-                    <button type="button" onclick="submitQuiz()" class="vintage-button text-white px-6 py-3 rounded-lg text-lg font-bold">
+                <div class="flex justify-center mt-8">
+                    <button type="button" onclick="checkQuiz()" class="vintage-button text-white px-6 py-3 rounded-lg text-lg font-bold">
                         ✅ Finalizar Prova
                     </button>
                 </div>
@@ -1009,18 +1123,18 @@
     </div>
 
     <!-- Modal de Resultados -->
-    <div id="resultModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden">
-        <div class="bg-white rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+    <div id="resultModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50" style="display: none;">
+        <div class="vintage-card rounded-lg p-8 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
             <div class="text-center mb-6">
                 <h3 class="font-playfair text-2xl font-bold text-wine">
-                    🎉 Resultado da Prova
+                    🎉 Resultado da Prova (8 questões)
                 </h3>
-                <p id="scoreText" class="font-baskerville text-xl mt-2"></p>
+                <div id="scoreText" class="font-baskerville text-xl mt-2"></div>
             </div>
-
+    
             <div id="quizResults" class="space-y-4"></div>
-
-            <div class="flex justify-center mt-6">
+    
+            <div class="flex justify-center mt-8">
                 <button onclick="closeResultModal()" class="vintage-button text-white px-6 py-3 rounded-lg text-lg font-bold">
                     Voltar para a Aula
                 </button>
@@ -1040,7 +1154,7 @@
             translation.classList.toggle('hidden-answer');
             translation.classList.toggle('show-answer');
         }
-
+    
         function speak(text) {
             const rateSelect = document.getElementById('speechRate');
             const selectedRate = parseFloat(rateSelect.value);
@@ -1051,7 +1165,7 @@
     
             speechSynthesis.speak(utterance);
         }
-
+    
         function speak2(text) {
             const rateSelect = document.getElementById('speechRate');
             const selectedRate = parseFloat(rateSelect.value);
@@ -1062,132 +1176,262 @@
     
             speechSynthesis.speak(utterance);
         }
-
+    
         function speak3(text) {
             const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = 'en-US'; // idioma
-            utterance.rate = 0.6; // Velocidade (1 = normal, 0.8 = mais lento, 1.5 = mais rápido)
+            utterance.lang = 'en-US';
+            utterance.rate = 0.6;
             speechSynthesis.speak(utterance);
         }
-
-        // Variáveis para o quiz
-        const correctAnswers = {
-            q1: 'c',
-            q2: 'b',
-            q3: 'c',
-            q4: 'a',
-            q5: 'b',
-            q6: 'c',
-            q7: 'a',
-            q8: 'a'
-        };
-
-        const explanations = {
-            q1: {
-                correct: 'Correto! "2:45" se diz "Quarter to three" (quinze para as três).',
-                incorrect: 'Para 2:45 usamos "Quarter to three". "Quarter past two" é 2:15, "Half past two" é 2:30, e "Ten to three" seria 2:50.'
+    
+        // Configuração do Quiz
+        const quizConfig = {
+            totalQuestions: 8,
+            correctAnswers: {
+                q1: 'c',
+                q2: 'b',
+                q3: 'c',
+                q4: 'a',
+                q5: 'b',
+                q6: 'c',
+                q7: 'a',
+                q8: 'a'
             },
-            q2: {
-                correct: 'Correto! "Half past seven" significa "sete e meia".',
-                incorrect: '"Half past seven" significa "sete e meia". "Seven o\'clock" seria apenas "sete horas", e "quarter past seven" seria "sete e quinze".'
-            },
-            q3: {
-                correct: 'Correto! "Quarter to" significa "quinze para".',
-                incorrect: 'Para "15 para" usamos "Quarter to". "Quarter past" é para "quinze depois" e "Half past" para "meia hora depois".'
-            },
-            q4: {
-                correct: 'Correto! 4:20 se diz "Twenty past four" (vinte depois das quatro).',
-                incorrect: '4:20 é "Twenty past four". "Twenty to four" seria 3:40, "Quarter past four" é 4:15, e "Half past four" é 4:30.'
-            },
-            q5: {
-                correct: 'Correto! "Midnight" significa meia-noite, enquanto "noon" significa meio-dia.',
-                incorrect: '"Noon" significa meio-dia. A palavra correta para meia-noite é "midnight". "Evening" é noite e "dusk" é crepúsculo.'
-            },
-            q6: {
-                correct: 'Correto! 5:50 se diz "Ten to six" (dez para as seis).',
-                incorrect: 'Para 5:50 usamos "Ten to six" porque faltam 10 minutos para as 6. "Ten to five" seria 4:50, e "Ten past five" seria 5:10.'
-            },
-            q7: {
-                correct: 'Correto! "Quarter past nine in the morning" é a forma correta para 9:15 da manhã.',
-                incorrect: '"Quarter to nine" seria 8:45, "half past nine" seria 9:30, e "nine fifteen in the night" estaria errado porque seria "in the morning".'
-            },
-            q8: {
-                correct: 'Correto! a.m. (ante meridiem) é antes do meio-dia e p.m. (post meridiem) é depois do meio-dia.',
-                incorrect: 'a.m. significa antes do meio-dia (manhã) e p.m. significa depois do meio-dia (tarde/noite). Eles não são a mesma coisa e não estão invertidos.'
+            explanations: {
+                q1: {
+                    correct: 'Correto! "2:45" se diz "Quarter to three" (quinze para as três).',
+                    incorrect: 'Para 2:45 usamos "Quarter to three". "Quarter past two" é 2:15, "Half past two" é 2:30, e "Ten to three" seria 2:50.'
+                },
+                q2: {
+                    correct: 'Correto! "Half past seven" significa "sete e meia".',
+                    incorrect: '"Half past seven" significa "sete e meia". "Seven o\'clock" seria apenas "sete horas", e "quarter past seven" seria "sete e quinze".'
+                },
+                q3: {
+                    correct: 'Correto! "Quarter to" significa "quinze para".',
+                    incorrect: 'Para "15 para" usamos "Quarter to". "Quarter past" é para "quinze depois" e "Half past" para "meia hora depois".'
+                },
+                q4: {
+                    correct: 'Correto! 4:20 se diz "Twenty past four" (vinte depois das quatro).',
+                    incorrect: '4:20 é "Twenty past four". "Twenty to four" seria 3:40, "Quarter past four" é 4:15, e "Half past four" é 4:30.'
+                },
+                q5: {
+                    correct: 'Correto! "Midnight" significa meia-noite, enquanto "noon" significa meio-dia.',
+                    incorrect: '"Noon" significa meio-dia. A palavra correta para meia-noite é "midnight". "Evening" é noite e "dusk" é crepúsculo.'
+                },
+                q6: {
+                    correct: 'Correto! 5:50 se diz "Ten to six" (dez para as seis).',
+                    incorrect: 'Para 5:50 usamos "Ten to six" porque faltam 10 minutos para as 6. "Ten to five" seria 4:50, e "Ten past five" seria 5:10.'
+                },
+                q7: {
+                    correct: 'Correto! "Quarter past nine in the morning" é a forma correta para 9:15 da manhã.',
+                    incorrect: '"Quarter to nine" seria 8:45, "half past nine" seria 9:30, e "nine fifteen in the night" estaria errado porque seria "in the morning".'
+                },
+                q8: {
+                    correct: 'Correto! a.m. (ante meridiem) é antes do meio-dia e p.m. (post meridiem) é depois do meio-dia.',
+                    incorrect: 'a.m. significa antes do meio-dia (manhã) e p.m. significa depois do meio-dia (tarde/noite). Eles não são a mesma coisa e não estão invertidos.'
+                }
             }
         };
-
+    
         // Funções para controlar os modais
         function openQuizModal() {
-            document.getElementById('quizModal').classList.remove('hidden');
+            document.getElementById('quizModal').style.display = 'flex';
             document.getElementById('quizForm').reset();
+            document.body.classList.add('modal-open');
         }
 
         function closeQuizModal() {
-            document.getElementById('quizModal').classList.add('hidden');
+            document.getElementById('quizModal').style.display = 'none';
+            document.body.classList.remove('modal-open');
+        }
+
+        function openResultModal() {
+            document.getElementById('resultModal').style.display = 'flex';
+            document.body.classList.add('modal-open');
         }
 
         function closeResultModal() {
-            document.getElementById('resultModal').classList.add('hidden');
-            closeQuizModal();
+            document.getElementById('resultModal').style.display = 'none';
+            document.body.classList.remove('modal-open');
         }
-
-        function submitQuiz() {
-            const form = document.getElementById('quizForm');
-            const formData = new FormData(form);
+    
+        // Função para verificar respostas
+        function checkQuiz() {
             let score = 0;
             const results = [];
-
-            // Verificar respostas (agora 8 questões)
-            for (let i = 1; i <= 8; i++) {
-                const question = `q${i}`;
-                const userAnswer = formData.get(question);
-                const isCorrect = userAnswer === correctAnswers[question];
-
-                if (isCorrect) {
-                    score++;
-                }
-
+            const form = document.getElementById('quizForm');
+            
+            for (let i = 1; i <= quizConfig.totalQuestions; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = form.querySelector(`input[name="${questionName}"]:checked`)?.value;
+                const isCorrect = selectedOption === quizConfig.correctAnswers[questionName];
+                
+                if (isCorrect) score++;
+                
                 results.push({
-                    question: question,
-                    userAnswer: userAnswer,
-                    isCorrect: isCorrect,
-                    explanation: isCorrect ? explanations[question].correct : explanations[question].incorrect
+                    question: i,
+                    isCorrect,
+                    explanation: isCorrect 
+                        ? quizConfig.explanations[questionName].correct
+                        : quizConfig.explanations[questionName].incorrect
                 });
             }
-
-            // Mostrar resultados
+            
             showResults(score, results);
         }
-
+    
+        // Função para mostrar resultados
         function showResults(score, results) {
-            const scoreText = document.getElementById('scoreText');
+            const scoreElement = document.getElementById('scoreText');
             const resultsContainer = document.getElementById('quizResults');
             
-            // Atualizar texto do score
-            scoreText.innerHTML = `Você acertou <span class="text-wine font-bold">${score} de 8</span> questões!`;
+            scoreElement.innerHTML = `
+                Você acertou <span class="text-wine font-bold">${score}/${quizConfig.totalQuestions}</span> questões!
+                <p class="font-baskerville text-lg mt-2 text-navy">${getScoreMessage(score, quizConfig.totalQuestions)}</p>
+            `;
             
-            // Limpar resultados anteriores
-            resultsContainer.innerHTML = '';
-            
-            // Adicionar cada resultado
-            results.forEach((result, index) => {
-                const resultDiv = document.createElement('div');
-                resultDiv.className = `p-4 rounded-lg ${result.isCorrect ? 'bg-green-100' : 'bg-red-100'}`;
-                
-                resultDiv.innerHTML = `
+            resultsContainer.innerHTML = results.map(result => `
+                <div class="p-4 rounded-lg ${result.isCorrect ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'} mb-3">
                     <p class="font-baskerville font-bold ${result.isCorrect ? 'text-green-800' : 'text-red-800'}">
-                        Questão ${index + 1}: ${result.isCorrect ? '✅ Acertou!' : '❌ Errou'}
+                        Questão ${result.question}: ${result.isCorrect ? '✅ Acertou!' : '❌ Errou'}
                     </p>
-                    <p class="font-baskerville mt-2">${result.explanation}</p>
-                `;
-                
-                resultsContainer.appendChild(resultDiv);
-            });
+                    <p class="font-baskerville mt-2 text-navy">${result.explanation}</p>
+                </div>
+            `).join('');
             
-            // Mostrar modal de resultados
-            document.getElementById('quizModal').classList.add('hidden');
-            document.getElementById('resultModal').classList.remove('hidden');
+            closeQuizModal();
+            openResultModal();
+        }
+    
+        // Função para mensagem de pontuação
+        function getScoreMessage(score, total) {
+            const percentage = (score / total) * 100;
+            
+            if (percentage >= 90) return '🏆 Excelente! Você domina as horas em inglês!';
+            if (percentage >= 70) return '👍 Muito bom! Você conhece bem as horas em inglês!';
+            if (percentage >= 50) return '👌 Bom trabalho! Revise um pouco mais para melhorar!';
+            return '✏️ Continue praticando! Revise as horas para melhorar!';
+        }
+
+        // Controle de Diálogo
+        const dialogueLines = [
+            "Excuse me, what time is it?",
+            "It's half past three in the afternoon.",
+            "Oh, thank you! I have a meeting at quarter to four.",
+            "You still have some time. Is your meeting long?",
+            "No, it's a short meeting, about half an hour. I hope to finish by five o'clock."
+        ];
+    
+        let currentLine = 0;
+        let isDialoguePlaying = false;
+        const speechSynth = window.speechSynthesis;
+    
+        const playBtn = document.getElementById('playDialogue');
+        const pauseBtn = document.getElementById('pauseDialogue');
+        const stopBtn = document.getElementById('stopDialogue');
+        const speedControl = document.getElementById('dialogueSpeed');
+    
+        function speakLineAsync(text, rate = 1.0) {
+            return new Promise((resolve, reject) => {
+                const utter = new SpeechSynthesisUtterance(text);
+                utter.rate = rate;
+                utter.lang = 'en-US';
+                utter.onend = () => resolve();
+                utter.onerror = (e) => reject(e);
+                speechSynth.speak(utter);
+            });
+        }
+    
+        function highlightCurrentLine() {
+            document.querySelectorAll('.dialogue-line').forEach(line => {
+                line.classList.remove('highlight');
+            });
+    
+            const lines = document.querySelectorAll('.dialogue-line');
+            if (lines[currentLine]) {
+                lines[currentLine].classList.add('highlight');
+                const el = document.getElementById(`line${currentLine + 1}`);
+                if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+            }
+        }
+    
+        async function playDialogueFrom(index) {
+            isDialoguePlaying = true;
+            playBtn.classList.add('hidden');
+            pauseBtn.classList.remove('hidden');
+    
+            for (let i = index; i < dialogueLines.length; i++) {
+                currentLine = i;
+                highlightCurrentLine();
+    
+                if (!isDialoguePlaying) break;
+    
+                try {
+                    await speakLineAsync(dialogueLines[i], parseFloat(speedControl.value));
+                } catch (e) {
+                    console.error('Erro na fala:', e);
+                    break;
+                }
+            }
+    
+            stopDialogue();
+        }
+    
+        function playDialogue() {
+            if (speechSynth.paused) {
+                speechSynth.resume();
+                isDialoguePlaying = true;
+                playBtn.classList.add('hidden');
+                pauseBtn.classList.remove('hidden');
+            } else {
+                stopDialogue();
+                playDialogueFrom(currentLine);
+            }
+        }
+    
+        function pauseDialogue() {
+            isDialoguePlaying = false;
+            speechSynth.pause();
+            playBtn.classList.remove('hidden');
+            pauseBtn.classList.add('hidden');
+        }
+    
+        function stopDialogue() {
+            isDialoguePlaying = false;
+            speechSynth.cancel();
+            currentLine = 0;
+            playBtn.classList.remove('hidden');
+            pauseBtn.classList.add('hidden');
+    
+            document.querySelectorAll('.dialogue-line').forEach(line => {
+                line.classList.remove('highlight');
+            });
+        }
+    
+        playBtn.addEventListener('click', playDialogue);
+        pauseBtn.addEventListener('click', pauseDialogue);
+        stopBtn.addEventListener('click', stopDialogue);
+    
+        document.querySelectorAll('.dialogue-line').forEach((line, index) => {
+            line.addEventListener('click', () => {
+                stopDialogue();
+                playDialogueFrom(index);
+            });
+        });
+    
+        speedControl.addEventListener('change', () => {
+            if (isDialoguePlaying) {
+                stopDialogue();
+                playDialogueFrom(currentLine);
+            }
+        });
+    
+        if (!window.speechSynthesis) {
+            console.error('API de síntese de fala não suportada neste navegador');
+            document.querySelector('.dialogue-controls').innerHTML =
+                '<p class="text-red-600">Seu navegador não suporta a reprodução de áudio. Por favor, atualize ou use outro navegador.</p>';
         }
     </script>
 </body>

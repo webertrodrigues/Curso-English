@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão de Inglês - Aula 3: Cores e Formas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --wine: #722F37;
+            --cream: #F5F1E8;
+            --navy: #2C3E50;
+            --gold: #D4AF37;
+            --dark-wine: #5A252A;
+            --light-gold: #F4E4BC;
+        }
+        
+        .font-baskerville { font-family: 'Libre Baskerville', serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        
+        .vintage-card {
+            background: linear-gradient(135deg, var(--cream) 0%, #F8F5F0 100%);
+            border: 3px solid var(--wine);
+            box-shadow: 
+                0 8px 32px rgba(114, 47, 55, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+        
+        .ornament-border {
+            border-image: linear-gradient(45deg, var(--gold), var(--wine), var(--gold)) 1;
+            border-width: 2px;
+            border-style: solid;
+        }
+        
+        .text-wine { color: var(--wine); }
+        .text-navy { color: var(--navy); }
+        .text-gold { color: var(--gold); }
+        .bg-wine { background-color: var(--wine); }
+        .bg-navy { background-color: var(--navy); }
+        .bg-gold { background-color: var(--gold); }
+        .bg-light-gold { background-color: var(--light-gold); }
+        
+        .vintage-button {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-wine) 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .vintage-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(114, 47, 55, 0.3);
+        }
+        
+        .pronunciation {
+            background: linear-gradient(135deg, var(--light-gold) 0%, var(--cream) 100%);
+            border-left: 4px solid var(--gold);
+        }
+        
+        .dialogue-box {
+            background: rgba(44, 62, 80, 0.05);
+            border-left: 4px solid var(--navy);
+        }
+        
+        .vocabulary-item {
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(114, 47, 55, 0.1);
+        }
+        
+        .vocabulary-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .color-box {
+            width: 30px;
+            height: 30px;
+            border: 1px solid rgba(0,0,0,0.1);
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+            border-radius: 4px;
+        }
+        
+        .shape-icon {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+            width: 30px;
+            height: 30px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        .shape-circle { border-radius: 50%; background-color: #D4AF37; }
+        .shape-square { background-color: #722F37; }
+        .shape-triangle { 
+            width: 0; 
+            height: 0; 
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 30px solid #2C3E50;
+            margin-top: 5px;
+        }
+        .shape-rectangle { width: 40px; height: 25px; background-color: #F4E4BC; }
+        .shape-star { 
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            background-color: #D4AF37;
+        }
+        .shape-heart { 
+            position: relative;
+            width: 30px;
+            height: 27px;
+            background-color: #722F37;
+            transform: rotate(-45deg);
+            margin-top: 5px;
+        }
+        .shape-heart::before, .shape-heart::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 27px;
+            background-color: #722F37;
+            border-radius: 50%;
+        }
+        .shape-heart::before {
+            top: -15px;
+            left: 0;
+        }
+        .shape-heart::after {
+            left: 15px;
+            top: 0;
+        }
+        
+        .ornament {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 0 auto;
+        }
+        
+        .hidden-answer {
+            display: none;
+        }
+        
+        .show-answer {
+            display: block;
+        }
+        
+        /* Estilos para os modais */
+        .form-radio {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 1.2em;
+            height: 1.2em;
+            border: 2px solid var(--wine);
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+        
+        .form-radio:checked {
+            background-color: var(--wine);
+        }
+        
+        .form-radio:checked::after {
+            content: '';
+            position: absolute;
+            width: 0.6em;
+            height: 0.6em;
+            background-color: white;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .form-radio:focus {
+            box-shadow: 0 0 0 2px var(--gold);
+        }
+        
+        /* Animações para os modais */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        #quizModal, #resultModal {
+            animation: fadeIn 0.3s ease-out;
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #quizModal > div, #resultModal > div {
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        /* Impedir scroll quando modal está aberto */
+        body.modal-open {
+            overflow: hidden;
+        }
+        
+        @media (max-width: 768px) {
+            .vintage-card {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+        }
+
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen py-8">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <!-- Cartão Principal -->
+        <div class="vintage-card rounded-lg p-8 mb-8">
+            <!-- Cabeçalho -->
+            <header class="text-center mb-8">
+                <div class="ornament mb-4"></div>
+                <h1 class="font-playfair text-4xl font-bold text-wine mb-2">
+                    English Learning Card
+                </h1>
+                <h2 class="font-baskerville text-2xl text-navy mb-4">
+                    Aula 3: Cores e Formas
+                </h2>
+                <div class="ornament"></div>
+            </header>
+
+            <!-- Frase do Dia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    ✨ Frase do Dia
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <p class="font-baskerville text-lg text-navy text-center italic">
+                        "What color is your car?"
+                    </p>
+                    <p class="font-baskerville text-base text-gray-600 text-center mt-2">
+                        "Qual é a cor do seu carro?"
+                    </p>
+                </div>
+            </section>
+
+            <!-- Vocabulário Essencial - Cores -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 flex items-center">
+                    🌈 Cores
+                </h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <button onclick="speak3('Red')">
+                        <div class="vocabulary-item p-3 rounded flex items-center">
+                            <span class="color-box bg-red-500"></span>
+                            <span class="font-baskerville font-bold text-navy">Red</span>
+                            <span class="text-gray-600 ml-2">→ Vermelho</span>
+                        </div>
+                    </button>
+                    <button onclick="speak3('Blue')">
+                        <div class="vocabulary-item p-3 rounded flex items-center">
+                            <span class="color-box bg-blue-500"></span>
+                            <span class="font-baskerville font-bold text-navy">Blue</span>
+                            <span class="text-gray-600 ml-2">→ Azul</span>
+                        </div>
+                    </button>
+                    <button onclick="speak3('Green')">
+                        <div class="vocabulary-item p-3 rounded flex items-center">
+                            <span class="color-box bg-green-500"></span>
+                            <span class="font-baskerville font-bold text-navy">Green</span>
+                            <span class="text-gray-600 ml-2">→ Verde</span>
+                        </div>
+                    </button>
+                    <button onclick="speak3('Yellow')">
+                        <div class="vocabulary-item p-3 rounded flex items-center">
+                            <span class="color-box bg-yellow-500"></span>
+                            <span class="font-baskerville font-bold text-navy">Yellow</span>
+                            <span class="text-gray-600 ml-2">→ Amarelo</span>
+                        </div>
+                    </button>
+                    <button onclick="speak3('Black')">
+                        <div class="vocabulary-item p-3 rounded flex items-center">
+                            <span class="color-box bg-black"></span>
+                            <span class="font-baskerville font-bold text-navy">Black</span>
+                            <span class="text-gray-600 ml-2">→ Preto</span>
+                        </div>
+                    </button>
+                    <button onclick="speak3('White')">
+                        <div class="vocabulary-item p-3 rounded flex items-center">
+                            <span class="color-box bg-white border border-gray-300"></span>
+                            <span class="font-baskerville font-bold text-navy">White</span>
+                            <span class="text-gray-600 ml-2">→ Branco</span>
+                        </div>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Vocabulário Essencial - Formas -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 flex items-center">
+                    🔺 Formas
+                </h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <button onclick="speak3('Circle')">
+                        <div class="vocabulary-item p-3 rounded flex items-center">
+                            <span class="shape-icon shape-circle"></span>
+                            <span class="font-baskerville font-bold text-navy">Circle</span>
+                            <span class="text-gray-600 ml-2">→ Círculo</span>
+                        </div>
+                    </button>
+                    <button onclick="speak3('Square')">
+                        <div class="vocabulary-item p-3 rounded flex items-center">
+                            <span class="shape-icon shape-square"></span>
+                            <span class="font-baskerville font-bold text-navy">Square</span>
+                            <span class="text-gray-600 ml-2">→ Quadrado</span>
+                        </div>
+                    </button>
+                    <button onclick="speak3('Triangle')">
+                        <div class="vocabulary-item p-3 rounded flex items-center">
+                            <span class="shape-icon shape-triangle"></span>
+                            <span class="font-baskerville font-bold text-navy">Triangle</span>
+                            <span class="text-gray-600 ml-2">→ Triângulo</span>
+                        </div>
+                    </button>
+                    <button onclick="speak3('Rectangle')">
+                        <div class="vocabulary-item p-3 rounded flex items-center">
+                            <span class="shape-icon shape-rectangle"></span>
+                            <span class="font-baskerville font-bold text-navy">Rectangle</span>
+                            <span class="text-gray-600 ml-2">→ Retângulo</span>
+                        </div>
+                    </button>
+                    <button onclick="speak3('Star')">
+                        <div class="vocabulary-item p-3 rounded flex items-center">
+                            <span class="shape-icon shape-star"></span>
+                            <span class="font-baskerville font-bold text-navy">Star</span>
+                            <span class="text-gray-600 ml-2">→ Estrela</span>
+                        </div>
+                    </button>
+                    <button onclick="speak3('Heart')">
+                        <div class="vocabulary-item p-3 rounded flex items-center">
+                            <span class="shape-icon shape-heart"></span>
+                            <span class="font-baskerville font-bold text-navy">Heart</span>
+                            <span class="text-gray-600 ml-2">→ Coração</span>
+                        </div>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Diálogo -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    💬 Diálogo Simples
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Child:</strong> Look, mommy! A red car!
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Olha, mamãe! Um carro vermelho!)
+                        </p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Mom:</strong> Yes, darling. And what shape is the wheel?
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (Sim, querido(a). E qual é a forma da roda?)
+                        </p>
+                    </div>
+                    <div>
+                        <p class="font-baskerville text-navy">
+                            <strong class="text-wine">Child:</strong> It's a circle!
+                        </p>
+                        <p class="font-baskerville text-sm text-gray-600 ml-4">
+                            (É um círculo!)
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Texto para Tradução -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    📝 Texto para Tradução
+                </h3>
+                <div class="bg-light-gold p-6 rounded-lg">
+                    <p class="font-baskerville text-navy text-lg mb-4">
+                        "I have a green ball and a yellow toy. My house has a brown door and white windows. I like to draw stars and hearts."
+                    </p>
+                    <button onclick="toggleTranslation()" class="vintage-button text-white px-4 py-2 rounded font-baskerville">
+                        Ver Tradução
+                    </button>
+                    <div id="translation" class="hidden-answer mt-4 p-4 bg-white rounded border-l-4 border-wine">
+                        <p class="font-baskerville text-navy">
+                            "Eu tenho uma bola verde e um brinquedo amarelo. Minha casa tem uma porta marrom e janelas brancas. Eu gosto de desenhar estrelas e corações."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Perguntas para Prática -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    ❓ Perguntas para Prática
+                </h3>
+                <div class="space-y-4">
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            1. Qual a cor da grama?
+                        </p>
+                        <button onclick="toggleAnswer(1)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer1" class="hidden-answer mt-2 text-wine font-bold">
+                            Green
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            2. Como se diz "quadrado" em inglês?
+                        </p>
+                        <button onclick="toggleAnswer(2)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer2" class="hidden-answer mt-2 text-wine font-bold">
+                            Square
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            3. Traduza: "Minha caneta é azul."
+                        </p>
+                        <button onclick="toggleAnswer(3)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer3" class="hidden-answer mt-2 text-wine font-bold">
+                            My pen is blue.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Botão para abrir a Prova -->
+            <section class="mb-8 text-center">
+                <button onclick="openQuizModal()" class="vintage-button text-white px-6 py-3 rounded-lg font-baskerville text-lg">
+                    🎯 Iniciar Prova
+                </button>
+            </section>
+
+            <!-- Pronúncia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    🔊 Dicas de Pronúncia
+                </h3>
+                <div class="space-y-4">
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Red</strong> /rɛd/ - O 'r' é suave, e o 'e' tem som de 'é' aberto.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Yellow</strong> /ˈjɛloʊ/ - O 'y' tem som de 'i' curto, e o 'ow' tem som de 'ou'.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rodapé com Dicas -->
+            <footer class="text-center pt-6 border-t-2 border-wine">
+                <div class="ornament mb-4"></div>
+                <h4 class="font-playfair text-lg font-bold text-wine mb-2">
+                    💡 Dica de Memorização
+                </h4>
+                <p class="font-baskerville text-navy">
+                    Associe as cores a objetos do seu dia a dia. Por exemplo, "red apple" (maçã vermelha), "blue sky" (céu azul). Para as formas, desenhe-as enquanto fala seus nomes em inglês.
+                </p>
+                <div class="ornament mt-4"></div>
+            </footer>
+        </div>
+
+        <!-- Nota de Uso -->
+        <div class="bg-navy text-white p-6 rounded-lg">
+            <h4 class="font-playfair text-lg font-bold mb-2">📋 Como Usar Este Cartão</h4>
+            <ul class="font-baskerville space-y-1">
+                <li>• Clique nos botões "Ver Resposta" para revelar as respostas das perguntas</li>
+                <li>• Clique em "Ver Tradução" para mostrar a tradução do texto</li>
+                <li>• Pratique a pronúncia usando as dicas fonéticas fornecidas</li>
+                <li>• Revise o vocabulário passando o mouse sobre as palavras</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal da Prova -->
+    <div id="quizModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50" style="display: none;">
+        <div class="vintage-card rounded-lg p-8 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="font-playfair text-2xl font-bold text-wine">
+                    📝 Prova: Cores e Formas
+                </h3>
+                <button onclick="closeQuizModal()" class="text-gray-500 hover:text-wine text-2xl">
+                    ✕
+                </button>
+            </div>
+
+            <form id="quizForm" class="space-y-6">
+                <!-- Questão 1 -->
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        1. Como se diz 'verde' em inglês?
+                    </p>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q1" value="a" class="form-radio text-wine">
+                            <span class="font-baskerville">a) Blue</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q1" value="b" class="form-radio text-wine">
+                            <span class="font-baskerville">b) Green</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q1" value="c" class="form-radio text-wine">
+                            <span class="font-baskerville">c) Red</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q1" value="d" class="form-radio text-wine">
+                            <span class="font-baskerville">d) Yellow</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 2 -->
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        2. Qual forma tem três lados?
+                    </p>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q2" value="a" class="form-radio text-wine">
+                            <span class="font-baskerville">a) Square</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q2" value="b" class="form-radio text-wine">
+                            <span class="font-baskerville">b) Circle</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q2" value="c" class="form-radio text-wine">
+                            <span class="font-baskerville">c) Triangle</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q2" value="d" class="form-radio text-wine">
+                            <span class="font-baskerville">d) Rectangle</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 3 -->
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        3. Qual é a cor do sol?
+                    </p>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q3" value="a" class="form-radio text-wine">
+                            <span class="font-baskerville">a) Blue</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q3" value="b" class="form-radio text-wine">
+                            <span class="font-baskerville">b) White</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q3" value="c" class="form-radio text-wine">
+                            <span class="font-baskerville">c) Yellow</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q3" value="d" class="form-radio text-wine">
+                            <span class="font-baskerville">d) Black</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 4 -->
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        4. Como se diz 'estrela' em inglês?
+                    </p>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q4" value="a" class="form-radio text-wine">
+                            <span class="font-baskerville">a) Heart</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q4" value="b" class="form-radio text-wine">
+                            <span class="font-baskerville">b) Star</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q4" value="c" class="form-radio text-wine">
+                            <span class="font-baskerville">c) Circle</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q4" value="d" class="form-radio text-wine">
+                            <span class="font-baskerville">d) Square</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 5 -->
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        5. Qual forma é usada para rodas?
+                    </p>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q5" value="a" class="form-radio text-wine">
+                            <span class="font-baskerville">a) Triangle</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q5" value="b" class="form-radio text-wine">
+                            <span class="font-baskerville">b) Rectangle</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q5" value="c" class="form-radio text-wine">
+                            <span class="font-baskerville">c) Circle</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q5" value="d" class="form-radio text-wine">
+                            <span class="font-baskerville">d) Star</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 6 -->
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        6. Qual é a tradução de 'My notebook is black'?
+                    </p>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q6" value="a" class="form-radio text-wine">
+                            <span class="font-baskerville">a) Minha caneta é preta</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q6" value="b" class="form-radio text-wine">
+                            <span class="font-baskerville">b) Meu caderno é preto</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q6" value="c" class="form-radio text-wine">
+                            <span class="font-baskerville">c) Minha mesa é preta</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q6" value="d" class="form-radio text-wine">
+                            <span class="font-baskerville">d) Meu livro é preto</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 7 -->
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        7. Qual forma tem quatro lados iguais?
+                    </p>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q7" value="a" class="form-radio text-wine">
+                            <span class="font-baskerville">a) Rectangle</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q7" value="b" class="form-radio text-wine">
+                            <span class="font-baskerville">b) Triangle</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q7" value="c" class="form-radio text-wine">
+                            <span class="font-baskerville">c) Square</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q7" value="d" class="form-radio text-wine">
+                            <span class="font-baskerville">d) Heart</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 8 -->
+                <div class="bg-light-gold p-6 rounded-lg border-2 border-wine">
+                    <p class="font-baskerville text-navy font-bold mb-3">
+                        8. Qual é a cor do céu durante o dia?
+                    </p>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q8" value="a" class="form-radio text-wine">
+                            <span class="font-baskerville">a) Green</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q8" value="b" class="form-radio text-wine">
+                            <span class="font-baskerville">b) Black</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q8" value="c" class="form-radio text-wine">
+                            <span class="font-baskerville">c) Blue</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="radio" name="q8" value="d" class="form-radio text-wine">
+                            <span class="font-baskerville">d) Red</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="flex justify-center mt-8">
+                    <button type="button" onclick="checkQuiz()" class="vintage-button text-white px-6 py-3 rounded-lg text-lg font-bold">
+                        ✅ Finalizar Prova
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Resultados -->
+    <div id="resultModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50" style="display: none;">
+        <div class="vintage-card rounded-lg p-8 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div class="text-center mb-6">
+                <h3 class="font-playfair text-2xl font-bold text-wine">
+                    🎉 Resultado da Prova (8 questões)
+                </h3>
+                <div id="scoreText" class="font-baskerville text-xl mt-2"></div>
+            </div>
+
+            <div id="quizResults" class="space-y-4"></div>
+
+            <div class="flex justify-center mt-8">
+                <button onclick="closeResultModal()" class="vintage-button text-white px-6 py-3 rounded-lg text-lg font-bold">
+                    Voltar para a Aula
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleAnswer(questionNumber) {
+            const answer = document.getElementById('answer' + questionNumber);
+            answer.classList.toggle('hidden-answer');
+            answer.classList.toggle('show-answer');
+        }
+        
+        function toggleTranslation() {
+            const translation = document.getElementById('translation');
+            translation.classList.toggle('hidden-answer');
+            translation.classList.toggle('show-answer');
+        }
+        
+        function speak3(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US'; // idioma
+            utterance.rate = 0.5; // Velocidade (1 = normal, 0.8 = mais lento, 1.5 = mais rápido)
+            speechSynthesis.speak(utterance);
+        }
+        
+        // Configuração do Quiz
+        const quizConfig = {
+            totalQuestions: 8,
+            correctAnswers: {
+                q1: 'b',
+                q2: 'c',
+                q3: 'c',
+                q4: 'b',
+                q5: 'c',
+                q6: 'b',
+                q7: 'c',
+                q8: 'c'
+            },
+            explanations: {
+                q1: {
+                    correct: 'Correto! "Green" significa verde em inglês',
+                    incorrect: 'Errado! A resposta correta é "Green" para verde'
+                },
+                q2: {
+                    correct: 'Correto! "Triangle" significa triângulo e tem três lados',
+                    incorrect: 'Errado! A resposta correta é "Triangle" (triângulo) que tem três lados'
+                },
+                q3: {
+                    correct: 'Correto! O sol é amarelo ("Yellow")',
+                    incorrect: 'Errado! A resposta correta é "Yellow" (amarelo) para a cor do sol'
+                },
+                q4: {
+                    correct: 'Correto! "Star" significa estrela em inglês',
+                    incorrect: 'Errado! A resposta correta é "Star" para estrela'
+                },
+                q5: {
+                    correct: 'Correto! Rodas são círculos ("Circle")',
+                    incorrect: 'Errado! A resposta correta é "Circle" (círculo) para a forma das rodas'
+                },
+                q6: {
+                    correct: 'Correto! "Notebook" significa caderno em inglês',
+                    incorrect: 'Errado! A resposta correta é "Meu caderno é preto" ("Notebook" significa caderno)'
+                },
+                q7: {
+                    correct: 'Correto! Quadrados ("Square") têm quatro lados iguais',
+                    incorrect: 'Errado! A resposta correta é "Square" (quadrado) que tem quatro lados iguais'
+                },
+                q8: {
+                    correct: 'Correto! O céu diurno é azul ("Blue")',
+                    incorrect: 'Errado! A resposta correta é "Blue" (azul) para a cor do céu durante o dia'
+                }
+            }
+        };
+        
+        // Funções para controlar os modais
+        function openQuizModal() {
+            document.getElementById('quizModal').style.display = 'flex';
+            document.getElementById('quizForm').reset();
+            document.body.classList.add('modal-open');
+        }
+        
+        function closeQuizModal() {
+            document.getElementById('quizModal').style.display = 'none';
+            document.body.classList.remove('modal-open');
+        }
+        
+        function openResultModal() {
+            document.getElementById('resultModal').style.display = 'flex';
+            document.body.classList.add('modal-open');
+        }
+        
+        function closeResultModal() {
+            document.getElementById('resultModal').style.display = 'none';
+            document.body.classList.remove('modal-open');
+        }
+        
+        // Função para verificar respostas
+        function checkQuiz() {
+            let score = 0;
+            const results = [];
+            const form = document.getElementById('quizForm');
+            
+            for (let i = 1; i <= quizConfig.totalQuestions; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = form.querySelector(`input[name="${questionName}"]:checked`)?.value;
+                const isCorrect = selectedOption === quizConfig.correctAnswers[questionName];
+                
+                if (isCorrect) score++;
+                
+                results.push({
+                    question: i,
+                    isCorrect,
+                    explanation: isCorrect 
+                        ? quizConfig.explanations[questionName].correct
+                        : quizConfig.explanations[questionName].incorrect
+                });
+            }
+            
+            showResults(score, results);
+        }    
+        
+        // Função para mostrar resultados
+        function showResults(score, results) {
+            const scoreElement = document.getElementById('scoreText');
+            const resultsContainer = document.getElementById('quizResults');
+            
+            scoreElement.innerHTML = `
+                Você acertou <span class="text-wine font-bold">${score}/${quizConfig.totalQuestions}</span> questões!
+                <p class="font-baskerville text-lg mt-2 text-navy">${getScoreMessage(score, quizConfig.totalQuestions)}</p>
+            `;
+            
+            resultsContainer.innerHTML = results.map(result => `
+                <div class="p-4 rounded-lg ${result.isCorrect ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'} mb-3">
+                    <p class="font-baskerville font-bold ${result.isCorrect ? 'text-green-800' : 'text-red-800'}">
+                        Questão ${result.question}: ${result.isCorrect ? '✅ Acertou!' : '❌ Errou'}
+                    </p>
+                    <p class="font-baskerville mt-2 text-navy">${result.explanation}</p>
+                </div>
+            `).join('');
+            
+            closeQuizModal();
+            openResultModal();
+        }
+        
+        // Função para mensagem de pontuação
+        function getScoreMessage(score, total) {
+            const percentage = (score / total) * 100;
+            
+            if (percentage >= 90) return '🏆 Excelente! Você domina cores e formas em inglês!';
+            if (percentage >= 70) return '👍 Muito bom! Você conhece bem cores e formas em inglês!';
+            if (percentage >= 50) return '👌 Bom trabalho! Revise um pouco mais para melhorar!';
+            return '✏️ Continue praticando! Revise as cores e formas para melhorar!';
+        }
+    </script>
+</body>
+</html>
+
