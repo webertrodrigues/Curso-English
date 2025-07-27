@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão de Inglês - Aula 6: Pronomes Pessoais e Possessivos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilo/style.css">
+<script src="script/script.js"></script>
+</head>
+<body class="bg-gray-50 min-h-screen py-8">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <!-- Cartão Principal -->
+        <div class="vintage-card rounded-lg p-8 mb-8">
+            <!-- Cabeçalho -->
+            <header class="text-center mb-8">
+                <div class="ornament mb-4"></div>
+                <h1 class="font-playfair text-4xl font-bold text-wine mb-2">
+                    English Learning Card
+                </h1>
+                <h2 class="font-baskerville text-2xl text-navy mb-4">
+                    Aula 6: Pronomes Pessoais e Possessivos
+                </h2>
+                <div class="ornament"></div>
+            </header>
+
+            <!-- Frase do Dia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    ✨ Frase do Dia
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <p class="font-baskerville text-lg text-navy text-center italic">
+                        "This is my book."
+                    </p>
+                    <p class="font-baskerville text-base text-gray-600 text-center mt-2">
+                        "Este é o meu livro."
+                    </p>
+                </div>
+            </section>
+
+            <!-- Controle de Velocidade -->
+            <section class="mb-6">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-3">
+                    ⚙️ Controle de Velocidade
+                </h3>
+                <div class="bg-light-gold p-4 rounded-lg flex items-center">
+                    <span class="font-baskerville text-navy mr-3">Velocidade:</span>
+                    <select id="speedControl" class="font-baskerville bg-white border border-wine rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-gold">
+                        <option value="0.5">Lenta</option>
+                        <option value="0.9" selected>Normal</option>
+                        <option value="1.2">Rápida</option>
+                        <option value="1.5">Muito Rápida</option>
+                    </select>
+                    <button onclick="testSpeed()" class="ml-3 bg-wine text-white px-3 py-1 rounded font-baskerville text-sm hover:bg-dark-wine transition">
+                        Testar
+                    </button>
+                </div>
+            </section>
+
+            <!-- Pronomes Pessoais -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 flex items-center">
+                    👤 Pronomes Pessoais (Subject Pronouns)
+                </h3>
+                <p class="font-baskerville text-navy mb-4">
+                    Os pronomes pessoais de sujeito substituem o sujeito da frase e vêm antes do verbo.
+                </p>
+                
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="pronoun-card">
+                        <div class="pronoun-subject">I</div>
+                        <div class="pronoun-translation">Eu</div>
+                        <button onclick="speakWord('I')" class="pronounce-btn mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="pronoun-card">
+                        <div class="pronoun-subject">You</div>
+                        <div class="pronoun-translation">Você / Vocês</div>
+                        <button onclick="speakWord('You')" class="pronounce-btn mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="pronoun-card">
+                        <div class="pronoun-subject">He</div>
+                        <div class="pronoun-translation">Ele</div>
+                        <button onclick="speakWord('He')" class="pronounce-btn mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="pronoun-card">
+                        <div class="pronoun-subject">She</div>
+                        <div class="pronoun-translation">Ela</div>
+                        <button onclick="speakWord('She')" class="pronounce-btn mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="pronoun-card">
+                        <div class="pronoun-subject">It</div>
+                        <div class="pronoun-translation">Ele/Ela<br>(objetos/animais)</div>
+                        <button onclick="speakWord('It')" class="pronounce-btn mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="pronoun-card">
+                        <div class="pronoun-subject">We</div>
+                        <div class="pronoun-translation">Nós</div>
+                        <button onclick="speakWord('We')" class="pronounce-btn mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="pronoun-card">
+                        <div class="pronoun-subject">They</div>
+                        <div class="pronoun-translation">Eles / Elas</div>
+                        <button onclick="speakWord('They')" class="pronounce-btn mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pronomes Possessivos -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 flex items-center">
+                    🏠 Pronomes Possessivos (Possessive Adjectives)
+                </h3>
+                <p class="font-baskerville text-navy mb-4">
+                    Os pronomes possessivos indicam posse e vêm antes de um substantivo.
+                </p>
+                
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="possessive-card">
+                        <div class="possessive-pronoun">My</div>
+                        <div class="possessive-translation">Meu / Minha<br>Meus / Minhas</div>
+                        <button onclick="speakWord('My')" class="pronounce-btn mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="possessive-card">
+                        <div class="possessive-pronoun">Your</div>
+                        <div class="possessive-translation">Seu / Sua<br>Seus / Suas</div>
+                        <button onclick="speakWord('Your')" class="pronounce-btn mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="possessive-card">
+                        <div class="possessive-pronoun">His</div>
+                        <div class="possessive-translation">Dele</div>
+                        <button onclick="speakWord('His')" class="pronounce-btn mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="possessive-card">
+                        <div class="possessive-pronoun">Her</div>
+                        <div class="possessive-translation">Dela</div>
+                        <button onclick="speakWord('Her')" class="pronounce-btn mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="possessive-card">
+                        <div class="possessive-pronoun">Its</div>
+                        <div class="possessive-translation">Dele/Dela<br>(objetos/animais)</div>
+                        <button onclick="speakWord('Its')" class="pronounce-btn mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="possessive-card">
+                        <div class="possessive-pronoun">Our</div>
+                        <div class="possessive-translation">Nosso / Nossa<br>Nossos / Nossas</div>
+                        <button onclick="speakWord('Our')" class="pronounce-btn mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="possessive-card">
+                        <div class="possessive-pronoun">Their</div>
+                        <div class="possessive-translation">Deles / Delas</div>
+                        <button onclick="speakWord('Their')" class="pronounce-btn mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Exemplos -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    📚 Exemplos de Uso
+                </h3>
+                
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <h4 class="font-baskerville font-bold text-navy mb-2">Pronomes Pessoais:</h4>
+                        <div class="example-box">
+                            <p class="font-baskerville text-navy"><strong>I</strong> am happy.</p>
+                        </div>
+                        <div class="example-box">
+                            <p class="font-baskerville text-navy"><strong>She</strong> is beautiful.</p>
+                        </div>
+                        <div class="example-box">
+                            <p class="font-baskerville text-navy"><strong>They</strong> are at home.</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-baskerville font-bold text-navy mb-2">Pronomes Possessivos:</h4>
+                        <div class="example-box">
+                            <p class="font-baskerville text-navy">This is <strong>my</strong> car.</p>
+                        </div>
+                        <div class="example-box">
+                            <p class="font-baskerville text-navy"><strong>Her</strong> dress is red.</p>
+                        </div>
+                        <div class="example-box">
+                            <p class="font-baskerville text-navy"><strong>Their</strong> children are playing.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vocabulário Essencial -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 flex items-center">
+                    📝 Vocabulário Essencial
+                </h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="vocabulary-item p-3 rounded flex items-center">
+                        <span class="font-baskerville font-bold text-navy">Car</span>
+                        <span class="text-gray-600 ml-2">→ Carro</span>
+                        <button onclick="speakWord('Car')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="vocabulary-item p-3 rounded flex items-center">
+                        <span class="font-baskerville font-bold text-navy">House</span>
+                        <span class="text-gray-600 ml-2">→ Casa</span>
+                        <button onclick="speakWord('House')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="vocabulary-item p-3 rounded flex items-center">
+                        <span class="font-baskerville font-bold text-navy">Friend</span>
+                        <span class="text-gray-600 ml-2">→ Amigo(a)</span>
+                        <button onclick="speakWord('Friend')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="vocabulary-item p-3 rounded flex items-center">
+                        <span class="font-baskerville font-bold text-navy">Name</span>
+                        <span class="text-gray-600 ml-2">→ Nome</span>
+                        <button onclick="speakWord('Name')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="vocabulary-item p-3 rounded flex items-center">
+                        <span class="font-baskerville font-bold text-navy">Children</span>
+                        <span class="text-gray-600 ml-2">→ Crianças</span>
+                        <button onclick="speakWord('Children')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="vocabulary-item p-3 rounded flex items-center">
+                        <span class="font-baskerville font-bold text-navy">Playing</span>
+                        <span class="text-gray-600 ml-2">→ Brincando</span>
+                        <button onclick="speakWord('Playing')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Diálogo -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    💬 Diálogo Simples
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <div class="dialogue-player">
+                        <div class="dialogue-controls">
+                            <button class="play-btn" id="playDialogue" title="Reproduzir">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                                </svg>
+                            </button>
+                            <button class="pause-btn hidden" id="pauseDialogue" title="Pausar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
+                                </svg>
+                            </button>
+                            <button class="stop-btn" id="stopDialogue" title="Parar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M5 3.5h6A1.5 1.5 0 0 1 12.5 5v6a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 11V5A1.5 1.5 0 0 1 5 3.5z"/>
+                                </svg>
+                            </button>
+                            <div class="speed-control">
+                                <label for="dialogueSpeed">Velocidade:</label>
+                                <select id="dialogueSpeed" class="font-baskerville bg-white border border-wine rounded px-2 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-gold">
+                                    <option value="0.4">0.4x</option>
+                                    <option value="0.7" selected>0.7x</option>
+                                    <option value="1">1x</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="dialogue-text">
+                            <div class="mb-4" id="line1">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Person A:</strong> <span class="dialogue-line">Is this your bag?</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Esta é a sua bolsa?)
+                                </p>
+                            </div>
+                            <div class="mb-4" id="line2">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Person B:</strong> <span class="dialogue-line">No, it's not my bag. I think it's his bag.</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Não, não é a minha bolsa. Eu acho que é a bolsa dele.)
+                                </p>
+                            </div>
+                            <div class="mb-4" id="line3">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Person A:</strong> <span class="dialogue-line">Oh, I see. And where are your keys?</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Ah, entendo. E onde estão as suas chaves?)
+                                </p>
+                            </div>
+                            <div id="line4">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Person B:</strong> <span class="dialogue-line">My keys are in my pocket.</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Minhas chaves estão no meu bolso.)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Texto para Tradução -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    📝 Texto para Tradução
+                </h3>
+                <div class="bg-light-gold p-6 rounded-lg">
+                    <p class="font-baskerville text-navy text-lg mb-4">
+                        "My family is big. We live in our house. My brother has his own room. My sister loves her cat. Its name is Luna. Our parents are very kind. They always help their children."
+                    </p>
+                    <button onclick="toggleTranslation()" class="vintage-button text-white px-4 py-2 rounded font-baskerville">
+                        Ver Tradução
+                    </button>
+                    <div id="translation" class="hidden-answer mt-4 p-4 bg-white rounded border-l-4 border-wine">
+                        <p class="font-baskerville text-navy">
+                            "Minha família é grande. Nós moramos na nossa casa. Meu irmão tem o próprio quarto dele. Minha irmã ama o gato dela. O nome dele é Luna. Nossos pais são muito gentis. Eles sempre ajudam os filhos deles."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Perguntas para Prática -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    ❓ Perguntas para Prática
+                </h3>
+                <div class="space-y-4">
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            1. Complete: "___ is a teacher." (Use um pronome pessoal)
+                        </p>
+                        <button onclick="toggleAnswer(1)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer1" class="hidden-answer mt-2 text-wine font-bold">
+                            He/She (dependendo do contexto)
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            2. Traduza: "Este é o carro dela."
+                        </p>
+                        <button onclick="toggleAnswer(2)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer2" class="hidden-answer mt-2 text-wine font-bold">
+                            This is her car.
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            3. Complete: "Is this ___ book?" (Use um pronome possessivo para "você")
+                        </p>
+                        <button onclick="toggleAnswer(3)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer3" class="hidden-answer mt-2 text-wine font-bold">
+                            your
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quiz Interativo -->
+            <section class="mb-8">
+                <div class="text-center">
+                    <button onclick="openQuizModal()" class="vintage-button text-white px-6 py-3 rounded-lg font-baskerville text-lg">
+                        🎯 Iniciar Prova
+                    </button>
+                </div>
+            </section>
+
+            <!-- Pronúncia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    🔊 Dicas de Pronúncia
+                </h3>
+                <div class="space-y-4">
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>My</strong> /maɪ/ - Como o "mai" em "mais".
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Your</strong> /jʊər/ ou /jɔːr/ - O "y" tem som de "i" curto, e o "our" como em "tour".
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>His</strong> /hɪz/ - O "h" é aspirado, e o "i" tem som curto.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Her</strong> /hɜːr/ - O "h" é aspirado, e o "er" tem som de "ãr" (como em "bird").
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rodapé com Dicas -->
+            <footer class="text-center pt-6 border-t-2 border-wine">
+                <div class="ornament mb-4"></div>
+                <h4 class="font-playfair text-lg font-bold text-wine mb-2">
+                    💡 Dica de Memorização
+                </h4>
+                <p class="font-baskerville text-navy">
+                    Crie pares de frases usando o pronome pessoal e o pronome possessivo correspondente. Ex: "I have a car. This is my car." "She has a dress. This is her dress." Isso ajuda a fixar a relação entre eles.
+                </p>
+                <div class="ornament mt-4"></div>
+            </footer>
+        </div>
+
+        <!-- Nota de Uso -->
+        <div class="bg-navy text-white p-6 rounded-lg">
+            <h4 class="font-playfair text-lg font-bold mb-2">📋 Como Usar Este Cartão</h4>
+            <ul class="font-baskerville space-y-1">
+                <li>• Clique nos botões "Ver Resposta" para revelar as respostas das perguntas</li>
+                <li>• Clique em "Ver Tradução" para mostrar a tradução do texto</li>
+                <li>• Use os botões de áudio para ouvir a pronúncia das palavras</li>
+                <li>• Controle a velocidade da fala no painel de controles</li>
+                <li>• Use o player de diálogo para praticar a escuta</li>
+                <li>• Faça o quiz interativo para testar seus conhecimentos</li>
+                <li>• Passe o mouse sobre os cartões de pronomes para ver os efeitos visuais</li>
+                <li>• Pratique criando frases com cada pronome pessoal e possessivo</li>
+                <li>• Use as dicas de pronúncia para melhorar sua fala</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal do Quiz -->
+    <div id="quizModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" style="display: none;">
+        <div class="modal-content p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="font-playfair text-2xl font-bold text-wine">Quiz: Pronomes Pessoais e Possessivos</h2>
+                <button onclick="closeQuizModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            
+            <form id="quizForm">
+                <!-- Questão 1 -->
+                <div class="mb-6 p-4 border border-gray-200 rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">1. Complete a frase: "___ am a student."</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">I</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Me</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">My</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 2 -->
+                <div class="mb-6 p-4 border border-gray-200 rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">2. Qual pronome possessivo corresponde a "She"?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">His</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Her</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Its</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 3 -->
+                <div class="mb-6 p-4 border border-gray-200 rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">3. Complete: "___ are my friends."</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">Them</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">They</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Their</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 4 -->
+                <div class="mb-6 p-4 border border-gray-200 rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">4. Traduza: "Este é o livro dele."</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">This is he book.</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">This is his book.</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">This is him book.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 5 -->
+                <div class="mb-6 p-4 border border-gray-200 rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">5. Complete: "___ house is beautiful."</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">We</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Our</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Us</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 6 -->
+                <div class="mb-6 p-4 border border-gray-200 rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">6. Qual é o pronome pessoal para objetos e animais?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">It</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Its</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">This</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 7 -->
+                <div class="mb-6 p-4 border border-gray-200 rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">7. Complete: "Where are ___ keys?"</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q7" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">you</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q7" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">yours</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q7" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">your</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 8 -->
+                <div class="mb-6 p-4 border border-gray-200 rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">8. Qual frase está correta?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q8" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">Their are happy.</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q8" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">They are happy.</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q8" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Them are happy.</span>
+                        </label>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="text-center mt-6">
+                <button onclick="checkQuiz()" class="vintage-button text-white px-6 py-2 rounded font-baskerville">
+                    Verificar Respostas
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Resultados -->
+    <div id="resultModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" style="display: none;">
+        <div class="modal-content p-6 result-modal">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="font-playfair text-2xl font-bold text-wine">Resultado do Quiz</h2>
+                <button onclick="closeResultModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            
+            <div id="scoreText" class="result-score font-playfair"></div>
+            
+            <div id="quizResults" class="mt-4"></div>
+            
+            <div class="text-center mt-6">
+                <button onclick="closeResultModal()" class="vintage-button text-white px-6 py-2 rounded font-baskerville mr-3">
+                    Fechar
+                </button>
+                <button onclick="closeResultModal(); openQuizModal();" class="bg-navy text-white px-6 py-2 rounded font-baskerville">
+                    Tentar Novamente
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
