@@ -37,7 +37,7 @@ Um curso completo com material didático organizado em 20 aulas progressivas. Id
 | 3️⃣ | **Cores/Formas** | Vocabulário visual | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2003/lesson3_card.html) |
 | 4️⃣ | **Objetos/Artigos** | a/an/the, itens cotidianos | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2004/lesson4_card.html) |
 | 5️⃣ | **Verbo "To Be"** | Afirmativo/negativo/interrogativo | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2005/lesson5_card.html) |
-| 6️⃣ | **Pronomes** | Pessoais/possessivos | [Em Breve](#)<!--[Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2006/lesson6_card.html)--> |
+| 6️⃣ | **Pronomes** | Pessoais/possessivos | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2006/lesson6_card.html) |
 | 7️⃣ | **Família** | Parentesco, relacionamentos | [Em Breve](#)<!--[Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2007/lesson7_card.html)--> |
 | 8️⃣ | **Tempo** | Dias/meses/estações | [Em Breve](#)<!--[Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2008/lesson8_card.html) --> |
 | 9️⃣ | **Comidas** | Alimentos, bebidas, restaurante | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2009/lesson9_card.html) |
