@@ -6,242 +6,8 @@
     <title>Cartão de Inglês - Aula 11: Roupas e Acessórios</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --wine: #722F37;
-            --cream: #F5F1E8;
-            --navy: #2C3E50;
-            --gold: #D4AF37;
-            --dark-wine: #5A252A;
-            --light-gold: #F4E4BC;
-            --rose: #E8B4B8;
-            --sage: #9CAF88;
-            --lavender: #B8A9C9;
-            --coral: #F4A261;
-            --teal: #2A9D8F;
-            --mint: #A8E6CF;
-            --peach: #FFB3BA;
-            --purple: #8E44AD;
-            --pink: #E91E63;
-            --blue: #3498DB;
-        }
-        
-        .font-baskerville { font-family: 'Libre Baskerville', serif; }
-        .font-playfair { font-family: 'Playfair Display', serif; }
-        
-        .vintage-card {
-            background: linear-gradient(135deg, var(--cream) 0%, #F8F5F0 100%);
-            border: 3px solid var(--wine);
-            box-shadow: 
-                0 8px 32px rgba(114, 47, 55, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-        }
-        
-        .text-wine { color: var(--wine); }
-        .text-navy { color: var(--navy); }
-        .text-gold { color: var(--gold); }
-        .bg-wine { background-color: var(--wine); }
-        .bg-navy { background-color: var(--navy); }
-        .bg-gold { background-color: var(--gold); }
-        .bg-light-gold { background-color: var(--light-gold); }
-        .bg-mint { background-color: var(--mint); }
-        .bg-peach { background-color: var(--peach); }
-        
-        .vintage-button {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-wine) 100%);
-            transition: all 0.3s ease;
-        }
-        
-        .vintage-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(114, 47, 55, 0.3);
-        }
-        
-        .pronunciation {
-            background: linear-gradient(135deg, var(--light-gold) 0%, var(--cream) 100%);
-            border-left: 4px solid var(--gold);
-        }
-        
-        .dialogue-box {
-            background: rgba(44, 62, 80, 0.05);
-            border-left: 4px solid var(--navy);
-        }
-        
-        .clothing-card {
-            background: linear-gradient(135deg, var(--purple) 0%, #A569BD 100%);
-            color: white;
-            padding: 1.2rem;
-            border-radius: 12px;
-            margin: 0.3rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            min-height: 120px;
-            border: 2px solid rgba(142, 68, 173, 0.3);
-            position: relative;
-            text-align: center;
-        }
-        
-        .clothing-card:hover {
-            transform: scale(1.05) rotate(1deg);
-            box-shadow: 0 8px 25px rgba(142, 68, 173, 0.5);
-            border-color: white;
-        }
-        
-        .accessory-card {
-            background: linear-gradient(135deg, var(--pink) 0%, #F06292 100%);
-            color: white;
-            padding: 1.2rem;
-            border-radius: 12px;
-            margin: 0.3rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            min-height: 120px;
-            border: 2px solid rgba(233, 30, 99, 0.3);
-            position: relative;
-            text-align: center;
-        }
-        
-        .accessory-card:hover {
-            transform: scale(1.05) rotate(-1deg);
-            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.5);
-            border-color: white;
-        }
-        
-        .category-section {
-            background: linear-gradient(135deg, var(--blue) 0%, #5DADE2 100%);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 15px;
-            margin: 0.5rem;
-            transition: all 0.3s ease;
-            border: 3px solid rgba(52, 152, 219, 0.3);
-        }
-        
-        .category-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.4);
-            border-color: white;
-        }
-        
-        .fashion-emoji {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-        
-        .item-name {
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-bottom: 0.3rem;
-        }
-        
-        .item-translation {
-            font-style: italic;
-            opacity: 0.9;
-            font-size: 0.9rem;
-        }
-        
-        .fashion-store {
-            background: linear-gradient(135deg, var(--wine) 0%, var(--dark-wine) 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 20px;
-            margin: 1rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .fashion-store::before {
-            content: '👗';
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 3rem;
-            opacity: 0.3;
-        }
-        
-        .wardrobe-section {
-            background: rgba(142, 68, 173, 0.1);
-            border: 2px solid var(--purple);
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin: 1rem 0;
-        }
-        
-        .outfit-display {
-            background: linear-gradient(135deg, var(--sage) 0%, #A8CC8C 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 20px;
-            margin: 1rem 0;
-            text-align: center;
-        }
-        
-        .mannequin {
-            width: 150px;
-            height: 200px;
-            background: linear-gradient(135deg, #E8E8E8 0%, #D0D0D0 100%);
-            border-radius: 75px 75px 20px 20px;
-            margin: 0 auto 1rem;
-            position: relative;
-            border: 3px solid white;
-        }
-        
-        .mannequin::before {
-            content: '👤';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 4rem;
-            opacity: 0.3;
-        }
-        
-        .ornament {
-            width: 60px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            margin: 0 auto;
-        }
-        
-        .hidden-answer {
-            display: none;
-        }
-        
-        .show-answer {
-            display: block;
-        }
-        
-        @media (max-width: 768px) {
-            .vintage-card {
-                margin: 1rem;
-                padding: 1.5rem;
-            }
-            
-            .clothing-card, .accessory-card {
-                min-height: 100px;
-            }
-            
-            .item-name {
-                font-size: 1rem;
-            }
-            
-            .fashion-emoji {
-                font-size: 2rem;
-            }
-            
-            .mannequin {
-                width: 120px;
-                height: 160px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="estilo/style.css">
+    <script src="script/script.js"></script>
 </head>
 <body class="bg-gray-50 min-h-screen py-8">
     <div class="container mx-auto px-4 max-w-4xl">
@@ -265,11 +31,38 @@
                     ✨ Frase do Dia
                 </h3>
                 <div class="dialogue-box p-6 rounded-lg">
-                    <p class="font-baskerville text-lg text-navy text-center italic">
-                        "What are you wearing today?"
-                    </p>
+                    <div class="flex items-center justify-center">
+                        <button onclick="speakWord('What are you wearing today?')" class="font-baskerville text-lg text-navy text-center italic">
+                            "What are you wearing today?"                        
+                        </button>
+                    </div>
                     <p class="font-baskerville text-base text-gray-600 text-center mt-2">
                         "O que você está vestindo hoje?"
+                    </p>
+                </div>
+            </section>
+
+            <!-- Controle de Velocidade de Fala -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🎚️ Controle de Velocidade de Fala
+                </h3>
+                <div class="bg-white p-6 rounded-lg border-2 border-wine">
+                    <div class="flex items-center justify-center gap-4 mb-4">
+                        <label class="font-baskerville text-navy">Velocidade:</label>
+                        <select id="speedControl" class="bg-wine text-white px-3 py-2 rounded border font-baskerville">
+                            <option value="0.4">0.4x (Muito Lento)</option>
+                            <option value="0.7">0.7x (Lento)</option>
+                            <option value="1" selected>1x (Normal)</option>
+                            <option value="1.3">1.3x (Rápido)</option>
+                            <option value="1.5">1.5x (Muito Rápido)</option>
+                        </select>
+                        <button onclick="testSpeed()" class="vintage-button text-white px-4 py-2 rounded font-baskerville">
+                            🔊 Testar
+                        </button>
+                    </div>
+                    <p class="font-baskerville text-center text-navy text-sm">
+                        Ajuste a velocidade da fala para melhor compreensão do vocabulário de roupas e acessórios.
                     </p>
                 </div>
             </section>
@@ -431,53 +224,69 @@
                 </h3>
                 
                 <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
-                    <div class="clothing-card">
-                        <span class="fashion-emoji">👕</span>
-                        <div class="item-name">T-shirt</div>
-                        <div class="item-translation">Camiseta</div>
-                    </div>
+                    <button onclick="speakWord('T-shirt')">
+                        <div class="clothing-card">
+                            <span class="fashion-emoji">👕</span>
+                            <div class="item-name">T-shirt</div>
+                            <div class="item-translation">Camiseta</div>
+                        </div>
+                    </button>
                     
-                    <div class="clothing-card">
-                        <span class="fashion-emoji">👖</span>
-                        <div class="item-name">Jeans</div>
-                        <div class="item-translation">Calça jeans</div>
-                    </div>
+                    <button onclick="speakWord('Jeans')">
+                        <div class="clothing-card">
+                            <span class="fashion-emoji">👖</span>
+                            <div class="item-name">Jeans</div>
+                            <div class="item-translation">Calça jeans</div>
+                        </div>
+                    </button>
                     
-                    <div class="clothing-card">
-                        <span class="fashion-emoji">👗</span>
-                        <div class="item-name">Dress</div>
-                        <div class="item-translation">Vestido</div>
-                    </div>
+                    <button onclick="speakWord('Dress')">
+                        <div class="clothing-card">
+                            <span class="fashion-emoji">👗</span>
+                            <div class="item-name">Dress</div>
+                            <div class="item-translation">Vestido</div>
+                        </div>
+                    </button>
                     
-                    <div class="clothing-card">
-                        <span class="fashion-emoji">👔</span>
-                        <div class="item-name">Shirt</div>
-                        <div class="item-translation">Camisa</div>
-                    </div>
+                    <button onclick="speakWord('Shirt')">
+                        <div class="clothing-card">
+                            <span class="fashion-emoji">👔</span>
+                            <div class="item-name">Shirt</div>
+                            <div class="item-translation">Camisa</div>
+                        </div>
+                    </button>
                     
-                    <div class="clothing-card">
-                        <span class="fashion-emoji">🧥</span>
-                        <div class="item-name">Jacket</div>
-                        <div class="item-translation">Jaqueta</div>
-                    </div>
+                    <button onclick="speakWord('Jacket')">
+                        <div class="clothing-card">
+                            <span class="fashion-emoji">🧥</span>
+                            <div class="item-name">Jacket</div>
+                            <div class="item-translation">Jaqueta</div>
+                        </div>
+                    </button>
                     
-                    <div class="clothing-card">
-                        <span class="fashion-emoji">👟</span>
-                        <div class="item-name">Sneakers</div>
-                        <div class="item-translation">Tênis</div>
-                    </div>
+                    <button onclick="speakWord('Sneakers')">
+                        <div class="clothing-card">
+                            <span class="fashion-emoji">👟</span>
+                            <div class="item-name">Sneakers</div>
+                            <div class="item-translation">Tênis</div>
+                        </div>
+                    </button>
                     
-                    <div class="clothing-card">
-                        <span class="fashion-emoji">🩳</span>
-                        <div class="item-name">Shorts</div>
-                        <div class="item-translation">Shorts</div>
-                    </div>
+                    <button onclick="speakWord('Shorts')">
+                        <div class="clothing-card">
+                            <span class="fashion-emoji">🩳</span>
+                            <div class="item-name">Shorts</div>
+                            <div class="item-translation">Shorts</div>
+                        </div>
+                    </button>
                     
-                    <div class="clothing-card">
-                        <span class="fashion-emoji">🧦</span>
-                        <div class="item-name">Socks</div>
-                        <div class="item-translation">Meias</div>
-                    </div>
+                    <button onclick="speakWord('Socks')">
+                        <div class="clothing-card">
+                            <span class="fashion-emoji">🧦</span>
+                            <div class="item-name">Socks</div>
+                            <div class="item-translation">Meias</div>
+                        </div>
+                    </button>
                 </div>
             </section>
 
@@ -488,109 +297,161 @@
                 </h3>
                 
                 <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
-                    <div class="accessory-card">
-                        <span class="fashion-emoji">⌚</span>
-                        <div class="item-name">Watch</div>
-                        <div class="item-translation">Relógio</div>
-                    </div>
+                    <button onclick="speakWord('Watch')">
+                        <div class="accessory-card">
+                            <span class="fashion-emoji">⌚</span>
+                            <div class="item-name">Watch</div>
+                            <div class="item-translation">Relógio</div>
+                        </div>
+                    </button>
                     
-                    <div class="accessory-card">
-                        <span class="fashion-emoji">📿</span>
-                        <div class="item-name">Necklace</div>
-                        <div class="item-translation">Colar</div>
-                    </div>
+                    <button onclick="speakWord('Necklace')">
+                        <div class="accessory-card">
+                            <span class="fashion-emoji">📿</span>
+                            <div class="item-name">Necklace</div>
+                            <div class="item-translation">Colar</div>
+                        </div>
+                    </button>
                     
-                    <div class="accessory-card">
-                        <span class="fashion-emoji">💍</span>
-                        <div class="item-name">Ring</div>
-                        <div class="item-translation">Anel</div>
-                    </div>
+                    <button onclick="speakWord('Ring')">
+                        <div class="accessory-card">
+                            <span class="fashion-emoji">💍</span>
+                            <div class="item-name">Ring</div>
+                            <div class="item-translation">Anel</div>
+                        </div>
+                    </button>
                     
-                    <div class="accessory-card">
-                        <span class="fashion-emoji">👂</span>
-                        <div class="item-name">Earrings</div>
-                        <div class="item-translation">Brincos</div>
-                    </div>
+                    <button onclick="speakWord('Earrings')">
+                        <div class="accessory-card">
+                            <span class="fashion-emoji">👂</span>
+                            <div class="item-name">Earrings</div>
+                            <div class="item-translation">Brincos</div>
+                        </div>
+                    </button>
                     
-                    <div class="accessory-card">
-                        <span class="fashion-emoji">🕶️</span>
-                        <div class="item-name">Sunglasses</div>
-                        <div class="item-translation">Óculos de sol</div>
-                    </div>
+                    <button onclick="speakWord('Sunglasses')">
+                        <div class="accessory-card">
+                            <span class="fashion-emoji">🕶️</span>
+                            <div class="item-name">Sunglasses</div>
+                            <div class="item-translation">Óculos de sol</div>
+                        </div>
+                    </button>
                     
-                    <div class="accessory-card">
-                        <span class="fashion-emoji">👜</span>
-                        <div class="item-name">Bag</div>
-                        <div class="item-translation">Bolsa</div>
-                    </div>
+                    <button onclick="speakWord('Bag')">
+                        <div class="accessory-card">
+                            <span class="fashion-emoji">👜</span>
+                            <div class="item-name">Bag</div>
+                            <div class="item-translation">Bolsa</div>
+                        </div>
+                    </button>
                     
-                    <div class="accessory-card">
-                        <span class="fashion-emoji">🎒</span>
-                        <div class="item-name">Backpack</div>
-                        <div class="item-translation">Mochila</div>
-                    </div>
+                    <button onclick="speakWord('Backpack')">
+                        <div class="accessory-card">
+                            <span class="fashion-emoji">🎒</span>
+                            <div class="item-name">Backpack</div>
+                            <div class="item-translation">Mochila</div>
+                        </div>
+                    </button>
                     
-                    <div class="accessory-card">
-                        <span class="fashion-emoji">🧤</span>
-                        <div class="item-name">Gloves</div>
-                        <div class="item-translation">Luvas</div>
-                    </div>
+                    <button onclick="speakWord('Gloves')">
+                        <div class="accessory-card">
+                            <span class="fashion-emoji">🧤</span>
+                            <div class="item-name">Gloves</div>
+                            <div class="item-translation">Luvas</div>
+                        </div>
+                    </button>
                 </div>
             </section>
 
-            <!-- Diálogo -->
+            <!-- Diálogo Interativo -->
             <section class="mb-8">
-                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
-                    💬 Diálogo na Loja
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    💬 Diálogo Interativo - Loja de Roupas
                 </h3>
-                <div class="dialogue-box p-6 rounded-lg">
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Salesperson:</strong> Hello! Can I help you?
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Olá! Posso ajudá-lo?)
-                        </p>
+                
+                <div class="dialogue-controls">
+                    <div class="flex items-center gap-3">
+                        <button id="playBtn" onclick="playDialogue()" class="dialogue-btn">
+                            ▶️ Reproduzir
+                        </button>
+                        <button id="pauseBtn" onclick="pauseDialogue()" class="dialogue-btn" disabled>
+                            ⏸️ Pausar
+                        </button>
+                        <button id="stopBtn" onclick="stopDialogue()" class="dialogue-btn" disabled>
+                            ⏹️ Parar
+                        </button>
                     </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Customer:</strong> Yes, please. I'm looking for a new dress.
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Sim, por favor. Estou procurando um vestido novo.)
-                        </p>
+                    
+                    <div class="flex items-center gap-3">
+                        <span class="font-baskerville">Velocidade:</span>
+                        <select id="dialogueSpeed" class="bg-white text-navy px-2 py-1 rounded border">
+                            <option value="0.4">0.4x</option>
+                            <option value="0.7">0.7x</option>
+                            <option value="1" selected>1x</option>
+                        </select>
+                        <span class="speed-indicator" id="speedIndicator">1x</span>
                     </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Salesperson:</strong> What color and size are you looking for?
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Que cor e tamanho você está procurando?)
-                        </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg border-2 border-wine">
+                    <div class="dialogue-line" data-line="0" onclick="playFromLine(0)">
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-3">👩‍💼</span>
+                            <div>
+                                <p class="font-baskerville font-bold text-navy">Shop Assistant: Good morning! Can I help you find something?</p>
+                                <p class="font-baskerville text-sm text-gray-600">(Vendedora: Bom dia! Posso ajudá-la a encontrar algo?)</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Customer:</strong> I'd like a red dress, size medium.
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Eu gostaria de um vestido vermelho, tamanho médio.)
-                        </p>
+                    
+                    <div class="dialogue-line" data-line="1" onclick="playFromLine(1)">
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-3">👤</span>
+                            <div>
+                                <p class="font-baskerville font-bold text-navy">Customer: Yes, I'm looking for a new dress for a party.</p>
+                                <p class="font-baskerville text-sm text-gray-600">(Cliente: Sim, estou procurando um vestido novo para uma festa.)</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Salesperson:</strong> We have this beautiful red dress. Would you like to try it on?
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Temos este lindo vestido vermelho. Gostaria de experimentar?)
-                        </p>
+                    
+                    <div class="dialogue-line" data-line="2" onclick="playFromLine(2)">
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-3">👩‍💼</span>
+                            <div>
+                                <p class="font-baskerville font-bold text-navy">Shop Assistant: What size do you wear?</p>
+                                <p class="font-baskerville text-sm text-gray-600">(Vendedora: Que tamanho você veste?)</p>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Customer:</strong> Yes, thank you! And do you have any matching necklaces?
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Sim, obrigada! E vocês têm algum colar que combine?)
-                        </p>
+                    
+                    <div class="dialogue-line" data-line="3" onclick="playFromLine(3)">
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-3">👤</span>
+                            <div>
+                                <p class="font-baskerville font-bold text-navy">Customer: I wear size medium. Do you have anything in blue?</p>
+                                <p class="font-baskerville text-sm text-gray-600">(Cliente: Eu visto tamanho médio. Vocês têm algo em azul?)</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dialogue-line" data-line="4" onclick="playFromLine(4)">
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-3">👩‍💼</span>
+                            <div>
+                                <p class="font-baskerville font-bold text-navy">Shop Assistant: Yes! We have a beautiful blue dress. Would you like to try it on?</p>
+                                <p class="font-baskerville text-sm text-gray-600">(Vendedora: Sim! Temos um lindo vestido azul. Gostaria de experimentar?)</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dialogue-line" data-line="5" onclick="playFromLine(5)">
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-3">👤</span>
+                            <div>
+                                <p class="font-baskerville font-bold text-navy">Customer: That sounds perfect! Where is the fitting room?</p>
+                                <p class="font-baskerville text-sm text-gray-600">(Cliente: Isso parece perfeito! Onde fica o provador?)</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -683,6 +544,15 @@
                 </div>
             </section>
 
+            <!-- Quiz Interativo -->
+            <section class="mb-8">
+                <div class="text-center">
+                    <button onclick="openQuizModal()" class="vintage-button text-white px-6 py-3 rounded-lg font-baskerville text-lg hover:transform hover:scale-105 transition-all">
+                        🎯 Iniciar Quiz
+                    </button>
+                </div>
+            </section>
+
             <!-- Pronúncia -->
             <section class="mb-8">
                 <h3 class="font-playfair text-xl font-bold text-wine mb-4">
@@ -736,6 +606,157 @@
                 <li>• Pratique o diálogo da loja em voz alta</li>
                 <li>• Descreva suas próprias roupas usando o vocabulário aprendido</li>
             </ul>
+        </div>
+    </div>
+
+    <!-- Modal do Quiz -->
+    <div id="quizModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" style="display: none;">
+        <div class="modal-content bg-white rounded-lg p-6 w-full max-w-2xl max-h-90vh overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="font-playfair text-2xl font-bold text-wine">Quiz: Roupas e Acessórios</h2>
+                <button onclick="closeQuizModal()" class="text-wine hover:text-dark-wine text-2xl">&times;</button>
+            </div>
+            
+            <form id="quizForm">
+                <!-- Questão 1 -->
+                <div class="mb-6 p-4 border border-gray-200 rounded-lg">
+                    <h3 class="font-baskerville font-bold text-navy mb-3">1. Qual é a diferença entre "sweater" e "cardigan"?</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">Sweater é fechado na frente, cardigan tem botões ou zíper</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Sweater é mais grosso, cardigan é mais fino</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Não há diferença, são sinônimos</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 2 -->
+                <div class="mb-6 p-4 border border-gray-200 rounded-lg">
+                    <h3 class="font-baskerville font-bold text-navy mb-3">2. Complete a frase: "I need to buy new _____ because mine have holes in them."</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">socks</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">shoes</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">pants</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 3 -->
+                <div class="mb-6 p-4 border border-gray-200 rounded-lg">
+                    <h3 class="font-baskerville font-bold text-navy mb-3">3. Em uma loja, o que significa quando o vendedor diz "This item is on sale"?</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">O item está sendo vendido</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">O item está com desconto/promoção</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">O item está esgotado</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 4 -->
+                <div class="mb-6 p-4 border border-gray-200 rounded-lg">
+                    <h3 class="font-baskerville font-bold text-navy mb-3">4. Qual é a forma correta de perguntar se uma roupa serve bem em você?</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">"How does this look on me?"</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">"Does this fit me well?"</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Ambas estão corretas</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 5 -->
+                <div class="mb-6 p-4 border border-gray-200 rounded-lg">
+                    <h3 class="font-baskerville font-bold text-navy mb-3">5. O que significa "dress code" em um convite?</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">Código de desconto para roupas</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Tipo de roupa apropriada para o evento</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Marca de roupa recomendada</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 6 -->
+                <div class="mb-6 p-4 border border-gray-200 rounded-lg">
+                    <h3 class="font-baskerville font-bold text-navy mb-3">6. Qual frase está INCORRETA gramaticalmente?</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">"I'm wearing my new boots today."</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">"She's putting on her jacket."</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">"He's dressing a blue shirt."</span>
+                        </label>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="text-center">
+                <button onclick="checkQuiz()" class="vintage-button text-white px-6 py-2 rounded font-baskerville">
+                    ✅ Verificar Respostas
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Resultados -->
+    <div id="resultModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" style="display: none;">
+        <div class="modal-content bg-white rounded-lg p-6 w-full max-w-2xl max-h-90vh overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="font-playfair text-2xl font-bold text-wine">Resultados do Quiz</h2>
+                <button onclick="closeResultModal()" class="text-wine hover:text-dark-wine text-2xl">&times;</button>
+            </div>
+            
+            <div id="scoreText" class="text-center mb-6 font-playfair text-xl"></div>
+            <div id="quizResults" class="space-y-4"></div>
+            
+            <div class="text-center mt-6">
+                <button onclick="closeResultModal()" class="vintage-button text-white px-6 py-2 rounded font-baskerville">
+                    Fechar
+                </button>
+            </div>
         </div>
     </div>
 
