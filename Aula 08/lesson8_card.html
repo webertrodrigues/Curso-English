@@ -6,235 +6,8 @@
     <title>Cartão de Inglês - Aula 8: Dias da Semana e Meses do Ano</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --wine: #722F37;
-            --cream: #F5F1E8;
-            --navy: #2C3E50;
-            --gold: #D4AF37;
-            --dark-wine: #5A252A;
-            --light-gold: #F4E4BC;
-            --rose: #E8B4B8;
-            --sage: #9CAF88;
-            --lavender: #B8A9C9;
-            --coral: #F4A261;
-            --teal: #2A9D8F;
-        }
-        
-        .font-baskerville { font-family: 'Libre Baskerville', serif; }
-        .font-playfair { font-family: 'Playfair Display', serif; }
-        
-        .vintage-card {
-            background: linear-gradient(135deg, var(--cream) 0%, #F8F5F0 100%);
-            border: 3px solid var(--wine);
-            box-shadow: 
-                0 8px 32px rgba(114, 47, 55, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-        }
-        
-        .text-wine { color: var(--wine); }
-        .text-navy { color: var(--navy); }
-        .text-gold { color: var(--gold); }
-        .bg-wine { background-color: var(--wine); }
-        .bg-navy { background-color: var(--navy); }
-        .bg-gold { background-color: var(--gold); }
-        .bg-light-gold { background-color: var(--light-gold); }
-        .bg-rose { background-color: var(--rose); }
-        .bg-sage { background-color: var(--sage); }
-        .bg-lavender { background-color: var(--lavender); }
-        .bg-coral { background-color: var(--coral); }
-        .bg-teal { background-color: var(--teal); }
-        
-        .vintage-button {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-wine) 100%);
-            transition: all 0.3s ease;
-        }
-        
-        .vintage-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(114, 47, 55, 0.3);
-        }
-        
-        .pronunciation {
-            background: linear-gradient(135deg, var(--light-gold) 0%, var(--cream) 100%);
-            border-left: 4px solid var(--gold);
-        }
-        
-        .dialogue-box {
-            background: rgba(44, 62, 80, 0.05);
-            border-left: 4px solid var(--navy);
-        }
-        
-        .day-card {
-            background: linear-gradient(135deg, var(--lavender) 0%, #C8B9D9 100%);
-            color: var(--navy);
-            padding: 1.2rem;
-            border-radius: 12px;
-            margin: 0.3rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            min-height: 100px;
-            border: 2px solid rgba(184, 169, 201, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .day-card:hover {
-            transform: scale(1.05) rotate(1deg);
-            box-shadow: 0 8px 25px rgba(184, 169, 201, 0.5);
-            border-color: var(--navy);
-        }
-        
-        .month-card {
-            background: linear-gradient(135deg, var(--coral) 0%, #F6B373 100%);
-            color: white;
-            padding: 1.2rem;
-            border-radius: 12px;
-            margin: 0.3rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            min-height: 100px;
-            border: 2px solid rgba(244, 162, 97, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .month-card:hover {
-            transform: scale(1.05) rotate(-1deg);
-            box-shadow: 0 8px 25px rgba(244, 162, 97, 0.5);
-            border-color: white;
-        }
-        
-        .time-word {
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-bottom: 0.3rem;
-        }
-        
-        .time-translation {
-            font-style: italic;
-            opacity: 0.9;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-        
-        .calendar-grid {
-            background: rgba(42, 157, 143, 0.1);
-            border: 2px solid var(--teal);
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin: 1rem 0;
-        }
-        
-        .week-row {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .week-day {
-            background: var(--teal);
-            color: white;
-            padding: 0.8rem 0.5rem;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 0.9rem;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-        
-        .week-day:hover {
-            background: var(--navy);
-            transform: translateY(-2px);
-        }
-        
-        .months-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-        
-        .month-mini {
-            background: var(--coral);
-            color: white;
-            padding: 0.6rem;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 0.8rem;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-        
-        .month-mini:hover {
-            background: var(--wine);
-            transform: scale(1.05);
-        }
-        
-        .ornament {
-            width: 60px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            margin: 0 auto;
-        }
-        
-        .hidden-answer {
-            display: none;
-        }
-        
-        .show-answer {
-            display: block;
-        }
-        
-        .season-indicator {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            font-size: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .spring { background: #90EE90; }
-        .summer { background: #FFD700; }
-        .autumn { background: #FF8C00; }
-        .winter { background: #87CEEB; }
-        
-        @media (max-width: 768px) {
-            .vintage-card {
-                margin: 1rem;
-                padding: 1.5rem;
-            }
-            
-            .day-card, .month-card {
-                min-height: 80px;
-            }
-            
-            .time-word {
-                font-size: 1rem;
-            }
-            
-            .week-row {
-                grid-template-columns: repeat(7, 1fr);
-                gap: 0.3rem;
-            }
-            
-            .months-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="estilo/style.css">
+    <script src="script/script.js"></script>
 </head>
 <body class="bg-gray-50 min-h-screen py-8">
     <div class="container mx-auto px-4 max-w-4xl">
@@ -258,9 +31,11 @@
                     ✨ Frase do Dia
                 </h3>
                 <div class="dialogue-box p-6 rounded-lg">
-                    <p class="font-baskerville text-lg text-navy text-center italic">
-                        "What day is today?"
-                    </p>
+                    <div class="flex items-center justify-center">
+                        <button onclick="speakWord('What day is today?')" class="font-baskerville text-lg text-navy text-center italic">
+                            "What day is today?"                        
+                        </button>
+                    </div>
                     <p class="font-baskerville text-base text-gray-600 text-center mt-2">
                         "Que dia é hoje?"
                     </p>
@@ -274,28 +49,66 @@
                 </h3>
                 <div class="calendar-grid">
                     <div class="week-row">
+                        <button onclick="speakWord('Monday')">
                         <div class="week-day">MON<br><span class="text-xs">Monday</span></div>
+                        </button>
+                        <button onclick="speakWord('Tuesday')">
                         <div class="week-day">TUE<br><span class="text-xs">Tuesday</span></div>
+                        </button>
+                        <button onclick="speakWord('Wednesday')">
                         <div class="week-day">WED<br><span class="text-xs">Wednesday</span></div>
+                        </button>
+                        <button onclick="speakWord('Thursday')">
                         <div class="week-day">THU<br><span class="text-xs">Thursday</span></div>
+                        </button>
+                        <button onclick="speakWord('Friday')">
                         <div class="week-day">FRI<br><span class="text-xs">Friday</span></div>
+                        </button>
+                        <button onclick="speakWord('Saturday')">
                         <div class="week-day">SAT<br><span class="text-xs">Saturday</span></div>
+                        </button>
+                        <button onclick="speakWord('Sunday')">
                         <div class="week-day">SUN<br><span class="text-xs">Sunday</span></div>
+                        </button>
                     </div>
                     
                     <div class="months-grid">
+                        <button onclick="speakWord('January')">
                         <div class="month-mini">JAN</div>
+                        </button>
+                        <button onclick="speakWord('February')">
                         <div class="month-mini">FEB</div>
+                        </button>
+                        <button onclick="speakWord('March')">
                         <div class="month-mini">MAR</div>
+                        </button>
+                        <button onclick="speakWord('April')">
                         <div class="month-mini">APR</div>
+                        </button>
+                        <button onclick="speakWord('May')">
                         <div class="month-mini">MAY</div>
+                        </button>
+                        <button onclick="speakWord('June')">
                         <div class="month-mini">JUN</div>
+                        </button>
+                        <button onclick="speakWord('July')">
                         <div class="month-mini">JUL</div>
+                        </button>
+                        <button onclick="speakWord('August')">
                         <div class="month-mini">AUG</div>
+                        </button>
+                        <button onclick="speakWord('September')">
                         <div class="month-mini">SEP</div>
+                        </button>
+                        <button onclick="speakWord('October')">
                         <div class="month-mini">OCT</div>
+                        </button>
+                        <button onclick="speakWord('November')">
                         <div class="month-mini">NOV</div>
+                        </button>
+                        <button onclick="speakWord('December')">
                         <div class="month-mini">DEC</div>
+                        </button>
                     </div>
                 </div>
             </section>
@@ -306,7 +119,7 @@
                     📆 Dias da Semana
                 </h3>
                 
-                <div class="grid md:grid-cols-4 lg:grid-cols-7 gap-3">
+                <div class="grid md:grid-cols-4 lg:grid-cols-5 gap-0">
                     <div class="day-card">
                         <div class="time-word">Monday</div>
                         <div class="time-translation">Segunda-feira</div>
@@ -425,59 +238,88 @@
                 </div>
             </section>
 
-            <!-- Diálogo -->
+            <!-- Diálogo Interativo -->
             <section class="mb-8">
                 <h3 class="font-playfair text-xl font-bold text-wine mb-4">
-                    💬 Diálogo Simples
+                    💬 Diálogo Interativo
                 </h3>
                 <div class="dialogue-box p-6 rounded-lg">
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Person A:</strong> Hi! What day is today?
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Oi! Que dia é hoje?)
-                        </p>
-                    </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Person B:</strong> Today is Friday. And tomorrow is Saturday!
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Hoje é sexta-feira. E amanhã é sábado!)
-                        </p>
-                    </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Person A:</strong> Great! Do you have plans for the weekend?
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Ótimo! Você tem planos para o fim de semana?)
-                        </p>
-                    </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Person B:</strong> Yes, I do. On Saturday, I will visit my family. And on Sunday, I will relax at home.
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Sim, tenho. No sábado, vou visitar minha família. E no domingo, vou relaxar em casa.)
-                        </p>
-                    </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Person A:</strong> Sounds good! My birthday is next month, in August.
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Parece bom! Meu aniversário é no próximo mês, em agosto.)
-                        </p>
-                    </div>
-                    <div>
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Person B:</strong> Oh, happy early birthday! My birthday is in December.
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Ah, parabéns antecipado! Meu aniversário é em dezembro.)
-                        </p>
+                    <div class="dialogue-player">
+                        <div class="dialogue-controls">
+                            <button class="play-btn" id="playDialogue" title="Reproduzir">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                                </svg>
+                            </button>
+                            <button class="pause-btn hidden" id="pauseDialogue" title="Pausar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
+                                </svg>
+                            </button>
+                            <button class="stop-btn" id="stopDialogue" title="Parar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M5 3.5h6A1.5 1.5 0 0 1 12.5 5v6a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 11V5A1.5 1.5 0 0 1 5 3.5z"/>
+                                </svg>
+                            </button>
+                            <div class="speed-control">
+                                <label for="dialogueSpeed">Velocidade:</label>
+                                <select id="dialogueSpeed" class="font-baskerville bg-white border border-wine rounded px-2 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-gold">
+                                    <option value="0.4">0.4x</option>
+                                    <option value="0.7" selected>0.7x</option>
+                                    <option value="1">1x</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="dialogue-text">
+                            <div class="mb-4" id="line1">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Person A:</strong> <span class="dialogue-line">Hi! What day is today?</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Oi! Que dia é hoje?)
+                                </p>
+                            </div>
+                            <div class="mb-4" id="line2">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Person B:</strong> <span class="dialogue-line">Today is Friday. And tomorrow is Saturday!</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Hoje é sexta-feira. E amanhã é sábado!)
+                                </p>
+                            </div>
+                            <div class="mb-4" id="line3">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Person A:</strong> <span class="dialogue-line">Great! Do you have plans for the weekend?</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Ótimo! Você tem planos para o fim de semana?)
+                                </p>
+                            </div>
+                            <div class="mb-4" id="line4">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Person B:</strong> <span class="dialogue-line">Yes, I do. On Saturday, I will visit my family. And on Sunday, I will relax at home.</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Sim, tenho. No sábado, vou visitar minha família. E no domingo, vou relaxar em casa.)
+                                </p>
+                            </div>
+                            <div class="mb-4" id="line5">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Person A:</strong> <span class="dialogue-line">Sounds good! My birthday is next month, in August.</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Parece bom! Meu aniversário é no próximo mês, em agosto.)
+                                </p>
+                            </div>
+                            <div id="line6">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Person B:</strong> <span class="dialogue-line">Oh, happy early birthday! My birthday is in December.</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Ah, parabéns antecipado! Meu aniversário é em dezembro.)
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -558,6 +400,14 @@
                 </div>
             </section>
 
+            <!-- Quiz Interativo -->
+            <section class="mb-8">
+                <div class="text-center">
+                    <button onclick="openQuizModal()" class="vintage-button text-white px-6 py-3 rounded-lg font-baskerville text-lg hover:transform hover:scale-105 transition-all">
+                        🎯 Iniciar Quiz
+                    </button>
+            </section>
+
             <!-- Pronúncia -->
             <section class="mb-8">
                 <h3 class="font-playfair text-xl font-bold text-wine mb-4">
@@ -566,62 +416,193 @@
                 <div class="space-y-4">
                     <div class="pronunciation p-4 rounded-lg">
                         <p class="font-baskerville text-navy">
-                            <strong>Wednesday</strong> /wɛnzdeɪ/ - Note que o 'd' não é pronunciado.
+                            <strong>Wednesday</strong> /ˈwɛnzdeɪ/ - O "d" é quase mudo. Pronuncie como "WENZ-day".
                         </p>
                     </div>
                     <div class="pronunciation p-4 rounded-lg">
                         <p class="font-baskerville text-navy">
-                            <strong>February</strong> /fɛbruɛri/ ou /fɛbjʊɛri/ - O 'r' inicial pode ser um pouco enrolado.
+                            <strong>February</strong> /ˈfɛbruɛri/ - Cuidado com o primeiro "r". Pronuncie "FEB-roo-ary".
                         </p>
                     </div>
                     <div class="pronunciation p-4 rounded-lg">
                         <p class="font-baskerville text-navy">
-                            <strong>August</strong> /ɔːɡəst/ - O 'au' tem som de 'ó' aberto.
+                            <strong>Thursday</strong> /ˈθɜrzdeɪ/ - O "th" tem som de "z" suave, como em "think".
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>August</strong> /ˈɔgəst/ - O "au" tem som de "ô". Pronuncie "AW-gust".
                         </p>
                     </div>
                 </div>
             </section>
 
-            <!-- Rodapé com Dicas -->
-            <footer class="text-center pt-6 border-t-2 border-wine">
+            <!-- Rodapé -->
+            <footer class="text-center pt-8 border-t border-wine">
                 <div class="ornament mb-4"></div>
-                <h4 class="font-playfair text-lg font-bold text-wine mb-2">
-                    💡 Dica de Memorização
-                </h4>
                 <p class="font-baskerville text-navy">
-                    Crie um calendário pessoal em inglês. Escreva os dias da semana e os meses do ano em inglês e use-o para planejar suas atividades diárias e mensais. Associe cada dia da semana a uma atividade específica que você faz (ex: Monday - work, Saturday - fun).
+                    💡 <strong>Dica de Memorização:</strong> Crie um calendário pessoal em inglês com seus compromissos!
+                </p>
+                <p class="font-baskerville text-sm text-gray-600 mt-2">
+                    Pratique dizendo a data de hoje em inglês todos os dias.
                 </p>
                 <div class="ornament mt-4"></div>
             </footer>
         </div>
+    </div>
 
-        <!-- Nota de Uso -->
-        <div class="bg-navy text-white p-6 rounded-lg">
-            <h4 class="font-playfair text-lg font-bold mb-2">📋 Como Usar Este Cartão</h4>
-            <ul class="font-baskerville space-y-1">
-                <li>• Clique nos botões "Ver Resposta" para revelar as respostas das perguntas</li>
-                <li>• Clique em "Ver Tradução" para mostrar a tradução do texto</li>
-                <li>• Passe o mouse sobre os cartões de dias e meses para ver os efeitos visuais</li>
-                <li>• Use o calendário visual como referência rápida</li>
-                <li>• Note os indicadores de estação do ano nos cartões dos meses</li>
-                <li>• Pratique dizendo os dias da semana e meses em sequência</li>
-            </ul>
+    <!-- Modal do Quiz -->
+    <div id="quizModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="modal-content bg-white rounded-lg p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-wine">Quiz Desafiador: Dias e Meses</h2>
+                <button onclick="closeQuizModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            
+            <form id="quizForm">
+                <!-- Questão 1 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-bold text-navy mb-3">1. Ordene os dias da semana em inglês a partir de Sunday (domingo).</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="a" class="form-radio mr-2">
+                            <span>Sunday, Monday, Wednesday, Tuesday, Thursday, Friday, Saturday</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="b" class="form-radio mr-2">
+                            <span>Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="c" class="form-radio mr-2">
+                            <span>Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 2 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-bold text-navy mb-3">2. Qual é o único mês em inglês que termina com a letra "y"?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="a" class="form-radio mr-2">
+                            <span>May</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="b" class="form-radio mr-2">
+                            <span>July</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="c" class="form-radio mr-2">
+                            <span>February</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 3 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-bold text-navy mb-3">3. Quantos meses têm exatamente 30 dias? Nomeie-os.</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="a" class="form-radio mr-2">
+                            <span>3 meses: April, June, November</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="b" class="form-radio mr-2">
+                            <span>4 meses: April, June, September, November</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="c" class="form-radio mr-2">
+                            <span>5 meses: April, June, August, September, November</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 4 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-bold text-navy mb-3">4. Qual dia da semana é conhecido como "hump day" nos EUA?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="a" class="form-radio mr-2">
+                            <span>Tuesday</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="b" class="form-radio mr-2">
+                            <span>Wednesday</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="c" class="form-radio mr-2">
+                            <span>Thursday</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 5 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-bold text-navy mb-3">5. Se hoje é Thursday e faltam 3 dias para seu aniversário, em qual dia será?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="a" class="form-radio mr-2">
+                            <span>Saturday</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="b" class="form-radio mr-2">
+                            <span>Sunday</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="c" class="form-radio mr-2">
+                            <span>Monday</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 6 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-bold text-navy mb-3">6. Qual é o único mês que pode ter um número diferente de dias a cada ano?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="a" class="form-radio mr-2">
+                            <span>February</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="b" class="form-radio mr-2">
+                            <span>April</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="c" class="form-radio mr-2">
+                            <span>November</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="button" onclick="checkQuiz()" class="bg-wine text-white px-6 py-2 rounded font-bold">
+                        Verificar Respostas
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 
-    <script>
-        function toggleAnswer(questionNumber) {
-            const answer = document.getElementById('answer' + questionNumber);
-            answer.classList.toggle('hidden-answer');
-            answer.classList.toggle('show-answer');
-        }
-        
-        function toggleTranslation() {
-            const translation = document.getElementById('translation');
-            translation.classList.toggle('hidden-answer');
-            translation.classList.toggle('show-answer');
-        }
-    </script>
+    <!-- Modal de Resultados -->
+    <div id="resultModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="modal-content bg-white rounded-lg p-6">
+            <div class="text-center mb-6">
+                <h2 class="text-2xl font-bold text-wine mb-4">Seu Resultado</h2>
+                <div id="scoreText" class="text-xl text-navy mb-4"></div>
+            </div>
+            
+            <div id="quizResults" class="mb-6"></div>
+            
+            <div class="text-center">
+                <button onclick="closeResultModal()" class="bg-wine text-white px-6 py-2 rounded font-bold mr-3">
+                    Fechar
+                </button>
+                <button onclick="restartQuiz()" class="bg-navy text-white px-6 py-2 rounded font-bold">
+                    Tentar Novamente
+                </button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
 
