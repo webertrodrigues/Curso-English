@@ -25,36 +25,36 @@ const quizConfig = {
     },
     explanations: {
         q1: {
-            correct: 'Correto! "She" usa "is" no presente simples',
-            incorrect: 'Errado! "She" deve usar "is" no presente simples'
+            correct: 'Correto! "She" usa "is" no presente simples.',
+            incorrect: 'Errado! "She" deve usar "is" no presente simples.'
         },
         q2: {
-            correct: 'Correto! "They are" é a forma correta para eles/elas',
-            incorrect: 'Errado! "They are" é a forma correta para eles/elas'
+            correct: 'Correto! "They are" é a forma correta para eles/elas.',
+            incorrect: 'Errado! "They are" é a forma correta para eles/elas.'
         },
         q3: {
-            correct: 'Correto! "They are at the park" é a tradução correta',
-            incorrect: 'Errado! A tradução correta é "They are at the park"'
+            correct: 'Correto! "They are at the park" é a tradução correta.',
+            incorrect: 'Errado! A tradução correta é "They are at the park".'
         },
         q4: {
-            correct: 'Correto! "I" sempre usa "am" no presente simples',
-            incorrect: 'Errado! "I" sempre usa "am" no presente simples'
+            correct: 'Correto! "I" sempre usa "am" no presente simples.',
+            incorrect: 'Errado! "I" sempre usa "am" no presente simples.'
         },
         q5: {
-            correct: 'Correto! "He" deve usar "is", não "are"',
-            incorrect: 'Errado! A frase incorreta é "He are happy" - deveria ser "He is happy"'
+            correct: 'Correto! "He" deve usar "is", não "are".',
+            incorrect: 'Errado! A frase incorreta é "He are happy" - deveria ser "He is happy".'
         },
         q6: {
-            correct: 'Correto! "My friends" (they) usa "are"',
-            incorrect: 'Errado! "My friends" (they) deve usar "are"'
+            correct: 'Correto! "My friends" (they) usa "are".',
+            incorrect: 'Errado! "My friends" (they) deve usar "are".'
         },
         q7: {
-            correct: 'Correto! Perguntas no inglês invertem a ordem (are you)',
-            incorrect: 'Errado! Em perguntas, invertemos a ordem: "Are you tired?"'
+            correct: 'Correto! Perguntas em inglês com "to be" invertem a ordem (are you).',
+            incorrect: 'Errado! Em perguntas, invertemos a ordem: "Are you tired?".'
         },
         q8: {
-            correct: 'Correto! "To be" não é usado para ações em progresso (usamos "to be" + gerúndio para isso)',
-            incorrect: 'Errado! "To be" não é usado diretamente para ações (usamos "to be" + gerúndio para ações em progresso)'
+            correct: 'Correto! O verbo "to be" descreve estados, não ações. Para ações, usamos o Presente Contínuo (I am running).',
+            incorrect: 'Errado! O verbo "to be" descreve estados, não ações. Para ações, usamos o Presente Contínuo (I am running).'
         }
     }
 };
@@ -140,168 +140,135 @@ function getScoreMessage(score, total) {
 }
 
 // Função unificada para pronúncia
-function speakText(text, isLetter = false) {
+function speakText(text) {
     if (!('speechSynthesis' in window)) {
         alert('Seu navegador não suporta síntese de voz. Tente Chrome ou Edge.');
         return;
     }
     
-    const rateSelect = document.getElementById(isLetter ? 'alphabetSpeed' : 'numbersSpeed');
-    const selectedRate = 0.5;
-    
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'en-US';
-    utterance.rate = selectedRate;
+    utterance.rate = 0.9;
     
     speechSynthesis.cancel(); // Cancela fala anterior
     speechSynthesis.speak(utterance);
 }
 
-// Função para falar palavras individuais
+// Função para falar palavras individuais do vocabulário
 function speakWord(text) {
-    if (!('speechSynthesis' in window)) {
-        alert('Seu navegador não suporta síntese de voz. Tente Chrome ou Edge.');
+    speakText(text); // Reutiliza a função principal
+}
+
+// --- Início da Lógica do Diálogo Interativo ---
+let currentDialogueLine = 0;
+let isPlaying = false;
+let isPaused = false;
+let dialogueTimeout;
+
+const dialogueLines = [
+    "Hello! Are you John?",
+    "Yes, I am. And you? Are you new here?",
+    "I am Maria. Yes, I am new. I am from Brazil.",
+    "Nice to meet you, Maria! We are happy you are here."
+];
+
+function playDialogue() {
+    if (isPaused) {
+        isPlaying = true;
+        isPaused = false;
+        window.speechSynthesis.resume();
+        updateDialogueControls();
+    } else if (!isPlaying) {
+        isPlaying = true;
+        isPaused = false;
+        currentDialogueLine = 0;
+        updateDialogueControls();
+        playNextLine();
+    }
+}
+
+function pauseDialogue() {
+    if (isPlaying && !isPaused) {
+        isPaused = true;
+        isPlaying = false;
+        window.speechSynthesis.pause();
+        clearTimeout(dialogueTimeout);
+        updateDialogueControls();
+    }
+}
+
+function stopDialogue() {
+    isPlaying = false;
+    isPaused = false;
+    currentDialogueLine = 0;
+    window.speechSynthesis.cancel();
+    clearTimeout(dialogueTimeout);
+    updateDialogueControls();
+    clearHighlight();
+}
+
+function playFromLine(lineIndex) {
+    stopDialogue();
+    currentDialogueLine = lineIndex;
+    isPlaying = true;
+    isPaused = false;
+    updateDialogueControls();
+    playNextLine();
+}
+
+function playNextLine() {
+    if (!isPlaying || currentDialogueLine >= dialogueLines.length) {
+        stopDialogue();
         return;
     }
-    
-    const speedSelect = document.getElementById('speedControl');
-    const selectedRate = speedSelect ? parseFloat(speedSelect.value) : 0.9;
-    
-    const utterance = new SpeechSynthesisUtterance(text);
+    highlightLine(currentDialogueLine);
+    const speed = parseFloat(document.getElementById('dialogueSpeed').value);
+    const utterance = new SpeechSynthesisUtterance(dialogueLines[currentDialogueLine]);
+    utterance.rate = speed;
     utterance.lang = 'en-US';
-    utterance.rate = selectedRate;
-    
-    speechSynthesis.cancel();
-    speechSynthesis.speak(utterance);
+    utterance.onend = () => {
+        if (isPlaying) {
+            dialogueTimeout = setTimeout(() => {
+                currentDialogueLine++;
+                playNextLine();
+            }, 1000); // Pausa de 1 segundo entre as falas
+        }
+    };
+    window.speechSynthesis.speak(utterance);
 }
 
-// Controles do diálogo (similar ao lesson4)
-document.addEventListener('DOMContentLoaded', () => {
-    const dialogueLines = [
-        "Hello! Are you John?",
-        "Yes, I am. And you? Are you new here?",
-        "I am Maria. Yes, I am new. I am from Brazil.",
-        "Nice to meet you, Maria! We are happy you are here."
-    ];
-
-    let currentLine = 0;
-    let isDialoguePlaying = false;
-    const speechSynth = window.speechSynthesis;
-
-    const playBtn = document.getElementById('playDialogue');
-    const pauseBtn = document.getElementById('pauseDialogue');
-    const stopBtn = document.getElementById('stopDialogue');
-    const speedControl = document.getElementById('dialogueSpeed');
-
-    function speakLineAsync(text, rate = 1.0) {
-        return new Promise((resolve, reject) => {
-            const utter = new SpeechSynthesisUtterance(text);
-            utter.rate = rate;
-            utter.lang = 'en-US';
-            utter.onend = () => resolve();
-            utter.onerror = (e) => reject(e);
-            speechSynth.speak(utter);
-        });
+function highlightLine(lineIndex) {
+    clearHighlight();
+    const line = document.querySelector(`[data-line="${lineIndex}"]`);
+    if (line) {
+        line.classList.add('playing');
     }
+}
 
-    function highlightCurrentLine() {
-        document.querySelectorAll('.dialogue-line').forEach(line => {
-            line.classList.remove('highlight');
-        });
+function clearHighlight() {
+    document.querySelectorAll('.dialogue-line').forEach(line => {
+        line.classList.remove('playing');
+    });
+}
 
-        const lines = document.querySelectorAll('.dialogue-line');
-        if (lines[currentLine]) {
-            lines[currentLine].classList.add('highlight');
-            const el = document.getElementById(`line${currentLine + 1}`);
-            if (el) {
-                el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
-        }
-    }
-
-    async function playDialogueFrom(index) {
-        isDialoguePlaying = true;
-        playBtn.classList.add('hidden');
-        pauseBtn.classList.remove('hidden');
-
-        for (let i = index; i < dialogueLines.length; i++) {
-            currentLine = i;
-            highlightCurrentLine();
-
-            if (!isDialoguePlaying) break;
-
-            try {
-                await speakLineAsync(dialogueLines[i], parseFloat(speedControl.value));
-            } catch (e) {
-                console.error('Erro na fala:', e);
-                break;
-            }
-        }
-
-        stopDialogue();
-    }
-
-    function playDialogue() {
-        if (speechSynth.paused) {
-            speechSynth.resume();
-            isDialoguePlaying = true;
-            playBtn.classList.add('hidden');
-            pauseBtn.classList.remove('hidden');
-        } else {
-            stopDialogue();
-            playDialogueFrom(currentLine);
-        }
-    }
-
-    function pauseDialogue() {
-        isDialoguePlaying = false;
-        speechSynth.pause();
-        playBtn.classList.remove('hidden');
-        pauseBtn.classList.add('hidden');
-    }
-
-    function stopDialogue() {
-        isDialoguePlaying = false;
-        speechSynth.cancel();
-        currentLine = 0;
-        playBtn.classList.remove('hidden');
-        pauseBtn.classList.add('hidden');
-
-        document.querySelectorAll('.dialogue-line').forEach(line => {
-            line.classList.remove('highlight');
-        });
-    }
+function updateDialogueControls() {
+    const playBtn = document.getElementById('playBtn');
+    const pauseBtn = document.getElementById('pauseBtn');
+    const stopBtn = document.getElementById('stopBtn');
 
     if (playBtn && pauseBtn && stopBtn) {
-        playBtn.addEventListener('click', playDialogue);
-        pauseBtn.addEventListener('click', pauseDialogue);
-        stopBtn.addEventListener('click', stopDialogue);
-
-        document.querySelectorAll('.dialogue-line').forEach((line, index) => {
-            line.addEventListener('click', () => {
-                stopDialogue();
-                playDialogueFrom(index);
-            });
-        });
-
-        speedControl.addEventListener('change', () => {
-            if (isDialoguePlaying) {
-                stopDialogue();
-                playDialogueFrom(currentLine);
-            }
-        });
+        playBtn.disabled = isPlaying && !isPaused;
+        pauseBtn.disabled = !isPlaying || isPaused;
+        stopBtn.disabled = !isPlaying && !isPaused;
     }
+}
 
-    if (!window.speechSynthesis) {
-        console.error('API de síntese de fala não suportada neste navegador');
-        if (document.querySelector('.dialogue-controls')) {
-            document.querySelector('.dialogue-controls').innerHTML =
-                '<p class="text-red-600">Seu navegador não suporta a reprodução de áudio. Por favor, atualize ou use outro navegador.</p>';
-        }
+// Adiciona Event Listeners quando o DOM estiver carregado
+document.addEventListener('DOMContentLoaded', () => {
+    const speedSelector = document.getElementById('dialogueSpeed');
+    if (speedSelector) {
+        speedSelector.addEventListener('change', function() {
+            document.getElementById('speedIndicator').textContent = this.value + 'x';
+        });
     }
 });
-
-// Função para testar velocidade
-function testSpeed() {
-    speakWord("Hello, this is a speed test");
-}

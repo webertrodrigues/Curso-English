@@ -31,31 +31,14 @@
                     ✨ Frase do Dia
                 </h3>
                 <div class="dialogue-box p-6 rounded-lg">
-                    <p class="font-baskerville text-lg text-navy text-center italic">
-                        "Hello, my name is Anna. Nice to meet you!"
-                    </p>
+                    <div class="flex items-center justify-center">
+                        <button onclick="speakWord('Hello, my name is Anna. Nice to meet you!')" class="font-baskerville text-lg text-navy text-center italic">
+                            "Hello, my name is Anna. Nice to meet you!"
+                        </button>
+                    </div>
                     <p class="font-baskerville text-base text-gray-600 text-center mt-2">
                         "Olá, meu nome é Anna. Prazer em conhecê-la!"
                     </p>
-                </div>
-            </section>
-
-            <!-- Controle de Velocidade -->
-            <section class="mb-6">
-                <h3 class="font-playfair text-xl font-bold text-wine mb-3">
-                    ⚙️ Controle de Velocidade
-                </h3>
-                <div class="bg-light-gold p-4 rounded-lg flex items-center">
-                    <span class="font-baskerville text-navy mr-3">Velocidade:</span>
-                    <select id="speedControl" class="font-baskerville bg-white border border-wine rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-gold">
-                        <option value="0.5">Lenta</option>
-                        <option value="0.9" selected>Normal</option>
-                        <option value="1.2">Rápida</option>
-                        <option value="1.5">Muito Rápida</option>
-                    </select>
-                    <button onclick="testSpeed()" class="ml-3 bg-wine text-white px-3 py-1 rounded font-baskerville text-sm hover:bg-dark-wine transition">
-                        Testar
-                    </button>
                 </div>
             </section>
 
@@ -72,10 +55,7 @@
                                 <span class="text-gray-600 ml-2">→ Olá</span>
                             </div>
                             <button onclick="speakWord('Hello')" class="pronounce-btn bg-wine text-white p-1 rounded-full hover:bg-dark-wine transition">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                    <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
-                                    <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
-                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/><path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/></svg>
                             </button>
                         </div>
                     </div>
@@ -85,11 +65,8 @@
                                 <span class="font-baskerville font-bold text-navy">Good morning</span>
                                 <span class="text-gray-600 ml-2">→ Bom dia</span>
                             </div>
-                            <button onclick="speakWord('Good morning')" class="pronounce-btn bg-wine text-white p-1 rounded-full hover:bg-dark-wine transition">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                    <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
-                                    <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
-                                </svg>
+                            <button onclick="speakWord('Good morning' )" class="pronounce-btn bg-wine text-white p-1 rounded-full hover:bg-dark-wine transition">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/><path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/></svg>
                             </button>
                         </div>
                     </div>
@@ -99,11 +76,8 @@
                                 <span class="font-baskerville font-bold text-navy">How are you?</span>
                                 <span class="text-gray-600 ml-2">→ Como você está?</span>
                             </div>
-                            <button onclick="speakWord('How are you')" class="pronounce-btn bg-wine text-white p-1 rounded-full hover:bg-dark-wine transition">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                    <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
-                                    <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
-                                </svg>
+                            <button onclick="speakWord('How are you' )" class="pronounce-btn bg-wine text-white p-1 rounded-full hover:bg-dark-wine transition">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/><path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/></svg>
                             </button>
                         </div>
                     </div>
@@ -111,13 +85,10 @@
                         <div class="flex items-center justify-between">
                             <div>
                                 <span class="font-baskerville font-bold text-navy">Thank you</span>
-                                <span class="text-gray-600 ml-2">→ Obrigado(a)</span>
+                                <span class="text-gray-600 ml-2">→ Obrigado(a )</span>
                             </div>
                             <button onclick="speakWord('Thank you')" class="pronounce-btn bg-wine text-white p-1 rounded-full hover:bg-dark-wine transition">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                    <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
-                                    <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
-                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/><path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/></svg>
                             </button>
                         </div>
                     </div>
@@ -125,13 +96,10 @@
                         <div class="flex items-center justify-between">
                             <div>
                                 <span class="font-baskerville font-bold text-navy">Nice to meet you</span>
-                                <span class="text-gray-600 ml-2">→ Prazer em conhecê-lo(a)</span>
+                                <span class="text-gray-600 ml-2">→ Prazer em conhecê-lo(a )</span>
                             </div>
                             <button onclick="speakWord('Nice to meet you')" class="pronounce-btn bg-wine text-white p-1 rounded-full hover:bg-dark-wine transition">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                    <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
-                                    <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
-                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/><path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/></svg>
                             </button>
                         </div>
                     </div>
@@ -141,46 +109,74 @@
                                 <span class="font-baskerville font-bold text-navy">Goodbye</span>
                                 <span class="text-gray-600 ml-2">→ Adeus</span>
                             </div>
-                            <button onclick="speakWord('Goodbye')" class="pronounce-btn bg-wine text-white p-1 rounded-full hover:bg-dark-wine transition">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                    <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
-                                    <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
-                                </svg>
+                            <button onclick="speakWord('Goodbye' )" class="pronounce-btn bg-wine text-white p-1 rounded-full hover:bg-dark-wine transition">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/><path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/></svg>
                             </button>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Diálogo -->
+            <!-- Diálogo Interativo -->
             <section class="mb-8">
                 <h3 class="font-playfair text-xl font-bold text-wine mb-4">
-                    💬 Diálogo Simples
+                    💬 Diálogo Interativo
                 </h3>
-                <div class="dialogue-box p-6 rounded-lg">
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Anna:</strong> Hello, my name is Anna. Nice to meet you.
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Olá, meu nome é Anna. Prazer em conhecê-lo.)
-                        </p>
+                
+                <div class="dialogue-controls">
+                    <div class="flex items-center gap-3">
+                        <button id="playBtn" onclick="playDialogue( )" class="dialogue-btn">
+                            ▶️ Reproduzir
+                        </button>
+                        <button id="pauseBtn" onclick="pauseDialogue()" class="dialogue-btn" disabled>
+                            ⏸️ Pausar
+                        </button>
+                        <button id="stopBtn" onclick="stopDialogue()" class="dialogue-btn" disabled>
+                            ⏹️ Parar
+                        </button>
                     </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Ben:</strong> Hi Anna, I'm Ben. Nice to meet you too. How are you?
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Oi Anna, eu sou Ben. Prazer em conhecê-la também. Como você está?)
-                        </p>
+                    
+                    <div class="flex items-center gap-3">
+                        <span class="font-baskerville">Velocidade:</span>
+                        <select id="dialogueSpeed" class="bg-white text-navy px-2 py-1 rounded border">
+                            <option value="0.5">0.5x</option>
+                            <option value="0.8">0.8x</option>
+                            <option value="1" selected>1x</option>
+                            <option value="1.2">1.2x</option>
+                        </select>
+                        <span class="speed-indicator" id="speedIndicator">1x</span>
                     </div>
-                    <div>
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Anna:</strong> I'm fine, thank you. And you?
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Estou bem, obrigada. E você?)
-                        </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg border-2 border-wine">
+                    <div class="dialogue-line" data-line="0" onclick="playFromLine(0)">
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-3">👩</span>
+                            <div>
+                                <p class="font-baskerville font-bold text-navy">Anna: Hello, my name is Anna. Nice to meet you.</p>
+                                <p class="font-baskerville text-sm text-gray-600">(Olá, meu nome é Anna. Prazer em conhecê-lo.)</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dialogue-line" data-line="1" onclick="playFromLine(1)">
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-3">👨</span>
+                            <div>
+                                <p class="font-baskerville font-bold text-navy">Ben: Hi Anna, I'm Ben. Nice to meet you too. How are you?</p>
+                                <p class="font-baskerville text-sm text-gray-600">(Oi Anna, eu sou Ben. Prazer em conhecê-la também. Como você está?)</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dialogue-line" data-line="2" onclick="playFromLine(2)">
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-3">👩</span>
+                            <div>
+                                <p class="font-baskerville font-bold text-navy">Anna: I'm fine, thank you. And you?</p>
+                                <p class="font-baskerville text-sm text-gray-600">(Estou bem, obrigada. E você?)</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -289,7 +285,8 @@
                 <li>• Clique nos botões "Ver Resposta" para revelar as respostas das perguntas</li>
                 <li>• Clique em "Ver Tradução" para mostrar a tradução do texto</li>
                 <li>• Pratique a pronúncia usando as dicas fonéticas fornecidas</li>
-                <li>• Revise o vocabulário passando o mouse sobre as palavras</li>
+                <li>• Revise o vocabulário clicando nos botões de áudio</li>
+                <li>• Use o diálogo interativo para praticar a conversação</li>
             </ul>
         </div>
     </div>

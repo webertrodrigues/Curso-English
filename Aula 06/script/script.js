@@ -288,3 +288,132 @@ document.addEventListener('DOMContentLoaded', () => {
             '<p class="text-red-600">Seu navegador não suporta a reprodução de áudio. Por favor, atualize ou use outro navegador.</p>';
     }
 });
+
+// --- Lógica do Diálogo Interativo ---
+let currentDialogueLine = 0;
+let isPlaying = false;
+let isPaused = false;
+let dialogueTimeout;
+
+const dialogueLines = [
+    "Is this your bag?",
+    "No, it's not my bag. I think it's his bag.",
+    "Oh, I see. And where are your keys?",
+    "My keys are in my pocket."
+];
+
+function playDialogue() {
+    if (isPaused) {
+        isPlaying = true;
+        isPaused = false;
+        window.speechSynthesis.resume();
+        updateDialogueControls();
+    } else if (!isPlaying) {
+        isPlaying = true;
+        isPaused = false;
+        currentDialogueLine = 0;
+        updateDialogueControls();
+        playNextLine();
+    }
+}
+
+function pauseDialogue() {
+    if (isPlaying && !isPaused) {
+        isPaused = true;
+        isPlaying = false;
+        window.speechSynthesis.pause();
+        clearTimeout(dialogueTimeout);
+        updateDialogueControls();
+    }
+}
+
+function stopDialogue() {
+    isPlaying = false;
+    isPaused = false;
+    currentDialogueLine = 0;
+    window.speechSynthesis.cancel();
+    clearTimeout(dialogueTimeout);
+    updateDialogueControls();
+    clearHighlight();
+}
+
+function playFromLine(lineIndex) {
+    stopDialogue();
+    currentDialogueLine = lineIndex;
+    isPlaying = true;
+    isPaused = false;
+    updateDialogueControls();
+    playNextLine();
+}
+
+function playNextLine() {
+    if (!isPlaying || currentDialogueLine >= dialogueLines.length) {
+        stopDialogue();
+        return;
+    }
+    highlightLine(currentDialogueLine);
+    const speed = parseFloat(document.getElementById('dialogueSpeed').value);
+    const utterance = new SpeechSynthesisUtterance(dialogueLines[currentDialogueLine]);
+    utterance.rate = speed;
+    utterance.lang = 'en-US';
+    utterance.onend = () => {
+        if (isPlaying) {
+            dialogueTimeout = setTimeout(() => {
+                currentDialogueLine++;
+                playNextLine();
+            }, 1000); // Pausa de 1 segundo entre as falas
+        }
+    };
+    window.speechSynthesis.speak(utterance);
+}
+
+function highlightLine(lineIndex) {
+    clearHighlight();
+    const line = document.querySelector(`[data-line="${lineIndex}"]`);
+    if (line) {
+        line.classList.add('playing');
+    }
+}
+
+function clearHighlight() {
+    document.querySelectorAll('.dialogue-line').forEach(line => {
+        line.classList.remove('playing');
+    });
+}
+
+function updateDialogueControls() {
+    const playBtn = document.getElementById('playBtn');
+    const pauseBtn = document.getElementById('pauseBtn');
+    const stopBtn = document.getElementById('stopBtn');
+
+    playBtn.disabled = isPlaying && !isPaused;
+    pauseBtn.disabled = !isPlaying || isPaused;
+    stopBtn.disabled = !isPlaying && !isPaused;
+}
+
+// Event Listeners
+document.addEventListener('DOMContentLoaded', () => {
+    const playBtn = document.getElementById('playBtn');
+    const pauseBtn = document.getElementById('pauseBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    const speedSelector = document.getElementById('dialogueSpeed');
+    
+    playBtn.addEventListener('click', playDialogue);
+    pauseBtn.addEventListener('click', pauseDialogue);
+    stopBtn.addEventListener('click', stopDialogue);
+    
+    document.querySelectorAll('.dialogue-line').forEach((line, index) => {
+        line.addEventListener('click', () => playFromLine(index));
+    });
+    
+    if (speedSelector) {
+        speedSelector.addEventListener('change', function() {
+            document.getElementById('speedIndicator').textContent = this.value + 'x';
+            if (isPlaying) {
+                // Se estiver reproduzindo, reinicie com nova velocidade
+                stopDialogue();
+                playFromLine(currentDialogueLine);
+            }
+        });
+    }
+});
