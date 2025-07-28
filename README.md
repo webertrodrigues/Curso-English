@@ -2,7 +2,7 @@
 
 [![Status](https://img.shields.io/badge/Status-Em_Desenvolvimento-yellow)](#)
 [![Licença](https://img.shields.io/badge/Licença-MIT-blue)](LICENSE)
-[![Aulas](https://img.shields.io/badge/Aulas-6%2F40-orange)](#-nível-básico-a1-a2)
+[![Aulas](https://img.shields.io/badge/Aulas-10%2F40-orange)](#-nível-básico-a1-a2)
 [![Versão](https://img.shields.io/badge/Versão-3.0.0-a4f2f4)](#)
 
 Um curso completo com material didático organizado em 20 aulas progressivas. Ideal para quem quer aprender inglês de forma estruturada!
@@ -32,16 +32,16 @@ Um curso completo com material didático organizado em 20 aulas progressivas. Id
 
 | #  | Tópico | Conteúdo | Link |
 |----|--------|----------|------|
-| 1️⃣ | **Saudações** | Cumprimentos, despedidas | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2001/english_lesson_card.html) |
-| 2️⃣ | **Alfabeto/Números** | 0-100, soletração | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2002/lesson2_card.html) |
-| 3️⃣ | **Cores/Formas** | Vocabulário visual | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2003/lesson3_card.html) |
-| 4️⃣ | **Objetos/Artigos** | a/an/the, itens cotidianos | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2004/lesson4_card.html) |
-| 5️⃣ | **Verbo "To Be"** | Afirmativo/negativo/interrogativo | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2005/lesson5_card.html) |
-| 6️⃣ | **Pronomes** | Pessoais/possessivos | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2006/lesson6_card.html) |
-| 7️⃣ | **Família** | Parentesco, relacionamentos | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2007/lesson7_complete.html) |
-| 8️⃣ | **Tempo** | Dias/meses/estações | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2008/lesson8_card.html) |
-| 9️⃣ | **Comidas** | Alimentos, bebidas, restaurante | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2009/lesson9_card.html) |
-| 🔟 | **Rotina** | Horários, hábitos diários | [Em Breve](#)<!--[Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2010/lesson10_card.html)--> |
+| 0️⃣1️⃣ | **Saudações** | Cumprimentos, despedidas | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2001/english_lesson_card.html) |
+| 0️⃣2️⃣ | **Alfabeto/Números** | 0-100, soletração | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2002/lesson2_card.html) |
+| 0️⃣3️⃣ | **Cores/Formas** | Vocabulário visual | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2003/lesson3_card.html) |
+| 0️⃣4️⃣ | **Objetos/Artigos** | a/an/the, itens cotidianos | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2004/lesson4_card.html) |
+| 0️⃣5️⃣ | **Verbo "To Be"** | Afirmativo/negativo/interrogativo | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2005/lesson5_card.html) |
+| 0️⃣6️⃣ | **Pronomes** | Pessoais/possessivos | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2006/lesson6_card.html) |
+| 0️⃣7️⃣ | **Família** | Parentesco, relacionamentos | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2007/lesson7_complete.html) |
+| 0️⃣8️⃣ | **Tempo** | Dias/meses/estações | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2008/lesson8_card.html) |
+| 0️⃣9️⃣ | **Comidas** | Alimentos, bebidas, restaurante | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2009/lesson9_card.html) |
+| 1️⃣0️⃣ | **Rotina** | Horários, hábitos diários | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2010/lesson10_card.html) |
 
 ---
 
