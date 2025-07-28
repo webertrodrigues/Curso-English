@@ -23,6 +23,7 @@ Um curso completo com material didático organizado em 20 aulas progressivas. Id
 |--------------|-----------------------------------|-------------|
 | **Básico**   | Fundamentos da língua inglesa     | 1-10        |
 | **Intermediário** | Tópicos mais complexos         | 11-20       |
+| **Avançado Básico** | Tópicos mais funcional         | 21-40       |
 
 ---
 
