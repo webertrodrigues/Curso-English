@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão de Inglês - Aula 7: Família e Relacionamentos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilo/style.css">
+    <script src="script/script.js"></script>
+</head>
+<body class="bg-gray-50 min-h-screen py-8">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <!-- Cartão Principal -->
+        <div class="vintage-card rounded-lg p-8 mb-8">
+            <!-- Cabeçalho -->
+            <header class="text-center mb-8">
+                <div class="ornament mb-4"></div>
+                <h1 class="font-playfair text-4xl font-bold text-wine mb-2">
+                    English Learning Card
+                </h1>
+                <h2 class="font-baskerville text-2xl text-navy mb-4">
+                    Aula 7: Família e Relacionamentos
+                </h2>
+                <div class="ornament"></div>
+            </header>
+
+            <!-- Frase do Dia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    ✨ Frase do Dia
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <div class="flex items-center justify-center">
+                        <button onclick="speakWord('My family is very important to me')" class="font-baskerville text-lg text-navy text-center italic">
+                            "My family is very important to me."
+                        </button>
+                    </div>
+                    <p class="font-baskerville text-base text-gray-600 text-center mt-2">
+                        "Minha família é muito importante para mim."
+                    </p>
+                </div>
+            </section>
+
+            <!-- Controle de Velocidade -->
+            <section class="mb-6">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-3">
+                    ⚙️ Controle de Velocidade
+                </h3>
+                <div class="bg-light-gold p-4 rounded-lg flex items-center">
+                    <span class="font-baskerville text-navy mr-3">Velocidade:</span>
+                    <select id="speedControl" class="font-baskerville bg-white border border-wine rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-gold">
+                        <option value="0.5">Lenta</option>
+                        <option value="0.9" selected>Normal</option>
+                        <option value="1.2">Rápida</option>
+                        <option value="1.5">Muito Rápida</option>
+                    </select>
+                    <button onclick="testSpeed()" class="ml-3 bg-wine text-white px-3 py-1 rounded font-baskerville text-sm hover:bg-dark-wine transition">
+                        Testar
+                    </button>
+                </div>
+            </section>
+
+            <!-- Árvore Genealógica Visual -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    🌳 Árvore Genealógica
+                </h3>
+                <div class="family-tree">
+                    <div class="tree-level">
+                        <div class="tree-member">Grandparents</div>
+                    </div>
+                    <div class="tree-level">
+                        <div class="tree-member">Father</div>
+                        <div class="tree-member">Mother</div>
+                        <div class="tree-member">Aunt</div>
+                        <div class="tree-member">Uncle</div>
+                    </div>
+                    <div class="tree-level">
+                        <div class="tree-member">Me</div>
+                        <div class="tree-member">Brother</div>
+                        <div class="tree-member">Sister</div>
+                        <div class="tree-member">Cousins</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Membros da Família -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 flex items-center">
+                    👨‍👩‍👧‍👦 Membros da Família
+                </h3>
+                
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
+                    <div class="vocabulary-item p-3 rounded flex items-center">
+                        <span class="object-icon">👩</span>
+                        <div class="flex-grow">
+                            <span class="font-baskerville font-bold text-navy">Mother</span>
+                            <span class="text-gray-600 ml-2">→ Mãe</span>
+                        </div>
+                        <button onclick="speakWord('Mother')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="vocabulary-item p-3 rounded flex items-center">
+                        <span class="object-icon">👨</span>
+                        <div class="flex-grow">
+                            <span class="font-baskerville font-bold text-navy">Father</span>
+                            <span class="text-gray-600 ml-2">→ Pai</span>
+                        </div>
+                        <button onclick="speakWord('Father')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="vocabulary-item p-3 rounded flex items-center">
+                        <span class="object-icon">👫</span>
+                        <div class="flex-grow">
+                            <span class="font-baskerville font-bold text-navy">Parents</span>
+                            <span class="text-gray-600 ml-2">→ Pais</span>
+                        </div>
+                        <button onclick="speakWord('Parents')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="vocabulary-item p-3 rounded flex items-center">
+                        <span class="object-icon">👦</span>
+                        <div class="flex-grow">
+                            <span class="font-baskerville font-bold text-navy">Brother</span>
+                            <span class="text-gray-600 ml-2">→ Irmão</span>
+                        </div>
+                        <button onclick="speakWord('Brother')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="vocabulary-item p-3 rounded flex items-center">
+                        <span class="object-icon">👧</span>
+                        <div class="flex-grow">
+                            <span class="font-baskerville font-bold text-navy">Sister</span>
+                            <span class="text-gray-600 ml-2">→ Irmã</span>
+                        </div>
+                        <button onclick="speakWord('Sister')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="vocabulary-item p-3 rounded flex items-center">
+                        <span class="object-icon">👶</span>
+                        <div class="flex-grow">
+                            <span class="font-baskerville font-bold text-navy">Son</span>
+                            <span class="text-gray-600 ml-2">→ Filho</span>
+                        </div>
+                        <button onclick="speakWord('Son')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="vocabulary-item p-3 rounded flex items-center">
+                        <span class="object-icon">👧</span>
+                        <div class="flex-grow">
+                            <span class="font-baskerville font-bold text-navy">Daughter</span>
+                            <span class="text-gray-600 ml-2">→ Filha</span>
+                        </div>
+                        <button onclick="speakWord('Daughter')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="vocabulary-item p-3 rounded flex items-center">
+                        <span class="object-icon">👵</span>
+                        <div class="flex-grow">
+                            <span class="font-baskerville font-bold text-navy">Grandmother</span>
+                            <span class="text-gray-600 ml-2">→ Avó</span>
+                        </div>
+                        <button onclick="speakWord('Grandmother')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Relacionamentos -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 flex items-center">
+                    💕 Relacionamentos
+                </h3>
+                
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
+                    <div class="vocabulary-item p-3 rounded flex items-center">
+                        <span class="object-icon">🤵</span>
+                        <div class="flex-grow">
+                            <span class="font-baskerville font-bold text-navy">Husband</span>
+                            <span class="text-gray-600 ml-2">→ Marido</span>
+                        </div>
+                        <button onclick="speakWord('Husband')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="vocabulary-item p-3 rounded flex items-center">
+                        <span class="object-icon">👰</span>
+                        <div class="flex-grow">
+                            <span class="font-baskerville font-bold text-navy">Wife</span>
+                            <span class="text-gray-600 ml-2">→ Esposa</span>
+                        </div>
+                        <button onclick="speakWord('Wife')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="vocabulary-item p-3 rounded flex items-center">
+                        <span class="object-icon">👫</span>
+                        <div class="flex-grow">
+                            <span class="font-baskerville font-bold text-navy">Friend</span>
+                            <span class="text-gray-600 ml-2">→ Amigo(a)</span>
+                        </div>
+                        <button onclick="speakWord('Friend')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="vocabulary-item p-3 rounded flex items-center">
+                        <span class="object-icon">🏠</span>
+                        <div class="flex-grow">
+                            <span class="font-baskerville font-bold text-navy">Neighbor</span>
+                            <span class="text-gray-600 ml-2">→ Vizinho(a)</span>
+                        </div>
+                        <button onclick="speakWord('Neighbor')" class="pronounce-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Diálogo Interativo -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    💬 Diálogo Interativo
+                </h3>
+                <div class="dialogue-box p-6 rounded-lg">
+                    <div class="dialogue-player">
+                        <div class="dialogue-controls">
+                            <button class="play-btn" id="playDialogue" title="Reproduzir">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                                </svg>
+                            </button>
+                            <button class="pause-btn hidden" id="pauseDialogue" title="Pausar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
+                                </svg>
+                            </button>
+                            <button class="stop-btn" id="stopDialogue" title="Parar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M5 3.5h6A1.5 1.5 0 0 1 12.5 5v6a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 11V5A1.5 1.5 0 0 1 5 3.5z"/>
+                                </svg>
+                            </button>
+                            <div class="speed-control">
+                                <label for="dialogueSpeed">Velocidade:</label>
+                                <select id="dialogueSpeed" class="font-baskerville bg-white border border-wine rounded px-2 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-gold">
+                                    <option value="0.4">0.4x</option>
+                                    <option value="0.7" selected>0.7x</option>
+                                    <option value="1">1x</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="dialogue-text">
+                            <div class="mb-4" id="line1">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Sarah:</strong> <span class="dialogue-line">Hi John! How is your family?</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Oi John! Como está sua família?)
+                                </p>
+                            </div>
+                            <div class="mb-4" id="line2">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">John:</strong> <span class="dialogue-line">Hi Sarah! They are all fine, thank you. My brother is visiting this weekend.</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Oi Sarah! Eles estão todos bem, obrigado. Meu irmão está visitando neste fim de semana.)
+                                </p>
+                            </div>
+                            <div class="mb-4" id="line3">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Sarah:</strong> <span class="dialogue-line">Oh, that's nice! Do you have a big family?</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Ah, que legal! Você tem uma família grande?)
+                                </p>
+                            </div>
+                            <div class="mb-4" id="line4">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">John:</strong> <span class="dialogue-line">Yes, I do. I have two sisters and one brother. And my grandparents live close by.</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Sim, tenho. Eu tenho duas irmãs e um irmão. E meus avós moram perto.)
+                                </p>
+                            </div>
+                            <div id="line5">
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Sarah:</strong> <span class="dialogue-line">That's wonderful! Family is very important, big or small.</span>
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Isso é maravilhoso! Família é muito importante, grande ou pequena.)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Texto para Tradução -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    📝 Texto para Tradução
+                </h3>
+                <div class="bg-light-gold p-6 rounded-lg">
+                    <p class="font-baskerville text-navy text-lg mb-4">
+                        "My name is David. I live with my parents and my younger sister. My father is a doctor and my mother is a teacher. My sister is a student. We often visit our grandparents on Sundays. My aunt and uncle also come sometimes with their children, my cousins. We are a happy family."
+                    </p>
+                    <button onclick="toggleTranslation()" class="vintage-button text-white px-4 py-2 rounded font-baskerville">
+                        Ver Tradução
+                    </button>
+                    <div id="translation" class="hidden-answer mt-4 p-4 bg-white rounded border-l-4 border-wine">
+                        <p class="font-baskerville text-navy">
+                            "Meu nome é David. Eu moro com meus pais e minha irmã mais nova. Meu pai é médico e minha mãe é professora. Minha irmã é estudante. Nós frequentemente visitamos nossos avós aos domingos. Minha tia e tio também vêm às vezes com seus filhos, meus primos. Nós somos uma família feliz."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Perguntas para Prática -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    ❓ Perguntas para Prática
+                </h3>
+                <div class="space-y-4">
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            1. Who is your mother's brother?
+                        </p>
+                        <button onclick="toggleAnswer(1)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer1" class="hidden-answer mt-2 text-wine font-bold">
+                            Uncle (Tio)
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            2. Traduza: "Minha irmã é minha melhor amiga."
+                        </p>
+                        <button onclick="toggleAnswer(2)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer2" class="hidden-answer mt-2 text-wine font-bold">
+                            My sister is my best friend.
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
+                        <p class="font-baskerville text-navy mb-2">
+                            3. Complete: "My father and mother are my ___."
+                        </p>
+                        <button onclick="toggleAnswer(3)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                            Ver Resposta
+                        </button>
+                        <div id="answer3" class="hidden-answer mt-2 text-wine font-bold">
+                            parents
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quiz Interativo -->
+            <section class="mb-8">
+                <div class="text-center">
+                    <button onclick="openQuizModal()" class="vintage-button text-white px-6 py-3 rounded-lg font-baskerville text-lg hover:transform hover:scale-105 transition-all">
+                        🎯 Iniciar Quiz
+                    </button>
+                </div>
+            </section>
+
+            <!-- Pronúncia -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
+                    🔊 Dicas de Pronúncia
+                </h3>
+                <div class="space-y-4">
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Mother</strong> /mʌðər/ - O "th" tem som de "d" suave, como em "this".
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Father</strong> /fɑːðər/ - Similar a "mother", com o "th" suave.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Brother</strong> /brʌðər/ - Novamente, o "th" suave.
+                        </p>
+                    </div>
+                    <div class="pronunciation p-4 rounded-lg">
+                        <p class="font-baskerville text-navy">
+                            <strong>Sister</strong> /sɪstər/ - O "i" tem som curto, como em "sit".
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rodapé -->
+            <footer class="text-center pt-8 border-t border-wine">
+                <div class="ornament mb-4"></div>
+                <p class="font-baskerville text-navy">
+                    💡 <strong>Dica de Memorização:</strong> Crie uma árvore genealógica da sua própria família em inglês!
+                </p>
+                <p class="font-baskerville text-sm text-gray-600 mt-2">
+                    Pratique falando sobre sua família todos os dias para fixar o vocabulário.
+                </p>
+                <div class="ornament mt-4"></div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Modal do Quiz -->
+    <div id="quizModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-content-center z-50" style="display: none;">
+        <div class="modal-content bg-white rounded-lg p-6 w-full max-w-2xl max-h-90vh overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="font-playfair text-2xl font-bold text-wine">Quiz: Família e Relacionamentos</h2>
+                <button onclick="closeQuizModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            
+            <form id="quizForm">
+                <!-- Questão 1 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">1. Como você diz "mãe" em inglês?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">Mother</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Father</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Sister</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 2 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">2. Qual é a tradução de "My brother is tall"?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">Minha irmã é alta</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Meu irmão é alto</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Meu pai é alto</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 3 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">3. Quem é o "uncle"?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">Irmão da mãe ou pai</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Irmã da mãe ou pai</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Filho do irmão</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 4 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">4. Complete: "My _____ are very kind."</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">parent</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">parents</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">parentes</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 5 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">5. Como você diz "vizinho" em inglês?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">Friend</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Neighbor</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Colleague</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 6 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">6. Qual é o plural de "child"?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">childs</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">children</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">childrens</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="button" onclick="checkQuiz()" class="vintage-button text-white px-6 py-2 rounded font-baskerville">
+                        Verificar Respostas
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Resultados -->
+    <div id="resultModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-content-center z-50" style="display: none;">
+        <div class="modal-content bg-white rounded-lg p-6 w-full max-w-2xl max-h-90vh overflow-y-auto">
+            <div class="text-center mb-6">
+                <h2 class="font-playfair text-2xl font-bold text-wine mb-4">Resultados do Quiz</h2>
+                <div id="scoreText" class="font-playfair text-xl text-navy mb-4"></div>
+            </div>
+            
+            <div id="quizResults" class="mb-6"></div>
+            
+            <div class="text-center">
+                <button onclick="closeResultModal()" class="vintage-button text-white px-6 py-2 rounded font-baskerville mr-3">
+                    Fechar
+                </button>
+                <button onclick="closeResultModal(); openQuizModal();" class="bg-navy text-white px-6 py-2 rounded font-baskerville">
+                    Tentar Novamente
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
