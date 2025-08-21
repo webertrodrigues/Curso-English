@@ -51,7 +51,7 @@ Um curso completo com material didático organizado em 20 aulas progressivas. Id
 | #  | Tópico | Conteúdo | Link |
 |----|--------|----------|------|
 | 1️⃣1️⃣ | **Presentes** | Simples vs Contínuo | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2011/lesson11_card.html) |
-| 1️⃣2️⃣ | **Passado** | Verbos regulares/irregulares | [Em Breve](#)<!--[Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2012/lesson12_card.html)--> |
+| 1️⃣2️⃣ | **Passado** | Verbos regulares/irregulares | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2012/lesson12_card.html) |
 | 1️⃣3️⃣ | **Futuro** | Will vs Going to | [Em Breve](#)<!--[Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2013/lesson13_card.html)--> |
 | 1️⃣4️⃣ | **Preposições** | Tempo/lugar | [Em Breve](#)<!--[Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2014/lesson14_card.html)--> |
 | 1️⃣5️⃣ | **Advérbios** | Frequência/modo | [Em Breve](#)<!--[Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2015/lesson15_card.html)--> |
