@@ -52,10 +52,10 @@ Um curso completo com material didático organizado em 20 aulas progressivas. Id
 |----|--------|----------|------|
 | 1️⃣1️⃣ | **Presentes** | Simples vs Contínuo | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2011/lesson11_card.html) |
 | 1️⃣2️⃣ | **Passado** | Verbos regulares/irregulares | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2012/lesson12_card.html) |
-| 1️⃣3️⃣ | **Futuro** | Will vs Going to | [Em Breve](#)<!--[Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2013/lesson13_card.html)--> |
-| 1️⃣4️⃣ | **Preposições** | Tempo/lugar | [Em Breve](#)<!--[Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2014/lesson14_card.html)--> |
-| 1️⃣5️⃣ | **Advérbios** | Frequência/modo | [Em Breve](#)<!--[Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2015/lesson15_card.html)--> |
-| 1️⃣6️⃣ | **Comparativos** | Superlativos também | [Em Breve](#)<!--[Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2016/lesson16_card.html)--> |
+| 1️⃣3️⃣ | **Futuro** | Will vs Going to | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2013/lesson13_card.html) |
+| 1️⃣4️⃣ | **Preposições** | Tempo/lugar | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2014/lesson14_card.html) |
+| 1️⃣5️⃣ | **Advérbios** | Frequência/modo | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2015/lesson15_card.html) |
+| 1️⃣6️⃣ | **Comparativos** | Superlativos também | [Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2016/lesson16_card.html) |
 | 1️⃣7️⃣ | **Modais** | Can, should, must etc | [Em Breve](#)<!--[Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2017/lesson17_card.html)--> |
 | 1️⃣8️⃣ | **Condicionais** | Zero e primeira | [Em Breve](#)<!--[Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2018/lesson18_card.html)--> |
 | 1️⃣9️⃣ | **Voz Passiva** | Presente/passado | [Em Breve](#)<!--[Acessar](https://webertrodrigues.github.io/Curso-English/Aula%2019/lesson19_card.html)--> |

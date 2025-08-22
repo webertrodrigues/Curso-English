@@ -6,236 +6,8 @@
     <title>Cartão de Inglês - Aula 13: Transporte e Veículos</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --wine: #722F37;
-            --cream: #F5F1E8;
-            --navy: #2C3E50;
-            --gold: #D4AF37;
-            --dark-wine: #5A252A;
-            --light-gold: #F4E4BC;
-            --rose: #E8B4B8;
-            --sage: #9CAF88;
-            --lavender: #B8A9C9;
-            --coral: #F4A261;
-            --teal: #2A9D8F;
-            --mint: #A8E6CF;
-            --peach: #FFB3BA;
-            --blue: #4169E1;
-            --red: #DC143C;
-            --yellow: #FFD700;
-            --purple: #8A2BE2;
-            --cyan: #00CED1;
-        }
-        
-        .font-baskerville { font-family: 'Libre Baskerville', serif; }
-        .font-playfair { font-family: 'Playfair Display', serif; }
-        
-        .vintage-card {
-            background: linear-gradient(135deg, var(--cream) 0%, #F8F5F0 100%);
-            border: 3px solid var(--wine);
-            box-shadow: 
-                0 8px 32px rgba(114, 47, 55, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-        }
-        
-        .text-wine { color: var(--wine); }
-        .text-navy { color: var(--navy); }
-        .text-gold { color: var(--gold); }
-        .bg-wine { background-color: var(--wine); }
-        .bg-navy { background-color: var(--navy); }
-        .bg-gold { background-color: var(--gold); }
-        .bg-light-gold { background-color: var(--light-gold); }
-        .bg-mint { background-color: var(--mint); }
-        .bg-peach { background-color: var(--peach); }
-        
-        .vintage-button {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-wine) 100%);
-            transition: all 0.3s ease;
-        }
-        
-        .vintage-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(114, 47, 55, 0.3);
-        }
-        
-        .pronunciation {
-            background: linear-gradient(135deg, var(--light-gold) 0%, var(--cream) 100%);
-            border-left: 4px solid var(--gold);
-        }
-        
-        .dialogue-box {
-            background: rgba(44, 62, 80, 0.05);
-            border-left: 4px solid var(--navy);
-        }
-        
-        .transport-card {
-            background: linear-gradient(135deg, var(--blue) 0%, #6495ED 100%);
-            color: white;
-            padding: 1.2rem;
-            border-radius: 12px;
-            margin: 0.3rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            min-height: 120px;
-            border: 2px solid rgba(65, 105, 225, 0.3);
-            position: relative;
-            text-align: center;
-        }
-        
-        .transport-card:hover {
-            transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 8px 25px rgba(65, 105, 225, 0.5);
-            border-color: white;
-        }
-        
-        .action-card {
-            background: linear-gradient(135deg, var(--red) 0%, #FF6347 100%);
-            color: white;
-            padding: 1.2rem;
-            border-radius: 12px;
-            margin: 0.3rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            min-height: 120px;
-            border: 2px solid rgba(220, 20, 60, 0.3);
-            position: relative;
-            text-align: center;
-        }
-        
-        .action-card:hover {
-            transform: scale(1.05) rotate(2deg);
-            box-shadow: 0 8px 25px rgba(220, 20, 60, 0.5);
-            border-color: white;
-        }
-        
-        .category-section {
-            background: linear-gradient(135deg, var(--purple) 0%, #DA70D6 100%);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 15px;
-            margin: 0.5rem;
-            transition: all 0.3s ease;
-            border: 3px solid rgba(138, 43, 226, 0.3);
-        }
-        
-        .category-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.4);
-            border-color: white;
-        }
-        
-        .transport-emoji {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-        
-        .item-name {
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-bottom: 0.3rem;
-        }
-        
-        .item-translation {
-            font-style: italic;
-            opacity: 0.9;
-            font-size: 0.9rem;
-        }
-        
-        .transport-showcase {
-            background: linear-gradient(135deg, var(--wine) 0%, var(--dark-wine) 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 20px;
-            margin: 1rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .transport-showcase::before {
-            content: '🚗';
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 3rem;
-            opacity: 0.3;
-        }
-        
-        .journey-planner {
-            background: linear-gradient(135deg, var(--cyan) 0%, #40E0D0 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 20px;
-            margin: 1rem 0;
-            text-align: center;
-        }
-        
-        .route-layout {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-        
-        .route-box {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 1rem;
-            border-radius: 10px;
-            text-align: center;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .route-box:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.05);
-        }
-        
-        .ornament {
-            width: 60px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            margin: 0 auto;
-        }
-        
-        .hidden-answer {
-            display: none;
-        }
-        
-        .show-answer {
-            display: block;
-        }
-        
-        @media (max-width: 768px) {
-            .vintage-card {
-                margin: 1rem;
-                padding: 1.5rem;
-            }
-            
-            .transport-card, .action-card {
-                min-height: 100px;
-            }
-            
-            .item-name {
-                font-size: 1rem;
-            }
-            
-            .transport-emoji {
-                font-size: 2rem;
-            }
-            
-            .route-layout {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="estilo/style.css">
+    <script src="script/script.js"></script>
 </head>
 <body class="bg-gray-50 min-h-screen py-8">
     <div class="container mx-auto px-4 max-w-4xl">
@@ -259,9 +31,11 @@
                     ✨ Frase do Dia
                 </h3>
                 <div class="dialogue-box p-6 rounded-lg">
-                    <p class="font-baskerville text-lg text-navy text-center italic">
-                        "How do you get to work?"
-                    </p>
+                    <div class="flex items-center justify-center">
+                        <button onclick="speakWord('How do you get to work')" class="font-baskerville text-lg text-navy text-center italic">
+                            "How do you get to work?"                      
+                        </button>
+                    </div>
                     <p class="font-baskerville text-base text-gray-600 text-center mt-2">
                         "Como você vai para o trabalho?"
                     </p>
@@ -279,18 +53,24 @@
                         <p class="font-baskerville text-lg opacity-90">Sua experiência de mobilidade em inglês</p>
                     </div>
                     <div class="grid md:grid-cols-3 gap-4 text-center">
-                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-                            <span class="text-3xl block mb-2">🚗</span>
-                            <p class="font-baskerville">Land Transport</p>
-                        </div>
-                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-                            <span class="text-3xl block mb-2">✈️</span>
-                            <p class="font-baskerville">Air Transport</p>
-                        </div>
-                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-                            <span class="text-3xl block mb-2">🚢</span>
-                            <p class="font-baskerville">Water Transport</p>
-                        </div>
+                        <button onclick="speakWord('Land Transport')">
+                            <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                                <span class="text-3xl block mb-2">🚗</span>
+                                <p class="font-baskerville">Land Transport</p>
+                            </div>
+                        </button>
+                        <button onclick="speakWord('Air Transport')">
+                            <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                                <span class="text-3xl block mb-2">✈️</span>
+                                <p class="font-baskerville">Air Transport</p>
+                            </div>
+                        </button>
+                        <button onclick="speakWord('Water Transport')">
+                            <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                                <span class="text-3xl block mb-2">🚢</span>
+                                <p class="font-baskerville">Water Transport</p>
+                            </div>
+                        </button>
                     </div>
                 </div>
             </section>
@@ -303,36 +83,48 @@
                 <div class="journey-planner">
                     <h4 class="font-playfair text-xl font-bold mb-4">Journey Planner</h4>
                     <div class="route-layout">
-                        <div class="route-box">
-                            <span class="text-2xl block mb-2">🏠</span>
-                            <p class="font-bold">Home</p>
-                            <p class="text-sm opacity-80">Casa</p>
-                        </div>
-                        <div class="route-box">
-                            <span class="text-2xl block mb-2">🚌</span>
-                            <p class="font-bold">Bus Stop</p>
-                            <p class="text-sm opacity-80">Ponto de Ônibus</p>
-                        </div>
-                        <div class="route-box">
-                            <span class="text-2xl block mb-2">🏢</span>
-                            <p class="font-bold">Office</p>
-                            <p class="text-sm opacity-80">Escritório</p>
-                        </div>
-                        <div class="route-box">
-                            <span class="text-2xl block mb-2">🚇</span>
-                            <p class="font-bold">Subway</p>
-                            <p class="text-sm opacity-80">Metrô</p>
-                        </div>
-                        <div class="route-box">
-                            <span class="text-2xl block mb-2">✈️</span>
-                            <p class="font-bold">Airport</p>
-                            <p class="text-sm opacity-80">Aeroporto</p>
-                        </div>
-                        <div class="route-box">
-                            <span class="text-2xl block mb-2">🚲</span>
-                            <p class="font-bold">Bike Lane</p>
-                            <p class="text-sm opacity-80">Ciclovia</p>
-                        </div>
+                        <button onclick="speakWord('Home')">
+                            <div class="route-box">
+                                <span class="text-2xl block mb-2">🏠</span>
+                                <p class="font-bold">Home</p>
+                                <p class="text-sm opacity-80">Casa</p>
+                            </div>
+                        </button>
+                        <button onclick="speakWord('Bus Stop')">
+                            <div class="route-box">
+                                <span class="text-2xl block mb-2">🚌</span>
+                                <p class="font-bold">Bus Stop</p>
+                                <p class="text-sm opacity-80">Ponto de Ônibus</p>
+                            </div>
+                        </button>
+                        <button onclick="speakWord('Office')">
+                            <div class="route-box">
+                                <span class="text-2xl block mb-2">🏢</span>
+                                <p class="font-bold">Office</p>
+                                <p class="text-sm opacity-80">Escritório</p>
+                            </div>
+                        </button>
+                        <button onclick="speakWord('Subway')">
+                            <div class="route-box">
+                                <span class="text-2xl block mb-2">🚇</span>
+                                <p class="font-bold">Subway</p>
+                                <p class="text-sm opacity-80">Metrô</p>
+                            </div>
+                        </button>
+                        <button onclick="speakWord('Airport')">
+                            <div class="route-box">
+                                <span class="text-2xl block mb-2">✈️</span>
+                                <p class="font-bold">Airport</p>
+                                <p class="text-sm opacity-80">Aeroporto</p>
+                            </div>
+                        </button>
+                        <button onclick="speakWord('Bike Lane')">
+                            <div class="route-box">
+                                <span class="text-2xl block mb-2">🚲</span>
+                                <p class="font-bold">Bike Lane</p>
+                                <p class="text-sm opacity-80">Ciclovia</p>
+                            </div>
+                        </button>
                     </div>
                 </div>
             </section>
@@ -441,53 +233,62 @@
                 </h3>
                 
                 <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
-                    <div class="transport-card">
-                        <span class="transport-emoji">🚗</span>
-                        <div class="item-name">Car</div>
-                        <div class="item-translation">Carro</div>
-                    </div>
-                    
-                    <div class="transport-card">
-                        <span class="transport-emoji">🚌</span>
-                        <div class="item-name">Bus</div>
-                        <div class="item-translation">Ônibus</div>
-                    </div>
-                    
-                    <div class="transport-card">
-                        <span class="transport-emoji">🚇</span>
-                        <div class="item-name">Subway</div>
-                        <div class="item-translation">Metrô</div>
-                    </div>
-                    
-                    <div class="transport-card">
-                        <span class="transport-emoji">🚲</span>
-                        <div class="item-name">Bicycle</div>
-                        <div class="item-translation">Bicicleta</div>
-                    </div>
-                    
-                    <div class="transport-card">
-                        <span class="transport-emoji">✈️</span>
-                        <div class="item-name">Airplane</div>
-                        <div class="item-translation">Avião</div>
-                    </div>
-                    
-                    <div class="transport-card">
-                        <span class="transport-emoji">🚢</span>
-                        <div class="item-name">Ship</div>
-                        <div class="item-translation">Navio</div>
-                    </div>
-                    
-                    <div class="transport-card">
-                        <span class="transport-emoji">🚕</span>
-                        <div class="item-name">Taxi</div>
-                        <div class="item-translation">Táxi</div>
-                    </div>
-                    
-                    <div class="transport-card">
-                        <span class="transport-emoji">🏍️</span>
-                        <div class="item-name">Motorcycle</div>
-                        <div class="item-translation">Moto</div>
-                    </div>
+                    <button onclick="speakWord('Car')">
+                        <div class="transport-card">
+                            <span class="transport-emoji">🚗</span>
+                            <div class="item-name">Car</div>
+                            <div class="item-translation">Carro</div>
+                        </div>
+                    </button>
+                    <button onclick="speakWord('Bus')">
+                        <div class="transport-card">
+                            <span class="transport-emoji">🚌</span>
+                            <div class="item-name">Bus</div>
+                            <div class="item-translation">Ônibus</div>
+                        </div>
+                    </button>
+                    <button onclick="speakWord('Subway')">
+                        <div class="transport-card">
+                            <span class="transport-emoji">🚇</span>
+                            <div class="item-name">Subway</div>
+                            <div class="item-translation">Metrô</div>
+                        </div>
+                    </button>
+                    <button onclick="speakWord('Bicycle')">
+                        <div class="transport-card">
+                            <span class="transport-emoji">🚲</span>
+                            <div class="item-name">Bicycle</div>
+                            <div class="item-translation">Bicicleta</div>
+                        </div>
+                    </button>
+                    <button onclick="speakWord('Airplane')">
+                        <div class="transport-card">
+                            <span class="transport-emoji">✈️</span>
+                            <div class="item-name">Airplane</div>
+                            <div class="item-translation">Avião</div>
+                        </div>
+                    </button>
+                    <button onclick="speakWord('Ship')">
+                        <div class="transport-card">
+                            <span class="transport-emoji">🚢</span>
+                            <div class="item-name">Ship</div>
+                            <div class="item-translation">Navio</div>
+                        </div>
+                    </button>
+                    <button onclick="speakWord('Taxi')">
+                        <div class="transport-card">
+                            <span class="transport-emoji">🚕</span>
+                            <div class="item-name">Taxi</div>
+                            <div class="item-translation">Táxi</div>
+                        </div>
+                    </button>
+                    <button onclick="speakWord('Motorcycle')">
+                        <div class="transport-card">
+                            <span class="transport-emoji">🏍️</span>
+                            <div class="item-name">Motorcycle</div>
+                            <div class="item-translation">Moto</div>
+                        </div>
+                    </button>
                 </div>
             </section>
 
@@ -498,109 +299,185 @@
                 </h3>
                 
                 <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
-                    <div class="action-card">
-                        <span class="transport-emoji">🚗</span>
-                        <div class="item-name">Drive</div>
-                        <div class="item-translation">Dirigir</div>
-                    </div>
+                    <button onclick="speakWord('Drive')">
+                        <div class="action-card">
+                            <span class="transport-emoji">🚗</span>
+                            <div class="item-name">Drive</div>
+                            <div class="item-translation">Dirigir</div>
+                        </div>
+                    </button>
                     
-                    <div class="action-card">
-                        <span class="transport-emoji">🚲</span>
-                        <div class="item-name">Ride</div>
-                        <div class="item-translation">Andar</div>
-                    </div>
+                    <button onclick="speakWord('Ride')">
+                        <div class="action-card">
+                            <span class="transport-emoji">🚲</span>
+                            <div class="item-name">Ride</div>
+                            <div class="item-translation">Andar</div>
+                        </div>
+                    </button>
                     
-                    <div class="action-card">
-                        <span class="transport-emoji">✈️</span>
-                        <div class="item-name">Fly</div>
-                        <div class="item-translation">Voar</div>
-                    </div>
+                    <button onclick="speakWord('Fly')">
+                        <div class="action-card">
+                            <span class="transport-emoji">✈️</span>
+                            <div class="item-name">Fly</div>
+                            <div class="item-translation">Voar</div>
+                        </div>
+                    </button>
                     
-                    <div class="action-card">
-                        <span class="transport-emoji">🚶</span>
-                        <div class="item-name">Walk</div>
-                        <div class="item-translation">Caminhar</div>
-                    </div>
+                    <button onclick="speakWord('Walk')">
+                        <div class="action-card">
+                            <span class="transport-emoji">🚶</span>
+                            <div class="item-name">Walk</div>
+                            <div class="item-translation">Caminhar</div>
+                        </div>
+                    </button>
                     
-                    <div class="action-card">
-                        <span class="transport-emoji">🚌</span>
-                        <div class="item-name">Take</div>
-                        <div class="item-translation">Pegar</div>
-                    </div>
+                    <button onclick="speakWord('Take')">
+                        <div class="action-card">
+                            <span class="transport-emoji">🚌</span>
+                            <div class="item-name">Take</div>
+                            <div class="item-translation">Pegar</div>
+                        </div>
+                    </button>
                     
-                    <div class="action-card">
-                        <span class="transport-emoji">⛵</span>
-                        <div class="item-name">Sail</div>
-                        <div class="item-translation">Navegar</div>
-                    </div>
+                    <button onclick="speakWord('Sail')">
+                        <div class="action-card">
+                            <span class="transport-emoji">⛵</span>
+                            <div class="item-name">Sail</div>
+                            <div class="item-translation">Navegar</div>
+                        </div>
+                    </button>
                     
-                    <div class="action-card">
-                        <span class="transport-emoji">🏃</span>
-                        <div class="item-name">Run</div>
-                        <div class="item-translation">Correr</div>
-                    </div>
+                    <button onclick="speakWord('Run')">
+                        <div class="action-card">
+                            <span class="transport-emoji">🏃</span>
+                            <div class="item-name">Run</div>
+                            <div class="item-translation">Correr</div>
+                        </div>
+                    </button>
                     
-                    <div class="action-card">
-                        <span class="transport-emoji">🚇</span>
-                        <div class="item-name">Travel</div>
-                        <div class="item-translation">Viajar</div>
-                    </div>
+                    <button onclick="speakWord('Travel')">
+                        <div class="action-card">
+                            <span class="transport-emoji">🚇</span>
+                            <div class="item-name">Travel</div>
+                            <div class="item-translation">Viajar</div>
+                        </div>
+                    </button>
                 </div>
             </section>
 
-            <!-- Diálogo -->
+            <!-- Diálogo Interativo -->
             <section class="mb-8">
-                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
-                    💬 Planejando uma Viagem
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    💬 Planejando uma Viagem - Diálogo Interativo
                 </h3>
-                <div class="dialogue-box p-6 rounded-lg">
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Friend A:</strong> How are you planning to get to the airport?
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Como você está planejando chegar ao aeroporto?)
-                        </p>
+                
+                <div class="dialogue-controls">
+                    <div class="flex items-center gap-3">
+                        <button id="playBtn" onclick="playDialogue()" class="dialogue-btn">
+                            ▶️ Reproduzir
+                        </button>
+                        <button id="pauseBtn" onclick="pauseDialogue()" class="dialogue-btn" disabled>
+                            ⏸️ Pausar
+                        </button>
+                        <button id="stopBtn" onclick="stopDialogue()" class="dialogue-btn" disabled>
+                            ⏹️ Parar
+                        </button>
                     </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Friend B:</strong> I think I'll take a taxi. It's faster than the bus.
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Acho que vou pegar um táxi. É mais rápido que o ônibus.)
-                        </p>
+                    
+                    <div class="flex items-center gap-3">
+                        <span class="font-baskerville">Velocidade:</span>
+                        <select id="dialogueSpeed" class="bg-white text-navy px-2 py-1 rounded border">
+                            <option value="0.4">0.4x</option>
+                            <option value="0.7">0.7x</option>
+                            <option value="1" selected>1x</option>
+                        </select>
+                        <span class="speed-indicator" id="speedIndicator">1x</span>
                     </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Friend A:</strong> That's a good idea. What time is your flight?
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Essa é uma boa ideia. Que horas é seu voo?)
-                        </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg border-2 border-wine">
+                    <div class="dialogue-line" data-line="0" onclick="playFromLine(0)">
+                        <div class="flex items-center">
+                            <div class="object-icon">🚗</div>
+                            <div>
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Friend A:</strong> How are you planning to get to the airport?
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Como você está planejando chegar ao aeroporto?)
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Friend B:</strong> My flight is at 7 AM, so I need to leave home by 4:30 AM.
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Meu voo é às 7h, então preciso sair de casa às 4h30.)
-                        </p>
+                    
+                    <div class="dialogue-line" data-line="1" onclick="playFromLine(1)">
+                        <div class="flex items-center">
+                            <div class="object-icon">🚕</div>
+                            <div>
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Friend B:</strong> I think I'll take a taxi. It's faster than the bus.
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Acho que vou pegar um táxi. É mais rápido que o ônibus.)
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Friend A:</strong> Wow, that's early! Are you flying directly to London?
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Nossa, que cedo! Você vai voar direto para Londres?)
-                        </p>
+                    
+                    <div class="dialogue-line" data-line="2" onclick="playFromLine(2)">
+                        <div class="flex items-center">
+                            <div class="object-icon">⏰</div>
+                            <div>
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Friend A:</strong> That's a good idea. What time is your flight?
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Essa é uma boa ideia. Que horas é seu voo?)
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Friend B:</strong> Yes, I am. It's a long flight, about 10 hours.
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Sim, vou. É um voo longo, cerca de 10 horas.)
-                        </p>
+                    
+                    <div class="dialogue-line" data-line="3" onclick="playFromLine(3)">
+                        <div class="flex items-center">
+                            <div class="object-icon">✈️</div>
+                            <div>
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Friend B:</strong> My flight is at 7 AM, so I need to leave home by 4:30 AM.
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Meu voo é às 7h, então preciso sair de casa às 4h30.)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dialogue-line" data-line="4" onclick="playFromLine(4)">
+                        <div class="flex items-center">
+                            <div class="object-icon">🌅</div>
+                            <div>
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Friend A:</strong> Wow, that's early! Are you flying directly to London?
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Nossa, que cedo! Você vai voar direto para Londres?)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dialogue-line" data-line="5" onclick="playFromLine(5)">
+                        <div class="flex items-center">
+                            <div class="object-icon">🌍</div>
+                            <div>
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Friend B:</strong> Yes, I am. It's a long flight, about 10 hours.
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Sim, vou. É um voo longo, cerca de 10 horas.)
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -693,6 +570,13 @@
                 </div>
             </section>
 
+            <!-- Botão do Quiz -->
+            <div class="mb-4 text-center">
+                <button onclick="openQuizModal()" class="vintage-button text-white px-6 py-3 rounded-lg font-baskerville text-lg">
+                    🎯 Iniciar Quiz
+                </button>
+            </div>
+
             <!-- Pronúncia -->
             <section class="mb-8">
                 <h3 class="font-playfair text-xl font-bold text-wine mb-4">
@@ -728,7 +612,7 @@
                 <h4 class="font-playfair text-lg font-bold text-wine mb-2">
                     💡 Dica de Memorização
                 </h4>
-                <p class="font-baskerville text-navy">
+                <p class="font-baskerville text-navy mb-4">
                     Pense nos meios de transporte que você usa ou vê no seu dia a dia e tente nomeá-los em inglês. Crie frases simples sobre como você se desloca para diferentes lugares. Assista a vídeos ou documentários sobre viagens e transporte em inglês para contextualizar o vocabulário. Use aplicativos de mapas em inglês para se familiarizar com as direções.
                 </p>
                 <div class="ornament mt-4"></div>
@@ -741,27 +625,167 @@
             <ul class="font-baskerville space-y-1">
                 <li>• Clique nos botões "Ver Resposta" para revelar as respostas das perguntas</li>
                 <li>• Clique em "Ver Tradução" para mostrar a tradução do texto</li>
-                <li>• Passe o mouse sobre os cartões de transporte para ver os efeitos visuais</li>
+                <li>• Clique nos cards de transporte para ouvir a pronúncia</li>
                 <li>• Use o planejador de viagem para visualizar diferentes rotas</li>
-                <li>• Pratique o diálogo sobre planejamento de viagem em voz alta</li>
+                <li>• Pratique o diálogo sobre planejamento de viagem com os controles de áudio</li>
+                <li>• Faça o quiz interativo para testar seus conhecimentos</li>
                 <li>• Descreva seu trajeto diário usando o vocabulário aprendido</li>
             </ul>
         </div>
     </div>
 
-    <script>
-        function toggleAnswer(questionNumber) {
-            const answer = document.getElementById('answer' + questionNumber);
-            answer.classList.toggle('hidden-answer');
-            answer.classList.toggle('show-answer');
-        }
-        
-        function toggleTranslation() {
-            const translation = document.getElementById('translation');
-            translation.classList.toggle('hidden-answer');
-            translation.classList.toggle('show-answer');
-        }
-    </script>
+    <!-- Modal do Quiz -->
+    <div id="quizModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" style="display: none;">
+        <div class="modal-content bg-white rounded-lg p-6 w-full max-w-2xl max-h-90vh overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="font-playfair text-2xl font-bold text-wine">Quiz: Transporte e Veículos</h2>
+                <button onclick="closeQuizModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            
+            <form id="quizForm">
+                <!-- Questão 1 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">1. Como você diz "carro" em inglês?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">Car</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Bus</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Train</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 2 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">2. Qual é a tradução de "airplane"?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">Avião</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Trem</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Navio</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 3 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">3. Como você pergunta "Como você vai para o trabalho?"</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">How do you get to work?</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Where do you work?</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">What time do you work?</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 4 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">4. Como você diz "bicicleta" em inglês?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">Motorcycle</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Bicycle</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Scooter</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 5 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">5. Qual é a tradução de "subway"?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">Metrô</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Ônibus</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Táxi</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 6 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">6. Como você diz "dirigir" em inglês?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">Ride</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Drive</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Walk</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="button" onclick="checkQuiz()" class="vintage-button text-white px-6 py-2 rounded font-baskerville">
+                        Verificar Respostas
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Resultados -->
+    <div id="resultModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" style="display: none;">
+        <div class="modal-content bg-white rounded-lg p-6 w-full max-w-2xl max-h-90vh overflow-y-auto">
+            <div class="text-center mb-6">
+                <h2 class="font-playfair text-2xl font-bold text-wine mb-4">Resultados do Quiz</h2>
+                <div id="scoreText" class="font-playfair text-xl text-navy mb-4"></div>
+            </div>
+            
+            <div id="quizResults" class="mb-6"></div>
+            
+            <div class="text-center">
+                <button onclick="closeResultModal()" class="vintage-button text-white px-6 py-2 rounded font-baskerville mr-3">
+                    Fechar
+                </button>
+                <button onclick="closeResultModal(); openQuizModal();" class="bg-navy text-white px-6 py-2 rounded font-baskerville">
+                    Tentar Novamente
+                </button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
 

@@ -6,238 +6,8 @@
     <title>Cartão de Inglês - Aula 14: Profissões e Trabalho</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --wine: #722F37;
-            --cream: #F5F1E8;
-            --navy: #2C3E50;
-            --gold: #D4AF37;
-            --dark-wine: #5A252A;
-            --light-gold: #F4E4BC;
-            --rose: #E8B4B8;
-            --sage: #9CAF88;
-            --lavender: #B8A9C9;
-            --coral: #F4A261;
-            --teal: #2A9D8F;
-            --mint: #A8E6CF;
-            --peach: #FFB3BA;
-            --blue: #4169E1;
-            --red: #DC143C;
-            --yellow: #FFD700;
-            --purple: #8A2BE2;
-            --cyan: #00CED1;
-            --green: #228B22;
-            --orange: #FF8C00;
-        }
-        
-        .font-baskerville { font-family: 'Libre Baskerville', serif; }
-        .font-playfair { font-family: 'Playfair Display', serif; }
-        
-        .vintage-card {
-            background: linear-gradient(135deg, var(--cream) 0%, #F8F5F0 100%);
-            border: 3px solid var(--wine);
-            box-shadow: 
-                0 8px 32px rgba(114, 47, 55, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-        }
-        
-        .text-wine { color: var(--wine); }
-        .text-navy { color: var(--navy); }
-        .text-gold { color: var(--gold); }
-        .bg-wine { background-color: var(--wine); }
-        .bg-navy { background-color: var(--navy); }
-        .bg-gold { background-color: var(--gold); }
-        .bg-light-gold { background-color: var(--light-gold); }
-        .bg-mint { background-color: var(--mint); }
-        .bg-peach { background-color: var(--peach); }
-        
-        .vintage-button {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-wine) 100%);
-            transition: all 0.3s ease;
-        }
-        
-        .vintage-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(114, 47, 55, 0.3);
-        }
-        
-        .pronunciation {
-            background: linear-gradient(135deg, var(--light-gold) 0%, var(--cream) 100%);
-            border-left: 4px solid var(--gold);
-        }
-        
-        .dialogue-box {
-            background: rgba(44, 62, 80, 0.05);
-            border-left: 4px solid var(--navy);
-        }
-        
-        .profession-card {
-            background: linear-gradient(135deg, var(--green) 0%, #32CD32 100%);
-            color: white;
-            padding: 1.2rem;
-            border-radius: 12px;
-            margin: 0.3rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            min-height: 120px;
-            border: 2px solid rgba(34, 139, 34, 0.3);
-            position: relative;
-            text-align: center;
-        }
-        
-        .profession-card:hover {
-            transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 8px 25px rgba(34, 139, 34, 0.5);
-            border-color: white;
-        }
-        
-        .workplace-card {
-            background: linear-gradient(135deg, var(--orange) 0%, #FF6347 100%);
-            color: white;
-            padding: 1.2rem;
-            border-radius: 12px;
-            margin: 0.3rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            min-height: 120px;
-            border: 2px solid rgba(255, 140, 0, 0.3);
-            position: relative;
-            text-align: center;
-        }
-        
-        .workplace-card:hover {
-            transform: scale(1.05) rotate(2deg);
-            box-shadow: 0 8px 25px rgba(255, 140, 0, 0.5);
-            border-color: white;
-        }
-        
-        .category-section {
-            background: linear-gradient(135deg, var(--purple) 0%, #DA70D6 100%);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 15px;
-            margin: 0.5rem;
-            transition: all 0.3s ease;
-            border: 3px solid rgba(138, 43, 226, 0.3);
-        }
-        
-        .category-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.4);
-            border-color: white;
-        }
-        
-        .profession-emoji {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-        
-        .item-name {
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-bottom: 0.3rem;
-        }
-        
-        .item-translation {
-            font-style: italic;
-            opacity: 0.9;
-            font-size: 0.9rem;
-        }
-        
-        .career-showcase {
-            background: linear-gradient(135deg, var(--wine) 0%, var(--dark-wine) 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 20px;
-            margin: 1rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .career-showcase::before {
-            content: '👩‍💼';
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 3rem;
-            opacity: 0.3;
-        }
-        
-        .office-building {
-            background: linear-gradient(135deg, var(--cyan) 0%, #40E0D0 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 20px;
-            margin: 1rem 0;
-            text-align: center;
-        }
-        
-        .department-layout {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-        
-        .department-box {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 1rem;
-            border-radius: 10px;
-            text-align: center;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .department-box:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.05);
-        }
-        
-        .ornament {
-            width: 60px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            margin: 0 auto;
-        }
-        
-        .hidden-answer {
-            display: none;
-        }
-        
-        .show-answer {
-            display: block;
-        }
-        
-        @media (max-width: 768px) {
-            .vintage-card {
-                margin: 1rem;
-                padding: 1.5rem;
-            }
-            
-            .profession-card, .workplace-card {
-                min-height: 100px;
-            }
-            
-            .item-name {
-                font-size: 1rem;
-            }
-            
-            .profession-emoji {
-                font-size: 2rem;
-            }
-            
-            .department-layout {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="estilo/style.css">
+    <script src="script/script.js"></script>
 </head>
 <body class="bg-gray-50 min-h-screen py-8">
     <div class="container mx-auto px-4 max-w-4xl">
@@ -261,9 +31,11 @@
                     ✨ Frase do Dia
                 </h3>
                 <div class="dialogue-box p-6 rounded-lg">
-                    <p class="font-baskerville text-lg text-navy text-center italic">
-                        "What do you do for a living?"
-                    </p>
+                    <div class="flex items-center justify-center">
+                        <button onclick="speakWord('What do you do for a living')" class="font-baskerville text-lg text-navy text-center italic">
+                            "What do you do for a living?"                      
+                        </button>
+                    </div>
                     <p class="font-baskerville text-base text-gray-600 text-center mt-2">
                         "O que você faz da vida?"
                     </p>
@@ -281,18 +53,24 @@
                         <p class="font-baskerville text-lg opacity-90">Sua jornada profissional em inglês</p>
                     </div>
                     <div class="grid md:grid-cols-3 gap-4 text-center">
-                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-                            <span class="text-3xl block mb-2">🏥</span>
-                            <p class="font-baskerville">Healthcare</p>
-                        </div>
-                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-                            <span class="text-3xl block mb-2">💻</span>
-                            <p class="font-baskerville">Technology</p>
-                        </div>
-                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-                            <span class="text-3xl block mb-2">🎨</span>
-                            <p class="font-baskerville">Creative Arts</p>
-                        </div>
+                        <button onclick="speakWord('Healthcare')">
+                            <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                                <span class="text-3xl block mb-2">🏥</span>
+                                <p class="font-baskerville">Healthcare</p>
+                            </div>
+                        </button>
+                        <button onclick="speakWord('Technology')">
+                            <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                                <span class="text-3xl block mb-2">💻</span>
+                                <p class="font-baskerville">Technology</p>
+                            </div>
+                        </button>
+                        <button onclick="speakWord('Creative Arts')">
+                            <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                                <span class="text-3xl block mb-2">🎨</span>
+                                <p class="font-baskerville">Creative Arts</p>
+                            </div>
+                        </button>
                     </div>
                 </div>
             </section>
@@ -305,36 +83,48 @@
                 <div class="office-building">
                     <h4 class="font-playfair text-xl font-bold mb-4">Professional Building</h4>
                     <div class="department-layout">
-                        <div class="department-box">
-                            <span class="text-2xl block mb-2">👨‍⚕️</span>
-                            <p class="font-bold">Medical Center</p>
-                            <p class="text-sm opacity-80">Centro Médico</p>
-                        </div>
-                        <div class="department-box">
-                            <span class="text-2xl block mb-2">🏫</span>
-                            <p class="font-bold">Education</p>
-                            <p class="text-sm opacity-80">Educação</p>
-                        </div>
-                        <div class="department-box">
-                            <span class="text-2xl block mb-2">💼</span>
-                            <p class="font-bold">Business</p>
-                            <p class="text-sm opacity-80">Negócios</p>
-                        </div>
-                        <div class="department-box">
-                            <span class="text-2xl block mb-2">⚖️</span>
-                            <p class="font-bold">Legal</p>
-                            <p class="text-sm opacity-80">Jurídico</p>
-                        </div>
-                        <div class="department-box">
-                            <span class="text-2xl block mb-2">🔧</span>
-                            <p class="font-bold">Engineering</p>
-                            <p class="text-sm opacity-80">Engenharia</p>
-                        </div>
-                        <div class="department-box">
-                            <span class="text-2xl block mb-2">🎭</span>
-                            <p class="font-bold">Arts</p>
-                            <p class="text-sm opacity-80">Artes</p>
-                        </div>
+                        <button onclick="speakWord('Medical Center')">
+                            <div class="department-box">
+                                <span class="text-2xl block mb-2">👨‍⚕️</span>
+                                <p class="font-bold">Medical Center</p>
+                                <p class="text-sm opacity-80">Centro Médico</p>
+                            </div>
+                        </button>
+                        <button onclick="speakWord('Education')">
+                            <div class="department-box">
+                                <span class="text-2xl block mb-2">🏫</span>
+                                <p class="font-bold">Education</p>
+                                <p class="text-sm opacity-80">Educação</p>
+                            </div>
+                        </button>
+                        <button onclick="speakWord('Business')">
+                            <div class="department-box">
+                                <span class="text-2xl block mb-2">💼</span>
+                                <p class="font-bold">Business</p>
+                                <p class="text-sm opacity-80">Negócios</p>
+                            </div>
+                        </button>
+                        <button onclick="speakWord('Legal')">
+                            <div class="department-box">
+                                <span class="text-2xl block mb-2">⚖️</span>
+                                <p class="font-bold">Legal</p>
+                                <p class="text-sm opacity-80">Jurídico</p>
+                            </div>
+                        </button>
+                        <button onclick="speakWord('Engineering')">
+                            <div class="department-box">
+                                <span class="text-2xl block mb-2">🔧</span>
+                                <p class="font-bold">Engineering</p>
+                                <p class="text-sm opacity-80">Engenharia</p>
+                            </div>
+                        </button>
+                        <button onclick="speakWord('Arts')">
+                            <div class="department-box">
+                                <span class="text-2xl block mb-2">🎭</span>
+                                <p class="font-bold">Arts</p>
+                                <p class="text-sm opacity-80">Artes</p>
+                            </div>
+                        </button>
                     </div>
                 </div>
             </section>
@@ -349,19 +139,19 @@
                     <div class="category-section">
                         <h4 class="font-playfair text-lg font-bold mb-3 text-center">🏥 Área da Saúde</h4>
                         <div class="space-y-2">
-                            <div class="flex justify-between">
+                            <div class="flex justify-between cursor-pointer" onclick="speakWord('Doctor')">
                                 <span>Doctor</span>
                                 <span class="opacity-80">Médico(a)</span>
                             </div>
-                            <div class="flex justify-between">
+                            <div class="flex justify-between cursor-pointer" onclick="speakWord('Nurse')">
                                 <span>Nurse</span>
                                 <span class="opacity-80">Enfermeiro(a)</span>
                             </div>
-                            <div class="flex justify-between">
+                            <div class="flex justify-between cursor-pointer" onclick="speakWord('Dentist')">
                                 <span>Dentist</span>
                                 <span class="opacity-80">Dentista</span>
                             </div>
-                            <div class="flex justify-between">
+                            <div class="flex justify-between cursor-pointer" onclick="speakWord('Pharmacist')">
                                 <span>Pharmacist</span>
                                 <span class="opacity-80">Farmacêutico(a)</span>
                             </div>
@@ -371,19 +161,19 @@
                     <div class="category-section">
                         <h4 class="font-playfair text-lg font-bold mb-3 text-center">💻 Tecnologia</h4>
                         <div class="space-y-2">
-                            <div class="flex justify-between">
+                            <div class="flex justify-between cursor-pointer" onclick="speakWord('Programmer')">
                                 <span>Programmer</span>
                                 <span class="opacity-80">Programador(a)</span>
                             </div>
-                            <div class="flex justify-between">
+                            <div class="flex justify-between cursor-pointer" onclick="speakWord('Engineer')">
                                 <span>Engineer</span>
                                 <span class="opacity-80">Engenheiro(a)</span>
                             </div>
-                            <div class="flex justify-between">
+                            <div class="flex justify-between cursor-pointer" onclick="speakWord('Designer')">
                                 <span>Designer</span>
                                 <span class="opacity-80">Designer</span>
                             </div>
-                            <div class="flex justify-between">
+                            <div class="flex justify-between cursor-pointer" onclick="speakWord('Analyst')">
                                 <span>Analyst</span>
                                 <span class="opacity-80">Analista</span>
                             </div>
@@ -393,19 +183,19 @@
                     <div class="category-section">
                         <h4 class="font-playfair text-lg font-bold mb-3 text-center">🏫 Educação</h4>
                         <div class="space-y-2">
-                            <div class="flex justify-between">
+                            <div class="flex justify-between cursor-pointer" onclick="speakWord('Teacher')">
                                 <span>Teacher</span>
                                 <span class="opacity-80">Professor(a)</span>
                             </div>
-                            <div class="flex justify-between">
+                            <div class="flex justify-between cursor-pointer" onclick="speakWord('Principal')">
                                 <span>Principal</span>
                                 <span class="opacity-80">Diretor(a)</span>
                             </div>
-                            <div class="flex justify-between">
+                            <div class="flex justify-between cursor-pointer" onclick="speakWord('Student')">
                                 <span>Student</span>
                                 <span class="opacity-80">Estudante</span>
                             </div>
-                            <div class="flex justify-between">
+                            <div class="flex justify-between cursor-pointer" onclick="speakWord('Librarian')">
                                 <span>Librarian</span>
                                 <span class="opacity-80">Bibliotecário(a)</span>
                             </div>
@@ -413,83 +203,99 @@
                     </div>
                     
                     <div class="category-section">
-                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">🎨 Artes e Criatividade</h4>
+                        <h4 class="font-playfair text-lg font-bold mb-3 text-center">💼 Negócios</h4>
                         <div class="space-y-2">
-                            <div class="flex justify-between">
-                                <span>Artist</span>
-                                <span class="opacity-80">Artista</span>
+                            <div class="flex justify-between cursor-pointer" onclick="speakWord('Manager')">
+                                <span>Manager</span>
+                                <span class="opacity-80">Gerente</span>
                             </div>
-                            <div class="flex justify-between">
-                                <span>Writer</span>
-                                <span class="opacity-80">Escritor(a)</span>
+                            <div class="flex justify-between cursor-pointer" onclick="speakWord('Accountant')">
+                                <span>Accountant</span>
+                                <span class="opacity-80">Contador(a)</span>
                             </div>
-                            <div class="flex justify-between">
-                                <span>Chef</span>
-                                <span class="opacity-80">Chef</span>
+                            <div class="flex justify-between cursor-pointer" onclick="speakWord('Lawyer')">
+                                <span>Lawyer</span>
+                                <span class="opacity-80">Advogado(a)</span>
                             </div>
-                            <div class="flex justify-between">
-                                <span>Musician</span>
-                                <span class="opacity-80">Músico(a)</span>
+                            <div class="flex justify-between cursor-pointer" onclick="speakWord('Salesperson')">
+                                <span>Salesperson</span>
+                                <span class="opacity-80">Vendedor(a)</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Profissões -->
+            <!-- Profissões Populares -->
             <section class="mb-8">
                 <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
-                    👩‍💼 Profissões Comuns
+                    🌟 Profissões Populares
                 </h3>
                 
                 <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
-                    <div class="profession-card">
-                        <span class="profession-emoji">👨‍⚕️</span>
-                        <div class="item-name">Doctor</div>
-                        <div class="item-translation">Médico(a)</div>
-                    </div>
+                    <button onclick="speakWord('Doctor')">
+                        <div class="profession-card">
+                            <span class="profession-emoji">👨‍⚕️</span>
+                            <div class="item-name">Doctor</div>
+                            <div class="item-translation">Médico(a)</div>
+                        </div>
+                    </button>
                     
-                    <div class="profession-card">
-                        <span class="profession-emoji">👩‍🏫</span>
-                        <div class="item-name">Teacher</div>
-                        <div class="item-translation">Professor(a)</div>
-                    </div>
+                    <button onclick="speakWord('Teacher')">
+                        <div class="profession-card">
+                            <span class="profession-emoji">👩‍🏫</span>
+                            <div class="item-name">Teacher</div>
+                            <div class="item-translation">Professor(a)</div>
+                        </div>
+                    </button>
                     
-                    <div class="profession-card">
-                        <span class="profession-emoji">👨‍💻</span>
-                        <div class="item-name">Programmer</div>
-                        <div class="item-translation">Programador(a)</div>
-                    </div>
+                    <button onclick="speakWord('Engineer')">
+                        <div class="profession-card">
+                            <span class="profession-emoji">👷‍♂️</span>
+                            <div class="item-name">Engineer</div>
+                            <div class="item-translation">Engenheiro(a)</div>
+                        </div>
+                    </button>
                     
-                    <div class="profession-card">
-                        <span class="profession-emoji">👩‍⚖️</span>
-                        <div class="item-name">Lawyer</div>
-                        <div class="item-translation">Advogado(a)</div>
-                    </div>
+                    <button onclick="speakWord('Nurse')">
+                        <div class="profession-card">
+                            <span class="profession-emoji">👩‍⚕️</span>
+                            <div class="item-name">Nurse</div>
+                            <div class="item-translation">Enfermeiro(a)</div>
+                        </div>
+                    </button>
                     
-                    <div class="profession-card">
-                        <span class="profession-emoji">👨‍🍳</span>
-                        <div class="item-name">Chef</div>
-                        <div class="item-translation">Chef</div>
-                    </div>
+                    <button onclick="speakWord('Lawyer')">
+                        <div class="profession-card">
+                            <span class="profession-emoji">👨‍💼</span>
+                            <div class="item-name">Lawyer</div>
+                            <div class="item-translation">Advogado(a)</div>
+                        </div>
+                    </button>
                     
-                    <div class="profession-card">
-                        <span class="profession-emoji">👩‍⚕️</span>
-                        <div class="item-name">Nurse</div>
-                        <div class="item-translation">Enfermeiro(a)</div>
-                    </div>
+                    <button onclick="speakWord('Chef')">
+                        <div class="profession-card">
+                            <span class="profession-emoji">👨‍🍳</span>
+                            <div class="item-name">Chef</div>
+                            <div class="item-translation">Chef</div>
+                        </div>
+                    </button>
                     
-                    <div class="profession-card">
-                        <span class="profession-emoji">👨‍🔧</span>
-                        <div class="item-name">Engineer</div>
-                        <div class="item-translation">Engenheiro(a)</div>
-                    </div>
+                    <button onclick="speakWord('Artist')">
+                        <div class="profession-card">
+                            <span class="profession-emoji">🎨</span>
+                            <div class="item-name">Artist</div>
+                            <div class="item-translation">Artista</div>
+                        </div>
+                    </button>
                     
-                    <div class="profession-card">
-                        <span class="profession-emoji">👩‍🎨</span>
-                        <div class="item-name">Artist</div>
-                        <div class="item-translation">Artista</div>
-                    </div>
+                    <button onclick="speakWord('Pilot')">
+                        <div class="profession-card">
+                            <span class="profession-emoji">👨‍✈️</span>
+                            <div class="item-name">Pilot</div>
+                            <div class="item-translation">Piloto</div>
+                        </div>
+                    </button>
                 </div>
             </section>
 
@@ -500,109 +306,185 @@
                 </h3>
                 
                 <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
-                    <div class="workplace-card">
-                        <span class="profession-emoji">🏥</span>
-                        <div class="item-name">Hospital</div>
-                        <div class="item-translation">Hospital</div>
-                    </div>
+                    <button onclick="speakWord('Hospital')">
+                        <div class="workplace-card">
+                            <span class="profession-emoji">🏥</span>
+                            <div class="item-name">Hospital</div>
+                            <div class="item-translation">Hospital</div>
+                        </div>
+                    </button>
                     
-                    <div class="workplace-card">
-                        <span class="profession-emoji">🏫</span>
-                        <div class="item-name">School</div>
-                        <div class="item-translation">Escola</div>
-                    </div>
+                    <button onclick="speakWord('School')">
+                        <div class="workplace-card">
+                            <span class="profession-emoji">🏫</span>
+                            <div class="item-name">School</div>
+                            <div class="item-translation">Escola</div>
+                        </div>
+                    </button>
                     
-                    <div class="workplace-card">
-                        <span class="profession-emoji">🏢</span>
-                        <div class="item-name">Office</div>
-                        <div class="item-translation">Escritório</div>
-                    </div>
+                    <button onclick="speakWord('Office')">
+                        <div class="workplace-card">
+                            <span class="profession-emoji">🏢</span>
+                            <div class="item-name">Office</div>
+                            <div class="item-translation">Escritório</div>
+                        </div>
+                    </button>
                     
-                    <div class="workplace-card">
-                        <span class="profession-emoji">🍽️</span>
-                        <div class="item-name">Restaurant</div>
-                        <div class="item-translation">Restaurante</div>
-                    </div>
+                    <button onclick="speakWord('Restaurant')">
+                        <div class="workplace-card">
+                            <span class="profession-emoji">🍽️</span>
+                            <div class="item-name">Restaurant</div>
+                            <div class="item-translation">Restaurante</div>
+                        </div>
+                    </button>
                     
-                    <div class="workplace-card">
-                        <span class="profession-emoji">🏭</span>
-                        <div class="item-name">Factory</div>
-                        <div class="item-translation">Fábrica</div>
-                    </div>
+                    <button onclick="speakWord('Factory')">
+                        <div class="workplace-card">
+                            <span class="profession-emoji">🏭</span>
+                            <div class="item-name">Factory</div>
+                            <div class="item-translation">Fábrica</div>
+                        </div>
+                    </button>
                     
-                    <div class="workplace-card">
-                        <span class="profession-emoji">🏪</span>
-                        <div class="item-name">Store</div>
-                        <div class="item-translation">Loja</div>
-                    </div>
+                    <button onclick="speakWord('Store')">
+                        <div class="workplace-card">
+                            <span class="profession-emoji">🏪</span>
+                            <div class="item-name">Store</div>
+                            <div class="item-translation">Loja</div>
+                        </div>
+                    </button>
                     
-                    <div class="workplace-card">
-                        <span class="profession-emoji">🚧</span>
-                        <div class="item-name">Construction</div>
-                        <div class="item-translation">Construção</div>
-                    </div>
+                    <button onclick="speakWord('Construction Site')">
+                        <div class="workplace-card">
+                            <span class="profession-emoji">🚧</span>
+                            <div class="item-name">Construction</div>
+                            <div class="item-translation">Construção</div>
+                        </div>
+                    </button>
                     
-                    <div class="workplace-card">
-                        <span class="profession-emoji">🏛️</span>
-                        <div class="item-name">Bank</div>
-                        <div class="item-translation">Banco</div>
-                    </div>
+                    <button onclick="speakWord('Bank')">
+                        <div class="workplace-card">
+                            <span class="profession-emoji">🏛️</span>
+                            <div class="item-name">Bank</div>
+                            <div class="item-translation">Banco</div>
+                        </div>
+                    </button>
                 </div>
             </section>
 
-            <!-- Diálogo -->
+            <!-- Diálogo Interativo -->
             <section class="mb-8">
-                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
-                    💬 Sobre Carreiras
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    💬 Conversando sobre Carreiras - Diálogo Interativo
                 </h3>
-                <div class="dialogue-box p-6 rounded-lg">
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Friend A:</strong> Hi, Sarah! How are you?
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Oi, Sarah! Como você está?)
-                        </p>
+                
+                <div class="dialogue-controls">
+                    <div class="flex items-center gap-3">
+                        <button id="playBtn" onclick="playDialogue()" class="dialogue-btn">
+                            ▶️ Reproduzir
+                        </button>
+                        <button id="pauseBtn" onclick="pauseDialogue()" class="dialogue-btn" disabled>
+                            ⏸️ Pausar
+                        </button>
+                        <button id="stopBtn" onclick="stopDialogue()" class="dialogue-btn" disabled>
+                            ⏹️ Parar
+                        </button>
                     </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Friend B:</strong> I'm great, Alex! And you? What do you do for a living now?
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Estou ótima, Alex! E você? O que você faz da vida agora?)
-                        </p>
+                    
+                    <div class="flex items-center gap-3">
+                        <span class="font-baskerville">Velocidade:</span>
+                        <select id="dialogueSpeed" class="bg-white text-navy px-2 py-1 rounded border">
+                            <option value="0.4">0.4x</option>
+                            <option value="0.7">0.7x</option>
+                            <option value="1" selected>1x</option>
+                        </select>
+                        <span class="speed-indicator" id="speedIndicator">1x</span>
                     </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Friend A:</strong> I'm a software engineer at a tech company. It's challenging but very rewarding.
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Sou engenheiro de software em uma empresa de tecnologia. É desafiador, mas muito gratificante.)
-                        </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg border-2 border-wine">
+                    <div class="dialogue-line" data-line="0" onclick="playFromLine(0)">
+                        <div class="flex items-center">
+                            <div class="object-icon">👋</div>
+                            <div>
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Sarah:</strong> Hi, Alex! How are you?
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Oi, Alex! Como você está?)
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Friend B:</strong> That sounds interesting! I'm a nurse at the city hospital. I love helping people.
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Isso parece interessante! Sou enfermeira no hospital da cidade. Adoro ajudar pessoas.)
-                        </p>
+                    
+                    <div class="dialogue-line" data-line="1" onclick="playFromLine(1)">
+                        <div class="flex items-center">
+                            <div class="object-icon">💼</div>
+                            <div>
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Alex:</strong> I'm great, Sarah! And you? What do you do for a living now?
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Estou ótimo, Sarah! E você? O que você faz da vida agora?)
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Friend A:</strong> That's wonderful! Do you work long hours?
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Isso é maravilhoso! Você trabalha muitas horas?)
-                        </p>
+                    
+                    <div class="dialogue-line" data-line="2" onclick="playFromLine(2)">
+                        <div class="flex items-center">
+                            <div class="object-icon">💻</div>
+                            <div>
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Sarah:</strong> I'm a software engineer at a tech company. It's challenging but very rewarding.
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Sou engenheira de software em uma empresa de tecnologia. É desafiador, mas muito gratificante.)
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Friend B:</strong> Sometimes, especially during emergencies. But it's worth it.
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Às vezes, especialmente durante emergências. Mas vale a pena.)
-                        </p>
+                    
+                    <div class="dialogue-line" data-line="3" onclick="playFromLine(3)">
+                        <div class="flex items-center">
+                            <div class="object-icon">🏥</div>
+                            <div>
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Alex:</strong> That sounds interesting! I'm a nurse at the city hospital. I love helping people.
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Isso parece interessante! Sou enfermeiro no hospital da cidade. Adoro ajudar pessoas.)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dialogue-line" data-line="4" onclick="playFromLine(4)">
+                        <div class="flex items-center">
+                            <div class="object-icon">⏰</div>
+                            <div>
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Sarah:</strong> That's wonderful! Do you work long hours?
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Isso é maravilhoso! Você trabalha muitas horas?)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dialogue-line" data-line="5" onclick="playFromLine(5)">
+                        <div class="flex items-center">
+                            <div class="object-icon">💪</div>
+                            <div>
+                                <p class="font-baskerville text-navy">
+                                    <strong class="text-wine">Alex:</strong> Sometimes, especially during emergencies. But it's worth it.
+                                </p>
+                                <p class="font-baskerville text-sm text-gray-600 ml-4">
+                                    (Às vezes, especialmente durante emergências. Mas vale a pena.)
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -695,28 +577,35 @@
                 </div>
             </section>
 
+            <!-- Botão do Quiz -->
+            <div class="text-center mb-8">
+                <button onclick="openQuizModal()" class="vintage-button text-white px-8 py-3 rounded-lg font-baskerville text-lg">
+                    🎯 Iniciar Quiz
+                </button>
+            </div>
+
             <!-- Pronúncia -->
             <section class="mb-8">
                 <h3 class="font-playfair text-xl font-bold text-wine mb-4">
                     🔊 Dicas de Pronúncia
                 </h3>
                 <div class="space-y-4">
-                    <div class="pronunciation p-4 rounded-lg">
+                    <div class="pronunciation p-4 rounded-lg cursor-pointer" onclick="speakWord('Engineer')">
                         <p class="font-baskerville text-navy">
                             <strong>Engineer</strong> /ˌɛndʒɪˈnɪər/ - Note o som do 'g' como 'j' e a ênfase na última sílaba.
                         </p>
                     </div>
-                    <div class="pronunciation p-4 rounded-lg">
+                    <div class="pronunciation p-4 rounded-lg cursor-pointer" onclick="speakWord('Nurse')">
                         <p class="font-baskerville text-navy">
                             <strong>Nurse</strong> /nɜːrs/ - O som do 'ur' é similar ao 'er' em 'her'.
                         </p>
                     </div>
-                    <div class="pronunciation p-4 rounded-lg">
+                    <div class="pronunciation p-4 rounded-lg cursor-pointer" onclick="speakWord('Lawyer')">
                         <p class="font-baskerville text-navy">
                             <strong>Lawyer</strong> /ˈlɔɪər/ - O 'aw' tem som de 'ó' e o 'yer' é suave.
                         </p>
                     </div>
-                    <div class="pronunciation p-4 rounded-lg">
+                    <div class="pronunciation p-4 rounded-lg cursor-pointer" onclick="speakWord('Architect')">
                         <p class="font-baskerville text-navy">
                             <strong>Architect</strong> /ˈɑːrkɪtekt/ - Enfatize a primeira sílaba 'AR'.
                         </p>
@@ -741,29 +630,170 @@
         <div class="bg-navy text-white p-6 rounded-lg">
             <h4 class="font-playfair text-lg font-bold mb-2">📋 Como Usar Este Cartão</h4>
             <ul class="font-baskerville space-y-1">
+                <li>• Clique nos cartões de profissões para ouvir a pronúncia</li>
+                <li>• Use os controles do diálogo para praticar conversação</li>
                 <li>• Clique nos botões "Ver Resposta" para revelar as respostas das perguntas</li>
                 <li>• Clique em "Ver Tradução" para mostrar a tradução do texto</li>
-                <li>• Passe o mouse sobre os cartões de profissões para ver os efeitos visuais</li>
-                <li>• Use o edifício de escritórios para visualizar diferentes áreas profissionais</li>
+                <li>• Faça o quiz para testar seus conhecimentos sobre profissões</li>
+                <li>• Clique nas dicas de pronúncia para ouvir as palavras</li>
                 <li>• Pratique o diálogo sobre carreiras em voz alta</li>
                 <li>• Descreva sua profissão ou profissão dos sonhos usando o vocabulário aprendido</li>
             </ul>
         </div>
     </div>
 
-    <script>
-        function toggleAnswer(questionNumber) {
-            const answer = document.getElementById('answer' + questionNumber);
-            answer.classList.toggle('hidden-answer');
-            answer.classList.toggle('show-answer');
-        }
-        
-        function toggleTranslation() {
-            const translation = document.getElementById('translation');
-            translation.classList.toggle('hidden-answer');
-            translation.classList.toggle('show-answer');
-        }
-    </script>
+    <!-- Modal do Quiz -->
+    <div id="quizModal" class="modal">
+        <div class="modal-content bg-white p-8 rounded-lg max-w-2xl w-full mx-4">
+            <h2 class="font-playfair text-2xl font-bold text-wine mb-6 text-center">Quiz: Profissões e Trabalho</h2>
+            
+            <form id="quizForm">
+                <!-- Questão 1 -->
+                <div class="mb-6">
+                    <p class="font-baskerville text-navy mb-3 font-bold">1. Como se diz "médico" em inglês?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="a" class="form-radio mr-3">
+                            <span class="font-baskerville">Doctor</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="b" class="form-radio mr-3">
+                            <span class="font-baskerville">Teacher</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="c" class="form-radio mr-3">
+                            <span class="font-baskerville">Engineer</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 2 -->
+                <div class="mb-6">
+                    <p class="font-baskerville text-navy mb-3 font-bold">2. O que significa "Nurse" em português?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="a" class="form-radio mr-3">
+                            <span class="font-baskerville">Enfermeiro(a)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="b" class="form-radio mr-3">
+                            <span class="font-baskerville">Professor(a)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="c" class="form-radio mr-3">
+                            <span class="font-baskerville">Advogado(a)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 3 -->
+                <div class="mb-6">
+                    <p class="font-baskerville text-navy mb-3 font-bold">3. Como perguntar sobre a profissão de alguém?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="a" class="form-radio mr-3">
+                            <span class="font-baskerville">What do you do for a living?</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="b" class="form-radio mr-3">
+                            <span class="font-baskerville">How are you?</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="c" class="form-radio mr-3">
+                            <span class="font-baskerville">Where do you live?</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 4 -->
+                <div class="mb-6">
+                    <p class="font-baskerville text-navy mb-3 font-bold">4. Qual profissão trabalha em um hospital?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="a" class="form-radio mr-3">
+                            <span class="font-baskerville">Teacher</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="b" class="form-radio mr-3">
+                            <span class="font-baskerville">Doctor</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="c" class="form-radio mr-3">
+                            <span class="font-baskerville">Chef</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 5 -->
+                <div class="mb-6">
+                    <p class="font-baskerville text-navy mb-3 font-bold">5. Como se diz "programador" em inglês?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="a" class="form-radio mr-3">
+                            <span class="font-baskerville">Programmer</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="b" class="form-radio mr-3">
+                            <span class="font-baskerville">Manager</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="c" class="form-radio mr-3">
+                            <span class="font-baskerville">Architect</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 6 -->
+                <div class="mb-6">
+                    <p class="font-baskerville text-navy mb-3 font-bold">6. Onde trabalha um "Teacher"?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="a" class="form-radio mr-3">
+                            <span class="font-baskerville">Hospital</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="b" class="form-radio mr-3">
+                            <span class="font-baskerville">School</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="c" class="form-radio mr-3">
+                            <span class="font-baskerville">Restaurant</span>
+                        </label>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="text-center mt-6">
+                <button onclick="checkQuiz()" class="vintage-button text-white px-6 py-2 rounded font-baskerville mr-3">
+                    Verificar Respostas
+                </button>
+                <button onclick="closeQuizModal()" class="bg-gray-500 text-white px-6 py-2 rounded font-baskerville">
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Resultados -->
+    <div id="resultModal" class="modal">
+        <div class="modal-content bg-white p-8 rounded-lg max-w-2xl w-full mx-4">
+            <div class="text-center mb-6">
+                <h2 class="font-playfair text-2xl font-bold text-wine mb-4">Resultados do Quiz</h2>
+                <div id="scoreText" class="font-playfair text-xl text-navy mb-4"></div>
+            </div>
+            
+            <div id="quizResults" class="mb-6"></div>
+            
+            <div class="text-center">
+                <button onclick="closeResultModal()" class="vintage-button text-white px-6 py-2 rounded font-baskerville mr-3">
+                    Fechar
+                </button>
+                <button onclick="closeResultModal(); openQuizModal();" class="bg-navy text-white px-6 py-2 rounded font-baskerville">
+                    Tentar Novamente
+                </button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
 

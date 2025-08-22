@@ -6,297 +6,8 @@
     <title>Cartão de Inglês - Aula 16: Clima e Estações do Ano</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --wine: #722F37;
-            --cream: #F5F1E8;
-            --navy: #2C3E50;
-            --gold: #D4AF37;
-            --dark-wine: #5A252A;
-            --light-gold: #F4E4BC;
-            --rose: #E8B4B8;
-            --sage: #9CAF88;
-            --lavender: #B8A9C9;
-            --coral: #F4A261;
-            --teal: #2A9D8F;
-            --mint: #A8E6CF;
-            --peach: #FFB3BA;
-            --blue: #4169E1;
-            --red: #DC143C;
-            --yellow: #FFD700;
-            --purple: #8A2BE2;
-            --cyan: #00CED1;
-            --green: #228B22;
-            --orange: #FF8C00;
-            --lime: #32CD32;
-            --pink: #FF69B4;
-            --sky-blue: #87CEEB;
-            --forest-green: #228B22;
-            --autumn-orange: #FF8C00;
-            --winter-blue: #4682B4;
-        }
-        
-        .font-baskerville { font-family: 'Libre Baskerville', serif; }
-        .font-playfair { font-family: 'Playfair Display', serif; }
-        
-        .vintage-card {
-            background: linear-gradient(135deg, var(--cream) 0%, #F8F5F0 100%);
-            border: 3px solid var(--wine);
-            box-shadow: 
-                0 8px 32px rgba(114, 47, 55, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-        }
-        
-        .text-wine { color: var(--wine); }
-        .text-navy { color: var(--navy); }
-        .text-gold { color: var(--gold); }
-        .bg-wine { background-color: var(--wine); }
-        .bg-navy { background-color: var(--navy); }
-        .bg-gold { background-color: var(--gold); }
-        .bg-light-gold { background-color: var(--light-gold); }
-        .bg-mint { background-color: var(--mint); }
-        .bg-peach { background-color: var(--peach); }
-        
-        .vintage-button {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-wine) 100%);
-            transition: all 0.3s ease;
-        }
-        
-        .vintage-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(114, 47, 55, 0.3);
-        }
-        
-        .pronunciation {
-            background: linear-gradient(135deg, var(--light-gold) 0%, var(--cream) 100%);
-            border-left: 4px solid var(--gold);
-        }
-        
-        .dialogue-box {
-            background: rgba(44, 62, 80, 0.05);
-            border-left: 4px solid var(--navy);
-        }
-        
-        .weather-card {
-            background: linear-gradient(135deg, var(--sky-blue) 0%, #87CEFA 100%);
-            color: white;
-            padding: 1.2rem;
-            border-radius: 12px;
-            margin: 0.3rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            min-height: 120px;
-            border: 2px solid rgba(135, 206, 235, 0.3);
-            position: relative;
-            text-align: center;
-        }
-        
-        .weather-card:hover {
-            transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 8px 25px rgba(135, 206, 235, 0.5);
-            border-color: white;
-        }
-        
-        .season-card {
-            padding: 1.2rem;
-            border-radius: 12px;
-            margin: 0.3rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            min-height: 120px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            position: relative;
-            text-align: center;
-            color: white;
-        }
-        
-        .season-card.spring {
-            background: linear-gradient(135deg, var(--forest-green) 0%, #32CD32 100%);
-        }
-        
-        .season-card.summer {
-            background: linear-gradient(135deg, var(--yellow) 0%, #FFD700 100%);
-            color: #333;
-        }
-        
-        .season-card.autumn {
-            background: linear-gradient(135deg, var(--autumn-orange) 0%, #FF6347 100%);
-        }
-        
-        .season-card.winter {
-            background: linear-gradient(135deg, var(--winter-blue) 0%, #B0C4DE 100%);
-        }
-        
-        .season-card:hover {
-            transform: scale(1.05) rotate(2deg);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            border-color: white;
-        }
-        
-        .temperature-card {
-            background: linear-gradient(135deg, var(--coral) 0%, #FF7F50 100%);
-            color: white;
-            padding: 1.2rem;
-            border-radius: 12px;
-            margin: 0.3rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            min-height: 120px;
-            border: 2px solid rgba(244, 162, 97, 0.3);
-            position: relative;
-            text-align: center;
-        }
-        
-        .temperature-card:hover {
-            transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 8px 25px rgba(244, 162, 97, 0.5);
-            border-color: white;
-        }
-        
-        .weather-emoji {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-        
-        .item-name {
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-bottom: 0.3rem;
-        }
-        
-        .item-translation {
-            font-style: italic;
-            opacity: 0.9;
-            font-size: 0.9rem;
-        }
-        
-        .weather-station {
-            background: linear-gradient(135deg, var(--wine) 0%, var(--dark-wine) 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 20px;
-            margin: 1rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .weather-station::before {
-            content: '🌤️';
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 3rem;
-            opacity: 0.3;
-        }
-        
-        .seasonal-calendar {
-            background: linear-gradient(135deg, var(--purple) 0%, #9370DB 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 20px;
-            margin: 1rem 0;
-            text-align: center;
-        }
-        
-        .calendar-layout {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-        
-        .calendar-season {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 1rem;
-            border-radius: 10px;
-            text-align: center;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .calendar-season:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.05);
-        }
-        
-        .forecast-display {
-            background: linear-gradient(135deg, var(--navy) 0%, #2F4F4F 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 20px;
-            margin: 1rem 0;
-            text-align: center;
-        }
-        
-        .forecast-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-        
-        .forecast-day {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 1rem;
-            border-radius: 10px;
-            text-align: center;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .forecast-day:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.05);
-        }
-        
-        .ornament {
-            width: 60px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            margin: 0 auto;
-        }
-        
-        .hidden-answer {
-            display: none;
-        }
-        
-        .show-answer {
-            display: block;
-        }
-        
-        @media (max-width: 768px) {
-            .vintage-card {
-                margin: 1rem;
-                padding: 1.5rem;
-            }
-            
-            .weather-card, .season-card, .temperature-card {
-                min-height: 100px;
-            }
-            
-            .item-name {
-                font-size: 1rem;
-            }
-            
-            .weather-emoji {
-                font-size: 2rem;
-            }
-            
-            .calendar-layout, .forecast-grid {
-                grid-template-columns: repeat(1, 1fr);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="estilo/style.css">
+    <script src="script/script.js"></script>
 </head>
 <body class="bg-gray-50 min-h-screen py-8">
     <div class="container mx-auto px-4 max-w-4xl">
@@ -320,425 +31,172 @@
                     ✨ Frase do Dia
                 </h3>
                 <div class="dialogue-box p-6 rounded-lg">
-                    <p class="font-baskerville text-lg text-navy text-center italic">
-                        "What's the weather like today?"
-                    </p>
-                    <p class="font-baskerville text-base text-gray-600 text-center mt-2">
+                    <div class="flex items-center justify-center">
+                        <button onclick="speakWord(`What's the weather like today?`)" class="font-baskerville text-lg text-navy text-center italic">
+                            "What's the weather like today?"
+                        </button>
+                    </div>
+                    <p class="font-baskerville text-gray-600 mt-2 text-center">
                         "Como está o tempo hoje?"
                     </p>
                 </div>
             </section>
 
-            <!-- Estação Meteorológica -->
+            <!-- Vocabulário: Condições Climáticas -->
             <section class="mb-8">
-                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
-                    🌤️ Estação Meteorológica
-                </h3>
-                <div class="weather-station">
-                    <div class="text-center mb-4">
-                        <h4 class="font-playfair text-2xl font-bold mb-2">Weather Station</h4>
-                        <p class="font-baskerville text-lg opacity-90">Sua central de informações climáticas</p>
-                    </div>
-                    <div class="grid md:grid-cols-3 gap-4 text-center">
-                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-                            <span class="text-3xl block mb-2">🌡️</span>
-                            <p class="font-baskerville">Temperature</p>
-                            <p class="text-sm opacity-80">Temperatura</p>
-                        </div>
-                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-                            <span class="text-3xl block mb-2">💨</span>
-                            <p class="font-baskerville">Wind Speed</p>
-                            <p class="text-sm opacity-80">Velocidade do Vento</p>
-                        </div>
-                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-                            <span class="text-3xl block mb-2">💧</span>
-                            <p class="font-baskerville">Humidity</p>
-                            <p class="text-sm opacity-80">Umidade</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Calendário Sazonal -->
-            <section class="mb-8">
-                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
-                    📅 Calendário Sazonal
-                </h3>
-                <div class="seasonal-calendar">
-                    <h4 class="font-playfair text-xl font-bold mb-4">Seasonal Calendar</h4>
-                    <div class="calendar-layout">
-                        <div class="calendar-season">
-                            <span class="text-2xl block mb-2">🌸</span>
-                            <p class="font-bold">Spring</p>
-                            <p class="text-sm opacity-80">Mar - Mai (Norte)</p>
-                            <p class="text-sm opacity-80">Set - Nov (Sul)</p>
-                        </div>
-                        <div class="calendar-season">
-                            <span class="text-2xl block mb-2">☀️</span>
-                            <p class="font-bold">Summer</p>
-                            <p class="text-sm opacity-80">Jun - Ago (Norte)</p>
-                            <p class="text-sm opacity-80">Dez - Fev (Sul)</p>
-                        </div>
-                        <div class="calendar-season">
-                            <span class="text-2xl block mb-2">🍂</span>
-                            <p class="font-bold">Autumn/Fall</p>
-                            <p class="text-sm opacity-80">Set - Nov (Norte)</p>
-                            <p class="text-sm opacity-80">Mar - Mai (Sul)</p>
-                        </div>
-                        <div class="calendar-season">
-                            <span class="text-2xl block mb-2">❄️</span>
-                            <p class="font-bold">Winter</p>
-                            <p class="text-sm opacity-80">Dez - Fev (Norte)</p>
-                            <p class="text-sm opacity-80">Jun - Ago (Sul)</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Previsão do Tempo -->
-            <section class="mb-8">
-                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
-                    📊 Previsão do Tempo
-                </h3>
-                <div class="forecast-display">
-                    <h4 class="font-playfair text-xl font-bold mb-4">Weather Forecast</h4>
-                    <div class="forecast-grid">
-                        <div class="forecast-day">
-                            <span class="text-2xl block mb-2">☀️</span>
-                            <p class="font-bold">Today</p>
-                            <p class="text-sm">Sunny, 25°C</p>
-                        </div>
-                        <div class="forecast-day">
-                            <span class="text-2xl block mb-2">⛅</span>
-                            <p class="font-bold">Tomorrow</p>
-                            <p class="text-sm">Partly Cloudy, 22°C</p>
-                        </div>
-                        <div class="forecast-day">
-                            <span class="text-2xl block mb-2">🌧️</span>
-                            <p class="font-bold">Wednesday</p>
-                            <p class="text-sm">Rainy, 18°C</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Condições Climáticas -->
-            <section class="mb-8">
-                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
-                    🌦️ Condições Climáticas
-                </h3>
-                
-                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
-                    <div class="weather-card">
-                        <span class="weather-emoji">☀️</span>
-                        <div class="item-name">Sunny</div>
-                        <div class="item-translation">Ensolarado</div>
-                    </div>
-                    
-                    <div class="weather-card">
-                        <span class="weather-emoji">☁️</span>
-                        <div class="item-name">Cloudy</div>
-                        <div class="item-translation">Nublado</div>
-                    </div>
-                    
-                    <div class="weather-card">
-                        <span class="weather-emoji">🌧️</span>
-                        <div class="item-name">Rainy</div>
-                        <div class="item-translation">Chuvoso</div>
-                    </div>
-                    
-                    <div class="weather-card">
-                        <span class="weather-emoji">💨</span>
-                        <div class="item-name">Windy</div>
-                        <div class="item-translation">Ventoso</div>
-                    </div>
-                    
-                    <div class="weather-card">
-                        <span class="weather-emoji">❄️</span>
-                        <div class="item-name">Snowy</div>
-                        <div class="item-translation">Nevando</div>
-                    </div>
-                    
-                    <div class="weather-card">
-                        <span class="weather-emoji">⛈️</span>
-                        <div class="item-name">Stormy</div>
-                        <div class="item-translation">Tempestuoso</div>
-                    </div>
-                    
-                    <div class="weather-card">
-                        <span class="weather-emoji">🌫️</span>
-                        <div class="item-name">Foggy</div>
-                        <div class="item-translation">Nebuloso</div>
-                    </div>
-                    
-                    <div class="weather-card">
-                        <span class="weather-emoji">🌈</span>
-                        <div class="item-name">Rainbow</div>
-                        <div class="item-translation">Arco-íris</div>
-                    </div>
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">🌦️ Condições Climáticas</h3>
+                <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                    <button class="weather-card" onclick="speakWord('Sunny')">☀️ <span class="mt-1 font-baskerville">Sunny</span><span class="text-sm opacity-90">Ensolarado</span></button>
+                    <button class="weather-card" onclick="speakWord('Cloudy')">☁️ <span class="mt-1 font-baskerville">Cloudy</span><span class="text-sm opacity-90">Nublado</span></button>
+                    <button class="weather-card" onclick="speakWord('Rainy')">🌧️ <span class="mt-1 font-baskerville">Rainy</span><span class="text-sm opacity-90">Chuvoso</span></button>
+                    <button class="weather-card" onclick="speakWord('Stormy')">⛈️ <span class="mt-1 font-baskerville">Stormy</span><span class="text-sm opacity-90">Tempestuoso</span></button>
+                    <button class="weather-card" onclick="speakWord('Windy')">🌬️ <span class="mt-1 font-baskerville">Windy</span><span class="text-sm opacity-90">Ventando</span></button>
+                    <button class="weather-card" onclick="speakWord('Foggy')">🌫️ <span class="mt-1 font-baskerville">Foggy</span><span class="text-sm opacity-90">Com névoa</span></button>
+                    <button class="weather-card" onclick="speakWord('Snowy')">❄️ <span class="mt-1 font-baskerville">Snowy</span><span class="text-sm opacity-90">Nevando</span></button>
+                    <button class="weather-card" onclick="speakWord('Humid')">💧 <span class="mt-1 font-baskerville">Humid</span><span class="text-sm opacity-90">Úmido</span></button>
+                    <button class="weather-card" onclick="speakWord('Hot')">🔥 <span class="mt-1 font-baskerville">Hot</span><span class="text-sm opacity-90">Quente</span></button>
+                    <button class="weather-card" onclick="speakWord('Cold')">🧊 <span class="mt-1 font-baskerville">Cold</span><span class="text-sm opacity-90">Frio</span></button>
+                    <button class="weather-card" onclick="speakWord('Warm')">🌤️ <span class="mt-1 font-baskerville">Warm</span><span class="text-sm opacity-90">Ameno</span></button>
+                    <button class="weather-card" onclick="speakWord('Cool')">🍃 <span class="mt-1 font-baskerville">Cool</span><span class="text-sm opacity-90">Fresco</span></button>
                 </div>
             </section>
 
             <!-- Estações do Ano -->
             <section class="mb-8">
-                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
-                    🗓️ Estações do Ano
-                </h3>
-                
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-3">
-                    <div class="season-card spring">
-                        <span class="weather-emoji">🌸</span>
-                        <div class="item-name">Spring</div>
-                        <div class="item-translation">Primavera</div>
-                    </div>
-                    
-                    <div class="season-card summer">
-                        <span class="weather-emoji">☀️</span>
-                        <div class="item-name">Summer</div>
-                        <div class="item-translation">Verão</div>
-                    </div>
-                    
-                    <div class="season-card autumn">
-                        <span class="weather-emoji">🍂</span>
-                        <div class="item-name">Autumn/Fall</div>
-                        <div class="item-translation">Outono</div>
-                    </div>
-                    
-                    <div class="season-card winter">
-                        <span class="weather-emoji">❄️</span>
-                        <div class="item-name">Winter</div>
-                        <div class="item-translation">Inverno</div>
-                    </div>
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">🍀 Estações do Ano</h3>
+                <div class="grid sm:grid-cols-2 md:grid-cols-4">
+                    <button class="season-card spring" onclick="speakWord('Spring')">🌸 Spring <span class="block text-sm opacity-90">Primavera</span></button>
+                    <button class="season-card summer" onclick="speakWord('Summer')">🏖️ Summer <span class="block text-sm opacity-90">Verão</span></button>
+                    <button class="season-card autumn" onclick="speakWord('Autumn')">🍁 Autumn (Fall) <span class="block text-sm opacity-90">Outono</span></button>
+                    <button class="season-card winter" onclick="speakWord('Winter')">⛄ Winter <span class="block text-sm opacity-90">Inverno</span></button>
                 </div>
             </section>
 
-            <!-- Temperaturas -->
+            <!-- Diálogo Interativo -->
             <section class="mb-8">
-                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
-                    🌡️ Temperaturas
-                </h3>
-                
-                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
-                    <div class="temperature-card">
-                        <span class="weather-emoji">🔥</span>
-                        <div class="item-name">Hot</div>
-                        <div class="item-translation">Quente</div>
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">💬 Conversa sobre o Clima</h3>
+                <div class="dialogue-controls rounded-lg mb-3 flex items-center justify-between flex-wrap gap-3 p-4 bg-wine text-white">
+                    <div class="flex gap-2">
+                        <button id="playBtn" class="dialogue-btn" onclick="playDialogue()">▶️ Reproduzir</button>
+                        <button id="pauseBtn" class="dialogue-btn" onclick="pauseDialogue()" disabled>⏸️ Pausar</button>
+                        <button id="stopBtn" class="dialogue-btn" onclick="stopDialogue()" disabled>⏹️ Parar</button>
                     </div>
-                    
-                    <div class="temperature-card">
-                        <span class="weather-emoji">🌡️</span>
-                        <div class="item-name">Warm</div>
-                        <div class="item-translation">Ameno</div>
-                    </div>
-                    
-                    <div class="temperature-card">
-                        <span class="weather-emoji">🍃</span>
-                        <div class="item-name">Cool</div>
-                        <div class="item-translation">Fresco</div>
-                    </div>
-                    
-                    <div class="temperature-card">
-                        <span class="weather-emoji">🧊</span>
-                        <div class="item-name">Cold</div>
-                        <div class="item-translation">Frio</div>
-                    </div>
-                    
-                    <div class="temperature-card">
-                        <span class="weather-emoji">🥶</span>
-                        <div class="item-name">Freezing</div>
-                        <div class="item-translation">Congelante</div>
-                    </div>
-                    
-                    <div class="temperature-card">
-                        <span class="weather-emoji">💧</span>
-                        <div class="item-name">Humid</div>
-                        <div class="item-translation">Úmido</div>
-                    </div>
-                    
-                    <div class="temperature-card">
-                        <span class="weather-emoji">🏜️</span>
-                        <div class="item-name">Dry</div>
-                        <div class="item-translation">Seco</div>
-                    </div>
-                    
-                    <div class="temperature-card">
-                        <span class="weather-emoji">🌡️</span>
-                        <div class="item-name">Mild</div>
-                        <div class="item-translation">Ameno</div>
+                    <div class="flex items-center gap-2">
+                        <label for="dialogueSpeed" class="font-baskerville">Velocidade:</label>
+                        <select id="dialogueSpeed" class="text-wine rounded px-2 py-1">
+                            <option value="0.8">0.8x</option>
+                            <option value="1" selected>1x</option>
+                            <option value="1.2">1.2x</option>
+                            <option value="1.4">1.4x</option>
+                        </select>
+                        <span id="speedIndicator" class="speed-indicator">1x</span>
                     </div>
                 </div>
-            </section>
-
-            <!-- Diálogo -->
-            <section class="mb-8">
-                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
-                    💬 Sobre o Clima e Planos
-                </h3>
-                <div class="dialogue-box p-6 rounded-lg">
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Friend A:</strong> Hi! How are you doing today?
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Oi! Como você está hoje?)
-                        </p>
-                    </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Friend B:</strong> I'm good, but it's so cold outside! I wish it was summer already.
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Estou bem, mas está tão frio lá fora! Queria que já fosse verão.)
-                        </p>
-                    </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Friend A:</strong> I know, right? I prefer warm weather. What's your favorite season?
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Eu sei, né? Prefiro tempo quente. Qual é sua estação favorita?)
-                        </p>
-                    </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Friend B:</strong> Definitely summer! I love going to the beach and swimming.
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Definitivamente verão! Adoro ir à praia e nadar.)
-                        </p>
-                    </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Friend A:</strong> I like spring. The weather is usually mild, and everything is green and blooming.
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Gosto da primavera. O tempo geralmente é ameno, e tudo fica verde e florido.)
-                        </p>
-                    </div>
-                    <div>
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Friend B:</strong> That's true. Spring is beautiful. Are you planning anything for the weekend?
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (É verdade. A primavera é linda. Está planejando algo para o fim de semana?)
-                        </p>
-                    </div>
+                <div class="bg-white p-6 rounded border-2 border-wine">
+                    <div class="dialogue-line" data-line="0" onclick="playFromLine(0)">A: What's the weather like this weekend?</div>
+                    <div class="dialogue-line" data-line="1" onclick="playFromLine(1)">B: It should be warm and sunny on Saturday.</div>
+                    <div class="dialogue-line" data-line="2" onclick="playFromLine(2)">A: Great! Do you want to go for a hike?</div>
+                    <div class="dialogue-line" data-line="3" onclick="playFromLine(3)">B: Sure! But on Sunday it's going to rain.</div>
+                    <div class="dialogue-line" data-line="4" onclick="playFromLine(4)">A: Then let's go on Saturday morning.</div>
+                    <div class="dialogue-line" data-line="5" onclick="playFromLine(5)">B: Perfect. I'll bring water and sunscreen.</div>
                 </div>
             </section>
 
             <!-- Texto para Tradução -->
             <section class="mb-8">
-                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
-                    📝 Texto para Tradução
-                </h3>
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">📝 Texto para Tradução</h3>
                 <div class="bg-light-gold p-6 rounded-lg">
                     <p class="font-baskerville text-navy text-lg mb-4">
-                        "In my city, we experience all four seasons. Spring is usually mild and rainy, with many flowers blooming. Summer is hot and sunny, perfect for outdoor activities like swimming and hiking. Autumn brings cool temperatures and beautiful colorful leaves. Winter is cold and sometimes snowy, which is great for skiing and staying cozy indoors."
+                        "In my country, the seasons are very different. Spring is mild and full of flowers, summer is hot and humid, autumn is cool with colorful leaves, and winter is cold, sometimes snowy."
                     </p>
-                    <button onclick="toggleTranslation()" class="vintage-button text-white px-4 py-2 rounded font-baskerville">
-                        Ver Tradução
-                    </button>
-                    <div id="translation" class="hidden-answer mt-4 p-4 bg-white rounded border-l-4 border-wine">
-                        <p class="font-baskerville text-navy">
-                            "Na minha cidade, experimentamos todas as quatro estações. A primavera é geralmente amena e chuvosa, com muitas flores florescendo. O verão é quente e ensolarado, perfeito para atividades ao ar livre como natação e caminhadas. O outono traz temperaturas frescas e belas folhas coloridas. O inverno é frio e às vezes nevado, o que é ótimo para esquiar e ficar aconchegante em casa."
-                        </p>
+                    <button onclick="toggleTranslation()" class="vintage-button px-4 py-2 rounded font-baskerville">Ver Tradução</button>
+                    <div id="translation" class="hidden-answer mt-4 p-4 bg-white rounded border-l-4 border-wine font-baskerville text-navy">
+                        "No meu país, as estações são muito diferentes. A primavera é amena e cheia de flores, o verão é quente e úmido, o outono é fresco com folhas coloridas, e o inverno é frio, às vezes com neve."
+                    </div>
+                </div>
+            </section>
+
+            <!-- Estação Meteorológica (Instrumentos) -->
+            <section class="mb-8">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">🧪 Estação Meteorológica</h3>
+                <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-3">
+                    <div class="station-card text-navy text-center">
+                        <div class="text-3xl mb-1">🌡️</div>
+                        <button class="font-bold" onclick="speakWord('Thermometer')">Thermometer</button>
+                        <p class="text-sm">Mede a <strong>temperatura</strong>.</p>
+                    </div>
+                    <div class="station-card text-navy text-center">
+                        <div class="text-3xl mb-1">🌬️</div>
+                        <button class="font-bold" onclick="speakWord('Anemometer')">Anemometer</button>
+                        <p class="text-sm">Mede a <strong>velocidade do vento</strong>.</p>
+                    </div>
+                    <div class="station-card text-navy text-center">
+                        <div class="text-3xl mb-1">🌧️</div>
+                        <button class="font-bold" onclick="speakWord('Rain gauge')">Rain gauge</button>
+                        <p class="text-sm">Mede a <strong>chuva</strong>.</p>
+                    </div>
+                    <div class="station-card text-navy text-center">
+                        <div class="text-3xl mb-1">⚖️</div>
+                        <button class="font-bold" onclick="speakWord('Barometer')">Barometer</button>
+                        <p class="text-sm">Mede a <strong>pressão atmosférica</strong>.</p>
                     </div>
                 </div>
             </section>
 
             <!-- Perguntas para Prática -->
             <section class="mb-8">
-                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
-                    ❓ Perguntas para Prática
-                </h3>
-                <div class="space-y-4">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">❓ Perguntas para Prática</h3>
+                <div class="space-y-3">
                     <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
-                        <p class="font-baskerville text-navy mb-2">
-                            1. What's the weather like in your city today?
-                        </p>
-                        <button onclick="toggleAnswer(1)" class="vintage-button text-white px-3 py-1 rounded text-sm">
-                            Ver Resposta
-                        </button>
-                        <div id="answer1" class="hidden-answer mt-2 text-wine font-bold">
-                            It's sunny / cloudy / rainy / windy (Depende do clima atual)
-                        </div>
+                        <p class="font-baskerville text-navy mb-2">1. What's your favorite season and why?</p>
+                        <button onclick="toggleAnswer(1)" class="vintage-button px-3 py-1 rounded text-sm">Ver Resposta</button>
+                        <div id="answer1" class="hidden-answer mt-2 text-wine font-bold">I like summer because I can go to the beach.</div>
                     </div>
-                    
                     <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
-                        <p class="font-baskerville text-navy mb-2">
-                            2. What is your favorite season and why?
-                        </p>
-                        <button onclick="toggleAnswer(2)" class="vintage-button text-white px-3 py-1 rounded text-sm">
-                            Ver Resposta
-                        </button>
-                        <div id="answer2" class="hidden-answer mt-2 text-wine font-bold">
-                            My favorite season is summer because it's warm and sunny (Resposta pessoal)
-                        </div>
+                        <p class="font-baskerville text-navy mb-2">2. Como se diz "ventando" em inglês?</p>
+                        <button onclick="toggleAnswer(2)" class="vintage-button px-3 py-1 rounded text-sm">Ver Resposta</button>
+                        <div id="answer2" class="hidden-answer mt-2 text-wine font-bold">Windy</div>
                     </div>
-                    
                     <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
-                        <p class="font-baskerville text-navy mb-2">
-                            3. How do you say "ensolarado" in English?
-                        </p>
-                        <button onclick="toggleAnswer(3)" class="vintage-button text-white px-3 py-1 rounded text-sm">
-                            Ver Resposta
-                        </button>
-                        <div id="answer3" class="hidden-answer mt-2 text-wine font-bold">
-                            Sunny
-                        </div>
+                        <p class="font-baskerville text-navy mb-2">3. Traduza: "Hoje está nublado, mas não está frio."</p>
+                        <button onclick="toggleAnswer(3)" class="vintage-button px-3 py-1 rounded text-sm">Ver Resposta</button>
+                        <div id="answer3" class="hidden-answer mt-2 text-wine font-bold">It's cloudy today, but it's not cold.</div>
                     </div>
-                    
                     <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
-                        <p class="font-baskerville text-navy mb-2">
-                            4. Traduza: "Está ventando muito hoje."
-                        </p>
-                        <button onclick="toggleAnswer(4)" class="vintage-button text-white px-3 py-1 rounded text-sm">
-                            Ver Resposta
-                        </button>
-                        <div id="answer4" class="hidden-answer mt-2 text-wine font-bold">
-                            It's very windy today.
-                        </div>
+                        <p class="font-baskerville text-navy mb-2">4. What do you wear when it’s snowy?</p>
+                        <button onclick="toggleAnswer(4)" class="vintage-button px-3 py-1 rounded text-sm">Ver Resposta</button>
+                        <div id="answer4" class="hidden-answer mt-2 text-wine font-bold">A coat, boots, scarf, and gloves.</div>
                     </div>
-                    
                     <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
-                        <p class="font-baskerville text-navy mb-2">
-                            5. What do people usually do in winter?
-                        </p>
-                        <button onclick="toggleAnswer(5)" class="vintage-button text-white px-3 py-1 rounded text-sm">
-                            Ver Resposta
-                        </button>
-                        <div id="answer5" class="hidden-answer mt-2 text-wine font-bold">
-                            They ski, stay indoors, wear warm clothes, drink hot chocolate
-                        </div>
+                        <p class="font-baskerville text-navy mb-2">5. Como se diz "previsão do tempo" em inglês?</p>
+                        <button onclick="toggleAnswer(5)" class="vintage-button px-3 py-1 rounded text-sm">Ver Resposta</button>
+                        <div id="answer5" class="hidden-answer mt-2 text-wine font-bold">Weather forecast</div>
                     </div>
                 </div>
             </section>
 
-            <!-- Pronúncia -->
+            <!-- Botão do Quiz -->
+            <div class="mb-6 text-center">
+                <button onclick="openQuizModal()" class="vintage-button px-6 py-3 rounded-lg font-baskerville text-lg">
+                    🎯 Iniciar Quiz
+                </button>
+            </div>
+
+            <!-- Dicas de Pronúncia -->
             <section class="mb-8">
-                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
-                    🔊 Dicas de Pronúncia
-                </h3>
-                <div class="space-y-4">
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4">🔊 Dicas de Pronúncia</h3>
+                <div class="space-y-3">
                     <div class="pronunciation p-4 rounded-lg">
-                        <p class="font-baskerville text-navy">
-                            <strong>Weather</strong> /ˈwɛðər/ - O som do 'th' é suave, como em 'the'.
-                        </p>
+                        <p class="font-baskerville text-navy"><strong>Weather</strong> /ˈwɛðər/ — o "th" é sonoro (como em "the").</p>
                     </div>
                     <div class="pronunciation p-4 rounded-lg">
-                        <p class="font-baskerville text-navy">
-                            <strong>Season</strong> /ˈsiːzən/ - O 's' tem som de 'z'.
-                        </p>
+                        <p class="font-baskerville text-navy"><strong>Temperature</strong> /ˈtɛmprətʃər/ — reduzido: "TEM-pruh-chur".</p>
                     </div>
                     <div class="pronunciation p-4 rounded-lg">
-                        <p class="font-baskerville text-navy">
-                            <strong>Autumn</strong> /ˈɔːtəm/ - O 'n' final é silencioso.
-                        </p>
+                        <p class="font-baskerville text-navy"><strong>Humidity</strong> /hjuːˈmɪdəti/ — "hu-" começa com som de "hiu".</p>
                     </div>
                     <div class="pronunciation p-4 rounded-lg">
-                        <p class="font-baskerville text-navy">
-                            <strong>Temperature</strong> /ˈtɛmpərətʃər/ - Enfatize a primeira sílaba 'TEM'.
-                        </p>
+                        <p class="font-baskerville text-navy"><strong>Forecast</strong> /ˈfɔːrkæst/ — acento na primeira sílaba.</p>
                     </div>
                 </div>
             </section>
@@ -746,11 +204,9 @@
             <!-- Rodapé com Dicas -->
             <footer class="text-center pt-6 border-t-2 border-wine">
                 <div class="ornament mb-4"></div>
-                <h4 class="font-playfair text-lg font-bold text-wine mb-2">
-                    💡 Dica de Memorização
-                </h4>
-                <p class="font-baskerville text-navy">
-                    Crie um "diário do tempo" em inglês. Todos os dias, anote a condição climática e a temperatura. Associe as estações do ano a atividades típicas (ex: Summer - swimming, Winter - skiing). Use aplicativos de previsão do tempo em inglês para se familiarizar com o vocabulário. Descreva o clima de diferentes lugares que você conhece ou gostaria de visitar.
+                <h4 class="font-playfair text-lg font-bold text-wine mb-2">💡 Dica de Memorização</h4>
+                <p class="font-baskerville text-navy mb-4">
+                    Acompanhe a previsão diariamente em inglês e descreva o clima em voz alta. Crie frases curtas sobre o tempo de hoje e de amanhã. Compare estações e escolha roupas “ideais” para cada situação.
                 </p>
                 <div class="ornament mt-4"></div>
             </footer>
@@ -762,27 +218,165 @@
             <ul class="font-baskerville space-y-1">
                 <li>• Clique nos botões "Ver Resposta" para revelar as respostas das perguntas</li>
                 <li>• Clique em "Ver Tradução" para mostrar a tradução do texto</li>
-                <li>• Passe o mouse sobre os cartões de clima para ver os efeitos visuais</li>
-                <li>• Use a estação meteorológica para aprender sobre instrumentos de medição</li>
-                <li>• Pratique o diálogo sobre clima em voz alta</li>
+                <li>• Clique nos cartões de clima e estações para ouvir a pronúncia</li>
+                <li>• Use o diálogo interativo com velocidade ajustável</li>
+                <li>• Faça o quiz interativo para testar seus conhecimentos</li>
                 <li>• Descreva o tempo de hoje usando o vocabulário aprendido</li>
             </ul>
         </div>
     </div>
 
-    <script>
-        function toggleAnswer(questionNumber) {
-            const answer = document.getElementById('answer' + questionNumber);
-            answer.classList.toggle('hidden-answer');
-            answer.classList.toggle('show-answer');
-        }
-        
-        function toggleTranslation() {
-            const translation = document.getElementById('translation');
-            translation.classList.toggle('hidden-answer');
-            translation.classList.toggle('show-answer');
-        }
-    </script>
+    <!-- Modal do Quiz -->
+    <div id="quizModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" style="display: none;">
+        <div class="modal-content bg-white rounded-lg p-6 w-full max-w-2xl max-h-90vh overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="font-playfair text-2xl font-bold text-wine">Quiz: Clima e Estações</h2>
+                <button onclick="closeQuizModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            
+            <form id="quizForm">
+                <!-- Questão 1 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">1. Como se diz "nevando" em inglês?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">Sunny</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Snowy</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Windy</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 2 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">2. Qual é a tradução de "Autumn"?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">Inverno</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Outono</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Primavera</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 3 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">3. "Ventando" em inglês é…</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">Foggy</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Windy</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Rainy</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 4 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">4. Qual instrumento mede a velocidade do vento?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">Barometer</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Anemometer</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Thermometer</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 5 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">5. Qual opção descreve melhor "hot"?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">Muito frio</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Muito quente</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Com névoa</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 6 -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">6. "Previsão do tempo" em inglês é…</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">Weather forecast</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Weather station</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Weather cloudy</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="button" onclick="checkQuiz()" class="vintage-button px-6 py-2 rounded font-baskerville">
+                        Verificar Respostas
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Resultados -->
+    <div id="resultModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" style="display: none;">
+        <div class="modal-content bg-white rounded-lg p-6 w-full max-w-2xl max-h-90vh overflow-y-auto">
+            <div class="text-center mb-6">
+                <h2 class="font-playfair text-2xl font-bold text-wine mb-4">Resultados do Quiz</h2>
+                <div id="scoreText" class="font-playfair text-xl text-navy mb-4"></div>
+            </div>
+            
+            <div id="quizResults" class="mb-6"></div>
+            
+            <div class="text-center">
+                <button onclick="closeResultModal()" class="vintage-button px-6 py-2 rounded font-baskerville mr-3">
+                    Fechar
+                </button>
+                <button onclick="closeResultModal(); openQuizModal();" class="bg-navy text-white px-6 py-2 rounded font-baskerville">
+                    Tentar Novamente
+                </button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
-
