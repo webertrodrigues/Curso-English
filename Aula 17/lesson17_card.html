@@ -91,6 +91,7 @@
             border: 2px solid rgba(255, 105, 180, 0.3);
             position: relative;
             text-align: center;
+            cursor: pointer;
         }
         
         .pet-card:hover {
@@ -114,6 +115,7 @@
             border: 2px solid rgba(139, 69, 19, 0.3);
             position: relative;
             text-align: center;
+            cursor: pointer;
         }
         
         .wild-card:hover {
@@ -137,6 +139,7 @@
             border: 2px solid rgba(107, 142, 35, 0.3);
             position: relative;
             text-align: center;
+            cursor: pointer;
         }
         
         .farm-card:hover {
@@ -205,6 +208,7 @@
             text-align: center;
             border: 2px solid rgba(255, 255, 255, 0.3);
             transition: all 0.3s ease;
+            cursor: pointer;
         }
         
         .safari-habitat:hover {
@@ -235,6 +239,7 @@
             text-align: center;
             border: 2px solid rgba(255, 255, 255, 0.3);
             transition: all 0.3s ease;
+            cursor: pointer;
         }
         
         .farm-area:hover {
@@ -255,6 +260,30 @@
         
         .show-answer {
             display: block;
+        }
+
+        /* Modal Styles */
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .form-radio {
+            accent-color: var(--wine);
+        }
+
+        .quiz-question {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-left: 4px solid var(--wine);
+            transition: all 0.3s ease;
+        }
+
+        .quiz-question:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(114, 47, 55, 0.1);
         }
         
         @media (max-width: 768px) {
@@ -279,6 +308,103 @@
                 grid-template-columns: repeat(1, 1fr);
             }
         }
+
+        /* Estilos para o diálogo interativo */
+.dialogue-line {
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.dialogue-line:hover {
+    background-color: rgba(212, 175, 55, 0.1);
+    border-color: var(--gold);
+}
+
+.dialogue-line.playing {
+    background-color: var(--light-gold);
+    border-color: var(--wine);
+    transform: translateX(5px);
+}
+
+.dialogue-controls {
+    background: var(--wine);
+    color: white;
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.dialogue-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Libre Baskerville', serif;
+}
+
+.dialogue-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: var(--gold);
+}
+
+.dialogue-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.speed-indicator {
+    background: var(--gold);
+    color: var(--wine);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .vintage-card {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .room-card, .furniture-card {
+        min-height: 100px;
+    }
+    
+    .item-name {
+        font-size: 1rem;
+    }
+    
+    .home-emoji {
+        font-size: 2rem;
+    }
+    
+    .house-layout {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 1rem;
+    }
+
+    .dialogue-controls {
+        flex-direction: column;
+        text-align: center;
+    }
+}
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen py-8">
@@ -303,9 +429,11 @@
                     ✨ Frase do Dia
                 </h3>
                 <div class="dialogue-box p-6 rounded-lg">
-                    <p class="font-baskerville text-lg text-navy text-center italic">
-                        "Do you have any pets?"
-                    </p>
+                    <div class="flex items-center justify-center">
+                        <button onclick="speakWord('Do you have any pets?')" class="font-baskerville text-lg text-navy text-center italic hover:text-wine transition-colors">
+                            "Do you have any pets?"
+                        </button>
+                    </div>
                     <p class="font-baskerville text-base text-gray-600 text-center mt-2">
                         "Você tem algum animal de estimação?"
                     </p>
@@ -323,21 +451,27 @@
                         <p class="font-baskerville text-lg opacity-90">Sua loja de animais de estimação favorita</p>
                     </div>
                     <div class="grid md:grid-cols-3 gap-4 text-center">
-                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-                            <span class="text-3xl block mb-2">🏠</span>
-                            <p class="font-baskerville">Pet Care</p>
-                            <p class="text-sm opacity-80">Cuidados com Pets</p>
-                        </div>
-                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-                            <span class="text-3xl block mb-2">🥘</span>
-                            <p class="font-baskerville">Pet Food</p>
-                            <p class="text-sm opacity-80">Comida para Pets</p>
-                        </div>
-                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-                            <span class="text-3xl block mb-2">🎾</span>
-                            <p class="font-baskerville">Pet Toys</p>
-                            <p class="text-sm opacity-80">Brinquedos para Pets</p>
-                        </div>
+                        <button onclick="speakWord('Pet Care')">
+                            <div class="bg-white bg-opacity-20 p-4 rounded-lg hover:bg-opacity-30 transition-all">
+                                <span class="text-3xl block mb-2">🏠</span>
+                                <p class="font-baskerville">Pet Care</p>
+                                <p class="text-sm opacity-80">Cuidados com Pets</p>
+                            </div>
+                        </button>
+                        <button onclick="speakWord('Pet Food')">
+                            <div class="bg-white bg-opacity-20 p-4 rounded-lg hover:bg-opacity-30 transition-all">
+                                <span class="text-3xl block mb-2">🥘</span>
+                                <p class="font-baskerville">Pet Food</p>
+                                <p class="text-sm opacity-80">Comida para Pets</p>
+                            </div>
+                        </button>
+                        <button onclick="speakWord('Pet Toys')">
+                            <div class="bg-white bg-opacity-20 p-4 rounded-lg hover:bg-opacity-30 transition-all">
+                                <span class="text-3xl block mb-2">🎾</span>
+                                <p class="font-baskerville">Pet Toys</p>
+                                <p class="text-sm opacity-80">Brinquedos para Pets</p>
+                            </div>
+                        </button>
                     </div>
                 </div>
             </section>
@@ -350,26 +484,34 @@
                 <div class="safari-zone">
                     <h4 class="font-playfair text-xl font-bold mb-4">Wildlife Safari</h4>
                     <div class="safari-layout">
-                        <div class="safari-habitat">
-                            <span class="text-2xl block mb-2">🌍</span>
-                            <p class="font-bold">African Savanna</p>
-                            <p class="text-sm opacity-80">Lions, Elephants, Zebras</p>
-                        </div>
-                        <div class="safari-habitat">
-                            <span class="text-2xl block mb-2">🌲</span>
-                            <p class="font-bold">Forest</p>
-                            <p class="text-sm opacity-80">Bears, Wolves, Monkeys</p>
-                        </div>
-                        <div class="safari-habitat">
-                            <span class="text-2xl block mb-2">🏔️</span>
-                            <p class="font-bold">Mountains</p>
-                            <p class="text-sm opacity-80">Tigers, Snow Leopards</p>
-                        </div>
-                        <div class="safari-habitat">
-                            <span class="text-2xl block mb-2">🌿</span>
-                            <p class="font-bold">Jungle</p>
-                            <p class="text-sm opacity-80">Giraffes, Parrots</p>
-                        </div>
+                        <button onclick="speakWord('African Savanna')">
+                            <div class="safari-habitat">
+                                <span class="text-2xl block mb-2">🌍</span>
+                                <p class="font-bold">African Savanna</p>
+                                <p class="text-sm opacity-80">Lions, Elephants, Zebras</p>
+                            </div>
+                        </button>
+                        <button onclick="speakWord('Forest')">
+                            <div class="safari-habitat">
+                                <span class="text-2xl block mb-2">🌲</span>
+                                <p class="font-bold">Forest</p>
+                                <p class="text-sm opacity-80">Bears, Wolves, Monkeys</p>
+                            </div>
+                        </button>
+                        <button onclick="speakWord('Mountains')">
+                            <div class="safari-habitat">
+                                <span class="text-2xl block mb-2">🏔️</span>
+                                <p class="font-bold">Mountains</p>
+                                <p class="text-sm opacity-80">Tigers, Snow Leopards</p>
+                            </div>
+                        </button>
+                        <button onclick="speakWord('Jungle')">
+                            <div class="safari-habitat">
+                                <span class="text-2xl block mb-2">🌿</span>
+                                <p class="font-bold">Jungle</p>
+                                <p class="text-sm opacity-80">Giraffes, Parrots</p>
+                            </div>
+                        </button>
                     </div>
                 </div>
             </section>
@@ -382,21 +524,27 @@
                 <div class="farm-yard">
                     <h4 class="font-playfair text-xl font-bold mb-4">Happy Farm</h4>
                     <div class="farm-grid">
-                        <div class="farm-area">
-                            <span class="text-2xl block mb-2">🏡</span>
-                            <p class="font-bold">Barn</p>
-                            <p class="text-sm opacity-80">Estábulo</p>
-                        </div>
-                        <div class="farm-area">
-                            <span class="text-2xl block mb-2">🌾</span>
-                            <p class="font-bold">Field</p>
-                            <p class="text-sm opacity-80">Campo</p>
-                        </div>
-                        <div class="farm-area">
-                            <span class="text-2xl block mb-2">🏞️</span>
-                            <p class="font-bold">Pasture</p>
-                            <p class="text-sm opacity-80">Pasto</p>
-                        </div>
+                        <button onclick="speakWord('Barn')">
+                            <div class="farm-area">
+                                <span class="text-2xl block mb-2">🏡</span>
+                                <p class="font-bold">Barn</p>
+                                <p class="text-sm opacity-80">Estábulo</p>
+                            </div>
+                        </button>
+                        <button onclick="speakWord('Field')">
+                            <div class="farm-area">
+                                <span class="text-2xl block mb-2">🌾</span>
+                                <p class="font-bold">Field</p>
+                                <p class="text-sm opacity-80">Campo</p>
+                            </div>
+                        </button>
+                        <button onclick="speakWord('Pasture')">
+                            <div class="farm-area">
+                                <span class="text-2xl block mb-2">🏞️</span>
+                                <p class="font-bold">Pasture</p>
+                                <p class="text-sm opacity-80">Pasto</p>
+                            </div>
+                        </button>
                     </div>
                 </div>
             </section>
@@ -408,53 +556,69 @@
                 </h3>
                 
                 <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
-                    <div class="pet-card">
-                        <span class="animal-emoji">🐕</span>
-                        <div class="item-name">Dog</div>
-                        <div class="item-translation">Cachorro</div>
-                    </div>
+                    <button onclick="speakWord('Dog')">
+                        <div class="pet-card">
+                            <span class="animal-emoji">🐕</span>
+                            <div class="item-name">Dog</div>
+                            <div class="item-translation">Cachorro</div>
+                        </div>
+                    </button>
                     
-                    <div class="pet-card">
-                        <span class="animal-emoji">🐱</span>
-                        <div class="item-name">Cat</div>
-                        <div class="item-translation">Gato</div>
-                    </div>
+                    <button onclick="speakWord('Cat')">
+                        <div class="pet-card">
+                            <span class="animal-emoji">🐱</span>
+                            <div class="item-name">Cat</div>
+                            <div class="item-translation">Gato</div>
+                        </div>
+                    </button>
                     
-                    <div class="pet-card">
-                        <span class="animal-emoji">🐦</span>
-                        <div class="item-name">Bird</div>
-                        <div class="item-translation">Pássaro</div>
-                    </div>
+                    <button onclick="speakWord('Bird')">
+                        <div class="pet-card">
+                            <span class="animal-emoji">🐦</span>
+                            <div class="item-name">Bird</div>
+                            <div class="item-translation">Pássaro</div>
+                        </div>
+                    </button>
                     
-                    <div class="pet-card">
-                        <span class="animal-emoji">🐠</span>
-                        <div class="item-name">Fish</div>
-                        <div class="item-translation">Peixe</div>
-                    </div>
+                    <button onclick="speakWord('Fish')">
+                        <div class="pet-card">
+                            <span class="animal-emoji">🐠</span>
+                            <div class="item-name">Fish</div>
+                            <div class="item-translation">Peixe</div>
+                        </div>
+                    </button>
                     
-                    <div class="pet-card">
-                        <span class="animal-emoji">🐹</span>
-                        <div class="item-name">Hamster</div>
-                        <div class="item-translation">Hamster</div>
-                    </div>
+                    <button onclick="speakWord('Hamster')">
+                        <div class="pet-card">
+                            <span class="animal-emoji">🐹</span>
+                            <div class="item-name">Hamster</div>
+                            <div class="item-translation">Hamster</div>
+                        </div>
+                    </button>
                     
-                    <div class="pet-card">
-                        <span class="animal-emoji">🐰</span>
-                        <div class="item-name">Rabbit</div>
-                        <div class="item-translation">Coelho</div>
-                    </div>
+                    <button onclick="speakWord('Rabbit')">
+                        <div class="pet-card">
+                            <span class="animal-emoji">🐰</span>
+                            <div class="item-name">Rabbit</div>
+                            <div class="item-translation">Coelho</div>
+                        </div>
+                    </button>
                     
-                    <div class="pet-card">
-                        <span class="animal-emoji">🐢</span>
-                        <div class="item-name">Turtle</div>
-                        <div class="item-translation">Tartaruga</div>
-                    </div>
+                    <button onclick="speakWord('Turtle')">
+                        <div class="pet-card">
+                            <span class="animal-emoji">🐢</span>
+                            <div class="item-name">Turtle</div>
+                            <div class="item-translation">Tartaruga</div>
+                        </div>
+                    </button>
                     
-                    <div class="pet-card">
-                        <span class="animal-emoji">🐹</span>
-                        <div class="item-name">Guinea Pig</div>
-                        <div class="item-translation">Porquinho-da-índia</div>
-                    </div>
+                    <button onclick="speakWord('Parrot')">
+                        <div class="pet-card">
+                            <span class="animal-emoji">🦜</span>
+                            <div class="item-name">Parrot</div>
+                            <div class="item-translation">Papagaio</div>
+                        </div>
+                    </button>
                 </div>
             </section>
 
@@ -465,53 +629,69 @@
                 </h3>
                 
                 <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
-                    <div class="wild-card">
-                        <span class="animal-emoji">🦁</span>
-                        <div class="item-name">Lion</div>
-                        <div class="item-translation">Leão</div>
-                    </div>
+                    <button onclick="speakWord('Lion')">
+                        <div class="wild-card">
+                            <span class="animal-emoji">🦁</span>
+                            <div class="item-name">Lion</div>
+                            <div class="item-translation">Leão</div>
+                        </div>
+                    </button>
                     
-                    <div class="wild-card">
-                        <span class="animal-emoji">🐘</span>
-                        <div class="item-name">Elephant</div>
-                        <div class="item-translation">Elefante</div>
-                    </div>
+                    <button onclick="speakWord('Elephant')">
+                        <div class="wild-card">
+                            <span class="animal-emoji">🐘</span>
+                            <div class="item-name">Elephant</div>
+                            <div class="item-translation">Elefante</div>
+                        </div>
+                    </button>
                     
-                    <div class="wild-card">
-                        <span class="animal-emoji">🐒</span>
-                        <div class="item-name">Monkey</div>
-                        <div class="item-translation">Macaco</div>
-                    </div>
+                    <button onclick="speakWord('Giraffe')">
+                        <div class="wild-card">
+                            <span class="animal-emoji">🦒</span>
+                            <div class="item-name">Giraffe</div>
+                            <div class="item-translation">Girafa</div>
+                        </div>
+                    </button>
                     
-                    <div class="wild-card">
-                        <span class="animal-emoji">🦒</span>
-                        <div class="item-name">Giraffe</div>
-                        <div class="item-translation">Girafa</div>
-                    </div>
+                    <button onclick="speakWord('Zebra')">
+                        <div class="wild-card">
+                            <span class="animal-emoji">🦓</span>
+                            <div class="item-name">Zebra</div>
+                            <div class="item-translation">Zebra</div>
+                        </div>
+                    </button>
                     
-                    <div class="wild-card">
-                        <span class="animal-emoji">🦓</span>
-                        <div class="item-name">Zebra</div>
-                        <div class="item-translation">Zebra</div>
-                    </div>
+                    <button onclick="speakWord('Monkey')">
+                        <div class="wild-card">
+                            <span class="animal-emoji">🐒</span>
+                            <div class="item-name">Monkey</div>
+                            <div class="item-translation">Macaco</div>
+                        </div>
+                    </button>
                     
-                    <div class="wild-card">
-                        <span class="animal-emoji">🐅</span>
-                        <div class="item-name">Tiger</div>
-                        <div class="item-translation">Tigre</div>
-                    </div>
+                    <button onclick="speakWord('Tiger')">
+                        <div class="wild-card">
+                            <span class="animal-emoji">🐅</span>
+                            <div class="item-name">Tiger</div>
+                            <div class="item-translation">Tigre</div>
+                        </div>
+                    </button>
                     
-                    <div class="wild-card">
-                        <span class="animal-emoji">🐻</span>
-                        <div class="item-name">Bear</div>
-                        <div class="item-translation">Urso</div>
-                    </div>
+                    <button onclick="speakWord('Bear')">
+                        <div class="wild-card">
+                            <span class="animal-emoji">🐻</span>
+                            <div class="item-name">Bear</div>
+                            <div class="item-translation">Urso</div>
+                        </div>
+                    </button>
                     
-                    <div class="wild-card">
-                        <span class="animal-emoji">🐺</span>
-                        <div class="item-name">Wolf</div>
-                        <div class="item-translation">Lobo</div>
-                    </div>
+                    <button onclick="speakWord('Wolf')">
+                        <div class="wild-card">
+                            <span class="animal-emoji">🐺</span>
+                            <div class="item-name">Wolf</div>
+                            <div class="item-translation">Lobo</div>
+                        </div>
+                    </button>
                 </div>
             </section>
 
@@ -522,109 +702,161 @@
                 </h3>
                 
                 <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
-                    <div class="farm-card">
-                        <span class="animal-emoji">🐄</span>
-                        <div class="item-name">Cow</div>
-                        <div class="item-translation">Vaca</div>
-                    </div>
+                    <button onclick="speakWord('Cow')">
+                        <div class="farm-card">
+                            <span class="animal-emoji">🐄</span>
+                            <div class="item-name">Cow</div>
+                            <div class="item-translation">Vaca</div>
+                        </div>
+                    </button>
                     
-                    <div class="farm-card">
-                        <span class="animal-emoji">🐷</span>
-                        <div class="item-name">Pig</div>
-                        <div class="item-translation">Porco</div>
-                    </div>
+                    <button onclick="speakWord('Pig')">
+                        <div class="farm-card">
+                            <span class="animal-emoji">🐷</span>
+                            <div class="item-name">Pig</div>
+                            <div class="item-translation">Porco</div>
+                        </div>
+                    </button>
                     
-                    <div class="farm-card">
-                        <span class="animal-emoji">🐔</span>
-                        <div class="item-name">Chicken</div>
-                        <div class="item-translation">Galinha</div>
-                    </div>
+                    <button onclick="speakWord('Chicken')">
+                        <div class="farm-card">
+                            <span class="animal-emoji">🐔</span>
+                            <div class="item-name">Chicken</div>
+                            <div class="item-translation">Galinha</div>
+                        </div>
+                    </button>
                     
-                    <div class="farm-card">
-                        <span class="animal-emoji">🐴</span>
-                        <div class="item-name">Horse</div>
-                        <div class="item-translation">Cavalo</div>
-                    </div>
+                    <button onclick="speakWord('Horse')">
+                        <div class="farm-card">
+                            <span class="animal-emoji">🐴</span>
+                            <div class="item-name">Horse</div>
+                            <div class="item-translation">Cavalo</div>
+                        </div>
+                    </button>
                     
-                    <div class="farm-card">
-                        <span class="animal-emoji">🐑</span>
-                        <div class="item-name">Sheep</div>
-                        <div class="item-translation">Ovelha</div>
-                    </div>
+                    <button onclick="speakWord('Sheep')">
+                        <div class="farm-card">
+                            <span class="animal-emoji">🐑</span>
+                            <div class="item-name">Sheep</div>
+                            <div class="item-translation">Ovelha</div>
+                        </div>
+                    </button>
                     
-                    <div class="farm-card">
-                        <span class="animal-emoji">🐐</span>
-                        <div class="item-name">Goat</div>
-                        <div class="item-translation">Cabra</div>
-                    </div>
+                    <button onclick="speakWord('Goat')">
+                        <div class="farm-card">
+                            <span class="animal-emoji">🐐</span>
+                            <div class="item-name">Goat</div>
+                            <div class="item-translation">Cabra</div>
+                        </div>
+                    </button>
                     
-                    <div class="farm-card">
-                        <span class="animal-emoji">🦆</span>
-                        <div class="item-name">Duck</div>
-                        <div class="item-translation">Pato</div>
-                    </div>
+                    <button onclick="speakWord('Duck')">
+                        <div class="farm-card">
+                            <span class="animal-emoji">🦆</span>
+                            <div class="item-name">Duck</div>
+                            <div class="item-translation">Pato</div>
+                        </div>
+                    </button>
                     
-                    <div class="farm-card">
-                        <span class="animal-emoji">🫏</span>
-                        <div class="item-name">Donkey</div>
-                        <div class="item-translation">Burro</div>
-                    </div>
+                    <button onclick="speakWord('Donkey')">
+                        <div class="farm-card">
+                            <span class="animal-emoji">🫏</span>
+                            <div class="item-name">Donkey</div>
+                            <div class="item-translation">Burro</div>
+                        </div>
+                    </button>
                 </div>
             </section>
 
-            <!-- Diálogo -->
+            <!-- Diálogo Interativo -->
             <section class="mb-8">
-                <h3 class="font-playfair text-xl font-bold text-wine mb-4">
-                    💬 Sobre Animais de Estimação
+                <h3 class="font-playfair text-xl font-bold text-wine mb-4 text-center">
+                    💬 Conversa sobre Pets - Diálogo Interativo
                 </h3>
-                <div class="dialogue-box p-6 rounded-lg">
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Friend A:</strong> Hey, Sarah! I saw your new puppy on Instagram. He's so cute!
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Ei, Sarah! Vi seu novo filhote no Instagram. Ele é tão fofo!)
-                        </p>
+                
+                <div class="dialogue-controls">
+                    <div class="flex items-center gap-3">
+                        <button id="playBtn" onclick="playDialogue()" class="dialogue-btn">
+                            ▶️ Reproduzir
+                        </button>
+                        <button id="pauseBtn" onclick="pauseDialogue()" class="dialogue-btn" disabled>
+                            ⏸️ Pausar
+                        </button>
+                        <button id="stopBtn" onclick="stopDialogue()" class="dialogue-btn" disabled>
+                            ⏹️ Parar
+                        </button>
                     </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Friend B:</strong> Oh, thank you! His name is Buddy. He's a golden retriever.
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Ah, obrigada! O nome dele é Buddy. Ele é um golden retriever.)
-                        </p>
+                    
+                    <div class="flex items-center gap-3">
+                        <span class="font-baskerville">Velocidade:</span>
+                        <select id="dialogueSpeed" class="bg-white text-navy px-2 py-1 rounded border">
+                            <option value="0.4">0.4x</option>
+                            <option value="0.7">0.7x</option>
+                            <option value="1" selected>1x</option>
+                        </select>
+                        <span class="speed-indicator" id="speedIndicator">1x</span>
                     </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Friend A:</strong> Golden retrievers are lovely dogs. How old is he?
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Golden retrievers são cães adoráveis. Quantos anos ele tem?)
-                        </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg border-2 border-wine">
+                    <div class="dialogue-line" data-line="0" onclick="playFromLine(0)">
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-3">👤</span>
+                            <div>
+                                <p class="font-baskerville font-bold text-navy">Friend A: Hey, I saw your new puppy on Instagram. He's so cute!</p>
+                                <p class="font-baskerville text-sm text-gray-600">(Ei, vi seu novo filhote no Instagram. Ele é tão fofo!)</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Friend B:</strong> He's just three months old. He's very playful and energetic.
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Ele tem apenas três meses. É muito brincalhão e energético.)
-                        </p>
+                    
+                    <div class="dialogue-line" data-line="1" onclick="playFromLine(1)">
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-3">🐕</span>
+                            <div>
+                                <p class="font-baskerville font-bold text-navy">Friend B: Thank you! His name is Buddy. He's a golden retriever.</p>
+                                <p class="font-baskerville text-sm text-gray-600">(Obrigado! O nome dele é Buddy. Ele é um golden retriever.)</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-4">
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Friend A:</strong> Do you have any other pets?
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Você tem outros animais de estimação?)
-                        </p>
+                    
+                    <div class="dialogue-line" data-line="2" onclick="playFromLine(2)">
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-3">👤</span>
+                            <div>
+                                <p class="font-baskerville font-bold text-navy">Friend A: Golden retrievers are lovely dogs. How old is he?</p>
+                                <p class="font-baskerville text-sm text-gray-600">(Golden retrievers são cães adoráveis. Quantos anos ele tem?)</p>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <p class="font-baskerville text-navy">
-                            <strong class="text-wine">Friend B:</strong> Yes, I also have a cat named Luna. She's a bit shy, but very affectionate.
-                        </p>
-                        <p class="font-baskerville text-sm text-gray-600 ml-4">
-                            (Sim, também tenho uma gata chamada Luna. Ela é um pouco tímida, mas muito carinhosa.)
-                        </p>
+                    
+                    <div class="dialogue-line" data-line="3" onclick="playFromLine(3)">
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-3">🐕</span>
+                            <div>
+                                <p class="font-baskerville font-bold text-navy">Friend B: He's just three months old. He's very playful and energetic.</p>
+                                <p class="font-baskerville text-sm text-gray-600">(Ele tem apenas três meses. É muito brincalhão e energético.)</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dialogue-line" data-line="4" onclick="playFromLine(4)">
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-3">👤</span>
+                            <div>
+                                <p class="font-baskerville font-bold text-navy">Friend A: Do you have any other pets?</p>
+                                <p class="font-baskerville text-sm text-gray-600">(Você tem outros animais de estimação?)</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dialogue-line" data-line="5" onclick="playFromLine(5)">
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-3">🐕</span>
+                            <div>
+                                <p class="font-baskerville font-bold text-navy">Friend B: Yes, I also have a cat named Luna. She's a bit shy, but very affectionate.</p>
+                                <p class="font-baskerville text-sm text-gray-600">(Sim, também tenho uma gata chamada Luna. Ela é um pouco tímida, mas muito carinhosa.)</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -635,10 +867,10 @@
                     📝 Texto para Tradução
                 </h3>
                 <div class="bg-light-gold p-6 rounded-lg">
-                    <p class="font-baskerville text-navy text-lg mb-4">
+                    <p class="font-baskerville text-navy mb-4">
                         "Animals play a significant role in our lives, whether as beloved pets or as part of the natural world. Dogs and cats are the most common companions, offering loyalty and comfort. Wild animals, like lions and elephants, fascinate us with their power and beauty in their natural habitats. Farm animals, such as cows and chickens, are essential for food production."
                     </p>
-                    <button onclick="toggleTranslation()" class="vintage-button text-white px-4 py-2 rounded font-baskerville">
+                    <button onclick="toggleTranslation()" class="vintage-button text-white px-4 py-2 rounded font-baskerville text-sm">
                         Ver Tradução
                     </button>
                     <div id="translation" class="hidden-answer mt-4 p-4 bg-white rounded border-l-4 border-wine">
@@ -655,65 +887,64 @@
                     ❓ Perguntas para Prática
                 </h3>
                 <div class="space-y-4">
-                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
-                        <p class="font-baskerville text-navy mb-2">
-                            1. What is your favorite animal and why?
-                        </p>
-                        <button onclick="toggleAnswer(1)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-wine">
+                        <p class="font-baskerville text-navy font-bold mb-2">1. What is your favorite animal and why?</p>
+                        <button onclick="toggleAnswer('answer1')" class="bg-wine text-white px-3 py-1 rounded font-baskerville text-sm">
                             Ver Resposta
                         </button>
-                        <div id="answer1" class="hidden-answer mt-2 text-wine font-bold">
-                            My favorite animal is a dog because they are loyal and friendly (Resposta pessoal)
+                        <div id="answer1" class="hidden-answer mt-3 p-3 bg-gray-50 rounded">
+                            <p class="font-baskerville text-navy">My favorite animal is a dog because they are loyal and friendly (Resposta pessoal)</p>
                         </div>
                     </div>
                     
-                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
-                        <p class="font-baskerville text-navy mb-2">
-                            2. Do you have any pets? If so, what kind?
-                        </p>
-                        <button onclick="toggleAnswer(2)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-wine">
+                        <p class="font-baskerville text-navy font-bold mb-2">2. Do you have any pets? If so, what kind?</p>
+                        <button onclick="toggleAnswer('answer2')" class="bg-wine text-white px-3 py-1 rounded font-baskerville text-sm">
                             Ver Resposta
                         </button>
-                        <div id="answer2" class="hidden-answer mt-2 text-wine font-bold">
-                            Yes, I have a cat / No, I don't have any pets (Resposta pessoal)
+                        <div id="answer2" class="hidden-answer mt-3 p-3 bg-gray-50 rounded">
+                            <p class="font-baskerville text-navy">Yes, I have a cat / No, I don't have any pets (Resposta pessoal)</p>
                         </div>
                     </div>
                     
-                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
-                        <p class="font-baskerville text-navy mb-2">
-                            3. How do you say "leão" in English?
-                        </p>
-                        <button onclick="toggleAnswer(3)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-wine">
+                        <p class="font-baskerville text-navy font-bold mb-2">3. How do you say "leão" in English?</p>
+                        <button onclick="toggleAnswer('answer3')" class="bg-wine text-white px-3 py-1 rounded font-baskerville text-sm">
                             Ver Resposta
                         </button>
-                        <div id="answer3" class="hidden-answer mt-2 text-wine font-bold">
-                            Lion
+                        <div id="answer3" class="hidden-answer mt-3 p-3 bg-gray-50 rounded">
+                            <p class="font-baskerville text-navy">Lion</p>
                         </div>
                     </div>
                     
-                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
-                        <p class="font-baskerville text-navy mb-2">
-                            4. Traduza: "Eu tenho um gato e um cachorro."
-                        </p>
-                        <button onclick="toggleAnswer(4)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-wine">
+                        <p class="font-baskerville text-navy font-bold mb-2">4. Traduza: "Eu tenho um gato e um cachorro."</p>
+                        <button onclick="toggleAnswer('answer4')" class="bg-wine text-white px-3 py-1 rounded font-baskerville text-sm">
                             Ver Resposta
                         </button>
-                        <div id="answer4" class="hidden-answer mt-2 text-wine font-bold">
-                            I have a cat and a dog.
+                        <div id="answer4" class="hidden-answer mt-3 p-3 bg-gray-50 rounded">
+                            <p class="font-baskerville text-navy">I have a cat and a dog.</p>
                         </div>
                     </div>
                     
-                    <div class="bg-white p-4 rounded-lg border-l-4 border-navy">
-                        <p class="font-baskerville text-navy mb-2">
-                            5. What are some common farm animals?
-                        </p>
-                        <button onclick="toggleAnswer(5)" class="vintage-button text-white px-3 py-1 rounded text-sm">
+                    <div class="bg-white p-4 rounded-lg border-l-4 border-wine">
+                        <p class="font-baskerville text-navy font-bold mb-2">5. What are some common farm animals?</p>
+                        <button onclick="toggleAnswer('answer5')" class="bg-wine text-white px-3 py-1 rounded font-baskerville text-sm">
                             Ver Resposta
                         </button>
-                        <div id="answer5" class="hidden-answer mt-2 text-wine font-bold">
-                            Cows, pigs, chickens, horses, sheep, goats
+                        <div id="answer5" class="hidden-answer mt-3 p-3 bg-gray-50 rounded">
+                            <p class="font-baskerville text-navy">Cows, pigs, chickens, horses, sheep, goats</p>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <!-- Quiz Interativo -->
+            <section class="mb-8">
+                <div class="text-center">
+                    <button onclick="openQuizModal()" class="vintage-button text-white px-6 py-3 rounded-lg font-baskerville text-lg hover:transform hover:scale-105 transition-all">
+                        🎯 Iniciar Quiz sobre Animais
+                    </button>
                 </div>
             </section>
 
@@ -765,21 +996,421 @@
             <ul class="font-baskerville space-y-1">
                 <li>• Clique nos botões "Ver Resposta" para revelar as respostas das perguntas</li>
                 <li>• Clique em "Ver Tradução" para mostrar a tradução do texto</li>
-                <li>• Passe o mouse sobre os cartões de animais para ver os efeitos visuais</li>
+                <li>• Clique nos cartões de animais para ouvir a pronúncia</li>
+                <li>• Clique nas frases do diálogo para ouvir a pronúncia</li>
                 <li>• Use o Pet Shop, Safari Zone e Farm Yard para contextualizar os animais</li>
                 <li>• Pratique o diálogo sobre pets em voz alta</li>
+                <li>• Faça o quiz interativo para testar seus conhecimentos</li>
                 <li>• Descreva animais que você conhece usando o vocabulário aprendido</li>
             </ul>
         </div>
     </div>
 
+    <!-- Modal do Quiz -->
+    <div id="quizModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" style="display: none;">
+        <div class="modal-content bg-white rounded-lg p-6 w-full max-w-2xl max-h-90vh overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="font-playfair text-2xl font-bold text-wine">Quiz: Animais e Pets</h2>
+                <button onclick="closeQuizModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            
+            <form id="quizForm">
+                <!-- Questão 1 -->
+                <div class="mb-6 p-4 quiz-question rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">1. Como você diz "cachorro" em inglês?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">Dog</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Cat</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Bird</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 2 -->
+                <div class="mb-6 p-4 quiz-question rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">2. Qual é a tradução de "elephant"?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">Elefante</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Girafa</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Leão</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 3 -->
+                <div class="mb-6 p-4 quiz-question rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">3. Qual animal você encontra em uma fazenda?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">Lion</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Cow</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Tiger</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 4 -->
+                <div class="mb-6 p-4 quiz-question rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">4. Como você diz "gato" em inglês?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">Dog</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Cat</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q4" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Fish</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 5 -->
+                <div class="mb-6 p-4 quiz-question rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">5. Qual é a tradução de "monkey"?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">Macaco</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Urso</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q5" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Lobo</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questão 6 -->
+                <div class="mb-6 p-4 quiz-question rounded-lg">
+                    <p class="font-baskerville text-navy mb-3 font-bold">6. Qual animal é conhecido como "rei da selva"?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="a" class="form-radio mr-2">
+                            <span class="font-baskerville">Tiger</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="b" class="form-radio mr-2">
+                            <span class="font-baskerville">Lion</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q6" value="c" class="form-radio mr-2">
+                            <span class="font-baskerville">Elephant</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="button" onclick="checkQuiz()" class="vintage-button text-white px-6 py-2 rounded font-baskerville">
+                        Verificar Respostas
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Resultados -->
+    <div id="resultModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" style="display: none;">
+        <div class="modal-content bg-white rounded-lg p-6 w-full max-w-2xl max-h-90vh overflow-y-auto">
+            <div class="text-center mb-6">
+                <h2 class="font-playfair text-2xl font-bold text-wine mb-4">Resultados do Quiz</h2>
+                <div id="scoreText" class="font-playfair text-xl text-navy mb-4"></div>
+            </div>
+            
+            <div id="quizResults" class="mb-6"></div>
+            
+            <div class="text-center">
+                <button onclick="closeResultModal()" class="vintage-button text-white px-6 py-2 rounded font-baskerville mr-3">
+                    Fechar
+                </button>
+                <button onclick="closeResultModal(); openQuizModal();" class="bg-navy text-white px-6 py-2 rounded font-baskerville">
+                    Tentar Novamente
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        function toggleAnswer(questionNumber) {
-            const answer = document.getElementById('answer' + questionNumber);
+        // Função para síntese de voz
+        function speakWord(text) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.8;
+                utterance.pitch = 1;
+                speechSynthesis.speak(utterance);
+            } else {
+                console.log('Speech synthesis not supported');
+            }
+        }
+
+        // Função para mostrar/ocultar respostas
+        function toggleAnswer(answerId) {
+            const answer = document.getElementById(answerId);
             answer.classList.toggle('hidden-answer');
             answer.classList.toggle('show-answer');
         }
         
+        // Função para mostrar/ocultar tradução
+        function toggleTranslation() {
+            const translation = document.getElementById('translation');
+            translation.classList.toggle('hidden-answer');
+            translation.classList.toggle('show-answer');
+        }
+
+        // Funções do Quiz
+        function openQuizModal() {
+            document.getElementById('quizModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeQuizModal() {
+            document.getElementById('quizModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            // Reset form
+            document.getElementById('quizForm').reset();
+        }
+
+        function closeResultModal() {
+            document.getElementById('resultModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function checkQuiz() {
+            const answers = {
+                q1: 'a', // Dog
+                q2: 'a', // Elefante
+                q3: 'b', // Cow
+                q4: 'b', // Cat
+                q5: 'a', // Macaco
+                q6: 'b'  // Lion
+            };
+
+            const questions = [
+                'Como você diz "cachorro" em inglês?',
+                'Qual é a tradução de "elephant"?',
+                'Qual animal você encontra em uma fazenda?',
+                'Como você diz "gato" em inglês?',
+                'Qual é a tradução de "monkey"?',
+                'Qual animal é conhecido como "rei da selva"?'
+            ];
+
+            const correctAnswers = [
+                'Dog',
+                'Elefante',
+                'Cow',
+                'Cat',
+                'Macaco',
+                'Lion'
+            ];
+
+            let score = 0;
+            let results = '';
+
+            for (let i = 1; i <= 6; i++) {
+                const userAnswer = document.querySelector(`input[name="q${i}"]:checked`);
+                const isCorrect = userAnswer && userAnswer.value === answers[`q${i}`];
+                
+                if (isCorrect) {
+                    score++;
+                }
+
+                results += `
+                    <div class="mb-4 p-4 rounded-lg ${isCorrect ? 'bg-green-50 border-l-4 border-green-500' : 'bg-red-50 border-l-4 border-red-500'}">
+                        <p class="font-baskerville font-bold mb-2">${i}. ${questions[i-1]}</p>
+                        <p class="font-baskerville text-sm">
+                            <span class="${isCorrect ? 'text-green-600' : 'text-red-600'}">
+                                ${isCorrect ? '✓ Correto' : '✗ Incorreto'}
+                            </span>
+                            - Resposta: ${correctAnswers[i-1]}
+                        </p>
+                    </div>
+                `;
+            }
+
+            const percentage = Math.round((score / 6) * 100);
+            let message = '';
+            let emoji = '';
+
+            if (percentage >= 90) {
+                message = 'Excelente! Você domina o vocabulário de animais!';
+                emoji = '🏆';
+            } else if (percentage >= 70) {
+                message = 'Muito bom! Continue praticando!';
+                emoji = '👏';
+            } else if (percentage >= 50) {
+                message = 'Bom trabalho! Revise o conteúdo e tente novamente.';
+                emoji = '👍';
+            } else {
+                message = 'Continue estudando! A prática leva à perfeição.';
+                emoji = '📚';
+            }
+
+            document.getElementById('scoreText').innerHTML = `
+                ${emoji} Você acertou ${score} de 6 questões (${percentage}%)
+                <br><span class="text-base">${message}</span>
+            `;
+            
+            document.getElementById('quizResults').innerHTML = results;
+            
+            // Fechar modal do quiz e abrir modal de resultados
+            closeQuizModal();
+            document.getElementById('resultModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Fechar modais ao clicar fora
+        window.onclick = function(event) {
+            const quizModal = document.getElementById('quizModal');
+            const resultModal = document.getElementById('resultModal');
+            
+            if (event.target === quizModal) {
+                closeQuizModal();
+            }
+            if (event.target === resultModal) {
+                closeResultModal();
+            }
+        }
+
+        // Variáveis para o diálogo
+        let currentDialogueLine = 0;
+        let isPlaying = false;
+        let dialogueTimeout;
+
+        const dialogueLines = [
+            "Hey, I saw your new puppy on Instagram. He's so cute!",
+            "Thank you! His name is Buddy. He's a golden retriever.",
+            "Golden retrievers are lovely dogs. How old is he?",
+            "He's just three months old. He's very playful and energetic.",
+            "Do you have any other pets?",
+            "Yes, I also have a cat named Luna. She's a bit shy, but very affectionate."
+        ];
+
+        // Funções do diálogo interativo
+        function playDialogue() {
+            if (!isPlaying) {
+                isPlaying = true;
+                currentDialogueLine = 0;
+                updateDialogueControls();
+                playNextLine();
+            }
+        }
+
+        function pauseDialogue() {
+            if (isPlaying) {
+                isPlaying = false;
+                window.speechSynthesis.cancel();
+                clearTimeout(dialogueTimeout);
+                updateDialogueControls();
+                clearHighlight();
+            }
+        }
+
+        function stopDialogue() {
+            isPlaying = false;
+            currentDialogueLine = 0;
+            window.speechSynthesis.cancel();
+            clearTimeout(dialogueTimeout);
+            updateDialogueControls();
+            clearHighlight();
+        }
+
+        function playFromLine(lineIndex) {
+            if (isPlaying) {
+                stopDialogue();
+            }
+            currentDialogueLine = lineIndex;
+            isPlaying = true;
+            updateDialogueControls();
+            playNextLine();
+        }
+
+        function playNextLine() {
+            if (!isPlaying || currentDialogueLine >= dialogueLines.length) {
+                stopDialogue();
+                return;
+            }
+
+            highlightLine(currentDialogueLine);
+            speakDialogueLine(dialogueLines[currentDialogueLine], () => {
+                currentDialogueLine++;
+                if (isPlaying) {
+                    dialogueTimeout = setTimeout(() => {
+                        playNextLine();
+                    }, 1000);
+                }
+            });
+        }
+
+        function speakDialogueLine(text, callback) {
+            const speed = parseFloat(document.getElementById('dialogueSpeed').value);
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.rate = speed;
+            utterance.lang = 'en-US';
+            utterance.onend = callback;
+            
+            window.speechSynthesis.speak(utterance);
+        }
+
+        function highlightLine(lineIndex) {
+            clearHighlight();
+            const line = document.querySelector(`[data-line="${lineIndex}"]`);
+            if (line) {
+                line.classList.add('playing');
+            }
+        }
+
+        function clearHighlight() {
+            document.querySelectorAll('.dialogue-line').forEach(line => {
+                line.classList.remove('playing');
+            });
+        }
+
+        function updateDialogueControls() {
+            const playBtn = document.getElementById('playBtn');
+            const pauseBtn = document.getElementById('pauseBtn');
+            const stopBtn = document.getElementById('stopBtn');
+            
+            playBtn.disabled = isPlaying;
+            pauseBtn.disabled = !isPlaying;
+            stopBtn.disabled = !isPlaying;
+        }
+
+        // Atualizar indicador de velocidade
+        document.getElementById('dialogueSpeed').addEventListener('change', function() {
+            document.getElementById('speedIndicator').textContent = this.value + 'x';
+        });
+
+        // Função para mostrar/esconder tradução
         function toggleTranslation() {
             const translation = document.getElementById('translation');
             translation.classList.toggle('hidden-answer');
